@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hanta Hub — Global Outbreak Monitor</title>
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">%F0%9F%98%B7</text></svg>'>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0a1628;
+    --blue: #1a4480;
+    --blue-mid: #2563a8;
+    --blue-light: #3b82c4;
+    --sky: #dbeafe;
+    --sky-light: #eff6ff;
+    --white: #ffffff;
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-400: #94a3b8;
+    --gray-600: #475569;
+    --gray-800: #1e293b;
+    --red: #dc2626;
+    --amber: #d97706;
+    --green: #059669;
+    --font-display: 'DM Serif Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--white);
+    color: var(--gray-800);
+    line-height: 1.6;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gray-200);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.4rem; color: var(--navy);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-logo .pulse-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--red);
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(220,38,38,0.4); }
+    50% { opacity: .9; transform: scale(1.1); box-shadow: 0 0 0 6px rgba(220,38,38,0); }
+  }
+  .nav-links { display: flex; gap: 6px; }
+  .nav-links button {
+    background: none; border: none; cursor: pointer;
+    font-family: var(--font-body); font-size: .875rem; font-weight: 500;
+    color: var(--gray-600); padding: 8px 16px; border-radius: 8px;
+    transition: all .2s;
+  }
+  .nav-links button:hover, .nav-links button.active {
+    background: var(--sky); color: var(--blue);
+  }
+  .nav-status {
+    display: flex; align-items: center; gap: 8px;
+    font-size: .75rem; font-weight: 500; color: var(--green);
+    background: #d1fae5; padding: 4px 12px; border-radius: 20px;
+  }
+  .nav-status span { width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+
+  /* ─── HERO BANNER ─── */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 60%, var(--blue-light) 100%);
+    padding: 64px 40px 48px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3Ccircle cx='30' cy='30' r='10'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+    color: #93c5fd; font-size: .75rem; font-weight: 600; letter-spacing: .06em;
+    text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 20px;
+  }
+  .hero-badge .blink { animation: blink 1.2s step-end infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .hero h1 { font-family: var(--font-display); font-size: 3rem; color: var(--white); line-height: 1.15; margin-bottom: 14px; }
+  .hero h1 em { font-style: italic; color: #93c5fd; }
+  .hero p { color: rgba(255,255,255,0.75); font-size: 1rem; max-width: 560px; margin-bottom: 32px; }
+  .hero-stats { display: flex; gap: 24px; flex-wrap: wrap; }
+  .hstat {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px; padding: 18px 24px; min-width: 140px;
+  }
+  .hstat-val { font-family: var(--font-display); font-size: 2rem; color: var(--white); }
+  .hstat-label { font-size: .75rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: .06em; margin-top: 2px; }
+  .hstat-sub { font-size: .7rem; color: rgba(255,255,255,0.45); margin-top: 4px; }
+
+  /* ─── TRACKER SECTION ─── */
+  .tracker-body { max-width: 1100px; margin: 0 auto; padding: 48px 40px; }
+  .section-title { font-family: var(--font-display); font-size: 1.75rem; color: var(--navy); margin-bottom: 6px; }
+  .section-sub { color: var(--gray-600); font-size: .9rem; margin-bottom: 32px; }
+
+  /* Risk Banner */
+  .risk-banner {
+    display: flex; align-items: center; gap: 16px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 12px;
+    padding: 16px 20px; margin-bottom: 32px;
+  }
+  .risk-icon { font-size: 1.5rem; }
+  .risk-text strong { color: #92400e; font-size: .9rem; }
+  .risk-text p { color: #78350f; font-size: .8rem; margin-top: 2px; }
+  .risk-tag {
+    margin-left: auto; background: #fef3c7; color: #92400e;
+    border: 1px solid #fde68a; padding: 4px 12px; border-radius: 20px;
+    font-size: .75rem; font-weight: 600;
+  }
+
+  /* Stats Grid */
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 36px; }
+  .stat-card {
+    background: var(--gray-50); border: 1px solid var(--gray-200);
+    border-radius: 12px; padding: 20px;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .stat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.07); }
+  .stat-card.alert { border-color: #fca5a5; background: #fff5f5; }
+  .stat-card.watch { border-color: #fde68a; background: #fffdf0; }
+  .stat-val { font-family: var(--font-display); font-size: 2.2rem; color: var(--navy); }
+  .stat-card.alert .stat-val { color: var(--red); }
+  .stat-card.watch .stat-val { color: var(--amber); }
+  .stat-label { font-size: .8rem; font-weight: 500; color: var(--gray-600); text-transform: uppercase; letter-spacing: .05em; margin-top: 4px; }
+  .stat-note { font-size: .72rem; color: var(--gray-400); margin-top: 6px; }
+
+  /* Timeline */
+  .timeline-section { margin-bottom: 36px; }
+  .timeline-section h3 { font-family: var(--font-display); font-size: 1.2rem; color: var(--navy); margin-bottom: 20px; }
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before { content: ''; position: absolute; left: 8px; top: 6px; bottom: 6px; width: 2px; background: var(--gray-200); }
+  .tl-item { position: relative; margin-bottom: 24px; }
+  .tl-dot {
+    position: absolute; left: -24px; top: 4px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--blue-light); border: 2px solid var(--white);
+    box-shadow: 0 0 0 2px var(--blue-light);
+  }
+  .tl-dot.death { background: var(--red); box-shadow: 0 0 0 2px var(--red); }
+  .tl-dot.active { background: var(--amber); box-shadow: 0 0 0 2px var(--amber); animation: pulse 1.8s infinite; }
+  .tl-date { font-size: .72rem; font-weight: 600; color: var(--blue); text-transform: uppercase; letter-spacing: .06em; }
+  .tl-title { font-size: .9rem; font-weight: 600; color: var(--gray-800); margin-top: 2px; }
+  .tl-desc { font-size: .82rem; color: var(--gray-600); margin-top: 3px; }
+  .tl-badge {
+    display: inline-block; font-size: .65rem; font-weight: 700; text-transform: uppercase;
+    padding: 2px 8px; border-radius: 10px; margin-top: 5px; letter-spacing: .04em;
+  }
+  .badge-death { background: #fee2e2; color: var(--red); }
+  .badge-confirmed { background: #dbeafe; color: var(--blue); }
+  .badge-now { background: #d1fae5; color: var(--green); }
+
+  /* Regions Table */
+  .regions-section h3 { font-family: var(--font-display); font-size: 1.2rem; color: var(--navy); margin-bottom: 16px; }
+  .regions-table { width: 100%; border-collapse: collapse; }
+  .regions-table th {
+    text-align: left; font-size: .72rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: .06em; color: var(--gray-400); padding: 10px 14px;
+    border-bottom: 2px solid var(--gray-200);
+  }
+  .regions-table td { padding: 14px; border-bottom: 1px solid var(--gray-100); font-size: .88rem; }
+  .regions-table tr:hover td { background: var(--sky-light); }
+  .status-pill {
+    display: inline-block; padding: 3px 10px; border-radius: 12px;
+    font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em;
+  }
+  .status-active { background: #fee2e2; color: var(--red); }
+  .status-watch { background: #fef3c7; color: var(--amber); }
+  .status-endemic { background: #dbeafe; color: var(--blue); }
+
+  /* US Info Panel */
+  .us-panel {
+    background: var(--sky-light); border: 1px solid var(--sky);
+    border-radius: 12px; padding: 24px; margin-top: 32px;
+  }
+  .us-panel h3 { font-family: var(--font-display); font-size: 1.2rem; color: var(--navy); margin-bottom: 12px; }
+  .us-panel p { font-size: .88rem; color: var(--gray-600); margin-bottom: 12px; }
+  .us-states { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .us-state-tag {
+    background: var(--white); border: 1px solid var(--sky);
+    padding: 4px 12px; border-radius: 20px; font-size: .78rem; color: var(--blue);
+    font-weight: 500;
+  }
+
+  /* ─── HUB SECTION ─── */
+  .hub-body { max-width: 1100px; margin: 0 auto; padding: 48px 40px; }
+  .hub-intro {
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    border: 1px solid #bfdbfe; border-radius: 16px;
+    padding: 32px; margin-bottom: 40px;
+    display: flex; align-items: center; gap: 24px;
+  }
+  .hub-intro-icon { font-size: 3rem; }
+  .hub-intro h2 { font-family: var(--font-display); font-size: 1.5rem; color: var(--navy); }
+  .hub-intro p { color: var(--gray-600); font-size: .9rem; margin-top: 6px; }
+  .hub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .product-card {
+    background: var(--white); border: 1px solid var(--gray-200);
+    border-radius: 16px; overflow: hidden;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .product-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.1); }
+  .product-img {
+    height: 160px; display: flex; align-items: center; justify-content: center;
+    font-size: 4rem;
+  }
+  .p-img-blue { background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
+  .p-img-teal { background: linear-gradient(135deg, #ccfbf1, #a7f3d0); }
+  .p-img-sky { background: linear-gradient(135deg, #e0f2fe, #bae6fd); }
+  .p-img-indigo { background: linear-gradient(135deg, #e0e7ff, #c7d2fe); }
+  .p-img-rose { background: linear-gradient(135deg, #ffe4e6, #fecdd3); }
+  .p-img-purple { background: linear-gradient(135deg, #f3e8ff, #e9d5ff); }
+  .product-info { padding: 20px; }
+  .product-badge {
+    font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+    padding: 3px 10px; border-radius: 10px; display: inline-block; margin-bottom: 10px;
+  }
+  .badge-essential { background: #dbeafe; color: var(--blue); }
+  .badge-recommended { background: #d1fae5; color: var(--green); }
+  .badge-critical { background: #fee2e2; color: var(--red); }
+  .product-name { font-weight: 600; color: var(--gray-800); font-size: .95rem; margin-bottom: 6px; }
+  .product-desc { font-size: .8rem; color: var(--gray-600); line-height: 1.5; margin-bottom: 14px; }
+  .product-footer { display: flex; align-items: center; justify-content: space-between; }
+  .product-price { font-family: var(--font-display); font-size: 1.2rem; color: var(--navy); }
+  .product-price small { font-family: var(--font-body); font-size: .7rem; color: var(--gray-400); font-weight: 400; }
+
+  .hub-disclaimer {
+    margin-top: 32px; padding: 16px 20px;
+    background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 10px;
+    font-size: .78rem; color: var(--gray-400); text-align: center;
+  }
+
+  /* ─── BLOG SECTION ─── */
+  .blog-body { max-width: 1100px; margin: 0 auto; padding: 48px 40px; }
+  .blog-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
+  .blog-main { display: flex; flex-direction: column; gap: 32px; }
+  .blog-featured {
+    background: linear-gradient(135deg, var(--navy), var(--blue));
+    border-radius: 16px; padding: 36px; color: var(--white); position: relative; overflow: hidden;
+  }
+  .blog-featured::after {
+    content: '🦠'; font-size: 8rem; position: absolute; right: 20px; bottom: -10px; opacity: .15;
+  }
+  .blog-cat {
+    font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+    padding: 3px 12px; border-radius: 10px; display: inline-block; margin-bottom: 14px;
+  }
+  .cat-news { background: rgba(239,68,68,.25); color: #fca5a5; }
+  .cat-prevention { background: rgba(16,185,129,.25); color: #6ee7b7; }
+  .cat-science { background: rgba(99,102,241,.25); color: #a5b4fc; }
+  .cat-tips { background: rgba(245,158,11,.25); color: #fcd34d; }
+  .blog-featured h2 { font-family: var(--font-display); font-size: 1.6rem; line-height: 1.3; margin-bottom: 12px; }
+  .blog-featured p { font-size: .88rem; opacity: .8; line-height: 1.6; margin-bottom: 20px; }
+  .blog-meta-light { font-size: .75rem; opacity: .55; }
+  .read-more {
+    display: inline-block; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25);
+    color: var(--white); padding: 8px 20px; border-radius: 8px; font-size: .82rem; font-weight: 500;
+    cursor: pointer; text-decoration: none; transition: background .2s;
+  }
+  .read-more:hover { background: rgba(255,255,255,.25); }
+  .blog-post-card {
+    background: var(--white); border: 1px solid var(--gray-200);
+    border-radius: 12px; padding: 24px; display: flex; gap: 20px;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .blog-post-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.07); transform: translateY(-1px); }
+  .post-icon { font-size: 2.5rem; flex-shrink: 0; }
+  .post-content { flex: 1; }
+  .post-cat-date { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .post-date { font-size: .72rem; color: var(--gray-400); }
+  .post-title { font-weight: 600; color: var(--gray-800); font-size: .95rem; margin-bottom: 6px; line-height: 1.4; }
+  .post-excerpt { font-size: .82rem; color: var(--gray-600); line-height: 1.5; }
+
+  /* Sidebar */
+  .blog-sidebar { display: flex; flex-direction: column; gap: 24px; }
+  .sidebar-card {
+    background: var(--gray-50); border: 1px solid var(--gray-200);
+    border-radius: 12px; padding: 20px;
+  }
+  .sidebar-card h4 { font-weight: 600; color: var(--navy); font-size: .9rem; margin-bottom: 14px; }
+  .sidebar-link {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 0; border-bottom: 1px solid var(--gray-200);
+    cursor: pointer; transition: color .15s;
+  }
+  .sidebar-link:last-child { border-bottom: none; padding-bottom: 0; }
+  .sidebar-link:hover .sl-title { color: var(--blue); }
+  .sl-num { font-family: var(--font-display); font-size: 1.2rem; color: var(--gray-200); flex-shrink: 0; }
+  .sl-title { font-size: .82rem; font-weight: 500; color: var(--gray-700); line-height: 1.4; }
+  .sl-date { font-size: .7rem; color: var(--gray-400); margin-top: 2px; }
+
+  .symptom-list { list-style: none; }
+  .symptom-list li {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 0; border-bottom: 1px solid var(--gray-200);
+    font-size: .82rem; color: var(--gray-700);
+  }
+  .symptom-list li:last-child { border-bottom: none; }
+  .sym-icon { width: 24px; height: 24px; border-radius: 6px; background: var(--sky); display: flex; align-items: center; justify-content: center; font-size: .8rem; }
+
+  .newsletter-card {
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    border: 1px solid #bfdbfe; border-radius: 12px; padding: 20px; text-align: center;
+  }
+  .newsletter-card h4 { font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .newsletter-card p { font-size: .8rem; color: var(--gray-600); margin-bottom: 14px; }
+  .newsletter-input {
+    width: 100%; padding: 9px 14px; border: 1px solid var(--gray-200);
+    border-radius: 8px; font-family: var(--font-body); font-size: .82rem;
+    margin-bottom: 10px; outline: none;
+  }
+  .newsletter-input:focus { border-color: var(--blue-light); box-shadow: 0 0 0 3px rgba(59,130,196,.1); }
+  .btn-sub {
+    width: 100%; background: var(--blue); color: var(--white);
+    border: none; cursor: pointer; font-family: var(--font-body);
+    font-size: .85rem; font-weight: 600; padding: 10px; border-radius: 8px;
+    transition: background .2s;
+  }
+  .btn-sub:hover { background: var(--navy); }
+
+  /* Footer */
+  footer {
+    background: var(--navy); color: rgba(255,255,255,0.5);
+    text-align: center; padding: 24px 40px;
+    font-size: .78rem;
+  }
+  footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
+  footer a:hover { color: rgba(255,255,255,0.7); }
+
+  /* Animations */
+  .fade-in { animation: fadeIn .4s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+  .btn-affiliate {
+    display: inline-block;
+    background: var(--blue); color: var(--white); border: none; cursor: pointer;
+    font-family: var(--font-body); font-size: .8rem; font-weight: 600;
+    padding: 8px 18px; border-radius: 8px; transition: background .2s;
+    text-decoration: none;
+  }
+  .btn-affiliate:hover { background: var(--navy); }
+
+  .affiliate-notice {
+    margin-top: 32px; padding: 16px 20px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    font-size: .78rem; color: #78350f;
+  }
+
+  /* ─── MAP ─── */
+  .map-section { margin-bottom: 40px; }
+  .map-section h3 { font-family: var(--font-display); font-size: 1.2rem; color: var(--navy); margin-bottom: 8px; }
+  .map-section p { font-size: .82rem; color: var(--gray-600); margin-bottom: 16px; }
+  .map-wrapper {
+    background: #f0f7ff;
+    border: 1px solid var(--gray-200);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+  .map-wrapper svg { display: block; width: 100%; height: auto; }
+  .map-legend {
+    display: flex; gap: 20px; flex-wrap: wrap;
+    padding: 12px 20px; background: var(--white);
+    border-top: 1px solid var(--gray-200);
+  }
+  .legend-item { display: flex; align-items: center; gap: 8px; font-size: .75rem; color: var(--gray-600); }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+  .l-active { background: #dc2626; box-shadow: 0 0 0 3px rgba(220,38,38,.25); }
+  .l-watch { background: #d97706; }
+  .l-endemic { background: #3b82c4; }
+  .l-low { background: #d1d5db; }
+
+  /* Tooltip */
+  .map-tooltip {
+    position: absolute; background: var(--navy); color: var(--white);
+    padding: 8px 14px; border-radius: 8px; font-size: .78rem; pointer-events: none;
+    opacity: 0; transition: opacity .15s; white-space: nowrap; z-index: 10;
+    box-shadow: 0 4px 16px rgba(0,0,0,.3);
+  }
+  .map-tooltip strong { display: block; font-size: .85rem; margin-bottom: 2px; }
+
+  .map-region { cursor: pointer; }
+
+  /* Modal */
+  .article-modal-overlay {
+    display: block; position: fixed; inset: 0; z-index: 999;
+    background: rgba(10,22,40,0.7); backdrop-filter: blur(4px);
+    overflow-y: auto;
+  }
+  .article-modal-card {
+    max-width: 780px; margin: 40px auto; background: white;
+    border-radius: 20px; overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,.3);
+  }
+  .article-modal-header {
+    background: linear-gradient(135deg, #0a1628, #1a4480);
+    padding: 40px 40px 32px; position: relative;
+  }
+  .article-modal-close {
+    position: absolute; top: 16px; right: 16px;
+    background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.2);
+    color: white; width: 36px; height: 36px; border-radius: 50%;
+    font-size: 1.1rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .article-modal-title {
+    font-family: 'DM Serif Display', serif; font-size: 1.7rem; color: white;
+    line-height: 1.3; margin-bottom: 12px;
+  }
+  .article-modal-meta { font-size: .8rem; color: rgba(255,255,255,.55); }
+  .article-modal-body {
+    padding: 36px 40px; font-family: 'DM Sans', sans-serif;
+    color: #1e293b; line-height: 1.8; font-size: .95rem;
+  }
+  .article-modal-body h3 {
+    font-family: 'DM Serif Display', serif; font-size: 1.15rem;
+    color: #0a1628; margin: 28px 0 10px;
+  }
+  .article-modal-body p { margin-bottom: 16px; }
+  .article-modal-body em { color: #64748b; font-style: italic; }
+  .article-medical-disclaimer {
+    margin-top: 32px; padding: 16px 20px;
+    background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px;
+    font-size: .78rem; color: #94a3b8;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 16px; }
+    .hero { padding: 40px 16px 32px; }
+    .hero h1 { font-size: 2rem; }
+    .hero-stats { gap: 12px; }
+    .stats-grid { grid-template-columns: repeat(2,1fr); }
+    .hub-grid { grid-template-columns: 1fr; }
+    .blog-grid { grid-template-columns: 1fr; }
+    .tracker-body, .hub-body, .blog-body { padding: 32px 16px; }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel" data-type="module">
+const { useState, useEffect, useRef } = React;
+
+// ──────────────────────────────────────────────────
+// DATA
+// ──────────────────────────────────────────────────
+
+const HERO_STATS = [
+  { val: '7', label: 'Active Cases', sub: '2 PCR-confirmed · 5 suspected' },
+  { val: '3', label: 'Confirmed Deaths', sub: 'MV Hondius cluster · 2026' },
+  { val: '60k', label: 'Annual HFRS Cases', sub: 'Estimated global per year' },
+  { val: '36%', label: 'Fatality Rate (HPS)', sub: 'Americas · up to 50% in outbreaks' },
+];
+
+const TRACKER_STATS = [
+  { kind: 'alert', val: '3', label: 'Deaths · 2026 Cluster', note: 'MV Hondius · Dutch, German, South African nationals' },
+  { kind: 'watch', val: '7', label: 'Active Cases', note: '2 PCR-confirmed · 5 suspected aboard ship' },
+  { kind: '', val: '82+', label: 'Under WHO Tracing', note: 'Passengers + crew from Johannesburg flight' },
+  { kind: '', val: '36 days', label: 'Since Outbreak Began', note: 'Apr 1, 2026 · MV Hondius departed Ushuaia' },
+];
+
+const TIMELINE = [
+  { date: 'Apr 1, 2026', title: 'MV Hondius Departs Ushuaia', desc: '147 passengers & crew aboard. Antarctic & South Atlantic wildlife expedition begins.' },
+  { date: 'Apr 11, 2026', title: 'Index Case Dies Onboard', desc: 'Dutch national (index case) dies. Remains held in Saint Helena pending repatriation.', dotClass: 'death', badge: 'Death', badgeClass: 'badge-death' },
+  { date: 'Apr 26, 2026', title: 'Dutch Woman Dies — Johannesburg', desc: 'Close contact of index case collapses on Airlink flight. WHO traces 82 passengers + 6 crew.', dotClass: 'death', badge: 'Death + Tracing', badgeClass: 'badge-death' },
+  { date: 'May 2, 2026', title: 'WHO Notified — PCR Confirmed', desc: 'NICD South Africa confirms hantavirus via PCR. British national in ICU Johannesburg.', badge: 'Confirmed', badgeClass: 'badge-confirmed' },
+  { date: 'May 3, 2026', title: '3rd Death — German National', desc: 'German passenger dies on board. Ship anchors off Praia, Cape Verde.', dotClass: 'death', badge: 'Death', badgeClass: 'badge-death' },
+  { date: 'May 6, 2026 · Now', title: 'Evacuation to Netherlands Underway', desc: '3 patients including ship’s doctor evacuated to Netherlands. Ship’s doctor condition improving.', dotClass: 'active', badge: 'Active', badgeClass: 'badge-now' },
+];
+
+const REGIONS = [
+  { region: '🚢 MV Hondius (Cape Verde)', cases: '7 cases · 3 deaths', notes: '2 PCR-confirmed · Active WHO investigation', status: 'Active', statusClass: 'status-active' },
+  { region: '🇦🇷 Argentina', cases: '28 deaths in 2025', notes: 'Andes virus endemic · rural Patagonia region', status: 'Watch', statusClass: 'status-watch' },
+  { region: '🇿🇦 South Africa', cases: '1 critical case', notes: 'British national in ICU Johannesburg · linked to cluster', status: 'Watch', statusClass: 'status-watch' },
+  { region: '🇺🇸 United States', cases: '<1,000 total cases', notes: 'Sin Nombre virus · primarily Four Corners region (SW states)', status: 'Endemic', statusClass: 'status-endemic' },
+  { region: '🇪🇺 Europe', cases: '~1,000 cases/year', notes: 'Puumala & Dobrava strains · Scandinavia, Germany, Balkans', status: 'Endemic', statusClass: 'status-endemic' },
+  { region: '🇨🇳 China / Asia', cases: '~10,000 cases/year', notes: 'HFRS predominant · Hantaan & Seoul strains', status: 'Endemic', statusClass: 'status-endemic' },
+];
+
+const US_STATES = ['New Mexico', 'Colorado', 'Arizona', 'California', 'Washington', 'Texas', 'Utah', 'Montana'];
+
+const PRODUCTS = [
+  { img: '😷', imgClass: 'p-img-rose', badge: 'Critical', badgeClass: 'badge-critical', name: 'N95 Respirator Masks (20-Pack)', desc: 'NIOSH-certified N95 respirators filter 95% of airborne particles. Essential when cleaning potentially contaminated areas. CDC-recommended for hantavirus prevention.', price: '$34.99', priceUnit: '/pack', search: 'N95+respirator+masks+NIOSH+certified+20+pack' },
+  { img: '🧤', imgClass: 'p-img-blue', badge: 'Critical', badgeClass: 'badge-critical', name: 'Nitrile Gloves — Heavy Duty (100ct)', desc: 'Powder-free medical-grade nitrile gloves. Puncture-resistant for handling contaminated materials. Avoid contact with rodent urine, droppings, or nesting materials.', price: '$19.99', priceUnit: '/box', search: 'heavy+duty+nitrile+gloves+powder+free+medical+grade+100' },
+  { img: '🧴', imgClass: 'p-img-teal', badge: 'Essential', badgeClass: 'badge-essential', name: 'EPA-Approved Disinfectant Spray', desc: 'Broad-spectrum disinfectant effective against hantavirus. Use before sweeping or vacuuming potentially contaminated areas — never dry sweep, always wet disinfect first.', price: '$12.49', priceUnit: '/bottle', search: 'EPA+approved+disinfectant+spray+hantavirus+hospital+grade' },
+  { img: '🩺', imgClass: 'p-img-sky', badge: 'Essential', badgeClass: 'badge-essential', name: 'Full Body Tyvek Coverall Suit', desc: 'Disposable protective coverall for high-risk cleanup situations. Prevents rodent material contact with skin and clothing. Recommended for cabin or attic cleanouts in endemic areas.', price: '$8.99', priceUnit: '/suit', search: 'DuPont+Tyvek+disposable+coverall+suit+with+hood' },
+  { img: '🧼', imgClass: 'p-img-indigo', badge: 'Recommended', badgeClass: 'badge-recommended', name: 'Antibacterial Hand Sanitizer (1L)', desc: '70% ethanol formula. WHO-recommended hand hygiene solution. For use when soap and water unavailable. Apply after any potential environmental exposure.', price: '$9.99', priceUnit: '/liter', search: 'hand+sanitizer+70+percent+alcohol+1+liter+pump' },
+  { img: '🏥', imgClass: 'p-img-purple', badge: 'Recommended', badgeClass: 'badge-recommended', name: 'Emergency First Aid Kit — Pro', desc: 'Comprehensive 150-piece kit including wound care, sterile gauze, thermal blankets, and CPR mask. For managing symptoms before professional medical care is accessible.', price: '$49.99', priceUnit: '/kit', search: 'emergency+first+aid+kit+150+piece+professional' },
+];
+
+const POSTS = [
+  { cat: 'Breaking News', catClass: 'cat-news', date: 'May 7, 2026', readTime: '8 min read',
+    title: 'MV Hondius Cluster: What We Know So Far About the 2026 Outbreak',
+    excerpt: 'Three deaths, seven cases, and 80+ people under WHO surveillance — a comprehensive breakdown of the most alarming hantavirus cluster in years and why Andes virus makes it uniquely concerning.',
+    icon: '🦠',
+    body: [
+      ['p', 'On April 1, 2026, the MV Hondius — an expedition cruise vessel carrying 147 passengers and crew — departed Ushuaia, Argentina, bound for a wildlife tour of the South Atlantic and Antarctic islands. Eleven days later, a Dutch national died on board. By May 7, three people were dead, seven were infected, and the World Health Organization was tracking more than 80 potential contacts across two continents.'],
+      ['p', 'This is the story of the 2026 hantavirus cluster, what it means, and why it demands serious attention even as global health authorities maintain that the overall public risk remains low.'],
+      ['h3', 'How It Started'],
+      ['p', 'The index case — a Dutch couple who had traveled in Argentina before boarding — is believed to have had prior exposure to hantavirus in Patagonia, a known endemic zone for the Andes strain. The couple boarded the ship already infected, or were exposed in the ship’s early ports of call, which included some of the world’s most remote rodent-inhabited islands: South Georgia, Nightingale Island, Tristan da Cunha, and Saint Helena.'],
+      ['p', 'The first death occurred April 11. The second, on April 26, involved a close contact of the index case who collapsed on an Airlink flight from Johannesburg, prompting WHO to begin tracing 82 passengers and 6 crew from that flight alone. A third death — a German national — followed on May 3 as the ship anchored off Praia, Cape Verde.'],
+      ['h3', 'Why Andes Virus Is Different'],
+      ['p', 'Of the more than 40 known hantavirus strains, only the Andes virus — endemic to Chile and Argentina — has documented person-to-person transmission. Every other known strain, including the North American Sin Nombre virus, spreads exclusively through contact with infected rodent excretions. Andes virus can be transmitted through prolonged close contact with an infected person, such as a household member or caregiver. This is what makes the MV Hondius cluster so unusual and so closely watched.'],
+      ['p', 'WHO investigators are using genome sequencing, serology, and metagenomics to determine whether the infections aboard the ship represent true human-to-human transmission or multiple independent exposures from rodent contact on the islands visited.'],
+      ['h3', 'The Response'],
+      ['p', 'Three patients, including the ship’s doctor, were evacuated to the Netherlands for treatment. Cape Verde health authorities have isolated the vessel. WHO has issued a Disease Outbreak News bulletin. South Africa’s National Institute for Communicable Diseases (NICD) has confirmed the hantavirus diagnosis via PCR testing of the Johannesburg patient. Investigations are ongoing.'],
+      ['h3', 'What This Means for You'],
+      ['p', 'WHO Director-General has stated clearly: the overall public health risk remains low. If you were not aboard the MV Hondius or in close contact with a confirmed case, your personal risk is essentially zero. However, this outbreak is a reminder that hantavirus — long considered a rural, rodent-contact-only disease — can surprise us. Travelers to endemic regions, anyone working in environments where rodent contact is possible, and anyone experiencing flu-like illness after potential exposure should be aware and seek evaluation.'],
+      ['em', 'Last updated: May 7, 2026. Sources: WHO Disease Outbreak News DON599, NICD South Africa, Africa CDC.'],
+    ],
+  },
+  { cat: 'Prevention', catClass: 'cat-prevention', date: 'May 5, 2026', readTime: '6 min read',
+    title: 'CDC-Approved Steps for Cleaning Rodent-Infested Spaces Safely',
+    excerpt: 'Never dry sweep. Always wet disinfect first. The exact CDC protocol for safely cleaning cabins, garages, and storage areas where rodents may have nested.',
+    icon: '🛡️',
+    body: [
+      ['p', 'Every year, people unknowingly expose themselves to hantavirus while doing something as ordinary as cleaning out a garage, cabin, or storage shed. The mistake is almost always the same: they sweep, vacuum, or disturb dust without taking precautions first. This guide walks through the CDC-recommended protocol that could save your life.'],
+      ['h3', 'Rule #1: Never Dry Sweep or Vacuum'],
+      ['p', 'Hantavirus survives in dried rodent urine, droppings, and nesting material. Sweeping or vacuuming sends virus particles airborne, where they can be inhaled instantly. This is the single most dangerous thing you can do in a rodent-contaminated space. Always wet-disinfect before disturbing any material.'],
+      ['h3', 'Your PPE Before You Enter'],
+      ['p', 'Before entering a potentially contaminated space, put on: an N95 respirator (not a surgical mask — it must form a seal), nitrile or rubber gloves, eye protection, and if the contamination is heavy, a full Tyvek coverall suit. Open windows and doors to ventilate the space for at least 30 minutes before you enter and begin cleaning.'],
+      ['h3', 'The Wet Disinfection Method'],
+      ['p', 'Mix a disinfectant solution of 1.5 cups of household bleach per gallon of water, or use an EPA-registered disinfectant spray. Thoroughly soak all droppings, nesting material, and contaminated surfaces. Wait 5 minutes for the disinfectant to work before touching anything. Use paper towels to pick up the now-wet material and place it in a sealed plastic bag. Do not compress or shake the bag.'],
+      ['h3', 'Disposal and Cleanup'],
+      ['p', 'Double-bag all contaminated material. Seal both bags tightly and place them in a covered trash can for regular garbage collection. Do not compost. After cleaning, disinfect all surfaces, gloves, and tools. Wash your hands thoroughly with soap and water even after removing gloves. Shower and change clothes before re-entering your living area.'],
+      ['h3', 'Sealing Entry Points'],
+      ['p', 'Cleaning alone is not enough if rodents can re-enter. Inspect the exterior of the structure for gaps larger than a dime — mice can fit through a hole the size of a pencil eraser. Seal gaps with steel wool packed tightly, then covered with caulk or expanding foam. Pay particular attention to where pipes and utilities enter the building.'],
+      ['em', 'Source: CDC Hantavirus Prevention guidelines. Always wear appropriate PPE. If you suspect heavy contamination, consider hiring a professional remediation service.'],
+    ],
+  },
+  { cat: 'Science', catClass: 'cat-science', date: 'May 3, 2026', readTime: '7 min read',
+    title: 'Andes Virus vs. Sin Nombre: Why Some Hantaviruses Are More Dangerous',
+    excerpt: 'Most hantaviruses cannot spread person-to-person. Andes virus is the exception. The science behind this rare transmission route explained.',
+    icon: '🔬',
+    body: [
+      ['p', 'Not all hantaviruses are created equal. Of the 40+ known strains circulating in rodent populations around the world, they vary dramatically in their transmission routes, geographic range, and fatality rates. Understanding these differences is essential to understanding why the 2026 MV Hondius outbreak has alarmed scientists worldwide.'],
+      ['h3', 'The Sin Nombre Virus (North America)'],
+      ['p', 'Sin Nombre virus, first identified during the 1993 Four Corners outbreak in the American Southwest, is the most studied hantavirus in the western world. It is carried exclusively by the deer mouse (Peromyscus maniculatus), which is found across nearly all of North America. Transmission to humans occurs when people inhale aerosolized particles from infected mouse urine, droppings, or saliva — typically during cleaning or outdoor activities in endemic areas.'],
+      ['p', 'Critically, Sin Nombre virus does not spread from person to person. Every documented US case has been traced to direct rodent environmental exposure. This property has kept the US case count below 1,000 since surveillance began in 1993, despite the deer mouse being one of the most abundant mammals in North America.'],
+      ['h3', 'The Andes Virus (South America)'],
+      ['p', 'Andes virus, endemic to Chile and Argentina, is biologically similar to Sin Nombre but with one critical, documented difference: it can spread from person to person. This was first suspected during a 1996 outbreak in southern Argentina and has since been documented in several family clusters, where household contacts and caregivers of infected patients developed HPS without any identified rodent exposure.'],
+      ['p', 'The mechanism of person-to-person transmission is not fully understood, but is believed to involve respiratory secretions during the prodromal or early cardiopulmonary phase. The risk appears limited to very close, prolonged contact — casual contact in public settings has not been associated with transmission.'],
+      ['h3', 'Fatality Rates and Clinical Differences'],
+      ['p', 'Both strains cause Hantavirus Pulmonary Syndrome (HPS), with similar clinical progression: a flu-like prodrome followed by rapid cardiopulmonary deterioration. Fatality rates for Sin Nombre HPS are approximately 36% in the US. Andes virus HPS has a similar fatality rate, though some outbreaks have reported mortality approaching 50%.'],
+      ['p', 'No licensed vaccine or antiviral treatment exists for either strain in Western countries. Treatment is entirely supportive — oxygen, fluid management, and mechanical ventilation in severe cases.'],
+      ['h3', 'Other Notable Strains'],
+      ['p', 'In Europe, Puumala virus (carried by the bank vole) causes a milder disease called Nephropathia Epidemica, a kidney-affecting illness with a fatality rate under 1%. In Asia, Hantaan virus causes Hemorrhagic Fever with Renal Syndrome (HFRS), affecting tens of thousands annually in China and Korea. China has a licensed vaccine against Hantaan/Seoul viruses, though it is not available in Western countries.'],
+    ],
+  },
+  { cat: 'News', catClass: 'cat-news', date: 'Apr 30, 2026', readTime: '5 min read',
+    title: 'Is It Safe to Travel to Argentina and Chile? Health Authorities Weigh In',
+    excerpt: 'No travel restrictions have been issued. But Andes virus is endemic in rural Patagonia. What hikers and ecotourists need to know before they go.',
+    icon: '🗺️',
+    body: [
+      ['p', 'With the 2026 MV Hondius cluster linked to travel through Argentina and South Atlantic islands, travelers have been asking: should I cancel my trip to Patagonia? The short answer from WHO and regional health authorities is no — but go informed.'],
+      ['h3', 'No Travel Restrictions Have Been Issued'],
+      ['p', 'As of May 2026, neither WHO, the CDC, nor the Argentine or Chilean health ministries have issued travel advisories or restrictions related to hantavirus. The disease is not new to these regions — Andes virus has been endemic in rural Patagonia for decades — and the absolute number of cases remains very small relative to the millions of visitors these countries receive annually.'],
+      ['h3', 'Where the Real Risk Lies'],
+      ['p', 'The risk is almost entirely concentrated in specific environments: rural areas, especially agricultural land, forests, and grasslands where the long-tailed pygmy rice rat (the primary Andes virus reservoir) lives. Urban tourists visiting Buenos Aires, Santiago, or Mendoza’s wine regions have essentially no meaningful exposure risk. The risk profile changes significantly for hikers, campers, researchers, and adventure travelers spending nights in remote areas, mountain refuges (refugios), or rustic cabins.'],
+      ['h3', 'Practical Precautions for Travelers'],
+      ['p', 'If you’re trekking in Patagonia, hiking in the Andes, or staying in rural accommodations, these steps reduce your risk meaningfully: avoid sleeping directly on the ground, use a tent with a sealed floor, do not disturb rodent nests or burrows, avoid handling any wild rodent, store food in sealed containers, and be cautious when opening or cleaning mountain refuges that have been closed for the season. Seek medical attention promptly if you develop fever and muscle aches within 8 weeks of your trip.'],
+      ['h3', 'What the MV Hondius Investigation Tells Us'],
+      ['p', 'The ship’s itinerary included stops at remote South Atlantic islands known to have significant rodent populations, including South Georgia and Tristan da Cunha. The index cases also traveled in Argentine Patagonia before boarding. Investigators are still determining whether exposure occurred on the islands, in Argentina, or aboard the vessel itself. Until this is resolved, travelers to the most remote wilderness areas of the region should exercise heightened awareness.'],
+    ],
+  },
+  { cat: 'Health Tips', catClass: 'cat-tips', date: 'Apr 25, 2026', readTime: '5 min read',
+    title: 'Know the Symptoms: When Flu-Like Illness Could Be Something More Serious',
+    excerpt: 'Fever, fatigue, muscle aches — early hantavirus mimics the flu. The red-flag signs that should prompt immediate medical attention after potential exposure.',
+    icon: '💊',
+    body: [
+      ['p', 'Hantavirus Pulmonary Syndrome is notoriously difficult to diagnose in its early stages because it looks exactly like the flu. By the time patients develop the hallmark respiratory symptoms, the disease is already in its most dangerous phase. Knowing when to escalate — and escalate fast — can be the difference between survival and death.'],
+      ['h3', 'Phase 1: The Prodrome (Days 1–5)'],
+      ['p', 'Initial symptoms appear 1 to 8 weeks after exposure and are indistinguishable from influenza: fever (38–40°C / 100–104°F), severe fatigue, deep muscle aches particularly in the thighs and hips, headache, and chills. About half of patients also experience nausea, vomiting, diarrhea, and abdominal pain. There is no cough, runny nose, or sore throat in this phase — the absence of upper respiratory symptoms in an otherwise flu-like illness is actually a subtle warning sign.'],
+      ['h3', 'Phase 2: Cardiopulmonary Deterioration (Days 5–10)'],
+      ['p', 'The transition from prodrome to cardiopulmonary phase can happen suddenly, often within hours. Shortness of breath develops as the lungs begin filling with fluid (pulmonary edema). Heart rate accelerates and blood pressure drops. This phase requires immediate ICU admission and mechanical ventilation. Patients who reach this stage without medical support face mortality rates approaching 50%.'],
+      ['h3', 'When to Seek Emergency Care Immediately'],
+      ['p', 'Go to an emergency room immediately — do not wait — if you have flu-like symptoms AND any of the following: recent rodent exposure (cleaning, outdoor work in endemic areas), recent travel to endemic regions (SW United States, Patagonia, rural Europe), any difficulty breathing or chest tightness, or a sudden worsening of symptoms after seeming to improve. Tell medical staff about your potential hantavirus exposure explicitly. In many cases, physicians will not consider HPS unless it is raised directly.'],
+      ['h3', 'Diagnosis and Treatment'],
+      ['p', 'Diagnosis is confirmed by a blood test detecting hantavirus-specific antibodies (IgM/IgG) or by PCR. There is no approved antiviral treatment — all care is supportive. Early hospitalization, careful fluid management, and extracorporeal membrane oxygenation (ECMO) in severe cases have improved survival rates at specialized centers. Early recognition remains the most powerful tool available.'],
+    ],
+  },
+  { cat: 'Prevention', catClass: 'cat-prevention', date: 'Apr 20, 2026', readTime: '6 min read',
+    title: 'The Deer Mouse Problem: How Hantavirus Gets Into Your Home',
+    excerpt: 'The North American deer mouse is the primary carrier of Sin Nombre virus. Learn how rodents enter homes undetected and how to seal entry points for good.',
+    icon: '🐀',
+    body: [
+      ['p', 'The deer mouse (Peromyscus maniculatus) is one of the most common mammals in North America, found in virtually every habitat from forest to desert. It is also the primary reservoir for Sin Nombre hantavirus — and it is remarkably good at getting inside human structures without being noticed.'],
+      ['h3', 'How Small Is Too Small?'],
+      ['p', 'A deer mouse can compress its body to fit through a hole approximately 6mm in diameter — about the size of a pencil eraser or a dime. Standard construction gaps around pipes, utility lines, vents, and foundation cracks are typically much larger than this. Most homes have dozens of potential entry points that the average homeowner has never considered.'],
+      ['h3', 'Where They Enter Most Often'],
+      ['p', 'The most common entry points are: gaps where pipes and utility lines enter the building (electrical, plumbing, HVAC), foundation cracks and gaps where the sill plate meets the foundation, gaps beneath doors without door sweeps, damaged roof vents or soffit vents, and gaps around window air conditioning units. Attached garages are particularly common entry points because the gap at the bottom of garage doors is rarely sealed effectively.'],
+      ['h3', 'How to Seal Your Home'],
+      ['p', 'Walk the entire exterior perimeter of your home and probe every gap, crack, and penetration. For gaps smaller than ¼ inch, caulk is sufficient. For larger gaps, use steel wool packed tightly into the opening and then sealed with caulk over the top — rodents can chew through foam, wood, and plastic, but not steel wool. Hardware cloth (¼ inch mesh) is appropriate for larger openings like vents and crawl space access points.'],
+      ['h3', 'Inside the Home'],
+      ['p', 'Store food — including pet food — in sealed hard-sided containers, not bags or cardboard boxes. Keep firewood at least 20 feet from the house. Remove clutter that provides nesting habitat (piles of paper, fabric, insulation). Check regularly for signs of rodent activity: droppings, gnaw marks, greasy smear marks along walls, and unexplained holes in food packaging.'],
+      ['h3', 'If You Find Evidence of Rodents'],
+      ['p', 'Do not sweep or vacuum immediately. Follow the CDC wet disinfection protocol before disturbing any droppings or nesting material. Set snap traps rather than glue traps, which can cause the mouse to urinate when struggling, increasing virus exposure risk. If infestation is significant, consider a professional pest control service and inform them that hantavirus is a concern in your area.'],
+    ],
+  },
+  { cat: 'Health Tips', catClass: 'cat-tips', date: 'Apr 15, 2026', readTime: '7 min read',
+    title: 'Camping & Hiking in Hantavirus Country: A Practical Safety Guide',
+    excerpt: 'The Southwest US, Patagonia, and rural Europe are all endemic zones. A practical checklist for outdoor adventurers who don’t want to bring anything home but memories.',
+    icon: '🏕️',
+    body: [
+      ['p', 'The American Southwest, Patagonia, and parts of rural Europe are among the most spectacular landscapes on earth — and among the most active hantavirus zones. This guide is for outdoor adventurers who want to explore them with eyes open and risk minimized.'],
+      ['h3', 'Know Your Zones'],
+      ['p', 'In the US, the highest-risk states for Sin Nombre hantavirus exposure are New Mexico, Colorado, Arizona, Utah, California, Washington, Montana, and Texas. Risk is highest in rural and wilderness settings — particularly areas with abundant deer mouse habitat like pinyon-juniper woodland, shrubsteppe, and riparian zones. In South America, risk is concentrated in Chilean and Argentine Patagonia, particularly in agricultural and forested areas. In Europe, bank vole habitat in Scandinavia, Germany, Belgium, and the Balkans carries Puumala virus risk.'],
+      ['h3', 'Campsite Selection'],
+      ['p', 'Avoid setting up camp near rodent burrows, wood piles, or dense brush where mice nest. Avoid camping in or near abandoned structures — old cabins and shelters are classic high-risk environments. Pitch your tent on open ground away from potential nesting sites. If camping in a designated site, inspect the area for rodent droppings before setting up.'],
+      ['h3', 'Food and Waste Management'],
+      ['p', 'Store all food in hard-sided bear canisters or hang it at least 10 feet off the ground and 4 feet from the trunk. Do not leave any food scraps, wrappers, or garbage accessible. Rodents are attracted by scent — even toothpaste, lip balm, and sunscreen can draw them. Pack out all garbage. Bury human waste at least 200 feet from camp in a 6-inch cat hole.'],
+      ['h3', 'Sleeping and Shelter'],
+      ['p', 'Do not sleep directly on the ground. Use a sleeping pad and a tent with a sealed floor. Never sleep in your car if you’ve noticed rodent signs — enclosed vehicle spaces can concentrate aerosolized particles. If using a mountain refuge or backcountry hut, ventilate it for 30 minutes before occupying it and avoid disturbing any dust or debris without a respirator.'],
+      ['h3', 'After Your Trip'],
+      ['p', 'Shake out and air your gear outdoors before bringing it inside. If you camped in a high-risk area and develop flu-like symptoms within 8 weeks — particularly fever, deep muscle aches, and headache without a runny nose — seek medical evaluation and mention your camping location. Early evaluation is far more effective than treatment after symptoms progress.'],
+    ],
+  },
+  { cat: 'Science', catClass: 'cat-science', date: 'Apr 10, 2026', readTime: '8 min read',
+    title: 'Inside HPS: How Hantavirus Destroys the Lungs in 72 Hours',
+    excerpt: 'Hantavirus Pulmonary Syndrome is one of the fastest-moving respiratory diseases known. A step-by-step look at how the virus overwhelms the immune system and floods the lungs with fluid.',
+    icon: '🧬',
+    body: [
+      ['p', 'Hantavirus Pulmonary Syndrome is one of medicine’s most dramatic disease progressions. A person can go from feeling mildly unwell to requiring mechanical ventilation in less than 48 hours. Understanding the mechanism of this devastation helps explain why early recognition is so critical — and why there is currently no effective antiviral to interrupt it.'],
+      ['h3', 'Entry and Initial Infection'],
+      ['p', 'Hantavirus enters the body almost exclusively through inhalation of aerosolized virus particles in infected rodent excretions. The virus particles are incredibly small — approximately 80–120 nanometers — and can remain viable in dried material for several days under cool, shaded conditions. Once inhaled, the virus infects cells lining the respiratory tract and rapidly targets a specific surface molecule called integrin β3, which is found in high concentrations in the lungs, kidneys, and blood vessels.'],
+      ['h3', 'The Immune System Paradox'],
+      ['p', 'Here is where HPS becomes counterintuitive: the virus itself does not directly destroy tissue. The destruction is caused by your own immune system. Hantavirus triggers a massive, dysregulated immune response. CD8+ T-cells flood the lungs in enormous numbers, releasing inflammatory cytokines — particularly TNF-α and IFN-γ — that cause the tiny blood vessels in the lungs (capillaries) to become abnormally permeable. Fluid from the bloodstream leaks into the air sacs of the lungs (alveoli).'],
+      ['h3', 'Pulmonary Edema and ARDS'],
+      ['p', 'As fluid accumulates in the alveoli, the lungs’ ability to exchange oxygen for carbon dioxide collapses. Blood oxygen levels fall rapidly. The heart, now working against flooded lungs, begins to fail. This produces Acute Respiratory Distress Syndrome (ARDS) combined with cardiogenic shock — a combination that is exceptionally difficult to manage even in advanced ICU settings. The entire process from first respiratory symptoms to critical instability can unfold in 24–72 hours.'],
+      ['h3', 'Why Fluid Management Is So Difficult'],
+      ['p', 'In most forms of respiratory failure, giving intravenous fluids supports the circulatory system. In HPS, this backfires — additional fluid accelerates the accumulation in the lungs. Physicians managing HPS must walk a narrow line between maintaining cardiac output and not worsening pulmonary edema. This delicate balance has led to the use of extracorporeal membrane oxygenation (ECMO) at specialized centers, which bypasses the lungs entirely while the body either recovers or succumbs.'],
+      ['h3', 'Survival and Recovery'],
+      ['p', 'Patients who survive the cardiopulmonary phase — typically those who receive intensive support within the first hours of respiratory compromise — often recover fully, with lungs returning to normal function. The virus is cleared by the immune system within weeks. There are no known long-term pulmonary sequelae in survivors. Survival is almost entirely a function of how quickly the patient reaches advanced medical care after symptoms begin.'],
+    ],
+  },
+  { cat: 'Science', catClass: 'cat-science', date: 'Apr 5, 2026', readTime: '7 min read',
+    title: 'Is a Hantavirus Vaccine Coming? Here’s Where Research Stands in 2026',
+    excerpt: 'China has a licensed vaccine, but it’s not available in the West. A look at current clinical trials, mRNA candidates, and why progress has been slow for a virus with a 36% fatality rate.',
+    icon: '💉',
+    body: [
+      ['p', 'With a 36% fatality rate and no approved antiviral treatment available in Western countries, hantavirus remains one of the most dangerous diseases most people have never thought about. The question of why there is no vaccine — and whether one is coming — is more complicated than it might appear.'],
+      ['h3', 'China’s Existing Vaccine'],
+      ['p', 'China is the only country in the world with a licensed hantavirus vaccine, and in fact has two: a bivalent vaccine covering both Hantaan (HTNV) and Seoul (SEOV) strains, and a monovalent Hantaan vaccine. These have been in use since the 1990s and have contributed to a significant reduction in HFRS cases in China. However, they are not available outside China, and their efficacy data has not been evaluated by Western regulatory agencies. More critically, they target Asian strains and would not protect against Sin Nombre or Andes viruses.'],
+      ['h3', 'Why No Western Vaccine Yet'],
+      ['p', 'Several factors have slowed vaccine development in the US and Europe. The case count, while tragic in individual terms, is low enough that there has been limited commercial incentive for pharmaceutical investment. There is no animal model that perfectly replicates human HPS, making preclinical testing difficult. Each major hantavirus strain is antigenically distinct, meaning a vaccine would need to be either multi-valent or tailored by region. And the lack of an approved animal challenge model has complicated FDA regulatory pathways.'],
+      ['h3', 'Current Candidates in Development'],
+      ['p', 'As of 2026, there are several promising candidates in various stages of development. DNA vaccines expressing hantavirus nucleocapsid and glycoprotein antigens have shown strong immune responses in animal studies. Virus-Like Particle (VLP) vaccines, which mimic the outer structure of the virus without containing any genetic material, have advanced to early Phase I/II trials in the US with encouraging safety profiles. mRNA vaccine platforms, accelerated by COVID-19 research infrastructure, are now being adapted for hantavirus — preliminary data from several academic centers is expected later in 2026.'],
+      ['h3', 'The 2026 Outbreak as a Catalyst'],
+      ['p', 'The MV Hondius cluster, with its potential person-to-person transmission via Andes virus, has renewed urgency in the research community. Several virologists have publicly called for increased NIH and BARDA funding specifically for Andes virus vaccine development. Whether this translates into accelerated timelines remains to be seen — vaccine development cycles are typically measured in years, not months. But awareness is rising, and the political will that accompanies high-profile outbreaks can shift research priorities quickly.'],
+    ],
+  },
+  { cat: 'Prevention', catClass: 'cat-prevention', date: 'Mar 28, 2026', readTime: '6 min read',
+    title: 'Opening a Cabin After Winter? Follow This Hantavirus Safety Checklist First',
+    excerpt: 'Closed-up cabins and vacation homes are high-risk environments for hantavirus exposure. A complete room-by-room safety protocol before you breathe the air inside.',
+    icon: '🏠',
+    body: [
+      ['p', 'Every spring, millions of people open vacation cabins, hunting camps, and storage buildings that have been closed through the winter. Many of these structures have hosted rodents in their absence. The combination of enclosed spaces and disturbed dried droppings has historically been one of the highest-risk situations for hantavirus exposure. This checklist can prevent a tragedy.'],
+      ['h3', 'Before You Arrive'],
+      ['p', 'Pack your PPE before leaving home: N95 respirator mask, nitrile gloves, eye protection, and if possible a Tyvek coverall. Bring EPA-registered disinfectant spray, paper towels, and heavy-duty garbage bags. Do not assume the cabin is clean just because it looked fine last year.'],
+      ['h3', 'Upon Arrival: Don’t Go In Yet'],
+      ['p', 'Open all windows and doors from the outside if possible. If the structure is tight, crack the door, prop it open, and step back. Allow 30 minutes of ventilation before entering. Do not run inside to beat the cold — this step is not optional. Aerosolized virus particles from disturbed droppings can deliver a lethal dose within seconds of inhalation.'],
+      ['h3', 'Initial Inspection (PPE On)'],
+      ['p', 'Before cleaning anything, walk through the cabin wearing full PPE and assess the situation. Look for droppings (rice-grain sized, dark pellets), gnaw marks on food containers or structural materials, nesting material (shredded paper, insulation, fabric), and greasy smear marks along walls and baseboards. Note which areas have the highest contamination. Do not touch anything yet.'],
+      ['h3', 'Room-by-Room Cleaning Protocol'],
+      ['p', 'Kitchen first: spray all countertops, inside cabinets and drawers, and any area where droppings are visible with disinfectant. Let it soak 5 minutes. Wipe with paper towels and bag immediately. Repeat until clean. Do the same for all other rooms systematically. Pay special attention to attic access points, under sinks, and behind appliances. Mop all hard floors with disinfectant solution. Launder all bedding, curtains, and upholstery that may have been accessible to rodents — use hot water and high-heat drying.'],
+      ['h3', 'After Cleaning'],
+      ['p', 'Seal all garbage bags, double-bag, and dispose in an outdoor covered trash receptacle. Remove and dispose of your PPE (except the respirator, which can be reused if undamaged). Wash your hands thoroughly. Shower and change clothes before re-entering the clean area. Inspect the exterior for entry points and seal before your next visit. Finally — and this is important — tell family members about the cleaning you’ve done and what signs to watch for in the following weeks.'],
+      ['em', 'If anyone who helped with cleaning develops fever, deep muscle aches, or respiratory symptoms within 8 weeks, seek immediate medical evaluation and mention hantavirus exposure explicitly.'],
+    ],
+  },
+];
+
+const SIDEBAR_LINKS = [
+  { num: '01', title: 'MV Hondius Cluster Explainer', date: 'Breaking · May 2026', postIndex: 0 },
+  { num: '02', title: 'When Flu Could Be Hantavirus', date: 'Health Tips', postIndex: 4 },
+  { num: '03', title: 'Andes vs. Sin Nombre Virus', date: 'Science Brief', postIndex: 2 },
+  { num: '04', title: 'Is a Vaccine Coming in 2026?', date: 'Research Update', postIndex: 8 },
+  { num: '05', title: 'How HPS Destroys Lungs in 72hrs', date: 'Science', postIndex: 7 },
+];
+
+const SYMPTOMS = [
+  { icon: '🌡️', text: 'Fever (38–40°C)' },
+  { icon: '😓', text: 'Severe fatigue' },
+  { icon: '💪', text: 'Muscle aches' },
+  { icon: '🤢', text: 'Nausea / vomiting' },
+  { icon: '🫁', text: 'Shortness of breath' },
+  { icon: '💔', text: 'Low blood pressure' },
+];
+
+const STATUS_LABELS = {
+  active: '🔴 ACTIVE',
+  watch: '🟡 WATCH',
+  endemic: '🔵 ENDEMIC',
+  low: '⚪ LOW RISK',
+};
+
+const amazonSearch = (q) => `https://www.amazon.com/s?k=${q}`;
+
+// ──────────────────────────────────────────────────
+// COMPONENTS
+// ──────────────────────────────────────────────────
+
+function Nav({ active, onChange }) {
+  return (
+    <nav>
+      <div className="nav-logo">
+        <div className="pulse-dot"></div>
+        Hanta Hub
+      </div>
+      <div className="nav-links">
+        <button className={active === 'tracker' ? 'active' : ''} onClick={() => onChange('tracker')}>📊 Tracker</button>
+        <button className={active === 'hub' ? 'active' : ''} onClick={() => onChange('hub')}>🛡️ Supply Hub</button>
+        <button className={active === 'blog' ? 'active' : ''} onClick={() => onChange('blog')}>📰 Blog</button>
+      </div>
+      <div className="nav-status"><span></span> WHO: Low Risk</div>
+    </nav>
+  );
+}
+
+function WorldMap() {
+  const wrapperRef = useRef(null);
+  const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0, name: '', cases: '', note: '', status: '' });
+
+  const handleEnter = (data) => (e) => {
+    setTooltip(t => ({ ...t, visible: true, ...data }));
+  };
+  const handleMove = (e) => {
+    const rect = wrapperRef.current.getBoundingClientRect();
+    let x = e.clientX - rect.left + 12;
+    let y = e.clientY - rect.top - 10;
+    if (x + 220 > rect.width) x = e.clientX - rect.left - 225;
+    setTooltip(t => ({ ...t, x, y }));
+  };
+  const handleLeave = () => setTooltip(t => ({ ...t, visible: false }));
+
+  const region = (props, children) => (
+    <g
+      className="map-region"
+      onMouseEnter={handleEnter(props)}
+      onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
+    >
+      {children}
+    </g>
+  );
+
+  return (
+    <div className="map-section">
+      <div className="map-wrapper" ref={wrapperRef}>
+        <div
+          className="map-tooltip"
+          style={{ opacity: tooltip.visible ? 1 : 0, left: tooltip.x + 'px', top: tooltip.y + 'px' }}
+        >
+          <strong>{tooltip.name}</strong>
+          {STATUS_LABELS[tooltip.status] || tooltip.status} · {tooltip.cases}
+          <br />
+          <span style={{ opacity: .75, fontSize: '.7rem' }}>{tooltip.note}</span>
+        </div>
+        <svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+          <rect width="1000" height="500" fill="#dbeafe" rx="0" />
+          <line x1="0" y1="250" x2="1000" y2="250" stroke="#bfdbfe" strokeWidth="0.5" />
+          <line x1="500" y1="0" x2="500" y2="500" stroke="#bfdbfe" strokeWidth="0.5" />
+
+          {region({ name: 'United States', status: 'endemic', cases: '<1,000 total', note: 'Sin Nombre virus · SW endemic region' }, <>
+            <path d="M130,100 L230,95 L250,110 L270,105 L285,120 L290,160 L275,180 L260,185 L240,175 L220,185 L200,180 L185,170 L170,175 L155,165 L140,155 L130,140 Z" fill="#3b82c4" stroke="white" strokeWidth="1.5" opacity="0.85" />
+            <text x="205" y="148" fontSize="9" fill="white" fontFamily="sans-serif" textAnchor="middle" fontWeight="600">United States</text>
+          </>)}
+          {region({ name: 'Canada', status: 'low', cases: 'Minimal', note: 'No significant endemic transmission' }, <>
+            <path d="M100,50 L280,45 L290,75 L270,85 L250,80 L230,85 L200,80 L170,85 L150,80 L120,85 L105,75 Z" fill="#e2e8f0" stroke="white" strokeWidth="1.5" opacity="0.85" />
+            <text x="190" y="68" fontSize="8" fill="#64748b" fontFamily="sans-serif" textAnchor="middle">Canada</text>
+          </>)}
+          {region({ name: 'Mexico', status: 'low', cases: 'Sporadic', note: 'Occasional cases, low risk' }, <>
+            <path d="M155,185 L220,185 L230,195 L225,215 L210,225 L190,220 L170,210 L160,200 Z" fill="#e2e8f0" stroke="white" strokeWidth="1.5" opacity="0.85" />
+            <text x="192" y="205" fontSize="8" fill="#64748b" fontFamily="sans-serif" textAnchor="middle">Mexico</text>
+          </>)}
+          {region({ name: 'Central America', status: 'low', cases: 'Minimal', note: 'Low risk, limited surveillance' },
+            <path d="M200,225 L225,220 L235,235 L225,250 L205,248 L200,240 Z" fill="#e2e8f0" stroke="white" strokeWidth="1" opacity="0.8" />
+          )}
+          {region({ name: 'Argentina', status: 'watch', cases: '28 deaths · 2025', note: 'Andes virus endemic · Patagonia' }, <>
+            <path d="M230,310 L265,305 L278,320 L280,350 L275,380 L260,400 L245,410 L235,400 L228,375 L225,345 L228,320 Z" fill="#d97706" stroke="white" strokeWidth="1.5" opacity="0.85" />
+            <text x="253" y="358" fontSize="8" fill="white" fontFamily="sans-serif" textAnchor="middle" fontWeight="600">Argentina</text>
+          </>)}
+          {region({ name: 'Brazil', status: 'low', cases: 'Endemic (HPS)', note: 'Brazilian strain · sporadic cases' }, <>
+            <path d="M230,230 L300,225 L325,240 L330,270 L315,290 L290,300 L265,305 L245,290 L235,270 L228,250 Z" fill="#93c5fd" stroke="white" strokeWidth="1.5" opacity="0.85" />
+            <text x="280" y="265" fontSize="8" fill="white" fontFamily="sans-serif" textAnchor="middle">Brazil</text>
+          </>)}
+          {region({ name: 'Chile', status: 'watch', cases: 'Endemic', note: 'Andes virus · shared risk with Argentina' }, <>
+            <path d="M220,300 L235,305 L232,345 L228,380 L223,400 L215,395 L210,360 L212,330 Z" fill="#d97706" stroke="white" strokeWidth="1.5" opacity="0.85" />
+            <text x="221" y="348" fontSize="7" fill="white" fontFamily="sans-serif" textAnchor="middle">Chile</text>
+          </>)}
+          {region({ name: 'Colombia / Peru', status: 'low', cases: 'Sporadic', note: 'Low endemic risk' },
+            <path d="M210,230 L235,228 L240,250 L232,270 L215,265 L205,250 Z" fill="#e2e8f0" stroke="white" strokeWidth="1" opacity="0.8" />
+          )}
+          {region({ name: 'Europe', status: 'endemic', cases: '~1,000 cases/yr', note: 'Puumala & Dobrava · Scandinavia, Balkans' }, <>
+            <path d="M455,60 L520,55 L540,70 L535,95 L520,105 L500,110 L480,105 L462,95 L455,80 Z" fill="#3b82c4" stroke="white" strokeWidth="1.5" opacity="0.85" />
+            <text x="497" y="85" fontSize="8" fill="white" fontFamily="sans-serif" textAnchor="middle" fontWeight="600">Europe</text>
+          </>)}
+          {region({ name: 'South Africa', status: 'watch', cases: '1 critical case', note: 'British national in ICU · linked to MV Hondius' }, <>
+            <path d="M500,290 L535,285 L550,300 L548,330 L535,348 L515,350 L498,340 L492,315 Z" fill="#d97706" stroke="white" strokeWidth="1.5" opacity="0.85" />
+            <text x="521" y="320" fontSize="8" fill="white" fontFamily="sans-serif" textAnchor="middle" fontWeight="600">S. Africa</text>
+          </>)}
+          {region({ name: 'Cape Verde (MV Hondius)', status: 'active', cases: '7 cases · 3 deaths', note: 'Active cluster · WHO investigation ongoing' }, <>
+            <circle cx="430" cy="230" r="10" fill="#dc2626" stroke="white" strokeWidth="2" opacity="0.95" />
+            <circle cx="430" cy="230" r="16" fill="none" stroke="#dc2626" strokeWidth="1.5" opacity="0.5">
+              <animate attributeName="r" values="10;22;10" dur="2s" repeatCount="indefinite" />
+              <animate attributeName="opacity" values="0.8;0;0.8" dur="2s" repeatCount="indefinite" />
+            </circle>
+            <text x="430" y="252" fontSize="7" fill="#dc2626" fontFamily="sans-serif" textAnchor="middle" fontWeight="700">MV Hondius</text>
+          </>)}
+          {region({ name: 'Africa (general)', status: 'low', cases: 'Limited data', note: 'Surveillance ongoing' }, <>
+            <path d="M455,130 L530,125 L555,145 L558,175 L550,205 L535,225 L510,235 L490,230 L470,215 L455,195 L448,165 L450,145 Z" fill="#e2e8f0" stroke="white" strokeWidth="1.5" opacity="0.8" />
+            <text x="503" y="180" fontSize="8" fill="#64748b" fontFamily="sans-serif" textAnchor="middle">Africa</text>
+          </>)}
+          {region({ name: 'China / East Asia', status: 'endemic', cases: '~10,000 cases/yr', note: 'HFRS predominant · Hantaan & Seoul strains' }, <>
+            <path d="M680,70 L790,65 L820,85 L825,115 L810,135 L785,145 L755,140 L730,130 L705,120 L685,105 Z" fill="#3b82c4" stroke="white" strokeWidth="1.5" opacity="0.85" />
+            <text x="755" y="108" fontSize="9" fill="white" fontFamily="sans-serif" textAnchor="middle" fontWeight="600">China / E. Asia</text>
+          </>)}
+          {region({ name: 'Russia / Central Asia', status: 'endemic', cases: 'Thousands/yr', note: 'HFRS · Puumala, Hantaan strains' }, <>
+            <path d="M545,40 L780,35 L800,55 L820,65 L790,65 L680,70 L600,68 L560,60 Z" fill="#60a5fa" stroke="white" strokeWidth="1.5" opacity="0.8" />
+            <text x="680" y="55" fontSize="8" fill="white" fontFamily="sans-serif" textAnchor="middle">Russia / Central Asia</text>
+          </>)}
+          {region({ name: 'South / SE Asia', status: 'low', cases: 'Sporadic', note: 'Seoul virus · rodent-borne' }, <>
+            <path d="M705,140 L780,145 L800,160 L795,185 L775,200 L750,195 L725,180 L705,165 Z" fill="#e2e8f0" stroke="white" strokeWidth="1.5" opacity="0.8" />
+            <text x="752" y="172" fontSize="8" fill="#64748b" fontFamily="sans-serif" textAnchor="middle">SE Asia</text>
+          </>)}
+          {region({ name: 'Middle East', status: 'low', cases: 'Minimal', note: 'Low reported incidence' }, <>
+            <path d="M555,120 L620,115 L640,130 L635,155 L615,165 L590,162 L565,150 L555,135 Z" fill="#e2e8f0" stroke="white" strokeWidth="1" opacity="0.8" />
+            <text x="597" y="142" fontSize="7" fill="#64748b" fontFamily="sans-serif" textAnchor="middle">Mid East</text>
+          </>)}
+          {region({ name: 'Australia / Oceania', status: 'low', cases: 'Minimal', note: 'No significant hantavirus burden' }, <>
+            <path d="M780,240 L850,235 L870,255 L865,280 L845,290 L815,285 L795,270 Z" fill="#e2e8f0" stroke="white" strokeWidth="1.5" opacity="0.8" />
+            <text x="832" y="265" fontSize="8" fill="#64748b" fontFamily="sans-serif" textAnchor="middle">Australia</text>
+          </>)}
+          {region({ name: 'Greenland', status: 'low', cases: 'None', note: 'No reported cases' },
+            <path d="M295,20 L370,18 L380,35 L370,50 L350,55 L320,52 L295,40 Z" fill="#f1f5f9" stroke="white" strokeWidth="1" opacity="0.7" />
+          )}
+          {region({ name: 'Japan / Korea', status: 'endemic', cases: 'Hundreds/yr', note: 'Seoul & Hantaan strains · urban rodent risk' }, <>
+            <path d="M820,90 L850,88 L858,100 L850,115 L835,118 L822,108 Z" fill="#3b82c4" stroke="white" strokeWidth="1" opacity="0.85" />
+            <text x="840" y="103" fontSize="7" fill="white" fontFamily="sans-serif" textAnchor="middle">Japan/Korea</text>
+          </>)}
+
+          <line x1="0" y1="265" x2="1000" y2="265" stroke="#bfdbfe" strokeWidth="0.8" strokeDasharray="4,6" />
+          <text x="8" y="262" fontSize="7" fill="#93c5fd" fontFamily="sans-serif">Equator</text>
+        </svg>
+
+        <div className="map-legend">
+          <div className="legend-item"><div className="legend-dot l-active"></div> Active Outbreak (MV Hondius)</div>
+          <div className="legend-item"><div className="legend-dot l-watch"></div> Under Watch (Argentina, Chile, S. Africa)</div>
+          <div className="legend-item"><div className="legend-dot l-endemic"></div> Endemic Region (US, Europe, China)</div>
+          <div className="legend-item"><div className="legend-dot l-low"></div> Low / No Significant Risk</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TrackerSection() {
+  return (
+    <section>
+      <div className="hero">
+        <div className="hero-inner">
+          <div className="hero-badge">
+            <span className="blink">●</span> Live Global Monitor · 2026
+          </div>
+          <h1>Hantavirus <em>Outbreak</em><br />Global Tracker</h1>
+          <p>Real-time data aggregated from WHO, CDC, Africa CDC, and international health authorities. Tracking the 2026 MV Hondius cluster and endemic regions worldwide.</p>
+          <div className="hero-stats">
+            {HERO_STATS.map((s, i) => (
+              <div className="hstat" key={i}>
+                <div className="hstat-val">{s.val}</div>
+                <div className="hstat-label">{s.label}</div>
+                <div className="hstat-sub">{s.sub}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="tracker-body fade-in">
+        <div className="risk-banner">
+          <div className="risk-icon">⚠️</div>
+          <div className="risk-text">
+            <strong>Active Cluster: MV Hondius · Cape Verde</strong>
+            <p>3 patients evacuated to Netherlands. WHO tracing 80+ passengers. Possible Andes virus human-to-human transmission under investigation.</p>
+          </div>
+          <div className="risk-tag">WHO RISK: LOW</div>
+        </div>
+
+        <h2 className="section-title">Global Spread Map</h2>
+        <p className="section-sub">Hover over regions to see outbreak status · Data from WHO & CDC</p>
+
+        <WorldMap />
+
+        <h2 className="section-title">Current Statistics</h2>
+        <p className="section-sub">Updated from WHO, CDC & Africa CDC sources · Last refresh: May 2026</p>
+
+        <div className="stats-grid">
+          {TRACKER_STATS.map((s, i) => (
+            <div className={'stat-card ' + s.kind} key={i}>
+              <div className="stat-val">{s.val}</div>
+              <div className="stat-label">{s.label}</div>
+              <div className="stat-note">{s.note}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="timeline-section">
+          <h3>Event Timeline — MV Hondius 2026</h3>
+          <div className="timeline">
+            {TIMELINE.map((t, i) => (
+              <div className="tl-item" key={i}>
+                <div className={'tl-dot ' + (t.dotClass || '')}></div>
+                <div className="tl-date">{t.date}</div>
+                <div className="tl-title">{t.title}</div>
+                <div className="tl-desc">{t.desc}</div>
+                {t.badge && <span className={'tl-badge ' + t.badgeClass}>{t.badge}</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="regions-section">
+          <h3>Affected Regions — 2025–2026</h3>
+          <table className="regions-table">
+            <thead>
+              <tr>
+                <th>Region</th>
+                <th>Cases / Data</th>
+                <th>Notes</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {REGIONS.map((r, i) => (
+                <tr key={i}>
+                  <td><strong>{r.region}</strong></td>
+                  <td>{r.cases}</td>
+                  <td>{r.notes}</td>
+                  <td><span className={'status-pill ' + r.statusClass}>{r.status}</span></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="us-panel">
+          <h3>🇺🇸 United States — Hantavirus Overview</h3>
+          <p>Hantavirus Pulmonary Syndrome (HPS) is endemic in the US, primarily spread through contact with infected deer mice. The Four Corners region (Arizona, Colorado, New Mexico, Utah) has the highest historical case concentration. No human-to-human transmission has been documented with the US Sin Nombre strain. Total US cases since 1993: fewer than 1,000 with ~36% fatality rate.</p>
+          <p><strong>States with highest historical case counts:</strong></p>
+          <div className="us-states">
+            {US_STATES.map(s => <span className="us-state-tag" key={s}>{s}</span>)}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function HubSection() {
+  return (
+    <section>
+      <div className="hero" style={{ padding: '48px 40px 40px' }}>
+        <div className="hero-inner">
+          <div className="hero-badge">🛡️ Preparedness Hub</div>
+          <h1>Supply <em>Hub</em></h1>
+          <p>Essential protective supplies recommended by health authorities to reduce your risk from hantavirus and airborne pathogens.</p>
+        </div>
+      </div>
+
+      <div className="hub-body fade-in">
+        <div className="hub-intro">
+          <div className="hub-intro-icon">🏥</div>
+          <div>
+            <h2>Protect Yourself & Your Family</h2>
+            <p>The CDC recommends specific protective equipment when cleaning rodent-infested areas or working in high-risk environments. All products below are sourced from certified medical suppliers.</p>
+          </div>
+        </div>
+
+        <h2 className="section-title">Recommended Supplies</h2>
+        <p className="section-sub">Curated by health professionals · Updated for 2026 outbreak season</p>
+
+        <div className="hub-grid">
+          {PRODUCTS.map((p, i) => (
+            <div className="product-card" key={i}>
+              <div className={'product-img ' + p.imgClass}>{p.img}</div>
+              <div className="product-info">
+                <span className={'product-badge ' + p.badgeClass}>{p.badge}</span>
+                <div className="product-name">{p.name}</div>
+                <div className="product-desc">{p.desc}</div>
+                <div className="product-footer">
+                  <div className="product-price">{p.price} <small>{p.priceUnit}</small></div>
+                  <a href={amazonSearch(p.search)} target="_blank" rel="nofollow sponsored noopener" className="btn-affiliate">Shop on Amazon →</a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="affiliate-notice">
+          🔗 <strong>Affiliate Disclosure:</strong> Hanta Hub participates in affiliate programs. When you click "Shop on Amazon" and make a purchase, we may earn a small commission at no extra cost to you. This helps fund our free outbreak monitoring service.
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BlogSection({ onOpenPost }) {
+  const featured = POSTS[0];
+  const rest = POSTS.slice(1);
+
+  return (
+    <section>
+      <div className="hero" style={{ padding: '48px 40px 40px' }}>
+        <div className="hero-inner">
+          <div className="hero-badge">📰 Health Intelligence</div>
+          <h1>Hanta Hub <em>Blog</em></h1>
+          <p>Prevention guides, outbreak news, and scientific research — all in one place.</p>
+        </div>
+      </div>
+
+      <div className="blog-body fade-in">
+        <div className="blog-grid">
+          <div className="blog-main">
+
+            <div className="blog-featured" onClick={() => onOpenPost(0)} style={{ cursor: 'pointer' }}>
+              <span className="blog-cat cat-news">🔴 Breaking News</span>
+              <h2>{featured.title}</h2>
+              <p>{featured.excerpt}</p>
+              <div className="blog-meta-light">By Hanta Hub Editorial · {featured.date} · {featured.readTime}</div>
+              <br /><br />
+              <span className="read-more">Read Full Article →</span>
+            </div>
+
+            {rest.map((post, i) => (
+              <div
+                className="blog-post-card"
+                key={i + 1}
+                onClick={() => onOpenPost(i + 1)}
+                style={{ cursor: 'pointer' }}
+              >
+                <div className="post-icon">{post.icon}</div>
+                <div className="post-content">
+                  <div className="post-cat-date">
+                    <span className={'blog-cat ' + post.catClass} style={{ fontSize: '.65rem', padding: '2px 10px', borderRadius: '10px' }}>{post.cat}</span>
+                    <span className="post-date">{post.date}</span>
+                  </div>
+                  <div className="post-title">{post.title}</div>
+                  <div className="post-excerpt">{post.excerpt}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="blog-sidebar">
+            <div className="sidebar-card">
+              <h4>📌 Most Read</h4>
+              {SIDEBAR_LINKS.map((link, i) => (
+                <div className="sidebar-link" key={i} onClick={() => onOpenPost(link.postIndex)} style={{ cursor: 'pointer' }}>
+                  <div className="sl-num">{link.num}</div>
+                  <div>
+                    <div className="sl-title">{link.title}</div>
+                    <div className="sl-date">{link.date}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="sidebar-card">
+              <h4>⚠️ Key Symptoms to Watch</h4>
+              <ul className="symptom-list">
+                {SYMPTOMS.map((s, i) => (
+                  <li key={i}><div className="sym-icon">{s.icon}</div> {s.text}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="newsletter-card">
+              <h4>📬 Outbreak Alerts</h4>
+              <p>Get notified when WHO issues new guidance or case counts change.</p>
+              <input className="newsletter-input" type="email" placeholder="your@email.com" />
+              <button className="btn-sub">Subscribe to Alerts</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ArticleModal({ post, onClose }) {
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [onClose]);
+
+  if (!post) return null;
+
+  return (
+    <div className="article-modal-overlay" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+      <div className="article-modal-card">
+        <div className="article-modal-header">
+          <button className="article-modal-close" onClick={onClose}>✕</button>
+          <span className={'blog-cat ' + post.catClass} style={{ fontSize: '.7rem', padding: '3px 12px', borderRadius: '10px', marginBottom: '14px', display: 'inline-block' }}>{post.cat}</span>
+          <h2 className="article-modal-title">{post.title}</h2>
+          <p className="article-modal-meta">By Hanta Hub Editorial · {post.date} · {post.readTime}</p>
+        </div>
+        <div className="article-modal-body">
+          {post.body.map((node, i) => {
+            const [tag, text] = node;
+            if (tag === 'h3') return <h3 key={i}>{text}</h3>;
+            if (tag === 'em') return <p key={i}><em>{text}</em></p>;
+            return <p key={i}>{text}</p>;
+          })}
+          <div className="article-medical-disclaimer">
+            ⚕️ <strong>Medical Disclaimer:</strong> This article is for informational purposes only and does not constitute medical advice. Always consult a qualified healthcare professional for personal medical guidance.
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  const [activeSection, setActiveSection] = useState('tracker');
+  const [openPostIndex, setOpenPostIndex] = useState(null);
+
+  return (
+    <>
+      <Nav active={activeSection} onChange={setActiveSection} />
+      {activeSection === 'tracker' && <TrackerSection />}
+      {activeSection === 'hub' && <HubSection />}
+      {activeSection === 'blog' && <BlogSection onOpenPost={setOpenPostIndex} />}
+
+      <footer>
+        <p>© 2026 Hanta Hub — For informational purposes only. Not medical advice. Data sourced from <a href="https://www.who.int" target="_blank" rel="noopener">WHO</a> · <a href="https://www.cdc.gov" target="_blank" rel="noopener">CDC</a> · <a href="https://africacdc.org" target="_blank" rel="noopener">Africa CDC</a> · <a href="https://hantavirustracker.live" target="_blank" rel="noopener">HantaVirusTracker.live</a></p>
+      </footer>
+
+      {openPostIndex !== null && (
+        <ArticleModal
+          post={POSTS[openPostIndex]}
+          onClose={() => setOpenPostIndex(null)}
+        />
+      )}
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
