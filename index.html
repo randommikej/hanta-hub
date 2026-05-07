@@ -3,8 +3,75 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hanta Hub — Global Outbreak Monitor</title>
+<title>Hanta Hub — Global Outbreak Tracker · 8 Cases · 3 Deaths · MV Hondius 2026</title>
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">%F0%9F%98%B7</text></svg>'>
+<meta name="description" content="Hanta Hub — live tracker for the 2026 MV Hondius hantavirus outbreak. 8 cases, 3 deaths, multi-country WHO contact tracing. Daily updates, prevention guides, regional risk profiles.">
+<meta name="keywords" content="hantavirus, hantavirus outbreak, MV Hondius, outbreak tracker, Andes virus, Sin Nombre virus, HPS, hantavirus pulmonary syndrome, WHO, CDC, 2026 outbreak, hantavirus prevention, deer mouse, Patagonia, Cape Verde">
+<meta name="author" content="Hanta Hub">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://hantavirussupplies.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hanta Hub">
+<meta property="og:url" content="https://hantavirussupplies.com/">
+<meta property="og:title" content="Hanta Hub — Global Outbreak Tracker · 8 Cases · 3 Deaths">
+<meta property="og:description" content="Live tracker for the 2026 MV Hondius hantavirus outbreak. WHO contact tracing across 8 countries, daily prevention guides, and regional risk profiles.">
+<meta property="og:image" content="https://hantavirussupplies.com/og-image.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hanta Hub — Global Outbreak Tracker · 8 Cases · 3 Deaths">
+<meta name="twitter:description" content="Live tracker for the 2026 MV Hondius hantavirus cluster. Cases, deaths, WHO contact tracing, and prevention guides updated daily.">
+<meta name="twitter:image" content="https://hantavirussupplies.com/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://hantavirussupplies.com/#website",
+      "url": "https://hantavirussupplies.com/",
+      "name": "Hanta Hub",
+      "description": "Global hantavirus outbreak tracker — live MV Hondius cluster updates, prevention guides, and regional risk profiles.",
+      "publisher": { "@id": "https://hantavirussupplies.com/#organization" },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://hantavirussupplies.com/#organization",
+      "name": "Hanta Hub",
+      "url": "https://hantavirussupplies.com/"
+    },
+    {
+      "@type": "NewsArticle",
+      "headline": "Multi-Country Tracking Expands as MV Hondius Hantavirus Cluster Reaches 8 Cases",
+      "datePublished": "2026-05-07",
+      "dateModified": "2026-05-07",
+      "author": { "@type": "Organization", "name": "Hanta Hub" },
+      "publisher": { "@id": "https://hantavirussupplies.com/#organization" },
+      "mainEntityOfPage": "https://hantavirussupplies.com/",
+      "image": "https://hantavirussupplies.com/og-image.png",
+      "description": "WHO confirms eight cases (five PCR-confirmed) and three deaths in the MV Hondius hantavirus cluster as eight nations join coordinated contact tracing."
+    },
+    {
+      "@type": "MedicalCondition",
+      "name": "Hantavirus Pulmonary Syndrome",
+      "alternateName": ["HPS", "Hantavirus Cardiopulmonary Syndrome"],
+      "code": { "@type": "MedicalCode", "code": "B33.4", "codingSystem": "ICD-10" },
+      "associatedAnatomy": [
+        { "@type": "AnatomicalStructure", "name": "Lungs" },
+        { "@type": "AnatomicalStructure", "name": "Heart" }
+      ],
+      "signOrSymptom": [
+        { "@type": "MedicalSignOrSymptom", "name": "Fever" },
+        { "@type": "MedicalSignOrSymptom", "name": "Severe muscle aches" },
+        { "@type": "MedicalSignOrSymptom", "name": "Shortness of breath" },
+        { "@type": "MedicalSignOrSymptom", "name": "Pulmonary edema" }
+      ],
+      "possibleTreatment": { "@type": "MedicalTherapy", "name": "Supportive care, oxygen therapy, mechanical ventilation, ECMO" },
+      "epidemiology": "Approximately 36% case fatality rate in the Americas; ~60,000 HFRS cases globally per year"
+    }
+  ]
+}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -474,7 +541,7 @@ const { useState, useEffect, useRef } = React;
 // ──────────────────────────────────────────────────
 
 const HERO_STATS = [
-  { val: '7', label: 'Active Cases', sub: '2 PCR-confirmed · 5 suspected' },
+  { val: '8', label: 'Active Cases', sub: '5 PCR-confirmed · 3 suspected' },
   { val: '3', label: 'Confirmed Deaths', sub: 'MV Hondius cluster · 2026' },
   { val: '60k', label: 'Annual HFRS Cases', sub: 'Estimated global per year' },
   { val: '36%', label: 'Fatality Rate (HPS)', sub: 'Americas · up to 50% in outbreaks' },
@@ -482,8 +549,8 @@ const HERO_STATS = [
 
 const TRACKER_STATS = [
   { kind: 'alert', val: '3', label: 'Deaths · 2026 Cluster', note: 'MV Hondius · Dutch, German, South African nationals' },
-  { kind: 'watch', val: '7', label: 'Active Cases', note: '2 PCR-confirmed · 5 suspected aboard ship' },
-  { kind: '', val: '82+', label: 'Under WHO Tracing', note: 'Passengers + crew from Johannesburg flight' },
+  { kind: 'watch', val: '8', label: 'Active Cases', note: '5 PCR-confirmed · 3 suspected · Andes virus' },
+  { kind: '', val: '8', label: 'Countries Tracking', note: 'NL, UK, DE, Spain, ZA, CV, CH, Singapore + US states' },
   { kind: '', val: '36 days', label: 'Since Outbreak Began', note: 'Apr 1, 2026 · MV Hondius departed Ushuaia' },
 ];
 
@@ -493,14 +560,17 @@ const TIMELINE = [
   { date: 'Apr 26, 2026', title: 'Dutch Woman Dies — Johannesburg', desc: 'Close contact of index case collapses on Airlink flight. WHO traces 82 passengers + 6 crew.', dotClass: 'death', badge: 'Death + Tracing', badgeClass: 'badge-death' },
   { date: 'May 2, 2026', title: 'WHO Notified — PCR Confirmed', desc: 'NICD South Africa confirms hantavirus via PCR. British national in ICU Johannesburg.', badge: 'Confirmed', badgeClass: 'badge-confirmed' },
   { date: 'May 3, 2026', title: '3rd Death — German National', desc: 'German passenger dies on board. Ship anchors off Praia, Cape Verde.', dotClass: 'death', badge: 'Death', badgeClass: 'badge-death' },
-  { date: 'May 6, 2026 · Now', title: 'Evacuation to Netherlands Underway', desc: '3 patients including ship’s doctor evacuated to Netherlands. Ship’s doctor condition improving.', dotClass: 'active', badge: 'Active', badgeClass: 'badge-now' },
+  { date: 'May 6, 2026', title: 'Evacuation to Netherlands Underway', desc: '3 patients including ship’s doctor evacuated to Netherlands. Ship’s doctor condition improving.', badge: 'Evac', badgeClass: 'badge-now' },
+  { date: 'May 7, 2026 · Now', title: '8th Case Confirmed · Multi-Country Tracing Expands', desc: 'WHO ships 2,500 diagnostic kits to 5 countries. 8 nations coordinating: NL, UK, DE, Spain, South Africa, Cape Verde, Switzerland, Singapore. US states (Arizona, Georgia) monitoring returned passengers.', dotClass: 'active', badge: 'Active', badgeClass: 'badge-now' },
 ];
 
 const REGIONS = [
-  { region: '🚢 MV Hondius (Cape Verde)', cases: '7 cases · 3 deaths', notes: '2 PCR-confirmed · Active WHO investigation', status: 'Active', statusClass: 'status-active' },
+  { region: '🚢 MV Hondius (Cape Verde)', cases: '8 cases · 3 deaths', notes: '5 PCR-confirmed · Andes virus · 3 patients evac to Netherlands', status: 'Active', statusClass: 'status-active' },
   { region: '🇦🇷 Argentina', cases: '28 deaths in 2025', notes: 'Andes virus endemic · rural Patagonia region', status: 'Watch', statusClass: 'status-watch' },
-  { region: '🇿🇦 South Africa', cases: '1 critical case', notes: 'British national in ICU Johannesburg · linked to cluster', status: 'Watch', statusClass: 'status-watch' },
-  { region: '🇺🇸 United States', cases: '<1,000 total cases', notes: 'Sin Nombre virus · primarily Four Corners region (SW states)', status: 'Endemic', statusClass: 'status-endemic' },
+  { region: '🇿🇦 South Africa', cases: '1 critical case', notes: 'British national in ICU Johannesburg · NICD lead lab for cluster', status: 'Watch', statusClass: 'status-watch' },
+  { region: '🇳🇱 Netherlands', cases: '3 patients in care', notes: 'Medical evac destination · including ship’s doctor (improving)', status: 'Watch', statusClass: 'status-watch' },
+  { region: '🇪🇸 Spain & Cape Verde', cases: 'Logistics hubs', notes: 'Spain accepting evac · Cape Verde isolating MV Hondius offshore', status: 'Watch', statusClass: 'status-watch' },
+  { region: '🇺🇸 United States', cases: '<1,000 total cases', notes: 'Sin Nombre · Arizona & Georgia monitoring returned MV Hondius pax', status: 'Endemic', statusClass: 'status-endemic' },
   { region: '🇪🇺 Europe', cases: '~1,000 cases/year', notes: 'Puumala & Dobrava strains · Scandinavia, Germany, Balkans', status: 'Endemic', statusClass: 'status-endemic' },
   { region: '🇨🇳 China / Asia', cases: '~10,000 cases/year', notes: 'HFRS predominant · Hantaan & Seoul strains', status: 'Endemic', statusClass: 'status-endemic' },
 ];
@@ -517,6 +587,46 @@ const PRODUCTS = [
 ];
 
 const POSTS = [
+  { cat: 'Breaking News', catClass: 'cat-news', date: 'May 7, 2026', readTime: '7 min read',
+    title: 'Eight Cases, Eight Countries: WHO Expands Hantavirus Contact Tracing Across Three Continents',
+    excerpt: 'A newly confirmed eighth case has pushed the MV Hondius cluster into one of the most internationally tracked hantavirus events on record. Eight nations are now coordinating with WHO, and US states have begun monitoring returned passengers.',
+    icon: '🌐',
+    body: [
+      ['p', 'The MV Hondius hantavirus cluster reached a new inflection point on May 7, 2026, with the World Health Organization confirming an eighth case and announcing that eight countries are now actively coordinating contact tracing across three continents. Five of the eight cases are now PCR-confirmed, up from two earlier in the week, as the diagnostic picture sharpens.'],
+      ['p', 'The countries involved span the breadth of the ship’s itinerary, the home nations of its passengers, and the medical evacuation chain that has spread infected and exposed individuals across borders: the Netherlands, United Kingdom, Germany, Spain, South Africa, Cape Verde, Switzerland, and Singapore. Within the United States, public health authorities in Arizona and Georgia have begun individual monitoring of returned passengers.'],
+      ['h3', 'What Changed in the Last 24 Hours'],
+      ['p', 'WHO arranged the urgent shipment of 2,500 hantavirus diagnostic test kits from Argentina to laboratories in five priority countries, accelerating the pace at which suspected cases can be either confirmed or ruled out. The South African National Institute for Communicable Diseases (NICD) remains the reference laboratory for the cluster, with genome sequencing and metagenomics work continuing to characterize the precise strain.'],
+      ['p', 'Spain confirmed it would accept the MV Hondius ship’s doctor for further treatment, joining the Netherlands in receiving evacuated patients. Three patients have now been transferred to Dutch medical facilities. The ship’s doctor, who became infected during onboard care of earlier patients, is reportedly responding to treatment.'],
+      ['h3', 'Why Eight Countries Matters'],
+      ['p', 'Coordinated multi-country contact tracing of this scale is unusual for hantavirus, which has historically been treated as a localized rodent-contact disease. The participation of Singapore is particularly notable: it indicates that the contact-tracing net now extends into Asia, likely reflecting individuals who connected through Singapore on flights home from Johannesburg or Cape Verde. The breadth of jurisdictions involved illustrates how a small but globally connected exposure event can rapidly become an international public health operation.'],
+      ['h3', 'WHO Risk Assessment Holds'],
+      ['p', 'Despite the expanding scope of investigation, WHO’s overall public health risk assessment remains low. The agency has reiterated that the only documented person-to-person hantavirus transmission involves Andes virus and requires close, prolonged contact — not the casual contact typical of public spaces, transit, or workplaces. For the general public, including those with no link to the MV Hondius itinerary, individual risk is essentially unchanged.'],
+      ['h3', 'What Comes Next'],
+      ['p', 'WHO has cautioned that, given hantavirus incubation periods of up to eight weeks, additional cases may surface in the coming weeks even if onboard transmission has been contained. The next critical milestones are confirmation of the specific viral strain through ongoing genomic analysis, the resolution of the Cape Verde docking standoff, and the trajectory of the three evacuated patients in the Netherlands.'],
+      ['em', 'Last updated: May 7, 2026. Sources: WHO Disease Outbreak News DON599, WHO press release (May 7, 2026), Africa CDC, NICD South Africa, Live Science, Euronews, ABC News, TIME.'],
+    ],
+  },
+  { cat: 'Health Tips', catClass: 'cat-tips', date: 'May 7, 2026', readTime: '6 min read',
+    title: 'Returned from a South Atlantic Cruise? A Practical Self-Monitoring Guide for the Next Eight Weeks',
+    excerpt: 'You probably weren’t on the MV Hondius. But if you were on any expedition cruise to South Georgia, Tristan da Cunha, or Patagonia in March or April, here is exactly how to monitor yourself — and when to act.',
+    icon: '🩺',
+    body: [
+      ['p', 'The MV Hondius hantavirus cluster has prompted unusual public attention to a class of travel that, in normal years, generates very little: expedition cruises and remote-island wildlife tours. This guide is for travelers who have recently returned from any voyage in the South Atlantic, sub-Antarctic, or Patagonian region — not just the MV Hondius itself — and who want a clear, practical self-monitoring plan.'],
+      ['h3', 'Know Your Window'],
+      ['p', 'Hantavirus has an incubation period of one to eight weeks. If your trip ended within the last 56 days, the relevant monitoring window is still open. After eight weeks of being symptom-free following any potential exposure, the risk of HPS from that exposure is effectively gone. Mark eight weeks on your calendar from your arrival home.'],
+      ['h3', 'What Symptoms Warrant a Phone Call'],
+      ['p', 'The early symptoms of hantavirus pulmonary syndrome are indistinguishable from influenza. The triad to watch for is fever (above 38°C / 100.4°F), severe muscle aches — particularly deep aching in the thighs, hips, or lower back — and profound fatigue. Notably absent in early HPS are the upper-respiratory symptoms most people associate with flu: there is typically no runny nose, no sore throat, and no productive cough. If your "flu" feels off because it lacks those symptoms, that itself is a signal worth mentioning to a clinician.'],
+      ['h3', 'What Symptoms Warrant the Emergency Room'],
+      ['p', 'If you develop any of the following within eight weeks of your trip, go to an emergency department immediately and explicitly mention your travel history: shortness of breath, chest tightness, lightheadedness on standing, a sudden second wave of worsening symptoms after seeming to improve, or a pulse oximeter reading below 95% if you have one at home. The transition from prodrome to cardiopulmonary phase can occur in hours, and survival is closely tied to how quickly advanced supportive care begins.'],
+      ['h3', 'What to Tell Your Doctor'],
+      ['p', 'Most clinicians will not consider hantavirus on a differential diagnosis unless the patient or family raises it. State plainly: "I returned from an expedition cruise to the South Atlantic on [date]. I am within the eight-week hantavirus incubation window. The MV Hondius cluster has been linked to that region. Please consider HPS in your evaluation." This single sentence has, in past outbreaks, accelerated the path to correct diagnosis by hours — hours that matter.'],
+      ['h3', 'When to Seek Testing Versus Just Monitor'],
+      ['p', 'In the absence of symptoms, routine screening is not currently recommended for asymptomatic returnees, even from the MV Hondius itself. Public health authorities are conducting active follow-up of MV Hondius passengers and known close contacts directly. If you were on a different vessel or traveled independently in Patagonia or the South Atlantic and have no symptoms, your role is monitoring — not testing. Testing exists for symptomatic evaluation, not reassurance.'],
+      ['h3', 'Reasonable Risk Calibration'],
+      ['p', 'For travelers with no contact with the MV Hondius cluster, the actual probability of hantavirus exposure during a typical expedition cruise is very low. Risk is concentrated in specific environments — enclosed structures with rodent infestations, agricultural buildings, mountain refuges — not the open-air landscapes most ecotourists experience. The right posture is informed awareness, not anxiety.'],
+      ['em', 'This guide is informational and does not replace medical advice. If you have any concerns, contact your physician or your country’s travel health service. Sources: WHO Disease Outbreak News, CDC hantavirus guidance, NICD South Africa.'],
+    ],
+  },
   { cat: 'Breaking News', catClass: 'cat-news', date: 'May 7, 2026', readTime: '8 min read',
     title: 'MV Hondius Cluster: What We Know So Far About the 2026 Outbreak',
     excerpt: 'Three deaths, seven cases, and 80+ people under WHO surveillance — a comprehensive breakdown of the most alarming hantavirus cluster in years and why Andes virus makes it uniquely concerning.',
@@ -699,11 +809,11 @@ const POSTS = [
 ];
 
 const SIDEBAR_LINKS = [
-  { num: '01', title: 'MV Hondius Cluster Explainer', date: 'Breaking · May 2026', postIndex: 0 },
-  { num: '02', title: 'When Flu Could Be Hantavirus', date: 'Health Tips', postIndex: 4 },
-  { num: '03', title: 'Andes vs. Sin Nombre Virus', date: 'Science Brief', postIndex: 2 },
-  { num: '04', title: 'Is a Vaccine Coming in 2026?', date: 'Research Update', postIndex: 8 },
-  { num: '05', title: 'How HPS Destroys Lungs in 72hrs', date: 'Science', postIndex: 7 },
+  { num: '01', title: 'Eight Cases, Eight Countries', date: 'Breaking · May 7, 2026', postIndex: 0 },
+  { num: '02', title: 'Returned From South Atlantic? Self-Monitor Guide', date: 'Health Tips · May 7, 2026', postIndex: 1 },
+  { num: '03', title: 'MV Hondius Cluster Explainer', date: 'Breaking · May 2026', postIndex: 2 },
+  { num: '04', title: 'Andes vs. Sin Nombre Virus', date: 'Science Brief', postIndex: 4 },
+  { num: '05', title: 'Is a Vaccine Coming in 2026?', date: 'Research Update', postIndex: 10 },
 ];
 
 const SYMPTOMS = [
