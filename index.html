@@ -3,23 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hanta Hub — Global Outbreak Tracker · 8 Cases · 3 Deaths · MV Hondius 2026</title>
+<title>Hanta Hub — Global Outbreak Tracker · 9 Cases · 3 Deaths · MV Hondius 2026</title>
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">%F0%9F%A6%A0</text></svg>'>
-<meta name="description" content="Hanta Hub — live tracker for the 2026 MV Hondius hantavirus outbreak. 8 cases, 3 deaths, multi-country WHO tracing. Daily updates, prevention guides, and 15 global news sources.">
-<meta name="keywords" content="hantavirus, hantavirus outbreak, MV Hondius, outbreak tracker, Andes virus, Sin Nombre virus, HPS, hantavirus pulmonary syndrome, WHO, CDC, 2026 outbreak, hantavirus prevention, deer mouse, Patagonia, Cape Verde">
+<meta name="description" content="Hanta Hub — live tracker for the 2026 MV Hondius hantavirus outbreak. 9 cases, 3 deaths, CDC Level 3 response, multi-country WHO tracing. Daily updates and 15 global news sources.">
+<meta name="keywords" content="hantavirus, hantavirus outbreak, MV Hondius, outbreak tracker, Andes virus, Sin Nombre virus, HPS, hantavirus pulmonary syndrome, WHO, CDC Level 3, 2026 outbreak, hantavirus prevention, deer mouse, Patagonia, Tenerife, Canary Islands">
 <meta name="author" content="Hanta Hub">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://hantavirussupplies.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Hanta Hub">
 <meta property="og:url" content="https://hantavirussupplies.com/">
-<meta property="og:title" content="Hanta Hub — Global Outbreak Tracker · 8 Cases · 3 Deaths">
-<meta property="og:description" content="Live tracker for the 2026 MV Hondius hantavirus outbreak. WHO contact tracing across 8 countries, daily prevention guides, and regional risk profiles.">
+<meta property="og:title" content="Hanta Hub — Global Outbreak Tracker · 9 Cases · 3 Deaths">
+<meta property="og:description" content="Live tracker for the 2026 MV Hondius hantavirus outbreak. CDC Level 3 response, WHO tracing across 8 countries, daily prevention guides, and regional risk profiles.">
 <meta property="og:image" content="https://hantavirussupplies.com/og-image.png">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Hanta Hub — Global Outbreak Tracker · 8 Cases · 3 Deaths">
-<meta name="twitter:description" content="Live tracker for the 2026 MV Hondius hantavirus cluster. Cases, deaths, WHO contact tracing, and prevention guides updated daily.">
+<meta name="twitter:title" content="Hanta Hub — Global Outbreak Tracker · 9 Cases · 3 Deaths">
+<meta name="twitter:description" content="Live tracker for the 2026 MV Hondius hantavirus cluster. 9 cases, CDC Level 3 response, WHO contact tracing, and prevention guides updated daily.">
 <meta name="twitter:image" content="https://hantavirussupplies.com/og-image.png">
 <script type="application/ld+json">
 {
@@ -42,14 +42,14 @@
     },
     {
       "@type": "NewsArticle",
-      "headline": "Multi-Country Tracking Expands as MV Hondius Hantavirus Cluster Reaches 8 Cases",
-      "datePublished": "2026-05-07",
-      "dateModified": "2026-05-07",
+      "headline": "CDC Activates Level 3 Emergency Response as MV Hondius Hantavirus Cluster Reaches 9 Cases",
+      "datePublished": "2026-05-08",
+      "dateModified": "2026-05-08",
       "author": { "@type": "Organization", "name": "Hanta Hub" },
       "publisher": { "@id": "https://hantavirussupplies.com/#organization" },
       "mainEntityOfPage": "https://hantavirussupplies.com/",
       "image": "https://hantavirussupplies.com/og-image.png",
-      "description": "WHO confirms eight cases (five PCR-confirmed) and three deaths in the MV Hondius hantavirus cluster as eight nations join coordinated contact tracing."
+      "description": "WHO confirms nine cases (six PCR-confirmed) and three deaths in the MV Hondius hantavirus cluster as the US CDC activates its Emergency Operations Center at Level 3 and the ship sets course for Tenerife."
     },
     {
       "@type": "MedicalCondition",
@@ -731,17 +731,17 @@ const { useState, useEffect, useRef } = React;
 // ──────────────────────────────────────────────────
 
 const HERO_STATS = [
-  { val: '8', label: 'Active Cases', sub: '5 PCR-confirmed · 3 suspected' },
+  { val: '9', label: 'Active Cases', sub: '6 PCR-confirmed · 3 suspected' },
   { val: '3', label: 'Confirmed Deaths', sub: 'MV Hondius cluster · 2026' },
   { val: '60k', label: 'Annual HFRS Cases', sub: 'Estimated global per year' },
   { val: '36%', label: 'Fatality Rate (HPS)', sub: 'Americas · up to 50% in outbreaks' },
 ];
 
 const TRACKER_STATS = [
-  { kind: 'alert', val: '3', label: 'Deaths · 2026 Cluster', note: 'MV Hondius · Dutch, German, South African nationals' },
-  { kind: 'watch', val: '8', label: 'Active Cases', note: '5 PCR-confirmed · 3 suspected · Andes virus' },
-  { kind: '', val: '8', label: 'Countries Tracking', note: 'NL, UK, DE, Spain, ZA, CV, CH, Singapore + US states' },
-  { kind: '', val: '36 days', label: 'Since Outbreak Began', note: 'Apr 1, 2026 · MV Hondius departed Ushuaia' },
+  { kind: 'alert', val: '3', label: 'Deaths · 2026 Cluster', note: 'MV Hondius · Dutch couple + German national' },
+  { kind: 'watch', val: '9', label: 'Active Cases', note: '6 PCR-confirmed · 3 suspected · Andes virus' },
+  { kind: '', val: '8', label: 'Countries Tracking', note: 'NL, UK, DE, Spain, ZA, CV, CH, Singapore + 5 US states' },
+  { kind: '', val: '37 days', label: 'Since Outbreak Began', note: 'Apr 1, 2026 · MV Hondius departed Ushuaia' },
 ];
 
 const TIMELINE = [
@@ -751,16 +751,17 @@ const TIMELINE = [
   { date: 'May 2, 2026', title: 'WHO Notified — PCR Confirmed', desc: 'NICD South Africa confirms hantavirus via PCR. British national in ICU Johannesburg.', badge: 'Confirmed', badgeClass: 'badge-confirmed' },
   { date: 'May 3, 2026', title: '3rd Death — German National', desc: 'German passenger dies on board. Ship anchors off Praia, Cape Verde.', dotClass: 'death', badge: 'Death', badgeClass: 'badge-death' },
   { date: 'May 6, 2026', title: 'Evacuation to Netherlands Underway', desc: '3 patients including ship’s doctor evacuated to Netherlands. Ship’s doctor condition improving.', badge: 'Evac', badgeClass: 'badge-now' },
-  { date: 'May 7, 2026 · Now', title: '8th Case Confirmed · Multi-Country Tracing Expands', desc: 'WHO ships 2,500 diagnostic kits to 5 countries. 8 nations coordinating: NL, UK, DE, Spain, South Africa, Cape Verde, Switzerland, Singapore. US states (Arizona, Georgia) monitoring returned passengers.', dotClass: 'active', badge: 'Active', badgeClass: 'badge-now' },
+  { date: 'May 7, 2026', title: '8th Case Confirmed · Multi-Country Tracing Expands', desc: 'WHO ships 2,500 diagnostic kits to 5 countries. 8 nations coordinating: NL, UK, DE, Spain, South Africa, Cape Verde, Switzerland, Singapore. US states (Arizona, Georgia) monitoring returned passengers.', badge: 'Confirmed', badgeClass: 'badge-confirmed' },
+  { date: 'May 8, 2026 · Now', title: '9th Case Suspected · CDC Activates Level 3 · Ship Heads to Tenerife', desc: 'UKHSA flags a suspected 9th case on Tristan da Cunha. US CDC activates its Emergency Operations Center at Level 3 (lowest tier). NICD South Africa and Geneva University Hospitals independently confirm Andes virus. MV Hondius en route to Tenerife, expected to dock Sunday.', dotClass: 'active', badge: 'Active', badgeClass: 'badge-now' },
 ];
 
 const REGIONS = [
-  { region: '🚢 MV Hondius (Cape Verde)', cases: '8 cases · 3 deaths', notes: '5 PCR-confirmed · Andes virus · 3 patients evac to Netherlands', status: 'Active', statusClass: 'status-active' },
-  { region: '🇦🇷 Argentina', cases: '28 deaths in 2025', notes: 'Andes virus endemic · rural Patagonia region', status: 'Watch', statusClass: 'status-watch' },
+  { region: '🚢 MV Hondius (En route to Tenerife)', cases: '9 cases · 3 deaths', notes: '6 PCR-confirmed · Andes virus · expected to dock Tenerife Sunday', status: 'Active', statusClass: 'status-active' },
+  { region: '🇦🇷 Argentina', cases: '101 cases since Jun 2025', notes: 'Andes virus endemic · rural Patagonia · roughly double last year', status: 'Watch', statusClass: 'status-watch' },
   { region: '🇿🇦 South Africa', cases: '1 critical case', notes: 'British national in ICU Johannesburg · NICD lead lab for cluster', status: 'Watch', statusClass: 'status-watch' },
   { region: '🇳🇱 Netherlands', cases: '3 patients in care', notes: 'Medical evac destination · including ship’s doctor (improving)', status: 'Watch', statusClass: 'status-watch' },
-  { region: '🇪🇸 Spain & Cape Verde', cases: 'Logistics hubs', notes: 'Spain accepting evac · Cape Verde isolating MV Hondius offshore', status: 'Watch', statusClass: 'status-watch' },
-  { region: '🇺🇸 United States', cases: '<1,000 total cases', notes: 'Sin Nombre · Arizona & Georgia monitoring returned MV Hondius pax', status: 'Endemic', statusClass: 'status-endemic' },
+  { region: '🇪🇸 Spain & 🇨🇭 Switzerland', cases: 'Inbound · 1 confirmed', notes: 'Tenerife receiving MV Hondius Sunday · Geneva University Hospitals co-confirmed Andes virus', status: 'Watch', statusClass: 'status-watch' },
+  { region: '🇺🇸 United States', cases: '<1,000 total cases', notes: 'Sin Nombre · AZ, CA, GA, TX, VA monitoring returned MV Hondius pax · CDC EOC Level 3', status: 'Endemic', statusClass: 'status-endemic' },
   { region: '🇪🇺 Europe', cases: '~1,000 cases/year', notes: 'Puumala & Dobrava strains · Scandinavia, Germany, Balkans', status: 'Endemic', statusClass: 'status-endemic' },
   { region: '🇨🇳 China / Asia', cases: '~10,000 cases/year', notes: 'HFRS predominant · Hantaan & Seoul strains', status: 'Endemic', statusClass: 'status-endemic' },
 ];
@@ -777,6 +778,46 @@ const PRODUCTS = [
 ];
 
 const POSTS = [
+  { cat: 'Breaking News', catClass: 'cat-news', date: 'May 8, 2026', readTime: '7 min read',
+    title: 'CDC Activates Level 3 Emergency Response as Hantavirus Cluster Reaches Nine Cases',
+    excerpt: 'A suspected ninth case has surfaced on Tristan da Cunha, two laboratories on two continents have independently confirmed Andes virus, and the US Centers for Disease Control has activated its Emergency Operations Center as the MV Hondius sets course for Tenerife.',
+    icon: '🚨',
+    body: [
+      ['p', 'May 8, 2026 brought a string of significant developments in the MV Hondius hantavirus cluster, even as global public health authorities continued to emphasise that the overall risk to the general public remains low. The case count rose to nine, the United States CDC formally activated its Emergency Operations Center, and the ship — having now spent more than a week anchored off Cape Verde — set course for the Spanish Canary Islands and is expected to dock at Tenerife on Sunday.'],
+      ['h3', 'A Suspected Ninth Case on Tristan da Cunha'],
+      ['p', 'The UK Health Security Agency notified WHO of a suspected ninth case in a British national on the remote South Atlantic island of Tristan da Cunha — one of the ports the MV Hondius visited earlier in its itinerary. Six of the nine cases are now PCR-confirmed, up from five the previous day, with the remaining three classified as suspected and pending laboratory confirmation. Three deaths remain attributed to the cluster: a Dutch couple and a German national.'],
+      ['h3', 'CDC Emergency Operations Center Activated at Level 3'],
+      ['p', 'The US Centers for Disease Control and Prevention has activated its Emergency Operations Center and classified the hantavirus response as a Level 3 event. Level 3 is the lowest of the CDC\'s three activation tiers and signals that an emergency team has been formally assembled and that subject-matter experts may be reassigned to monitor and assist the response. The CDC has explicitly noted that the overall risk to the US public remains low — consistent with WHO\'s assessment.'],
+      ['p', 'US monitoring of returned MV Hondius passengers has expanded from two states (Arizona and Georgia) to five (adding California, Texas and Virginia), reflecting the dispersion of returning travellers across the country. Public health authorities are not asking returnees with no symptoms to seek testing — only to monitor for fever, deep muscle aches and any difficulty breathing within the eight-week incubation window.'],
+      ['h3', 'Two Independent Labs, One Andes Virus'],
+      ['p', 'A scientifically significant detail emerged from the research community on May 6: the National Institute for Communicable Diseases in South Africa and Geneva University Hospitals in Switzerland independently confirmed the Andes hantavirus strain in samples from MV Hondius patients. Independent confirmation by laboratories on two continents reduces the chance of a sample handling artefact and strengthens the case for the Andes attribution. Andes virus is the only hantavirus species known to demonstrate documented person-to-person transmission, and its identification has been the central scientific question of this outbreak.'],
+      ['h3', 'Sailing Toward Tenerife'],
+      ['p', 'After several days of diplomatic uncertainty over which port would receive the vessel, Spanish authorities confirmed the MV Hondius will dock at the Port of Granadilla in Tenerife around midday local time on Sunday. The 14 Spanish nationals on board will be transferred to a military hospital for evaluation. Other passengers are expected to be repatriated from Tenerife by their respective home countries under coordinated WHO and ECDC guidance. Approximately 146 people from 23 different nationalities, including 17 Americans, remain aboard the vessel under what operator Oceanwide Expeditions has described as "strict precautionary measures."'],
+      ['h3', 'What This Means'],
+      ['p', 'For the second consecutive day, public health communications from WHO, ECDC, Africa CDC, the CDC and UKHSA have aligned on a consistent message: more cases may yet appear given hantavirus incubation periods of up to eight weeks, but there is no evidence of community spread and no indication of a pandemic-level event. The expansion of monitoring across more US states, the activation of CDC\'s EOC, and the imminent docking of the ship in Tenerife mark a transition from acute crisis to a managed, multi-country contact-tracing operation.'],
+      ['em', 'Last updated: May 8, 2026. Sources: WHO Disease Outbreak News DON599, ABC News, CNN, NPR, Live Science, Al Jazeera, Africa CDC, ECDC, UKHSA blog, Washington Post, TIME, STAT News.'],
+    ],
+  },
+  { cat: 'Science', catClass: 'cat-science', date: 'May 8, 2026', readTime: '6 min read',
+    title: 'Two Labs, One Verdict: Why Independent Andes Virus Confirmation Matters',
+    excerpt: 'South Africa\'s NICD and Switzerland\'s Geneva University Hospitals have independently confirmed Andes hantavirus in MV Hondius samples. Here is why two-laboratory confirmation is not just bureaucratic — it is scientifically meaningful.',
+    icon: '🧬',
+    body: [
+      ['p', 'The May 6 announcement that the National Institute for Communicable Diseases (NICD) in Johannesburg and Geneva University Hospitals (HUG) in Switzerland had independently confirmed Andes hantavirus in samples from the MV Hondius cluster was, on its surface, simply another technical update in a fast-moving outbreak. But for virologists watching the cluster, two-lab confirmation of a rare strain is a moment of significant scientific reassurance — one worth understanding in detail.'],
+      ['h3', 'Why a Single Result Is Never Enough'],
+      ['p', 'In any acute outbreak investigation, a single positive PCR result on a rare pathogen is treated cautiously. A novel strain can produce ambiguous primer binding. Cross-reactivity between closely related orthohantaviruses is a known issue. Sample handling, contamination from prior amplicons in a busy reference laboratory, or even reagent batch artefacts can produce a positive signal that does not reflect a true infection. The first job of public health communication is to be confident that the pathogen identified is in fact the pathogen present.'],
+      ['h3', 'Independence Is the Key Word'],
+      ['p', 'The reassurance from the May 6 announcement comes from the word "independently" — the two laboratories used different sample aliquots, different primer sets, and different sequencing pipelines, separated by thousands of kilometres and entirely different supply chains. NICD has been the regional reference laboratory leading the cluster from the beginning, while HUG entered the picture when a Swiss patient who had disembarked the ship before the outbreak became symptomatic in Zurich. The convergence of two independent operational lines of evidence on the same conclusion — Andes virus, ANDV — is qualitatively different from a single lab repeating its own assay.'],
+      ['h3', 'What Andes Virus Confirmation Implies'],
+      ['p', 'Andes virus, found primarily in Argentina and Chile, is the only hantavirus species with credible, documented person-to-person transmission. Multiple family-cluster studies in Patagonia, beginning with the 1996 El Bolsón outbreak, have established that Andes virus can spread between very close, prolonged contacts — typically household members, sexual partners, and direct caregivers. It does not appear to spread through casual contact in shared public spaces.'],
+      ['p', 'Confirming the Andes strain therefore both raises and constrains the level of concern. It raises concern because it leaves open the possibility — still under investigation — that some MV Hondius cases acquired the virus from other passengers rather than directly from rodent contact in Argentina or on remote islands. It constrains concern because the well-documented transmission profile of Andes virus does not include casual contact, allowing public health authorities to maintain that the broader public is not at risk.'],
+      ['h3', 'What Comes Next in the Lab'],
+      ['p', 'The next phase of laboratory work is genomic. Researchers will compare the full Andes virus genomes recovered from MV Hondius patients to characterised reference genomes from Argentina and Chile. If the MV Hondius genome closely matches a known Patagonian lineage, the most parsimonious explanation is that the index cases were exposed to rodents prior to boarding. If the genome is unusual or shows mutations consistent with adaptation, more questions will be raised about whether the closed shipboard environment selected for any new viral characteristics. Either result is informative; both are tractable with current sequencing technology.'],
+      ['h3', 'A Reasonable Posture for Readers'],
+      ['p', 'For non-specialist readers, the practical takeaway is straightforward. The pathogen is what scientists thought it was. The transmission profile is what historical data has long suggested it should be. The risk to anyone not in close, prolonged contact with a confirmed case is essentially what it was before this cluster surfaced — very low. Two-lab confirmation does not change the threat picture; it confirms the threat picture, which is itself a form of progress.'],
+      ['em', 'Last updated: May 8, 2026. Sources: WHO Disease Outbreak News DON599, ECDC technical assessment (06 May 2026), NICD South Africa, Geneva University Hospitals (HUG), Nature, Science / AAAS, Live Science.'],
+    ],
+  },
   { cat: 'Breaking News', catClass: 'cat-news', date: 'May 7, 2026', readTime: '7 min read',
     title: 'Eight Cases, Eight Countries: WHO Expands Hantavirus Contact Tracing Across Three Continents',
     excerpt: 'A newly confirmed eighth case has pushed the MV Hondius cluster into one of the most internationally tracked hantavirus events on record. Eight nations are now coordinating with WHO, and US states have begun monitoring returned passengers.',
@@ -1020,68 +1061,68 @@ const NEWS_SOURCES = [
     date: 'May 7, 2026',
     url: 'https://africacdc.org/news-item/statement-on-multi-country-hantavirus-cluster-associated-with-cruise-ship-travel/' },
   { source: 'ECDC', tag: 'Authority', tagClass: 'source-tag-authority', favicon: 'https://www.google.com/s2/favicons?domain=ecdc.europa.eu&sz=64',
-    title: 'Hantavirus outbreak on cruise ship under investigation: risk for Europe very low',
-    excerpt: 'European public-health agency assesses the risk to European populations as very low based on current evidence.',
-    date: 'May 7, 2026',
-    url: 'https://www.ecdc.europa.eu/en/news-events/hantavirus-outbreak-cruise-ship-under-investigation-risk-europe-very-low' },
+    title: 'Andes Hantavirus outbreak in cruise ship · surveillance and updates',
+    excerpt: 'ECDC dedicated surveillance hub covering the MV Hondius cluster, technical assessments, and recommendations for EU/EEA countries.',
+    date: 'May 8, 2026',
+    url: 'https://www.ecdc.europa.eu/en/infectious-disease-topics/hantavirus-infection/surveillance-and-updates/andes-hantavirus-outbreak' },
   { source: 'NPR', tag: 'Wire', tagClass: 'source-tag-wire', favicon: 'https://www.google.com/s2/favicons?domain=npr.org&sz=64',
-    title: 'Hantavirus on cruise ship confirmed as rare type that can spread human-to-human',
-    excerpt: 'NPR reports on the Andes virus identification and what it means for the broader passenger contact tracing.',
-    date: 'May 5, 2026',
-    url: 'https://www.npr.org/2026/05/05/g-s1-120234/cruise-ship-hantavirus' },
+    title: 'Hantavirus: the risks, the science and what you need to know · Short Wave',
+    excerpt: 'NPR Short Wave podcast unpacks the Andes strain, transmission risk, and what is and is not yet known about the MV Hondius cluster.',
+    date: 'May 8, 2026',
+    url: 'https://www.npr.org/2026/05/08/nx-s1-5811917/hantavirus-andres-mvhondius-ship-rodents' },
   { source: 'STAT News', tag: 'Wire', tagClass: 'source-tag-wire', favicon: 'https://www.google.com/s2/favicons?domain=statnews.com&sz=64',
-    title: 'Cruise ship hantavirus outbreak worries experts, though they discount pandemic fears',
-    excerpt: 'Health journalism deep dive into expert reactions and why this outbreak is being treated as a containment problem, not a pandemic.',
+    title: 'Key takeaways from WHO briefing on hantavirus cruise ship outbreak',
+    excerpt: 'STAT distills the WHO press briefing into actionable points on case definitions, transmission risk, and the contact-tracing operation.',
     date: 'May 7, 2026',
-    url: 'https://www.statnews.com/2026/05/07/hantavirus-cruise-ship-outbreak-scientists-say-not-new-pandemic/' },
+    url: 'https://www.statnews.com/2026/05/07/hantavirus-outbreak-key-takeaways-who-cruise-ship-briefing/' },
   { source: 'Al Jazeera', tag: 'News', tagClass: 'source-tag-news', favicon: 'https://www.google.com/s2/favicons?domain=aljazeera.com&sz=64',
-    title: 'WHO confirms five cases of hantavirus linked to cruise ship',
-    excerpt: 'Al Jazeera covers the WHO update, the eight-case total, and the ongoing investigation across Cape Verde and the Canary Islands.',
-    date: 'May 7, 2026',
-    url: 'https://www.aljazeera.com/news/2026/5/7/who-confirms-five-cases-of-hantavirus-linked-to-cruise-ship' },
+    title: 'UK identifies new suspected hantavirus case on remote island',
+    excerpt: 'Al Jazeera reports the UK Health Security Agency notification of a suspected ninth case located on Tristan da Cunha.',
+    date: 'May 8, 2026',
+    url: 'https://www.aljazeera.com/news/2026/5/8/hantavirus-cases-rise-on-cruise-ship-as-uk-tracks-nationals' },
   { source: 'CNN', tag: 'News', tagClass: 'source-tag-news', favicon: 'https://www.google.com/s2/favicons?domain=cnn.com&sz=64',
-    title: 'From US to Singapore, countries race to track hantavirus',
-    excerpt: 'CNN maps the global contact-tracing operation now underway across at least eight countries and multiple US states.',
-    date: 'May 7, 2026',
-    url: 'https://www.cnn.com/2026/05/07/world/hantavirus-ship-tenerife-outbreak-intl' },
+    title: 'What the numbers tell us about hantavirus',
+    excerpt: 'CNN walks through case counts, mortality data and historical baselines to put the MV Hondius cluster in proper context.',
+    date: 'May 8, 2026',
+    url: 'https://www.cnn.com/2026/05/08/health/hantavirus-by-the-numbers' },
   { source: 'TIME', tag: 'News', tagClass: 'source-tag-news', favicon: 'https://www.google.com/s2/favicons?domain=time.com&sz=64',
-    title: 'What Countries Are Linked to the Hantavirus Outbreak?',
-    excerpt: 'TIME assembles the full country list and explains how passengers have dispersed from the original cluster.',
+    title: "The Hantavirus Outbreak Is Serious. But It's No COVID, Health Officials Say",
+    excerpt: 'TIME interviews public-health leaders who emphasise that this outbreak, while consequential, does not resemble a pandemic-scale event.',
     date: 'May 7, 2026',
-    url: 'https://time.com/article/2026/05/07/countries-hantavirus-hondius-cruise-ship/' },
+    url: 'https://time.com/article/2026/05/07/hantavirus-outbreak-andes-virus-not-covid/' },
   { source: 'Washington Post', tag: 'News', tagClass: 'source-tag-news', favicon: 'https://www.google.com/s2/favicons?domain=washingtonpost.com&sz=64',
-    title: 'Authorities scramble to limit hantavirus outbreak, trace contacts around globe',
-    excerpt: 'Washington Post examines the international scramble and the practical challenges of cross-border contact tracing.',
+    title: 'A timeline of the cruise ship hantavirus outbreak and when passengers fell sick',
+    excerpt: 'Washington Post reconstructs the full sequence of events from departure in Ushuaia through the planned arrival in Tenerife.',
     date: 'May 7, 2026',
-    url: 'https://www.washingtonpost.com/health/2026/05/07/hantavirus-outbreak-cruise-tracing-contacts/' },
+    url: 'https://www.washingtonpost.com/world/2026/05/07/hantavirus-cruise-ship-timeline-events/1d7b2b8e-4a43-11f1-a119-857cd2bf4fd4_story.html' },
   { source: 'BBC News', tag: 'News', tagClass: 'source-tag-news', favicon: 'https://www.google.com/s2/favicons?domain=bbc.com&sz=64',
     title: 'Hantavirus-hit cruise ship leaves Cape Verde after three evacuated',
     excerpt: 'BBC video report on the ship departing Cape Verde for the Canary Islands following the medical evacuation of three patients.',
     date: 'May 7, 2026',
     url: 'https://www.youtube.com/watch?v=TZc9zwAEtso' },
   { source: 'Nature', tag: 'Science', tagClass: 'source-tag-science', favicon: 'https://www.google.com/s2/favicons?domain=nature.com&sz=64',
-    title: 'Hantavirus crops up on a cruise ship — what scientists are watching',
-    excerpt: 'Nature examines the scientific questions virologists are asking, including whether human-to-human transmission can be confirmed.',
-    date: 'May 7, 2026',
-    url: 'https://www.nature.com/articles/d41586-026-01450-7' },
+    title: 'There is no vaccine for deadly hantavirus: what that means for future outbreaks',
+    excerpt: 'Nature examines why no Western hantavirus vaccine has been licensed and how the MV Hondius cluster is reshaping research priorities.',
+    date: 'May 8, 2026',
+    url: 'https://www.nature.com/articles/d41586-026-01494-9' },
   { source: 'Science (AAAS)', tag: 'Science', tagClass: 'source-tag-science', favicon: 'https://www.google.com/s2/favicons?domain=science.org&sz=64',
-    title: "Cruise ship's hantavirus outbreak puts researchers in uncharted territory",
-    excerpt: 'Science magazine on the unprecedented research challenges of investigating a closed-environment Andes virus cluster.',
+    title: 'What to do with the passengers on the cruise ship hit by hantavirus?',
+    excerpt: 'Science / AAAS canvasses experts on the practical and ethical questions of managing approximately 150 asymptomatic passengers.',
     date: 'May 7, 2026',
-    url: 'https://www.science.org/content/article/cruise-ship-s-hantavirus-outbreak-puts-researchers-uncharted-territory' },
+    url: 'https://www.science.org/content/article/what-do-passengers-cruise-ship-hit-hantavirus' },
   { source: 'Live Science', tag: 'Science', tagClass: 'source-tag-science', favicon: 'https://www.google.com/s2/favicons?domain=livescience.com&sz=64',
-    title: 'Andes virus — the only hantavirus that can spread between people — identified as culprit',
-    excerpt: 'Live Science explains the genome sequencing result that confirmed the Andes virus strain in the MV Hondius cluster.',
-    date: 'May 7, 2026',
-    url: 'https://www.livescience.com/health/viruses-infections-disease/andes-virus-the-only-hantavirus-strain-that-can-spread-between-people-identified-as-culprit-on-cruise-ship' },
+    title: 'Hantavirus cruise LIVE · 5 US states monitoring, controlled evacuation in Spain',
+    excerpt: 'Live Science live-blog of the May 8 developments, including expanded US monitoring and Spain preparing for a controlled evacuation.',
+    date: 'May 8, 2026',
+    url: 'https://www.livescience.com/health/live/hantivirus-cruise-friday-may-8' },
 ];
 
 const SIDEBAR_LINKS = [
-  { num: '01', title: 'Eight Cases, Eight Countries', date: 'Breaking · May 7, 2026', postIndex: 0 },
-  { num: '02', title: 'Returned From South Atlantic? Self-Monitor Guide', date: 'Health Tips · May 7, 2026', postIndex: 1 },
-  { num: '03', title: 'MV Hondius Cluster Explainer', date: 'Breaking · May 2026', postIndex: 2 },
-  { num: '04', title: 'Andes vs. Sin Nombre Virus', date: 'Science Brief', postIndex: 4 },
-  { num: '05', title: 'Is a Vaccine Coming in 2026?', date: 'Research Update', postIndex: 10 },
+  { num: '01', title: 'CDC Activates Level 3 · 9 Cases', date: 'Breaking · May 8, 2026', postIndex: 0 },
+  { num: '02', title: 'Two Labs Confirm Andes Virus', date: 'Science · May 8, 2026', postIndex: 1 },
+  { num: '03', title: 'Eight Cases, Eight Countries', date: 'Breaking · May 7, 2026', postIndex: 2 },
+  { num: '04', title: 'MV Hondius Cluster Explainer', date: 'Breaking · May 2026', postIndex: 4 },
+  { num: '05', title: 'Andes vs. Sin Nombre Virus', date: 'Science Brief', postIndex: 6 },
 ];
 
 const SYMPTOMS = [
