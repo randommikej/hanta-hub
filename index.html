@@ -73,6 +73,7 @@
 }
 </script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -541,40 +542,160 @@
     font-size: .78rem; color: #78350f;
   }
 
-  /* ─── MAP ─── */
+  /* ─── MAP (Leaflet) ─── */
   .map-section { margin-bottom: 40px; }
   .map-section h3 { font-family: var(--font-display); font-size: 1.2rem; color: var(--navy); margin-bottom: 8px; }
   .map-section p { font-size: .82rem; color: var(--gray-600); margin-bottom: 16px; }
-  .map-wrapper {
-    background: #f0f7ff;
+  .map-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(280px, 1fr);
+    gap: 18px;
+    align-items: stretch;
+  }
+  .map-canvas {
+    position: relative;
     border: 1px solid var(--gray-200);
     border-radius: 16px;
     overflow: hidden;
-    position: relative;
+    background: #eff6ff;
+    min-height: 480px;
+    box-shadow: 0 1px 2px rgba(15,23,42,.04);
   }
-  .map-wrapper svg { display: block; width: 100%; height: auto; }
+  .leaflet-host { width: 100%; height: 480px; }
+  .map-loading {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    color: var(--gray-600); font-size: .85rem; background: rgba(248,250,252,.85); z-index: 5;
+  }
   .map-legend {
-    display: flex; gap: 20px; flex-wrap: wrap;
-    padding: 12px 20px; background: var(--white);
+    display: flex; gap: 14px; flex-wrap: wrap;
+    padding: 10px 16px; background: var(--white);
     border-top: 1px solid var(--gray-200);
+    align-items: center;
   }
   .legend-item { display: flex; align-items: center; gap: 8px; font-size: .75rem; color: var(--gray-600); }
-  .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+  .legend-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
   .l-active { background: #dc2626; box-shadow: 0 0 0 3px rgba(220,38,38,.25); }
   .l-watch { background: #d97706; }
   .l-endemic { background: #3b82c4; }
   .l-low { background: #d1d5db; }
-
-  /* Tooltip */
-  .map-tooltip {
-    position: absolute; background: var(--navy); color: var(--white);
-    padding: 8px 14px; border-radius: 8px; font-size: .78rem; pointer-events: none;
-    opacity: 0; transition: opacity .15s; white-space: nowrap; z-index: 10;
-    box-shadow: 0 4px 16px rgba(0,0,0,.3);
+  .map-reset {
+    margin-left: auto; cursor: pointer; color: var(--blue);
+    border: 1px solid var(--gray-200); border-radius: 999px;
+    padding: 4px 12px; transition: background .15s, color .15s;
+    user-select: none;
   }
-  .map-tooltip strong { display: block; font-size: .85rem; margin-bottom: 2px; }
+  .map-reset:hover { background: var(--sky-light); color: var(--blue-mid); }
 
-  .map-region { cursor: pointer; }
+  /* Custom Leaflet markers */
+  .hh-divicon { background: transparent !important; border: none !important; }
+  .hh-marker {
+    --mc: #3b82c4;
+    position: relative; width: 14px; height: 14px;
+    transform: translate(-7px, -7px);
+  }
+  .hh-marker-dot {
+    position: absolute; inset: 0; width: 14px; height: 14px;
+    border-radius: 50%; border: 2px solid white;
+    box-shadow: 0 1px 3px rgba(15,23,42,.4);
+    background: var(--mc);
+    transition: transform .15s ease;
+  }
+  .hh-marker:hover .hh-marker-dot { transform: scale(1.3); }
+  .hh-marker-label {
+    position: absolute; left: 18px; top: -4px;
+    font-family: var(--font-body); font-size: 11px; font-weight: 600; color: #0a1628;
+    background: rgba(255,255,255,.92); padding: 2px 8px; border-radius: 999px;
+    border: 1px solid rgba(15,23,42,.12); white-space: nowrap; pointer-events: none;
+    opacity: 0; transition: opacity .15s; box-shadow: 0 2px 6px rgba(15,23,42,.1);
+  }
+  .hh-marker:hover .hh-marker-label,
+  .hh-marker-active .hh-marker-label { opacity: 1; }
+  .hh-marker-active .hh-marker-dot { width: 18px; height: 18px; transform: translate(-2px, -2px); }
+  .hh-marker-pulse {
+    position: absolute; inset: 0; width: 14px; height: 14px;
+    border-radius: 50%; background: #dc2626;
+    animation: hhPulse 1.8s ease-out infinite;
+    opacity: .7;
+  }
+  @keyframes hhPulse {
+    0% { transform: scale(0.6); opacity: 0.7; }
+    80% { transform: scale(2.6); opacity: 0; }
+    100% { transform: scale(2.6); opacity: 0; }
+  }
+
+  /* Detail card */
+  .map-detail {
+    --accent: #1a4480;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 16px;
+    padding: 22px 22px 18px;
+    box-shadow: 0 1px 2px rgba(15,23,42,.04);
+    display: flex; flex-direction: column; gap: 6px;
+    position: relative; overflow: hidden;
+    min-height: 480px;
+  }
+  .map-detail::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+    background: var(--accent);
+  }
+  .map-detail-status {
+    font-size: .7rem; letter-spacing: .12em; text-transform: uppercase;
+    font-weight: 700; color: var(--accent); margin-bottom: 6px;
+  }
+  .map-detail-title {
+    font-family: var(--font-display); font-size: 1.5rem; color: var(--navy);
+    line-height: 1.15; margin-bottom: 2px !important;
+  }
+  .map-detail-region { font-size: .82rem; color: var(--gray-600); margin-bottom: 12px; }
+  .map-detail-stat {
+    font-size: 1.4rem; font-weight: 600; color: var(--navy); line-height: 1.1;
+  }
+  .map-detail-sub { font-size: .82rem; color: var(--gray-600); margin-bottom: 14px; }
+  .map-detail-notes {
+    font-size: .85rem; line-height: 1.55; color: var(--gray-800);
+    margin-bottom: 14px !important;
+  }
+  .map-detail-pillrow {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    border-top: 1px solid var(--gray-100); padding-top: 12px;
+    margin-bottom: 10px;
+  }
+  .map-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--gray-50); border: 1px solid var(--gray-200);
+    border-radius: 999px; padding: 4px 10px;
+    font-size: .72rem; color: var(--gray-800); cursor: pointer;
+    transition: background .15s, border-color .15s, transform .15s;
+    font-family: var(--font-body);
+  }
+  .map-pill:hover { background: var(--sky-light); border-color: var(--blue-light); transform: translateY(-1px); }
+  .map-pill-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .map-detail-hint {
+    margin-top: auto; font-size: .7rem; color: var(--gray-400); letter-spacing: .02em;
+  }
+
+  /* Leaflet tweaks for our look */
+  .leaflet-container {
+    font-family: var(--font-body) !important;
+    background: #eff6ff !important;
+  }
+  .leaflet-control-attribution {
+    font-size: 9px !important; background: rgba(255,255,255,.85) !important;
+  }
+  .leaflet-control-zoom a {
+    background: var(--white) !important; color: var(--navy) !important;
+    border-color: var(--gray-200) !important;
+  }
+  .leaflet-control-zoom a:hover { background: var(--sky-light) !important; }
+
+  @media (max-width: 880px) {
+    .map-shell { grid-template-columns: 1fr; }
+    .map-detail { min-height: auto; }
+    .leaflet-host { height: 360px; }
+    .map-canvas { min-height: 360px; }
+    .hh-marker-label { display: none; }
+  }
 
   /* Modal */
   .article-modal-overlay {
@@ -722,6 +843,7 @@
 <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script type="text/babel" data-type="module">
 const { useState, useEffect, useRef } = React;
@@ -1134,6 +1256,31 @@ const SYMPTOMS = [
   { icon: '💔', text: 'Low blood pressure' },
 ];
 
+const MAP_MARKERS = [
+  { id: 'hondius', lat: 22.0, lng: -22.0, name: 'MV Hondius', region: 'Mid-Atlantic · en route to Tenerife', status: 'active', cases: '9 cases · 3 deaths', subtitle: 'Active cluster · Andes virus', notes: '6 PCR-confirmed · 3 suspected. Expected to dock at Tenerife (Port of Granadilla) on Sunday. 146 people from 23 nationalities aboard.', flag: '🚢', priority: true },
+  { id: 'ar', lat: -45.0, lng: -69.0, name: 'Argentina (Patagonia)', region: 'Rural Patagonia', status: 'watch', cases: '101 cases since Jun 2025', subtitle: 'Andes virus endemic', notes: 'Roughly double last year. Most exposure occurs in rural and forested areas — long-tailed pygmy rice rat is primary reservoir.', flag: '🇦🇷' },
+  { id: 'cl', lat: -41.5, lng: -72.7, name: 'Chile', region: 'Andean / southern Chile', status: 'watch', cases: 'Endemic', subtitle: 'Shared risk with Argentina', notes: 'Andes virus historically documented in family and household clusters. Sporadic cases each year.', flag: '🇨🇱' },
+  { id: 'za', lat: -26.2, lng: 28.0, name: 'South Africa', region: 'Johannesburg', status: 'watch', cases: '1 critical case', subtitle: 'NICD reference lab', notes: 'British national in ICU. NICD South Africa is the lead laboratory for the cluster and confirmed Andes virus by PCR.', flag: '🇿🇦' },
+  { id: 'nl', lat: 52.4, lng: 4.9, name: 'Netherlands', region: 'Amsterdam region', status: 'watch', cases: '3 patients in care', subtitle: 'Medical evacuation hub', notes: "Three evacuated patients including the ship's doctor receiving care. Doctor reportedly improving.", flag: '🇳🇱' },
+  { id: 'es', lat: 28.4636, lng: -16.2518, name: 'Tenerife (Spain)', region: 'Canary Islands', status: 'watch', cases: 'Inbound', subtitle: 'Receiving MV Hondius Sunday', notes: 'Port of Granadilla. 14 Spanish nationals will be transferred to a military hospital; other passengers repatriated under WHO/ECDC coordination.', flag: '🇪🇸' },
+  { id: 'ch', lat: 46.2, lng: 6.15, name: 'Geneva (Switzerland)', region: 'Geneva University Hospitals', status: 'watch', cases: '1 case', subtitle: 'Co-confirmation lab', notes: 'Geneva University Hospitals (HUG) independently confirmed Andes virus, reinforcing the NICD result.', flag: '🇨🇭' },
+  { id: 'tdc', lat: -37.105, lng: -12.288, name: 'Tristan da Cunha', region: 'British Overseas Territory', status: 'watch', cases: 'Suspected case', subtitle: 'UKHSA notification · May 8', notes: 'British national on remote island. MV Hondius port of call earlier in the itinerary. Sample sent for laboratory confirmation.', flag: '🇬🇧' },
+  { id: 'cv', lat: 14.93, lng: -23.51, name: 'Praia, Cape Verde', region: 'Departure point', status: 'watch', cases: 'Logistics hub', subtitle: 'Ship anchored offshore', notes: 'Cape Verde authorities isolated MV Hondius offshore for several days before departure for the Canary Islands.', flag: '🇨🇻' },
+  { id: 'us', lat: 35.085, lng: -106.65, name: 'United States (SW)', region: 'New Mexico / Four Corners', status: 'endemic', cases: '<1,000 total since 1993', subtitle: 'Sin Nombre virus endemic', notes: 'AZ, CA, GA, TX, VA monitoring returned MV Hondius passengers. CDC EOC activated at Level 3 (lowest tier).', flag: '🇺🇸' },
+  { id: 'eu', lat: 60.1, lng: 18.6, name: 'Northern Europe', region: 'Scandinavia', status: 'endemic', cases: '~1,000 cases/year', subtitle: 'Puumala & Dobrava strains', notes: 'Endemic in Scandinavia, Germany, the Balkans. Most cases are mild Nephropathia Epidemica with kidney involvement.', flag: '🇪🇺' },
+  { id: 'cn', lat: 39.9, lng: 116.4, name: 'China & East Asia', region: 'East Asia region', status: 'endemic', cases: '~10,000 cases/year', subtitle: 'HFRS predominant', notes: 'Hantaan and Seoul strains dominant. China is the only country with a licensed hantavirus vaccine, not available in Western countries.', flag: '🇨🇳' },
+];
+
+const MAP_TRACK = [
+  [-54.81, -68.30],   // Ushuaia
+  [-54.43, -36.59],   // South Georgia
+  [-37.105, -12.288], // Tristan da Cunha
+  [-15.97, -5.72],    // Saint Helena
+  [14.93, -23.51],    // Praia, Cape Verde
+  [22.0, -22.0],      // Current position (mid-Atlantic)
+  [28.4636, -16.2518] // Tenerife (planned)
+];
+
 const STATUS_LABELS = {
   active: '🔴 ACTIVE',
   watch: '🟡 WATCH',
@@ -1165,138 +1312,139 @@ function Nav({ active, onChange }) {
   );
 }
 
-function WorldMap() {
-  const wrapperRef = useRef(null);
-  const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0, name: '', cases: '', note: '', status: '' });
+function statusToColor(s) {
+  return s === 'active' ? '#dc2626' : s === 'watch' ? '#d97706' : s === 'endemic' ? '#3b82c4' : '#94a3b8';
+}
 
-  const handleEnter = (data) => (e) => {
-    setTooltip(t => ({ ...t, visible: true, ...data }));
-  };
-  const handleMove = (e) => {
-    const rect = wrapperRef.current.getBoundingClientRect();
-    let x = e.clientX - rect.left + 12;
-    let y = e.clientY - rect.top - 10;
-    if (x + 220 > rect.width) x = e.clientX - rect.left - 225;
-    setTooltip(t => ({ ...t, x, y }));
-  };
-  const handleLeave = () => setTooltip(t => ({ ...t, visible: false }));
-
-  const region = (props, children) => (
-    <g
-      className="map-region"
-      onMouseEnter={handleEnter(props)}
-      onMouseMove={handleMove}
-      onMouseLeave={handleLeave}
-    >
-      {children}
-    </g>
+function buildMarkerIcon(m) {
+  if (!window.L) return null;
+  const color = statusToColor(m.status);
+  const isActive = !!m.priority;
+  const ring = isActive ? '<span class="hh-marker-pulse" style="background:' + color + '"></span>' : '';
+  const html = (
+    '<div class="hh-marker' + (isActive ? ' hh-marker-active' : '') + '" style="--mc:' + color + '">' +
+      ring +
+      '<span class="hh-marker-dot" style="background:' + color + '"></span>' +
+      '<span class="hh-marker-label">' + (m.flag || '') + ' ' + m.name + '</span>' +
+    '</div>'
   );
+  return window.L.divIcon({
+    className: 'hh-divicon',
+    html,
+    iconSize: [12, 12],
+    iconAnchor: [6, 6]
+  });
+}
+
+function WorldMap() {
+  const containerRef = useRef(null);
+  const mapRef = useRef(null);
+  const markersRef = useRef([]);
+  const [selectedId, setSelectedId] = useState('hondius');
+  const [mapReady, setMapReady] = useState(false);
+
+  useEffect(() => {
+    if (!window.L || !containerRef.current || mapRef.current) return;
+    const L = window.L;
+    const map = L.map(containerRef.current, {
+      center: [20, -10],
+      zoom: 2,
+      minZoom: 2,
+      maxZoom: 7,
+      worldCopyJump: true,
+      scrollWheelZoom: true,
+      zoomControl: true,
+      attributionControl: true
+    });
+    mapRef.current = map;
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19
+    }).addTo(map);
+
+    // MV Hondius voyage track
+    const track = L.polyline(MAP_TRACK, {
+      color: '#dc2626',
+      weight: 2,
+      opacity: 0.55,
+      dashArray: '6 6',
+      smoothFactor: 1
+    }).addTo(map);
+
+    // Markers
+    MAP_MARKERS.forEach(m => {
+      const icon = buildMarkerIcon(m);
+      if (!icon) return;
+      const marker = L.marker([m.lat, m.lng], { icon, riseOnHover: true, title: m.name });
+      marker.on('click', () => {
+        setSelectedId(m.id);
+        map.flyTo([m.lat, m.lng], Math.max(map.getZoom(), 4), { duration: 0.7 });
+      });
+      marker.addTo(map);
+      markersRef.current.push({ id: m.id, marker });
+    });
+
+    setMapReady(true);
+
+    // Refresh on resize for responsive layouts
+    setTimeout(() => map.invalidateSize(), 250);
+
+    return () => {
+      map.remove();
+      mapRef.current = null;
+      markersRef.current = [];
+    };
+  }, []);
+
+  const selected = MAP_MARKERS.find(m => m.id === selectedId) || MAP_MARKERS[0];
+  const statusLabel = STATUS_LABELS[selected.status] || selected.status;
+  const accent = statusToColor(selected.status);
+
+  const focusMarker = (m) => {
+    setSelectedId(m.id);
+    if (mapRef.current) {
+      mapRef.current.flyTo([m.lat, m.lng], Math.max(mapRef.current.getZoom(), 4), { duration: 0.7 });
+    }
+  };
+  const resetView = () => {
+    setSelectedId('hondius');
+    if (mapRef.current) mapRef.current.flyTo([20, -10], 2, { duration: 0.7 });
+  };
 
   return (
     <div className="map-section">
-      <div className="map-wrapper" ref={wrapperRef}>
-        <div
-          className="map-tooltip"
-          style={{ opacity: tooltip.visible ? 1 : 0, left: tooltip.x + 'px', top: tooltip.y + 'px' }}
-        >
-          <strong>{tooltip.name}</strong>
-          {STATUS_LABELS[tooltip.status] || tooltip.status} · {tooltip.cases}
-          <br />
-          <span style={{ opacity: .75, fontSize: '.7rem' }}>{tooltip.note}</span>
+      <div className="map-shell">
+        <div className="map-canvas">
+          <div ref={containerRef} className="leaflet-host" aria-label="Interactive global hantavirus map" />
+          {!mapReady && (
+            <div className="map-loading">Loading interactive map…</div>
+          )}
+          <div className="map-legend">
+            <div className="legend-item"><div className="legend-dot l-active"></div> Active outbreak</div>
+            <div className="legend-item"><div className="legend-dot l-watch"></div> Under watch</div>
+            <div className="legend-item"><div className="legend-dot l-endemic"></div> Endemic region</div>
+            <div className="legend-item map-reset" onClick={resetView}>↺ Reset view</div>
+          </div>
         </div>
-        <svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
-          <rect width="1000" height="500" fill="#dbeafe" rx="0" />
-          <line x1="0" y1="250" x2="1000" y2="250" stroke="#bfdbfe" strokeWidth="0.5" />
-          <line x1="500" y1="0" x2="500" y2="500" stroke="#bfdbfe" strokeWidth="0.5" />
-
-          {region({ name: 'United States', status: 'endemic', cases: '<1,000 total', note: 'Sin Nombre virus · SW endemic region' }, <>
-            <path d="M130,100 L230,95 L250,110 L270,105 L285,120 L290,160 L275,180 L260,185 L240,175 L220,185 L200,180 L185,170 L170,175 L155,165 L140,155 L130,140 Z" fill="#3b82c4" stroke="white" strokeWidth="1.5" opacity="0.85" />
-            <text x="205" y="148" fontSize="9" fill="white" fontFamily="sans-serif" textAnchor="middle" fontWeight="600">United States</text>
-          </>)}
-          {region({ name: 'Canada', status: 'low', cases: 'Minimal', note: 'No significant endemic transmission' }, <>
-            <path d="M100,50 L280,45 L290,75 L270,85 L250,80 L230,85 L200,80 L170,85 L150,80 L120,85 L105,75 Z" fill="#e2e8f0" stroke="white" strokeWidth="1.5" opacity="0.85" />
-            <text x="190" y="68" fontSize="8" fill="#64748b" fontFamily="sans-serif" textAnchor="middle">Canada</text>
-          </>)}
-          {region({ name: 'Mexico', status: 'low', cases: 'Sporadic', note: 'Occasional cases, low risk' }, <>
-            <path d="M155,185 L220,185 L230,195 L225,215 L210,225 L190,220 L170,210 L160,200 Z" fill="#e2e8f0" stroke="white" strokeWidth="1.5" opacity="0.85" />
-            <text x="192" y="205" fontSize="8" fill="#64748b" fontFamily="sans-serif" textAnchor="middle">Mexico</text>
-          </>)}
-          {region({ name: 'Central America', status: 'low', cases: 'Minimal', note: 'Low risk, limited surveillance' },
-            <path d="M200,225 L225,220 L235,235 L225,250 L205,248 L200,240 Z" fill="#e2e8f0" stroke="white" strokeWidth="1" opacity="0.8" />
-          )}
-          {region({ name: 'Argentina', status: 'watch', cases: '28 deaths · 2025', note: 'Andes virus endemic · Patagonia' }, <>
-            <path d="M230,310 L265,305 L278,320 L280,350 L275,380 L260,400 L245,410 L235,400 L228,375 L225,345 L228,320 Z" fill="#d97706" stroke="white" strokeWidth="1.5" opacity="0.85" />
-            <text x="253" y="358" fontSize="8" fill="white" fontFamily="sans-serif" textAnchor="middle" fontWeight="600">Argentina</text>
-          </>)}
-          {region({ name: 'Brazil', status: 'low', cases: 'Endemic (HPS)', note: 'Brazilian strain · sporadic cases' }, <>
-            <path d="M230,230 L300,225 L325,240 L330,270 L315,290 L290,300 L265,305 L245,290 L235,270 L228,250 Z" fill="#93c5fd" stroke="white" strokeWidth="1.5" opacity="0.85" />
-            <text x="280" y="265" fontSize="8" fill="white" fontFamily="sans-serif" textAnchor="middle">Brazil</text>
-          </>)}
-          {region({ name: 'Chile', status: 'watch', cases: 'Endemic', note: 'Andes virus · shared risk with Argentina' }, <>
-            <path d="M220,300 L235,305 L232,345 L228,380 L223,400 L215,395 L210,360 L212,330 Z" fill="#d97706" stroke="white" strokeWidth="1.5" opacity="0.85" />
-            <text x="221" y="348" fontSize="7" fill="white" fontFamily="sans-serif" textAnchor="middle">Chile</text>
-          </>)}
-          {region({ name: 'Colombia / Peru', status: 'low', cases: 'Sporadic', note: 'Low endemic risk' },
-            <path d="M210,230 L235,228 L240,250 L232,270 L215,265 L205,250 Z" fill="#e2e8f0" stroke="white" strokeWidth="1" opacity="0.8" />
-          )}
-          {region({ name: 'Europe', status: 'endemic', cases: '~1,000 cases/yr', note: 'Puumala & Dobrava · Scandinavia, Balkans' }, <>
-            <path d="M455,60 L520,55 L540,70 L535,95 L520,105 L500,110 L480,105 L462,95 L455,80 Z" fill="#3b82c4" stroke="white" strokeWidth="1.5" opacity="0.85" />
-            <text x="497" y="85" fontSize="8" fill="white" fontFamily="sans-serif" textAnchor="middle" fontWeight="600">Europe</text>
-          </>)}
-          {region({ name: 'South Africa', status: 'watch', cases: '1 critical case', note: 'British national in ICU · linked to MV Hondius' }, <>
-            <path d="M500,290 L535,285 L550,300 L548,330 L535,348 L515,350 L498,340 L492,315 Z" fill="#d97706" stroke="white" strokeWidth="1.5" opacity="0.85" />
-            <text x="521" y="320" fontSize="8" fill="white" fontFamily="sans-serif" textAnchor="middle" fontWeight="600">S. Africa</text>
-          </>)}
-          {region({ name: 'Cape Verde (MV Hondius)', status: 'active', cases: '7 cases · 3 deaths', note: 'Active cluster · WHO investigation ongoing' }, <>
-            <circle cx="430" cy="230" r="10" fill="#dc2626" stroke="white" strokeWidth="2" opacity="0.95" />
-            <circle cx="430" cy="230" r="16" fill="none" stroke="#dc2626" strokeWidth="1.5" opacity="0.5">
-              <animate attributeName="r" values="10;22;10" dur="2s" repeatCount="indefinite" />
-              <animate attributeName="opacity" values="0.8;0;0.8" dur="2s" repeatCount="indefinite" />
-            </circle>
-            <text x="430" y="252" fontSize="7" fill="#dc2626" fontFamily="sans-serif" textAnchor="middle" fontWeight="700">MV Hondius</text>
-          </>)}
-          {region({ name: 'Africa (general)', status: 'low', cases: 'Limited data', note: 'Surveillance ongoing' }, <>
-            <path d="M455,130 L530,125 L555,145 L558,175 L550,205 L535,225 L510,235 L490,230 L470,215 L455,195 L448,165 L450,145 Z" fill="#e2e8f0" stroke="white" strokeWidth="1.5" opacity="0.8" />
-            <text x="503" y="180" fontSize="8" fill="#64748b" fontFamily="sans-serif" textAnchor="middle">Africa</text>
-          </>)}
-          {region({ name: 'China / East Asia', status: 'endemic', cases: '~10,000 cases/yr', note: 'HFRS predominant · Hantaan & Seoul strains' }, <>
-            <path d="M680,70 L790,65 L820,85 L825,115 L810,135 L785,145 L755,140 L730,130 L705,120 L685,105 Z" fill="#3b82c4" stroke="white" strokeWidth="1.5" opacity="0.85" />
-            <text x="755" y="108" fontSize="9" fill="white" fontFamily="sans-serif" textAnchor="middle" fontWeight="600">China / E. Asia</text>
-          </>)}
-          {region({ name: 'Russia / Central Asia', status: 'endemic', cases: 'Thousands/yr', note: 'HFRS · Puumala, Hantaan strains' }, <>
-            <path d="M545,40 L780,35 L800,55 L820,65 L790,65 L680,70 L600,68 L560,60 Z" fill="#60a5fa" stroke="white" strokeWidth="1.5" opacity="0.8" />
-            <text x="680" y="55" fontSize="8" fill="white" fontFamily="sans-serif" textAnchor="middle">Russia / Central Asia</text>
-          </>)}
-          {region({ name: 'South / SE Asia', status: 'low', cases: 'Sporadic', note: 'Seoul virus · rodent-borne' }, <>
-            <path d="M705,140 L780,145 L800,160 L795,185 L775,200 L750,195 L725,180 L705,165 Z" fill="#e2e8f0" stroke="white" strokeWidth="1.5" opacity="0.8" />
-            <text x="752" y="172" fontSize="8" fill="#64748b" fontFamily="sans-serif" textAnchor="middle">SE Asia</text>
-          </>)}
-          {region({ name: 'Middle East', status: 'low', cases: 'Minimal', note: 'Low reported incidence' }, <>
-            <path d="M555,120 L620,115 L640,130 L635,155 L615,165 L590,162 L565,150 L555,135 Z" fill="#e2e8f0" stroke="white" strokeWidth="1" opacity="0.8" />
-            <text x="597" y="142" fontSize="7" fill="#64748b" fontFamily="sans-serif" textAnchor="middle">Mid East</text>
-          </>)}
-          {region({ name: 'Australia / Oceania', status: 'low', cases: 'Minimal', note: 'No significant hantavirus burden' }, <>
-            <path d="M780,240 L850,235 L870,255 L865,280 L845,290 L815,285 L795,270 Z" fill="#e2e8f0" stroke="white" strokeWidth="1.5" opacity="0.8" />
-            <text x="832" y="265" fontSize="8" fill="#64748b" fontFamily="sans-serif" textAnchor="middle">Australia</text>
-          </>)}
-          {region({ name: 'Greenland', status: 'low', cases: 'None', note: 'No reported cases' },
-            <path d="M295,20 L370,18 L380,35 L370,50 L350,55 L320,52 L295,40 Z" fill="#f1f5f9" stroke="white" strokeWidth="1" opacity="0.7" />
-          )}
-          {region({ name: 'Japan / Korea', status: 'endemic', cases: 'Hundreds/yr', note: 'Seoul & Hantaan strains · urban rodent risk' }, <>
-            <path d="M820,90 L850,88 L858,100 L850,115 L835,118 L822,108 Z" fill="#3b82c4" stroke="white" strokeWidth="1" opacity="0.85" />
-            <text x="840" y="103" fontSize="7" fill="white" fontFamily="sans-serif" textAnchor="middle">Japan/Korea</text>
-          </>)}
-
-          <line x1="0" y1="265" x2="1000" y2="265" stroke="#bfdbfe" strokeWidth="0.8" strokeDasharray="4,6" />
-          <text x="8" y="262" fontSize="7" fill="#93c5fd" fontFamily="sans-serif">Equator</text>
-        </svg>
-
-        <div className="map-legend">
-          <div className="legend-item"><div className="legend-dot l-active"></div> Active Outbreak (MV Hondius)</div>
-          <div className="legend-item"><div className="legend-dot l-watch"></div> Under Watch (Argentina, Chile, S. Africa)</div>
-          <div className="legend-item"><div className="legend-dot l-endemic"></div> Endemic Region (US, Europe, China)</div>
-          <div className="legend-item"><div className="legend-dot l-low"></div> Low / No Significant Risk</div>
-        </div>
+        <aside className="map-detail" style={{ '--accent': accent }}>
+          <div className="map-detail-status">{statusLabel}</div>
+          <h3 className="map-detail-title">{selected.flag} {selected.name}</h3>
+          <div className="map-detail-region">{selected.region}</div>
+          <div className="map-detail-stat">{selected.cases}</div>
+          <div className="map-detail-sub">{selected.subtitle}</div>
+          <p className="map-detail-notes">{selected.notes}</p>
+          <div className="map-detail-pillrow">
+            {MAP_MARKERS.filter(m => m.id !== selected.id).slice(0, 6).map(m => (
+              <button key={m.id} className="map-pill" onClick={() => focusMarker(m)}>
+                <span className="map-pill-dot" style={{ background: statusToColor(m.status) }}></span>
+                {m.flag} {m.name}
+              </button>
+            ))}
+          </div>
+          <div className="map-detail-hint">Tip: scroll or pinch to zoom · click a marker for details</div>
+        </aside>
       </div>
     </div>
   );
