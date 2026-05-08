@@ -581,11 +581,14 @@
     display: block; position: fixed; inset: 0; z-index: 999;
     background: rgba(10,22,40,0.7); backdrop-filter: blur(4px);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
   .article-modal-card {
     max-width: 780px; margin: 40px auto; background: white;
     border-radius: 20px; overflow: hidden;
     box-shadow: 0 32px 80px rgba(0,0,0,.3);
+    position: relative;
   }
   .article-modal-header {
     background: linear-gradient(135deg, #0a1628, #1a4480);
@@ -664,10 +667,40 @@
     .blog-featured h2 { font-size: 1.4rem; }
     .blog-post-card { padding: 16px; gap: 12px; }
     .post-icon { font-size: 1.8rem; }
-    .article-modal-card { width: 100%; max-width: 100%; max-height: 100vh; border-radius: 0; margin: 0; }
-    .article-modal-header { padding: 22px 18px 18px; }
+    /* Full-screen modal on mobile · the overlay scrolls (lock body underneath via JS) */
+    .article-modal-overlay {
+      padding: 0;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+    .article-modal-card {
+      width: 100%;
+      max-width: 100%;
+      min-height: 100vh;
+      border-radius: 0;
+      margin: 0;
+      box-shadow: none;
+    }
+    .article-modal-header {
+      padding: 22px 56px 18px 18px;  /* extra right padding so close button doesn't overlap title */
+    }
     .article-modal-title { font-size: 1.4rem; }
     .article-modal-body { padding: 22px 18px; font-size: .95rem; }
+    /* Floating close button — always visible while scrolling on mobile */
+    .article-modal-close {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      z-index: 1001;
+      width: 40px;
+      height: 40px;
+      background: rgba(10,22,40,0.85);
+      border: 1px solid rgba(255,255,255,.25);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 4px 14px rgba(0,0,0,.25);
+    }
+    /* Slightly extra bottom padding so the last paragraph isn't hidden under thumb */
+    .article-modal-body { padding-bottom: 80px; }
     .source-card { min-height: 0; padding: 18px; }
     .source-headline { font-size: 1rem; }
     .source-excerpt { font-size: .8rem; }
@@ -1466,10 +1499,32 @@ function ArticleModal({ post, postIndex, onClose }) {
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') onClose(); };
     document.addEventListener('keydown', onKey);
-    document.body.style.overflow = 'hidden';
+    // iOS-safe scroll lock — position: fixed actually prevents body scroll on iOS Safari
+    const scrollY = window.scrollY;
+    const body = document.body;
+    const original = {
+      position: body.style.position,
+      top: body.style.top,
+      left: body.style.left,
+      right: body.style.right,
+      width: body.style.width,
+      overflow: body.style.overflow,
+    };
+    body.style.position = 'fixed';
+    body.style.top = `-${scrollY}px`;
+    body.style.left = '0';
+    body.style.right = '0';
+    body.style.width = '100%';
+    body.style.overflow = 'hidden';
     return () => {
       document.removeEventListener('keydown', onKey);
-      document.body.style.overflow = '';
+      body.style.position = original.position;
+      body.style.top = original.top;
+      body.style.left = original.left;
+      body.style.right = original.right;
+      body.style.width = original.width;
+      body.style.overflow = original.overflow;
+      window.scrollTo(0, scrollY);
     };
   }, [onClose]);
 
