@@ -1168,10 +1168,10 @@ const NEWS_SOURCES = [
     date: 'May 7, 2026',
     url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON599' },
   { source: 'WHO Press', tag: 'Authority', tagClass: 'source-tag-authority', favicon: 'https://www.google.com/s2/favicons?domain=who.int&sz=64',
-    title: "WHO's response to hantavirus cases linked to a cruise ship",
-    excerpt: 'WHO ships 2,500 diagnostic kits to five countries and confirms public-health risk remains low.',
-    date: 'May 7, 2026',
-    url: 'https://www.who.int/news/item/07-05-2026-who-s-response-to-hantavirus-cases-linked-to-a-cruise-ship' },
+    title: "WHO's response to hantavirus cases linked to a cruise ship · WHO Europe",
+    excerpt: 'WHO Europe regional update reiterating coordinated multi-country response, diagnostic kit deployment, and the low overall risk assessment.',
+    date: 'May 8, 2026',
+    url: 'https://www.who.int/europe/news/item/08-05-2026-who-s-response-to-hantavirus-cases-linked-to-a-cruise-ship' },
   { source: 'CDC', tag: 'Authority', tagClass: 'source-tag-authority', favicon: 'https://www.google.com/s2/favicons?domain=cdc.gov&sz=64',
     title: 'Statement on the M/V Hondius Cruise Ship',
     excerpt: 'CDC confirms US monitoring of returned passengers and reiterates that hantavirus does not spread through casual contact.',
@@ -1778,7 +1778,15 @@ function SourcesSection() {
   const [filter, setFilter] = useState('All');
   const filters = ['All', 'Authority', 'Wire', 'News', 'Science'];
   const filtered = filter === 'All' ? NEWS_SOURCES : NEWS_SOURCES.filter(s => s.tag === filter);
-  const lastUpdated = NEWS_SOURCES[0] ? NEWS_SOURCES[0].date : '';
+  // Pick the most recent date across NEWS_SOURCES rather than relying on index 0,
+  // since the array is in source-display order (WHO first) and may not start with the freshest item.
+  const lastUpdated = (() => {
+    const parsed = NEWS_SOURCES
+      .map(s => ({ date: s.date, t: Date.parse(s.date) }))
+      .filter(x => !isNaN(x.t))
+      .sort((a, b) => b.t - a.t);
+    return parsed.length ? parsed[0].date : '';
+  })();
 
   return (
     <section>
@@ -1794,7 +1802,7 @@ function SourcesSection() {
         <div className="sources-header">
           <div>
             <h2 className="section-title">Global News & Authority Updates</h2>
-            <p className="section-sub">15 sources · headlines refresh daily with each task run.</p>
+            <p className="section-sub">15 sources · headlines updated daily.</p>
           </div>
           <div className="sources-updated"><span></span> Last updated: {lastUpdated}</div>
         </div>
