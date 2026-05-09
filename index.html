@@ -892,12 +892,12 @@ const REGIONS = [
 const US_STATES = ['New Mexico', 'Colorado', 'Arizona', 'California', 'Washington', 'Texas', 'Utah', 'Montana'];
 
 const PRODUCTS = [
-  { img: '😷', imgClass: 'p-img-rose', badge: 'Critical', badgeClass: 'badge-critical', name: 'N95 Respirator Masks (20-Pack)', desc: 'NIOSH-certified N95 respirators filter 95% of airborne particles. Essential when cleaning potentially contaminated areas. CDC-recommended for hantavirus prevention.', price: '$34.99', priceUnit: '/pack', search: 'N95+respirator+masks+NIOSH+certified+20+pack' },
-  { img: '🧤', imgClass: 'p-img-blue', badge: 'Critical', badgeClass: 'badge-critical', name: 'Nitrile Gloves — Heavy Duty (100ct)', desc: 'Powder-free medical-grade nitrile gloves. Puncture-resistant for handling contaminated materials. Avoid contact with rodent urine, droppings, or nesting materials.', price: '$19.99', priceUnit: '/box', search: 'heavy+duty+nitrile+gloves+powder+free+medical+grade+100' },
-  { img: '🧴', imgClass: 'p-img-teal', badge: 'Essential', badgeClass: 'badge-essential', name: 'EPA-Approved Disinfectant Spray', desc: 'Broad-spectrum disinfectant effective against hantavirus. Use before sweeping or vacuuming potentially contaminated areas — never dry sweep, always wet disinfect first.', price: '$12.49', priceUnit: '/bottle', search: 'EPA+approved+disinfectant+spray+hantavirus+hospital+grade' },
-  { img: '🩺', imgClass: 'p-img-sky', badge: 'Essential', badgeClass: 'badge-essential', name: 'Full Body Tyvek Coverall Suit', desc: 'Disposable protective coverall for high-risk cleanup situations. Prevents rodent material contact with skin and clothing. Recommended for cabin or attic cleanouts in endemic areas.', price: '$8.99', priceUnit: '/suit', search: 'DuPont+Tyvek+disposable+coverall+suit+with+hood' },
-  { img: '🧼', imgClass: 'p-img-indigo', badge: 'Recommended', badgeClass: 'badge-recommended', name: 'Antibacterial Hand Sanitizer (1L)', desc: '70% ethanol formula. WHO-recommended hand hygiene solution. For use when soap and water unavailable. Apply after any potential environmental exposure.', price: '$9.99', priceUnit: '/liter', search: 'hand+sanitizer+70+percent+alcohol+1+liter+pump' },
-  { img: '🏥', imgClass: 'p-img-purple', badge: 'Recommended', badgeClass: 'badge-recommended', name: 'Emergency First Aid Kit — Pro', desc: 'Comprehensive 150-piece kit including wound care, sterile gauze, thermal blankets, and CPR mask. For managing symptoms before professional medical care is accessible.', price: '$49.99', priceUnit: '/kit', search: 'emergency+first+aid+kit+150+piece+professional' },
+  { img: '😷', imgClass: 'p-img-rose', badge: 'Critical', badgeClass: 'badge-critical', name: 'N95 Respirator Masks (20-Pack)', desc: 'NIOSH-certified N95 respirators filter 95% of airborne particles. Essential when cleaning potentially contaminated areas. CDC-recommended for hantavirus prevention.', price: '$34.99', priceUnit: '/pack', asin: 'B097HYFCN5' },
+  { img: '🧤', imgClass: 'p-img-blue', badge: 'Critical', badgeClass: 'badge-critical', name: 'Nitrile Gloves — Heavy Duty (100ct)', desc: 'Powder-free medical-grade nitrile gloves. Puncture-resistant for handling contaminated materials. Avoid contact with rodent urine, droppings, or nesting materials.', price: '$19.99', priceUnit: '/box', asin: 'B0BR7SGFCJ' },
+  { img: '🧴', imgClass: 'p-img-teal', badge: 'Essential', badgeClass: 'badge-essential', name: 'EPA-Approved Disinfectant Spray', desc: 'Broad-spectrum disinfectant effective against hantavirus. Use before sweeping or vacuuming potentially contaminated areas — never dry sweep, always wet disinfect first.', price: '$12.49', priceUnit: '/bottle', asin: 'B071ZJ8SFJ' },
+  { img: '🩺', imgClass: 'p-img-sky', badge: 'Essential', badgeClass: 'badge-essential', name: 'Full Body Tyvek Coverall Suit', desc: 'Disposable protective coverall for high-risk cleanup situations. Prevents rodent material contact with skin and clothing. Recommended for cabin or attic cleanouts in endemic areas.', price: '$8.99', priceUnit: '/suit', asin: 'B01JOWAOEG' },
+  { img: '🧼', imgClass: 'p-img-indigo', badge: 'Recommended', badgeClass: 'badge-recommended', name: 'Antibacterial Hand Sanitizer (1L)', desc: '70% ethanol formula. WHO-recommended hand hygiene solution. For use when soap and water unavailable. Apply after any potential environmental exposure.', price: '$9.99', priceUnit: '/liter', asin: 'B0BNP5KYVF' },
+  { img: '🏥', imgClass: 'p-img-purple', badge: 'Recommended', badgeClass: 'badge-recommended', name: 'Emergency First Aid Kit — Pro', desc: 'Comprehensive 150-piece kit including wound care, sterile gauze, thermal blankets, and CPR mask. For managing symptoms before professional medical care is accessible.', price: '$49.99', priceUnit: '/kit', asin: 'B0DB794BKQ' },
 ];
 
 const POSTS = [
@@ -1330,7 +1330,7 @@ const STATUS_LABELS = {
   low: '⚪ LOW RISK',
 };
 
-const amazonSearch = (q) => `https://www.amazon.com/s?k=${q}`;
+const amazonAffiliate = (asin) => `https://www.amazon.com/dp/${asin}?tag=hantahub-20`;
 
 // ──────────────────────────────────────────────────
 // COMPONENTS
@@ -1627,7 +1627,7 @@ function HubSection() {
                 <div className="product-desc">{p.desc}</div>
                 <div className="product-footer">
                   <div className="product-price">{p.price} <small>{p.priceUnit}</small></div>
-                  <a href={amazonSearch(p.search)} target="_blank" rel="nofollow sponsored noopener" className="btn-affiliate">Shop on Amazon →</a>
+                  <a href={amazonAffiliate(p.asin)} target="_blank" rel="nofollow sponsored noopener" className="btn-affiliate">Shop on Amazon →</a>
                 </div>
               </div>
             </div>
