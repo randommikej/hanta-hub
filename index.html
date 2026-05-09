@@ -3,23 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hanta Hub — Global Outbreak Tracker · 9 Cases · 3 Deaths · MV Hondius 2026</title>
+<title>Hanta Hub — Global Outbreak Tracker · 8 Cases · 3 Deaths · MV Hondius Arrives Tenerife</title>
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">%F0%9F%A6%A0</text></svg>'>
-<meta name="description" content="Hanta Hub — live tracker for the 2026 MV Hondius hantavirus outbreak. 9 cases, 3 deaths, CDC Level 3 response, multi-country WHO tracing. Daily updates and 15 global news sources.">
-<meta name="keywords" content="hantavirus, hantavirus outbreak, MV Hondius, outbreak tracker, Andes virus, Sin Nombre virus, HPS, hantavirus pulmonary syndrome, WHO, CDC Level 3, 2026 outbreak, hantavirus prevention, deer mouse, Patagonia, Tenerife, Canary Islands">
+<meta name="description" content="Hanta Hub — live tracker for the 2026 MV Hondius hantavirus outbreak. 8 cases, 3 deaths, ship docks at Tenerife May 10, WHO Director-General on site. Daily updates and 15 global news sources.">
+<meta name="keywords" content="hantavirus, hantavirus outbreak, MV Hondius, outbreak tracker, Andes virus, Sin Nombre virus, HPS, hantavirus pulmonary syndrome, WHO, CDC Level 3, 2026 outbreak, hantavirus prevention, deer mouse, Patagonia, Tenerife, Canary Islands, Granadilla">
 <meta name="author" content="Hanta Hub">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://hantavirussupplies.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Hanta Hub">
 <meta property="og:url" content="https://hantavirussupplies.com/">
-<meta property="og:title" content="Hanta Hub — Global Outbreak Tracker · 9 Cases · 3 Deaths">
-<meta property="og:description" content="Live tracker for the 2026 MV Hondius hantavirus outbreak. CDC Level 3 response, WHO tracing across 8 countries, daily prevention guides, and regional risk profiles.">
+<meta property="og:title" content="Hanta Hub — Global Outbreak Tracker · 8 Cases · 3 Deaths · Tenerife Arrival">
+<meta property="og:description" content="Live tracker for the 2026 MV Hondius hantavirus outbreak. Ship docks at Tenerife Granadilla on May 10, WHO Director-General on site, CDC Level 3 response, multi-country tracing.">
 <meta property="og:image" content="https://hantavirussupplies.com/og-image.png">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Hanta Hub — Global Outbreak Tracker · 9 Cases · 3 Deaths">
-<meta name="twitter:description" content="Live tracker for the 2026 MV Hondius hantavirus cluster. 9 cases, CDC Level 3 response, WHO contact tracing, and prevention guides updated daily.">
+<meta name="twitter:title" content="Hanta Hub — Global Outbreak Tracker · 8 Cases · 3 Deaths · Tenerife Arrival">
+<meta name="twitter:description" content="Live tracker for the 2026 MV Hondius hantavirus cluster. 8 cases, ship arrives Tenerife May 10, WHO Director-General on site, multi-country tracing.">
 <meta name="twitter:image" content="https://hantavirussupplies.com/og-image.png">
 <script type="application/ld+json">
 {
@@ -42,14 +42,14 @@
     },
     {
       "@type": "NewsArticle",
-      "headline": "CDC Activates Level 3 Emergency Response as MV Hondius Hantavirus Cluster Reaches 9 Cases",
-      "datePublished": "2026-05-08",
-      "dateModified": "2026-05-08",
+      "headline": "MV Hondius Approaches Tenerife as Suspected Ninth Hantavirus Case Tests Negative",
+      "datePublished": "2026-05-09",
+      "dateModified": "2026-05-09",
       "author": { "@type": "Organization", "name": "Hanta Hub" },
       "publisher": { "@id": "https://hantavirussupplies.com/#organization" },
       "mainEntityOfPage": "https://hantavirussupplies.com/",
       "image": "https://hantavirussupplies.com/og-image.png",
-      "description": "WHO confirms nine cases (six PCR-confirmed) and three deaths in the MV Hondius hantavirus cluster as the US CDC activates its Emergency Operations Center at Level 3 and the ship sets course for Tenerife."
+      "description": "WHO updates the MV Hondius hantavirus tally to eight cases (six PCR-confirmed Andes virus, two suspected) and three deaths after a suspected ninth case tested negative. The ship is expected to dock at Tenerife Granadilla in the early hours of Sunday."
     },
     {
       "@type": "MedicalCondition",
@@ -853,7 +853,7 @@ const { useState, useEffect, useRef } = React;
 // ──────────────────────────────────────────────────
 
 const HERO_STATS = [
-  { val: '9', label: 'Active Cases', sub: '6 PCR-confirmed · 3 suspected' },
+  { val: '8', label: 'Active Cases', sub: '6 PCR-confirmed · 2 suspected' },
   { val: '3', label: 'Confirmed Deaths', sub: 'MV Hondius cluster · 2026' },
   { val: '60k', label: 'Annual HFRS Cases', sub: 'Estimated global per year' },
   { val: '36%', label: 'Fatality Rate (HPS)', sub: 'Americas · up to 50% in outbreaks' },
@@ -861,9 +861,9 @@ const HERO_STATS = [
 
 const TRACKER_STATS = [
   { kind: 'alert', val: '3', label: 'Deaths · 2026 Cluster', note: 'MV Hondius · Dutch couple + German national' },
-  { kind: 'watch', val: '9', label: 'Active Cases', note: '6 PCR-confirmed · 3 suspected · Andes virus' },
-  { kind: '', val: '8', label: 'Countries Tracking', note: 'NL, UK, DE, Spain, ZA, CV, CH, Singapore + 5 US states' },
-  { kind: '', val: '37 days', label: 'Since Outbreak Began', note: 'Apr 1, 2026 · MV Hondius departed Ushuaia' },
+  { kind: 'watch', val: '8', label: 'Active Cases', note: '6 PCR-confirmed · 2 suspected · Andes virus · suspected 9th tested negative' },
+  { kind: '', val: '12', label: 'Countries Tracking', note: 'NL, UK, DE, Spain, ZA, CV, CH, Singapore, Canada, France + 5 US states' },
+  { kind: '', val: '38 days', label: 'Since Outbreak Began', note: 'Apr 1, 2026 · MV Hondius departed Ushuaia' },
 ];
 
 const TIMELINE = [
@@ -874,15 +874,16 @@ const TIMELINE = [
   { date: 'May 3, 2026', title: '3rd Death — German National', desc: 'German passenger dies on board. Ship anchors off Praia, Cape Verde.', dotClass: 'death', badge: 'Death', badgeClass: 'badge-death' },
   { date: 'May 6, 2026', title: 'Evacuation to Netherlands Underway', desc: '3 patients including ship’s doctor evacuated to Netherlands. Ship’s doctor condition improving.', badge: 'Evac', badgeClass: 'badge-now' },
   { date: 'May 7, 2026', title: '8th Case Confirmed · Multi-Country Tracing Expands', desc: 'WHO ships 2,500 diagnostic kits to 5 countries. 8 nations coordinating: NL, UK, DE, Spain, South Africa, Cape Verde, Switzerland, Singapore. US states (Arizona, Georgia) monitoring returned passengers.', badge: 'Confirmed', badgeClass: 'badge-confirmed' },
-  { date: 'May 8, 2026 · Now', title: '9th Case Suspected · CDC Activates Level 3 · Ship Heads to Tenerife', desc: 'UKHSA flags a suspected 9th case on Tristan da Cunha. US CDC activates its Emergency Operations Center at Level 3 (lowest tier). NICD South Africa and Geneva University Hospitals independently confirm Andes virus. MV Hondius en route to Tenerife, expected to dock Sunday.', dotClass: 'active', badge: 'Active', badgeClass: 'badge-now' },
+  { date: 'May 8, 2026', title: 'CDC Activates Level 3 · Two Labs Confirm Andes Virus', desc: 'US CDC activates its Emergency Operations Center at Level 3 (lowest tier). NICD South Africa and Geneva University Hospitals independently confirm Andes virus. UKHSA flags a suspected 9th case on Tristan da Cunha (later ruled out).', badge: 'Confirmed', badgeClass: 'badge-confirmed' },
+  { date: 'May 9, 2026 · Now', title: 'Suspected 9th Case Negative · Ship Approaches Tenerife · WHO DG On Site', desc: 'Suspected ninth case (a flight attendant from a contact-tracing flight) tests negative for hantavirus, leaving the cluster at 8 cases (6 PCR-confirmed Andes virus, 2 suspected). MV Hondius nears Granadilla port, Tenerife — expected to dock in the early hours of Sunday May 10. WHO Director-General delivers a message to the people of Tenerife as Spanish authorities prepare a 24-hour evacuation window. 17 American passengers will quarantine in Nebraska after a repatriation flight.', dotClass: 'active', badge: 'Active', badgeClass: 'badge-now' },
 ];
 
 const REGIONS = [
-  { region: '🚢 MV Hondius (En route to Tenerife)', cases: '9 cases · 3 deaths', notes: '6 PCR-confirmed · Andes virus · expected to dock Tenerife Sunday', status: 'Active', statusClass: 'status-active' },
+  { region: '🚢 MV Hondius (Approaching Tenerife)', cases: '8 cases · 3 deaths', notes: '6 PCR-confirmed Andes virus · 2 suspected · docking Granadilla port early Sunday May 10', status: 'Active', statusClass: 'status-active' },
   { region: '🇦🇷 Argentina', cases: '101 cases since Jun 2025', notes: 'Andes virus endemic · rural Patagonia · roughly double last year', status: 'Watch', statusClass: 'status-watch' },
   { region: '🇿🇦 South Africa', cases: '1 critical case', notes: 'British national in ICU Johannesburg · NICD lead lab for cluster', status: 'Watch', statusClass: 'status-watch' },
   { region: '🇳🇱 Netherlands', cases: '3 patients in care', notes: 'Medical evac destination · including ship’s doctor (improving)', status: 'Watch', statusClass: 'status-watch' },
-  { region: '🇪🇸 Spain & 🇨🇭 Switzerland', cases: 'Inbound · 1 confirmed', notes: 'Tenerife receiving MV Hondius Sunday · Geneva University Hospitals co-confirmed Andes virus', status: 'Watch', statusClass: 'status-watch' },
+  { region: '🇪🇸 Spain & 🇨🇭 Switzerland', cases: 'Receiving Sunday · 1 confirmed', notes: 'Granadilla port (Tenerife) ready to receive MV Hondius May 10 · WHO DG on site · Geneva University Hospitals co-confirmed Andes virus', status: 'Watch', statusClass: 'status-watch' },
   { region: '🇺🇸 United States', cases: '<1,000 total cases', notes: 'Sin Nombre · AZ, CA, GA, TX, VA monitoring returned MV Hondius pax · CDC EOC Level 3', status: 'Endemic', statusClass: 'status-endemic' },
   { region: '🇪🇺 Europe', cases: '~1,000 cases/year', notes: 'Puumala & Dobrava strains · Scandinavia, Germany, Balkans', status: 'Endemic', statusClass: 'status-endemic' },
   { region: '🇨🇳 China / Asia', cases: '~10,000 cases/year', notes: 'HFRS predominant · Hantaan & Seoul strains', status: 'Endemic', statusClass: 'status-endemic' },
@@ -900,6 +901,46 @@ const PRODUCTS = [
 ];
 
 const POSTS = [
+  { cat: 'Breaking News', catClass: 'cat-news', date: 'May 9, 2026', readTime: '7 min read',
+    title: 'MV Hondius Approaches Tenerife as Suspected Ninth Hantavirus Case Tests Negative',
+    excerpt: 'A suspected ninth case has been ruled out, leaving the MV Hondius cluster at eight cases and three deaths. The ship is expected to dock at Granadilla port in the early hours of Sunday as the WHO Director-General arrives in Tenerife to oversee disembarkation.',
+    icon: '⚓',
+    body: [
+      ['p', 'May 9, 2026 brought a notable de-escalation in the MV Hondius hantavirus cluster even as the operational tempo on land accelerated. A suspected ninth case — a flight attendant on one of the contact-tracing flights — tested negative for hantavirus, leaving the cluster officially at eight cases (six PCR-confirmed as Andes virus, two suspected) and three deaths. The ship is now nearing the Spanish island of Tenerife, where it is expected to dock at the industrial port of Granadilla in the early hours of Sunday morning.'],
+      ['h3', 'A Negative Test, A Smaller Cluster'],
+      ['p', 'For most of the past 48 hours, headlines centred on a suspected ninth case flagged by health authorities in connection with one of the contact-tracing flights traced after the original Johannesburg-linked cases. PCR testing returned a negative result, and the case has been removed from the active cluster count. The cluster now stands at six PCR-confirmed cases and two suspected (pending laboratory work), with three deaths attributed to the Andes virus strain.'],
+      ['h3', 'A 24-Hour Evacuation Window'],
+      ['p', 'Spanish authorities have set a strict 24-hour window for evacuating the ship after it docks. The head of Spain\'s emergency services has stated that all individuals currently aboard are asymptomatic and that all areas the passengers will transit through have been isolated, with no contact with civilian personnel. The 14 Spanish nationals on board will be transferred to a military hospital. Other passengers — including 17 Americans — will be repatriated by their respective home countries; the Americans are expected to quarantine in Nebraska under a coordinated US plan. If the 24-hour window slips, weather forecasts suggest delays of days or even weeks before another safe disembarkation opportunity emerges.'],
+      ['h3', 'WHO Director-General Arrives'],
+      ['p', 'The WHO Director-General has arrived in Tenerife to oversee the disembarkation operation and issued a message directly to the people of Tenerife thanking them for their patience and reaffirming that the global public health risk remains low. WHO has updated its Disease Outbreak News (DON600 supersedes DON599) to reflect the current eight-case picture and the maturing multi-country contact-tracing operation.'],
+      ['h3', 'Local Concerns and Protests'],
+      ['p', 'Not everyone in Tenerife welcomes the arrival. Dock workers gathered outside the Canary Islands\' parliament in Santa Cruz to protest, with port workers\' union representatives expressing unhappiness about being asked to work near the vessel without what they considered adequate safety information or special protective measures. Spanish health authorities have responded that the operation has been designed precisely to avoid exposing port workers and the public, with the ship anchoring offshore and passengers being ferried to a fully cordoned-off zone within the industrial port.'],
+      ['h3', 'What Comes Next'],
+      ['p', 'Beyond Sunday, the focus shifts from acute crisis management to medium-term contact tracing and surveillance. Health officials in at least 12 countries — including Singapore, Canada, and France in addition to the original eight — are monitoring travellers connected to the ship\'s itinerary. WHO has cautioned that, given hantavirus incubation periods of up to eight weeks, additional cases may yet surface even as the ship-based phase of the response winds down. The current trend, however, is one of contained, managed multi-country surveillance rather than uncontrolled escalation.'],
+      ['em', 'Last updated: May 9, 2026. Sources: WHO Disease Outbreak News DON600, WHO Director-General message to Tenerife (May 9), Al Jazeera, NPR, STAT News, CNN, TIME, Live Science, BBC News, NBC News.'],
+    ],
+  },
+  { cat: 'Health Tips', catClass: 'cat-tips', date: 'May 9, 2026', readTime: '6 min read',
+    title: 'For Tenerife Residents and Travellers: What the MV Hondius Arrival Actually Means for You',
+    excerpt: 'The MV Hondius is approaching the Canary Islands, with passengers due to disembark at Granadilla port on Sunday. Here is a calm, practical look at what the arrival does — and does not — mean for residents, port workers, and visitors.',
+    icon: '🧭',
+    body: [
+      ['p', 'The imminent arrival of the MV Hondius at Granadilla port has generated understandable attention in Tenerife and across the Canary Islands. Misinformation has spread quickly, and dock workers have publicly protested. This guide is intended as a calm, evidence-based explanation of what the arrival means in practical terms — and what it does not.'],
+      ['h3', 'How the Operation Is Designed'],
+      ['p', 'The ship is not docking in the cruise terminal in Santa Cruz where most tourists embark. Granadilla is a large industrial port on the south-east of the island used principally for cargo, and the area being used for the disembarkation has been cordoned off. Passengers will be ferried from the ship through a corridor that does not intersect with civilian areas and transferred directly into specialised transport. The 14 Spanish nationals will be taken to a military hospital. Other nationalities will be repatriated under WHO and ECDC coordination, including a planned US repatriation flight to Nebraska.'],
+      ['h3', 'What the Risk Actually Looks Like'],
+      ['p', 'The hantavirus involved in the cluster is the Andes strain. It is the only hantavirus species with documented person-to-person transmission, but that transmission has only ever been seen between very close contacts in prolonged contact — household members, sexual partners, direct caregivers. Casual contact in workplaces, shared transit, or public spaces has not been associated with onward transmission. The natural rodent reservoir for Andes virus is found in southern Argentina and Chile and is not present in Europe.'],
+      ['h3', 'Why Port Workers Have Concerns'],
+      ['p', 'Port workers\' worries are not unreasonable in principle: they are being asked to perform routine work in proximity to a vessel that has been at the centre of an international outbreak. The right response to those concerns is information and protective protocols, which is what Spanish authorities and the WHO Director-General have publicly committed to. Workers in the cordoned area will be issued PPE consistent with hantavirus handling guidance, and direct contact between port workers and passengers is not part of the planned operation.'],
+      ['h3', 'For Residents Outside the Port'],
+      ['p', 'For ordinary residents of Tenerife — anyone not working in the cordoned zone of Granadilla port — your individual risk is essentially unchanged from any day before the ship arrived. Hantavirus does not spread through casual contact, contaminated air over distance, water systems, or food in a developed-country supply chain. There is no reason to alter daily routines, avoid public spaces, or cancel travel within the islands.'],
+      ['h3', 'For Tourists Already Booked'],
+      ['p', 'No travel restrictions have been issued by WHO, ECDC, or Spanish health authorities for travel to the Canary Islands. If you have a trip booked, the practical risk profile of your visit is unchanged. The same applies to flight crews and airline staff transiting through Canary Islands airports — none of whom will have any contact with MV Hondius passengers under the planned operation.'],
+      ['h3', 'When to Pay Closer Attention'],
+      ['p', 'The small group of people who should pay closer attention this week are those who had any direct contact with MV Hondius passengers or crew (a vanishingly small group on Tenerife outside the planned disembarkation operation), and anyone who recently returned from a remote South Atlantic or Patagonian itinerary. For everyone else, the right posture is informed calm — not anxiety. The arrival of the ship is a managed public-health operation, not a community outbreak event.'],
+      ['em', 'Last updated: May 9, 2026. This guide is informational and does not replace medical advice. Sources: WHO Director-General message to Tenerife (May 9), ECDC technical assessment, NICD South Africa, Spanish Ministry of Health.'],
+    ],
+  },
   { cat: 'Breaking News', catClass: 'cat-news', date: 'May 8, 2026', readTime: '7 min read',
     title: 'CDC Activates Level 3 Emergency Response as Hantavirus Cluster Reaches Nine Cases',
     excerpt: 'A suspected ninth case has surfaced on Tristan da Cunha, two laboratories on two continents have independently confirmed Andes virus, and the US Centers for Disease Control has activated its Emergency Operations Center as the MV Hondius sets course for Tenerife.',
@@ -1163,23 +1204,23 @@ const POSTS = [
 
 const NEWS_SOURCES = [
   { source: 'WHO', tag: 'Authority', tagClass: 'source-tag-authority', favicon: 'https://www.google.com/s2/favicons?domain=who.int&sz=64',
-    title: 'Hantavirus cluster linked to cruise ship travel · DON599',
-    excerpt: 'Disease Outbreak News on the multi-country MV Hondius cluster, including case definitions and recommended response.',
-    date: 'May 7, 2026',
-    url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON599' },
+    title: 'Message by the WHO Director-General to the people of Tenerife regarding the hantavirus response',
+    excerpt: 'Director-General thanks Tenerife residents for their patience and reaffirms low overall risk as the MV Hondius approaches Granadilla port.',
+    date: 'May 9, 2026',
+    url: 'https://www.who.int/news/item/09-05-2026-message-by-the-who-director-general-to-the-people-of-tenerife-regarding-the-hantavirus-response' },
   { source: 'WHO Press', tag: 'Authority', tagClass: 'source-tag-authority', favicon: 'https://www.google.com/s2/favicons?domain=who.int&sz=64',
-    title: "WHO's response to hantavirus cases linked to a cruise ship · WHO Europe",
-    excerpt: 'WHO Europe regional update reiterating coordinated multi-country response, diagnostic kit deployment, and the low overall risk assessment.',
+    title: 'Hantavirus cluster linked to cruise ship travel · Disease Outbreak News DON600',
+    excerpt: 'Updated WHO Disease Outbreak News reflecting six laboratory-confirmed and two suspected cases plus three deaths in the multi-country MV Hondius cluster.',
     date: 'May 8, 2026',
-    url: 'https://www.who.int/europe/news/item/08-05-2026-who-s-response-to-hantavirus-cases-linked-to-a-cruise-ship' },
+    url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON600' },
   { source: 'CDC', tag: 'Authority', tagClass: 'source-tag-authority', favicon: 'https://www.google.com/s2/favicons?domain=cdc.gov&sz=64',
-    title: 'Statement on the M/V Hondius Cruise Ship',
-    excerpt: 'CDC confirms US monitoring of returned passengers and reiterates that hantavirus does not spread through casual contact.',
-    date: 'May 7, 2026',
-    url: 'https://www.cdc.gov/media/releases/2026-hantavirus-confirmed-cruise-ship.html' },
+    title: 'CDC Provides Update on Hantavirus Outbreak Linked to M/V Hondius Cruise Ship',
+    excerpt: 'CDC details monitoring of returned passengers across five US states and reiterates that hantavirus does not spread through casual contact.',
+    date: 'May 8, 2026',
+    url: 'https://www.cdc.gov/media/releases/2026/2026-cdc-provides-update-on-hantavirus-outbreak-linked-to-m-v-hondius-cruise-ship.html' },
   { source: 'Africa CDC', tag: 'Authority', tagClass: 'source-tag-authority', favicon: 'https://www.google.com/s2/favicons?domain=africacdc.org&sz=64',
     title: 'Statement on Multi-Country Hantavirus Cluster Associated with Cruise Ship Travel',
-    excerpt: 'Africa CDC details the coordinated response across Cabo Verde, Netherlands, Spain, South Africa, and the United Kingdom.',
+    excerpt: 'Africa CDC outlines the coordinated response across Cabo Verde, Netherlands, Spain, South Africa, and the United Kingdom.',
     date: 'May 7, 2026',
     url: 'https://africacdc.org/news-item/statement-on-multi-country-hantavirus-cluster-associated-with-cruise-ship-travel/' },
   { source: 'ECDC', tag: 'Authority', tagClass: 'source-tag-authority', favicon: 'https://www.google.com/s2/favicons?domain=ecdc.europa.eu&sz=64',
@@ -1188,63 +1229,63 @@ const NEWS_SOURCES = [
     date: 'May 8, 2026',
     url: 'https://www.ecdc.europa.eu/en/infectious-disease-topics/hantavirus-infection/surveillance-and-updates/andes-hantavirus-outbreak' },
   { source: 'NPR', tag: 'Wire', tagClass: 'source-tag-wire', favicon: 'https://www.google.com/s2/favicons?domain=npr.org&sz=64',
-    title: 'Hantavirus: the risks, the science and what you need to know · Short Wave',
-    excerpt: 'NPR Short Wave podcast unpacks the Andes strain, transmission risk, and what is and is not yet known about the MV Hondius cluster.',
+    title: 'Spain readies for evacuations as a hantavirus-hit cruise ship heads for Canary Islands',
+    excerpt: 'NPR reports on Spanish preparations for the MV Hondius arrival at Granadilla port and the planned 24-hour disembarkation window.',
     date: 'May 8, 2026',
-    url: 'https://www.npr.org/2026/05/08/nx-s1-5811917/hantavirus-andres-mvhondius-ship-rodents' },
+    url: 'https://www.npr.org/2026/05/08/g-s1-121055/spain-readies-for-evacuations' },
   { source: 'STAT News', tag: 'Wire', tagClass: 'source-tag-wire', favicon: 'https://www.google.com/s2/favicons?domain=statnews.com&sz=64',
-    title: 'Key takeaways from WHO briefing on hantavirus cruise ship outbreak',
-    excerpt: 'STAT distills the WHO press briefing into actionable points on case definitions, transmission risk, and the contact-tracing operation.',
-    date: 'May 7, 2026',
-    url: 'https://www.statnews.com/2026/05/07/hantavirus-outbreak-key-takeaways-who-cruise-ship-briefing/' },
+    title: 'Spain readies for evacuations as a hantavirus-hit cruise ship heads for the Canary Islands',
+    excerpt: 'STAT News tracks the Spanish evacuation operation and the cordoned-off arrival zone planned at Tenerife\'s Granadilla port.',
+    date: 'May 8, 2026',
+    url: 'https://www.statnews.com/2026/05/08/hantavirus-outbreak-cruise-ship-spain-evacuations-canary-islands/' },
   { source: 'Al Jazeera', tag: 'News', tagClass: 'source-tag-news', favicon: 'https://www.google.com/s2/favicons?domain=aljazeera.com&sz=64',
-    title: 'UK identifies new suspected hantavirus case on remote island',
-    excerpt: 'Al Jazeera reports the UK Health Security Agency notification of a suspected ninth case located on Tristan da Cunha.',
-    date: 'May 8, 2026',
-    url: 'https://www.aljazeera.com/news/2026/5/8/hantavirus-cases-rise-on-cruise-ship-as-uk-tracks-nationals' },
+    title: 'Spain\'s Canary Islands brace for incoming hantavirus-stricken cruise ship',
+    excerpt: 'Al Jazeera covers Tenerife\'s preparations and local protests as the MV Hondius approaches the Granadilla industrial port.',
+    date: 'May 9, 2026',
+    url: 'https://www.aljazeera.com/news/2026/5/9/spains-canary-islands-brace-for-incoming-hantavirus-stricken-cruise-ship' },
   { source: 'CNN', tag: 'News', tagClass: 'source-tag-news', favicon: 'https://www.google.com/s2/favicons?domain=cnn.com&sz=64',
-    title: 'What the numbers tell us about hantavirus',
-    excerpt: 'CNN walks through case counts, mortality data and historical baselines to put the MV Hondius cluster in proper context.',
+    title: 'CDC team to meet Americans on hantavirus-stricken ship as bad weather threatens landing',
+    excerpt: 'CNN reports on the CDC team deploying to Tenerife and the weather risks that could complicate the planned Sunday disembarkation window.',
     date: 'May 8, 2026',
-    url: 'https://www.cnn.com/2026/05/08/health/hantavirus-by-the-numbers' },
+    url: 'https://www.cnn.com/2026/05/08/health/cruise-ship-hantavirus-passengers' },
   { source: 'TIME', tag: 'News', tagClass: 'source-tag-news', favicon: 'https://www.google.com/s2/favicons?domain=time.com&sz=64',
-    title: "The Hantavirus Outbreak Is Serious. But It's No COVID, Health Officials Say",
-    excerpt: 'TIME interviews public-health leaders who emphasise that this outbreak, while consequential, does not resemble a pandemic-scale event.',
-    date: 'May 7, 2026',
-    url: 'https://time.com/article/2026/05/07/hantavirus-outbreak-andes-virus-not-covid/' },
+    title: 'Several U.S. States Monitoring Cruise Passengers as Latest Hantavirus Case Reported',
+    excerpt: 'TIME details US monitoring of returning MV Hondius travellers across Arizona, California, Georgia, Texas and Virginia.',
+    date: 'May 8, 2026',
+    url: 'https://time.com/article/2026/05/08/several-u-s-states-monitoring-cruise-passengers-as-latest-hantavirus-case-reported/' },
   { source: 'Washington Post', tag: 'News', tagClass: 'source-tag-news', favicon: 'https://www.google.com/s2/favicons?domain=washingtonpost.com&sz=64',
-    title: 'A timeline of the cruise ship hantavirus outbreak and when passengers fell sick',
-    excerpt: 'Washington Post reconstructs the full sequence of events from departure in Ushuaia through the planned arrival in Tenerife.',
-    date: 'May 7, 2026',
-    url: 'https://www.washingtonpost.com/world/2026/05/07/hantavirus-cruise-ship-timeline-events/1d7b2b8e-4a43-11f1-a119-857cd2bf4fd4_story.html' },
+    title: 'WHO says hantavirus cruise outbreak is not the next pandemic',
+    excerpt: 'Washington Post reports on WHO\'s assessment that the MV Hondius cluster does not resemble a pandemic-scale event.',
+    date: 'May 8, 2026',
+    url: 'https://www.washingtonpost.com/health/2026/05/08/hantavirus-covid-cruise/' },
   { source: 'BBC News', tag: 'News', tagClass: 'source-tag-news', favicon: 'https://www.google.com/s2/favicons?domain=bbc.com&sz=64',
     title: 'Hantavirus-hit cruise ship leaves Cape Verde after three evacuated',
     excerpt: 'BBC video report on the ship departing Cape Verde for the Canary Islands following the medical evacuation of three patients.',
     date: 'May 7, 2026',
     url: 'https://www.youtube.com/watch?v=TZc9zwAEtso' },
   { source: 'Nature', tag: 'Science', tagClass: 'source-tag-science', favicon: 'https://www.google.com/s2/favicons?domain=nature.com&sz=64',
-    title: 'There is no vaccine for deadly hantavirus: what that means for future outbreaks',
-    excerpt: 'Nature examines why no Western hantavirus vaccine has been licensed and how the MV Hondius cluster is reshaping research priorities.',
+    title: 'Hantavirus crops up on a cruise ship — what scientists are watching',
+    excerpt: 'Nature canvasses virologists on the scientific questions the MV Hondius cluster has surfaced about Andes virus and onboard transmission risk.',
     date: 'May 8, 2026',
-    url: 'https://www.nature.com/articles/d41586-026-01494-9' },
+    url: 'https://www.nature.com/articles/d41586-026-01450-7' },
   { source: 'Science (AAAS)', tag: 'Science', tagClass: 'source-tag-science', favicon: 'https://www.google.com/s2/favicons?domain=science.org&sz=64',
-    title: 'What to do with the passengers on the cruise ship hit by hantavirus?',
-    excerpt: 'Science / AAAS canvasses experts on the practical and ethical questions of managing approximately 150 asymptomatic passengers.',
-    date: 'May 7, 2026',
-    url: 'https://www.science.org/content/article/what-do-passengers-cruise-ship-hit-hantavirus' },
+    title: 'Cruise ship\'s hantavirus outbreak puts researchers in uncharted territory',
+    excerpt: 'Science / AAAS examines the scientific uncertainty around how easily Andes virus can pass between humans in a confined shipboard setting.',
+    date: 'May 8, 2026',
+    url: 'https://www.science.org/content/article/cruise-ship-s-hantavirus-outbreak-puts-researchers-uncharted-territory' },
   { source: 'Live Science', tag: 'Science', tagClass: 'source-tag-science', favicon: 'https://www.google.com/s2/favicons?domain=livescience.com&sz=64',
-    title: 'Hantavirus cruise LIVE · 5 US states monitoring, controlled evacuation in Spain',
-    excerpt: 'Live Science live-blog of the May 8 developments, including expanded US monitoring and Spain preparing for a controlled evacuation.',
+    title: 'Hantavirus cruise LIVE · 5 US states monitoring, American passengers set for repatriation flight',
+    excerpt: 'Live Science live-blog tracking the May 8 developments, including expanded US monitoring and the planned American repatriation operation.',
     date: 'May 8, 2026',
     url: 'https://www.livescience.com/health/live/hantivirus-cruise-friday-may-8' },
 ];
 
 const SIDEBAR_LINKS = [
-  { num: '01', title: 'CDC Activates Level 3 · 9 Cases', date: 'Breaking · May 8, 2026', postIndex: 0 },
-  { num: '02', title: 'Two Labs Confirm Andes Virus', date: 'Science · May 8, 2026', postIndex: 1 },
-  { num: '03', title: 'Eight Cases, Eight Countries', date: 'Breaking · May 7, 2026', postIndex: 2 },
-  { num: '04', title: 'MV Hondius Cluster Explainer', date: 'Breaking · May 2026', postIndex: 4 },
-  { num: '05', title: 'Andes vs. Sin Nombre Virus', date: 'Science Brief', postIndex: 6 },
+  { num: '01', title: 'Ship Approaches Tenerife · 9th Case Negative', date: 'Breaking · May 9, 2026', postIndex: 0 },
+  { num: '02', title: 'What the Tenerife Arrival Means For You', date: 'Health Tips · May 9, 2026', postIndex: 1 },
+  { num: '03', title: 'CDC Activates Level 3 · 9 Cases', date: 'Breaking · May 8, 2026', postIndex: 2 },
+  { num: '04', title: 'Two Labs Confirm Andes Virus', date: 'Science · May 8, 2026', postIndex: 3 },
+  { num: '05', title: 'Eight Cases, Eight Countries', date: 'Breaking · May 7, 2026', postIndex: 4 },
 ];
 
 const SYMPTOMS = [
@@ -1257,7 +1298,7 @@ const SYMPTOMS = [
 ];
 
 const MAP_MARKERS = [
-  { id: 'hondius', lat: 22.0, lng: -22.0, name: 'MV Hondius', region: 'Mid-Atlantic · en route to Tenerife', status: 'active', cases: '9 cases · 3 deaths', subtitle: 'Active cluster · Andes virus', notes: '6 PCR-confirmed · 3 suspected. Expected to dock at Tenerife (Port of Granadilla) on Sunday. 146 people from 23 nationalities aboard.', flag: '🚢', priority: true },
+  { id: 'hondius', lat: 27.5, lng: -17.0, name: 'MV Hondius', region: 'Approaching Tenerife · Canary Islands', status: 'active', cases: '8 cases · 3 deaths', subtitle: 'Active cluster · Andes virus', notes: '6 PCR-confirmed · 2 suspected. Expected to dock at Granadilla port (Tenerife) in the early hours of Sunday May 10. 146 people from 23 nationalities aboard.', flag: '🚢', priority: true },
   { id: 'ar', lat: -45.0, lng: -69.0, name: 'Argentina (Patagonia)', region: 'Rural Patagonia', status: 'watch', cases: '101 cases since Jun 2025', subtitle: 'Andes virus endemic', notes: 'Roughly double last year. Most exposure occurs in rural and forested areas — long-tailed pygmy rice rat is primary reservoir.', flag: '🇦🇷' },
   { id: 'cl', lat: -41.5, lng: -72.7, name: 'Chile', region: 'Andean / southern Chile', status: 'watch', cases: 'Endemic', subtitle: 'Shared risk with Argentina', notes: 'Andes virus historically documented in family and household clusters. Sporadic cases each year.', flag: '🇨🇱' },
   { id: 'za', lat: -26.2, lng: 28.0, name: 'South Africa', region: 'Johannesburg', status: 'watch', cases: '1 critical case', subtitle: 'NICD reference lab', notes: 'British national in ICU. NICD South Africa is the lead laboratory for the cluster and confirmed Andes virus by PCR.', flag: '🇿🇦' },
@@ -1277,7 +1318,8 @@ const MAP_TRACK = [
   [-37.105, -12.288], // Tristan da Cunha
   [-15.97, -5.72],    // Saint Helena
   [14.93, -23.51],    // Praia, Cape Verde
-  [22.0, -22.0],      // Current position (mid-Atlantic)
+  [22.0, -22.0],      // Mid-Atlantic
+  [27.5, -17.0],      // Current position (approaching Tenerife)
   [28.4636, -16.2518] // Tenerife (planned)
 ];
 
