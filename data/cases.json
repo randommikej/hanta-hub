@@ -1,0 +1,39 @@
+{
+  "outbreak": "MV Hondius 2026 hantavirus cluster",
+  "lastUpdated": "2026-05-11",
+  "source": "https://hantavirussupplies.com",
+  "license": "CC BY 4.0 \u2014 please link back to https://hantavirussupplies.com/",
+  "totals": {
+    "cases": 10,
+    "pcrConfirmedAndesVirus": 8,
+    "probable": 2,
+    "deaths": 3,
+    "countriesTracking": 14
+  },
+  "ship": {
+    "name": "MV Hondius",
+    "flag": "Netherlands",
+    "operator": "Oceanwide Expeditions",
+    "passengers": 147,
+    "departed": {
+      "port": "Ushuaia, Argentina",
+      "date": "2026-04-01"
+    },
+    "docked": {
+      "port": "Granadilla, Tenerife, Spain",
+      "date": "2026-05-10"
+    },
+    "destination": {
+      "port": "Rotterdam, Netherlands",
+      "eta": "2026-05-16 (approx)"
+    }
+  },
+  "who": {
+    "riskAssessment": "low",
+    "quarantineRecommendation": "42 days active monitoring",
+    "doNumbers": [
+      "DON599",
+      "DON600"
+    ]
+  }
+}

@@ -522,6 +522,37 @@
   }
   footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
   footer a:hover { color: rgba(255,255,255,0.7); }
+  .topic-hubs {
+    background: var(--gray-50); padding: 56px 40px; border-top: 1px solid var(--gray-200);
+  }
+  .topic-hubs-inner { max-width: 1200px; margin: 0 auto; }
+  .topic-hubs h2 {
+    font-family: var(--font-display); font-size: 1.8rem; color: var(--navy);
+    text-align: center; margin-bottom: 8px;
+  }
+  .topic-hubs .lede { text-align: center; color: var(--gray-600); margin-bottom: 36px; font-size: .95rem; }
+  .topic-hubs-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;
+  }
+  .topic-hub-card {
+    background: white; padding: 24px; border-radius: 14px; border: 1px solid var(--gray-200);
+    transition: transform .15s, box-shadow .15s;
+  }
+  .topic-hub-card:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(10,22,40,.07); border-color: var(--blue-light); }
+  .topic-hub-card h3 {
+    font-family: var(--font-display); font-size: 1.15rem; color: var(--navy); margin-bottom: 6px;
+  }
+  .topic-hub-card p { font-size: .85rem; color: var(--gray-600); margin-bottom: 12px; line-height: 1.5; }
+  .topic-hub-card a {
+    font-size: .82rem; color: var(--blue-mid); font-weight: 600; text-decoration: none;
+    display: inline-block; margin-right: 12px; margin-bottom: 4px;
+  }
+  .topic-hub-card a:hover { text-decoration: underline; }
+  .topic-hub-card .more {
+    display: inline-block; margin-top: 8px; font-size: .78rem; color: var(--blue);
+    font-weight: 600; padding: 4px 10px; background: var(--sky); border-radius: 999px;
+  }
+  @media (max-width: 640px) { .topic-hubs { padding: 36px 16px; } }
 
   /* Animations */
   .fade-in { animation: fadeIn .4s ease; }
@@ -1994,6 +2025,85 @@ function App() {
       {activeSection === 'hub' && <HubSection />}
       {activeSection === 'blog' && <BlogSection onOpenPost={setOpenPostIndex} />}
       {activeSection === 'sources' && <SourcesSection />}
+
+      <section className="topic-hubs">
+        <div className="topic-hubs-inner">
+          <h2>Hantavirus topic hubs</h2>
+          <p className="lede">In-depth guides organised by region, symptom, activity, and the questions people actually search for.</p>
+          <div className="topic-hubs-grid">
+            <div className="topic-hub-card">
+              <h3>By US state</h3>
+              <p>Risk profile, dominant strain, and prevention guidance for all 50 states.</p>
+              <a href="/states/california/">California</a>
+              <a href="/states/new-mexico/">New Mexico</a>
+              <a href="/states/arizona/">Arizona</a>
+              <a href="/states/colorado/">Colorado</a>
+              <a href="/states/texas/">Texas</a>
+              <a href="/states/nebraska/">Nebraska</a>
+              <a href="/states/montana/">Montana</a>
+              <a href="/states/washington/">Washington</a>
+              <br/>
+              <a className="more" href="/states/">Browse all 50 states →</a>
+            </div>
+            <div className="topic-hub-card">
+              <h3>By symptom</h3>
+              <p>When fever, breathing trouble, or muscle aches signal hantavirus rather than flu.</p>
+              <a href="/symptoms/fever/">Fever</a>
+              <a href="/symptoms/shortness-of-breath/">Shortness of breath</a>
+              <a href="/symptoms/muscle-aches/">Muscle aches</a>
+              <a href="/symptoms/headache/">Headache</a>
+              <a href="/symptoms/fatigue/">Fatigue</a>
+              <a href="/symptoms/cough/">Cough</a>
+              <br/>
+              <a className="more" href="/symptoms/">All symptom guides →</a>
+            </div>
+            <div className="topic-hub-card">
+              <h3>By activity</h3>
+              <p>Practical prevention for cabin clean-outs, camping, agriculture, pest control, and more.</p>
+              <a href="/activities/cleaning-rodent-droppings/">Cleaning droppings</a>
+              <a href="/activities/cleaning-cabin/">Cabin clean-out</a>
+              <a href="/activities/camping/">Camping</a>
+              <a href="/activities/agriculture/">Agriculture</a>
+              <a href="/activities/pest-control/">Pest control</a>
+              <a href="/activities/vacation-rental/">Vacation rentals</a>
+              <br/>
+              <a className="more" href="/activities/">All activity guides →</a>
+            </div>
+            <div className="topic-hub-card">
+              <h3>Compare</h3>
+              <p>Hantavirus side-by-side with flu, COVID, plague, and between the major hantavirus species.</p>
+              <a href="/compare/vs-covid/">vs. COVID-19</a>
+              <a href="/compare/vs-flu/">vs. Flu</a>
+              <a href="/compare/hps-vs-hfrs/">HPS vs. HFRS</a>
+              <a href="/compare/andes-vs-sin-nombre/">Andes vs. Sin Nombre</a>
+              <a href="/compare/vs-plague/">vs. Plague</a>
+              <br/>
+              <a className="more" href="/compare/">All comparisons →</a>
+            </div>
+            <div className="topic-hub-card">
+              <h3>Questions</h3>
+              <p>Direct answers to what people are searching: incubation, fatality, vaccines, exposure routes.</p>
+              <a href="/questions/can-hantavirus-spread-person-to-person/">Person-to-person?</a>
+              <a href="/questions/how-long-hantavirus-incubation/">Incubation period?</a>
+              <a href="/questions/hantavirus-fatality-rate/">Fatality rate?</a>
+              <a href="/questions/hantavirus-vaccine/">Is there a vaccine?</a>
+              <a href="/questions/first-signs-of-hantavirus/">First signs?</a>
+              <br/>
+              <a className="more" href="/questions/">All Q&amp;A →</a>
+            </div>
+            <div className="topic-hub-card">
+              <h3>For developers &amp; journalists</h3>
+              <p>Open data feeds and a free embeddable case-counter widget. CC BY 4.0.</p>
+              <a href="/data/cases.json">cases.json</a>
+              <a href="/data/timeline.json">timeline.json</a>
+              <a href="/data/cases.csv">cases.csv</a>
+              <a href="/feed.xml">RSS feed</a>
+              <br/>
+              <a className="more" href="/embed/">Embed the widget →</a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <footer>
         <p>© 2026 Hanta Hub — For informational purposes only. Not medical advice. Data sourced from <a href="https://www.who.int" target="_blank" rel="noopener">WHO</a> · <a href="https://www.cdc.gov" target="_blank" rel="noopener">CDC</a> · <a href="https://africacdc.org" target="_blank" rel="noopener">Africa CDC</a> · <a href="https://hantavirustracker.live" target="_blank" rel="noopener">HantaVirusTracker.live</a></p>

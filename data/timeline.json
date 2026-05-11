@@ -1,0 +1,52 @@
+{
+  "outbreak": "MV Hondius 2026 hantavirus cluster",
+  "lastUpdated": "2026-05-11",
+  "source": "https://hantavirussupplies.com",
+  "events": [
+    {
+      "date": "2026-04-01",
+      "title": "MV Hondius departs Ushuaia",
+      "description": "147 passengers and crew begin a South Atlantic wildlife expedition."
+    },
+    {
+      "date": "2026-04-11",
+      "title": "Index case dies onboard",
+      "description": "Dutch national dies. Remains held in Saint Helena pending repatriation."
+    },
+    {
+      "date": "2026-04-26",
+      "title": "Dutch woman dies \u2014 Johannesburg",
+      "description": "Close contact of index case collapses on Airlink flight. WHO traces 82 passengers and 6 crew."
+    },
+    {
+      "date": "2026-05-02",
+      "title": "WHO notified \u2014 PCR confirmed",
+      "description": "NICD South Africa confirms hantavirus via PCR. British national in ICU Johannesburg."
+    },
+    {
+      "date": "2026-05-03",
+      "title": "Third death \u2014 German national",
+      "description": "German passenger dies on board. Ship anchors off Praia, Cape Verde."
+    },
+    {
+      "date": "2026-05-08",
+      "title": "CDC activates EOC Level 3",
+      "description": "Two labs independently confirm Andes virus."
+    },
+    {
+      "date": "2026-05-09",
+      "title": "WHO Director-General travels to Tenerife",
+      "description": "Suspected 9th case tests negative; cluster stays at 8."
+    },
+    {
+      "date": "2026-05-10",
+      "title": "MV Hondius docks at Tenerife",
+      "description": "Disembarkation begins at Granadilla port. First repatriation flight departs for Madrid."
+    },
+    {
+      "date": "2026-05-11",
+      "title": "French and American passengers test positive",
+      "description": "Cluster rises to 10 cases. French passenger deteriorates in Paris; 17 Americans evaluated at UNMC National Quarantine Unit in Omaha. WHO formalises 42-day monitoring recommendation."
+    }
+  ]
+}
