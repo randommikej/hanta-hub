@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hanta Hub — Global Outbreak Tracker · 10 Cases · 3 Deaths · French Passenger Worsens · US Cohort in Nebraska</title>
+<title>Hanta Hub — Global Outbreak Tracker · 11 Cases · 3 Deaths · Repatriation Complete · Ship Sails for Rotterdam</title>
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">%F0%9F%A6%A0</text></svg>'>
-<meta name="description" content="Hanta Hub — live tracker for the 2026 MV Hondius hantavirus outbreak. 10 cases (8 PCR-confirmed Andes), 3 deaths, French passenger deteriorating in Paris, 17 Americans evaluated in Nebraska.">
+<meta name="description" content="Hanta Hub — live MV Hondius hantavirus outbreak tracker. 11 cases (9 PCR-confirmed Andes virus, 2 probable), 3 deaths, repatriation complete, WHO 42-day monitoring underway.">
 <meta name="keywords" content="hantavirus, hantavirus outbreak, MV Hondius, outbreak tracker, Andes virus, Sin Nombre virus, HPS, hantavirus pulmonary syndrome, WHO, CDC Level 3, 2026 outbreak, hantavirus prevention, Tenerife, Granadilla, Canary Islands, Madrid quarantine, Nebraska quarantine, UNMC, 42-day quarantine">
 <meta name="author" content="Hanta Hub">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -13,13 +13,13 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Hanta Hub">
 <meta property="og:url" content="https://hantavirussupplies.com/">
-<meta property="og:title" content="Hanta Hub — Global Outbreak Tracker · 10 Cases · 3 Deaths · French Passenger Worsens · US Cohort in Nebraska">
-<meta property="og:description" content="Live tracker for the 2026 MV Hondius hantavirus cluster. 10 cases reported as French and American passengers test positive after disembarkation. WHO recommends 42-day active monitoring.">
+<meta property="og:title" content="Hanta Hub — Global Outbreak Tracker · 11 Cases · 3 Deaths · Repatriation Complete · Ship Sails for Rotterdam">
+<meta property="og:description" content="Live tracker for the 2026 MV Hondius hantavirus cluster. 11 cases, 3 deaths, all passengers evacuated as ship sails for Rotterdam under skeleton crew.">
 <meta property="og:image" content="https://hantavirussupplies.com/og-image.png">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Hanta Hub — Global Outbreak Tracker · 10 Cases · 3 Deaths · French Passenger Worsens · US Cohort in Nebraska">
-<meta name="twitter:description" content="Live tracker for the 2026 MV Hondius hantavirus cluster. 10 cases as French and American passengers test positive after Tenerife disembarkation.">
+<meta name="twitter:title" content="Hanta Hub — Global Outbreak Tracker · 11 Cases · 3 Deaths · Repatriation Complete · Ship Sails for Rotterdam">
+<meta name="twitter:description" content="Live tracker for the 2026 MV Hondius hantavirus cluster. 11 cases, 3 deaths after repatriation completes from Tenerife.">
 <meta name="twitter:image" content="https://hantavirussupplies.com/og-image.png">
 <script type="application/ld+json">
 {
@@ -42,9 +42,9 @@
     },
         {
       "@type": "NewsArticle",
-      "headline": "Hantavirus Cluster Rises to 10 · French Passenger Deteriorates in Paris · 17 Americans Evaluated in Nebraska",
-      "datePublished": "2026-05-11",
-      "dateModified": "2026-05-11",
+      "headline": "Hantavirus Cluster Rises to 11 · Repatriation Complete · Ship Sails for Rotterdam Under Skeleton Crew",
+      "datePublished": "2026-05-12",
+      "dateModified": "2026-05-12",
       "author": { "@type": "Organization", "name": "Hanta Hub" },
       "publisher": { "@id": "https://hantavirussupplies.com/#organization" },
       "mainEntityOfPage": "https://hantavirussupplies.com/",
@@ -884,7 +884,7 @@ const { useState, useEffect, useRef } = React;
 // ──────────────────────────────────────────────────
 
 const HERO_STATS = [
-  { val: '10', label: 'Active Cases', sub: '8 PCR-confirmed · 2 probable' },
+  { val: '11', label: 'Active Cases', sub: '9 PCR-confirmed · 2 probable' },
   { val: '3', label: 'Confirmed Deaths', sub: 'MV Hondius cluster · 2026' },
   { val: '60k', label: 'Annual HFRS Cases', sub: 'Estimated global per year' },
   { val: '36%', label: 'Fatality Rate (HPS)', sub: 'Americas · up to 50% in outbreaks' },
@@ -892,9 +892,9 @@ const HERO_STATS = [
 
 const TRACKER_STATS = [
   { kind: 'alert', val: '3', label: 'Deaths · 2026 Cluster', note: 'MV Hondius · Dutch couple + German national' },
-  { kind: 'watch', val: '10', label: 'Active Cases', note: '8 PCR-confirmed Andes · 2 probable · French + American passengers now positive post-disembarkation' },
+  { kind: 'watch', val: '11', label: 'Active Cases', note: '9 PCR-confirmed Andes · 2 probable · WHO DG: "we expect more cases" given long incubation' },
   { kind: '', val: '14', label: 'Countries Tracking', note: 'NL, UK, DE, Spain, ZA, CV, CH, Singapore, Canada, France, Australia + 5 US states' },
-  { kind: '', val: '40 days', label: 'Since Outbreak Began', note: 'Apr 1, 2026 · MV Hondius departed Ushuaia' },
+  { kind: '', val: '41 days', label: 'Since Outbreak Began', note: 'Apr 1, 2026 · MV Hondius departed Ushuaia' },
 ];
 
 const TIMELINE = [
@@ -908,17 +908,18 @@ const TIMELINE = [
   { date: 'May 8, 2026', title: 'CDC Activates Level 3 · Two Labs Confirm Andes Virus', desc: 'US CDC activates its Emergency Operations Center at Level 3 (lowest tier). NICD South Africa and Geneva University Hospitals independently confirm Andes virus. UKHSA flags a suspected 9th case on Tristan da Cunha (later ruled out).', badge: 'Confirmed', badgeClass: 'badge-confirmed' },
   { date: 'May 9, 2026', title: 'Suspected 9th Case Negative · Ship Approaches Tenerife · WHO DG On Site', desc: 'Suspected ninth case (a flight attendant from a contact-tracing flight) tests negative for hantavirus, leaving the cluster at 8 cases (6 PCR-confirmed Andes virus, 2 suspected). MV Hondius nears Granadilla port, Tenerife. WHO Director-General delivers a message to the people of Tenerife as Spanish authorities prepare a 24-hour disembarkation window. 17 American passengers will quarantine in Nebraska after a repatriation flight.', badge: 'Confirmed', badgeClass: 'badge-confirmed' },
   { date: 'May 10, 2026', title: 'MV Hondius Docks at Tenerife · Disembarkation Underway · First Flight to Madrid', desc: 'MV Hondius arrives at Granadilla port, Tenerife at 5:30 a.m. local time on Sunday May 10. Spanish authorities confirm all remaining passengers are asymptomatic. The first repatriation flight, carrying 13 Spanish passengers and one Spanish crew member, departs for Madrid where they will be quarantined at the Gómez Ulla military hospital and PCR-tested on arrival and again at day 7. Charter flights for UK, US, France, Germany and other nationalities are scheduled across Sunday and Monday. WHO Director-General Tedros reiterates the public health risk remains LOW.', badge: 'Confirmed', badgeClass: 'badge-confirmed' },
-  { date: 'May 11, 2026 · Now', title: 'French + American Test Positive · 17 Americans Arrive at Nebraska Quarantine · Cluster Rises to 10', desc: 'A French woman repatriated to Paris and an American man on the Nebraska-bound charter both test positive for hantavirus, bringing the MV Hondius cluster to 10 cases (8 PCR-confirmed Andes virus, 2 probable). The French passenger\'s condition is reported as deteriorating. 17 Americans landed at Offutt Air Force Base near Omaha early Monday and are now at the National Quarantine Unit at the University of Nebraska Medical Center for evaluation. WHO formally recommends 42 days of active health monitoring with daily symptom checks for all repatriated passengers. 54 passengers remained on the ship Monday morning; 22 are expected to disembark with the remaining ~32 returning to Rotterdam with the ship over a five-day voyage accompanied by a medical team.', dotClass: 'active', badge: 'Active', badgeClass: 'badge-now' },
+  { date: 'May 11, 2026', title: 'French + American Test Positive · 17 Americans Arrive at Nebraska Quarantine · Cluster Rises to 10', desc: 'A French woman repatriated to Paris and an American man on the Nebraska-bound charter both test positive for hantavirus, bringing the MV Hondius cluster to 10 cases (8 PCR-confirmed Andes virus, 2 probable). The French passenger\'s condition is reported as deteriorating. 17 Americans landed at Offutt Air Force Base near Omaha early Monday and are now at the National Quarantine Unit at the University of Nebraska Medical Center for evaluation. WHO formally recommends 42 days of active health monitoring with daily symptom checks for all repatriated passengers. 54 passengers remained on the ship Monday morning; 22 are expected to disembark with the remaining ~32 returning to Rotterdam with the ship over a five-day voyage accompanied by a medical team.', badge: 'Confirmed', badgeClass: 'badge-confirmed' },
+  { date: 'May 12, 2026 · Now', title: 'Cluster Reaches 11 · Repatriation Complete · 2 Americans Transferred to Emory Atlanta · Ship Sails for Rotterdam', desc: 'ECDC and WHO report the MV Hondius cluster has risen to 11 cases (9 PCR-confirmed Andes virus, 2 probable). The final two evacuation flights — carrying the last passengers and crew, including five Australians and one New Zealander — have landed in the Netherlands, completing the international repatriation operation. In the United States, 16 passengers remain under monitoring at the University of Nebraska Medical Center National Quarantine Unit (one PCR-positive in biocontainment, 15 asymptomatic in quarantine), while two additional travellers — at least one experiencing symptoms — have been transferred to Emory University Hospital in Atlanta for evaluation. The MV Hondius itself has now left Tenerife with a 27-person skeleton crew (25 crew and 2 medical professionals) bound for Rotterdam, where it will undergo full disinfection. WHO Director-General Tedros Adhanom Ghebreyesus told reporters more cases should be expected given the long Andes virus incubation window. Of the 122 people evacuated and repatriated to roughly 20 countries, all are now in 42-day active monitoring per WHO recommendation.', dotClass: 'active', badge: 'Active', badgeClass: 'badge-now' },
 ];
 
 const REGIONS = [
-  { region: '🚢 MV Hondius (Disembarked · Tenerife)', cases: '10 cases · 3 deaths', notes: '8 PCR-confirmed Andes virus · 2 probable · 94 disembarked Day 1 · 22 more Day 2 · ~32 return to Rotterdam with the ship', status: 'Active', statusClass: 'status-active' },
-  { region: '🇦🇷 Argentina', cases: '101 cases since Jun 2025', notes: 'Andes virus endemic · rural Patagonia · roughly double last year', status: 'Watch', statusClass: 'status-watch' },
-  { region: '🇿🇦 South Africa', cases: '1 critical case', notes: 'British national in ICU Johannesburg · NICD lead lab for cluster', status: 'Watch', statusClass: 'status-watch' },
-  { region: '🇳🇱 Netherlands', cases: '3 patients in care', notes: 'Medical evac destination · ship\'s doctor improving · MV Hondius returning to Rotterdam with skeleton crew + medical team (5-day voyage)', status: 'Watch', statusClass: 'status-watch' },
-  { region: '🇪🇸 Spain · 🇫🇷 France · 🇨🇭 Switzerland', cases: 'Receiving · ≥2 confirmed', notes: 'Spanish nationals at Gómez Ulla military hospital (Madrid) · French passenger PCR-positive in Paris hospital, condition worsening, 22 French contacts identified · Geneva University Hospitals co-confirmed Andes virus', status: 'Watch', statusClass: 'status-watch' },
-  { region: '🇺🇸 United States', cases: '≥1 confirmed · <1,000 historical', notes: '17 Americans at UNMC National Quarantine Unit (Omaha) · 1 mildly PCR-positive · AZ, CA, GA, TX, VA monitoring · CDC EOC Level 3', status: 'Watch', statusClass: 'status-watch' },
-  { region: '🇪🇺 Europe', cases: '~1,000 cases/year', notes: 'Puumala & Dobrava strains · Scandinavia, Germany, Balkans', status: 'Endemic', statusClass: 'status-endemic' },
+  { region: '🚢 MV Hondius (Repatriation Complete · Bound for Rotterdam)', cases: '11 cases · 3 deaths', notes: '9 PCR-confirmed Andes virus · 2 probable · 122 evacuated to ~20 countries · 27-person skeleton crew + medical team on board · 5-day voyage to Rotterdam', status: 'Active', statusClass: 'status-active' },
+  { region: '🇦🇷 Argentina', cases: '101 cases since Jun 2025', notes: 'Andes virus endemic · rural Patagonia · roughly double last year · Argentine ministry investigating link to MV Hondius', status: 'Watch', statusClass: 'status-watch' },
+  { region: '🇿🇦 South Africa', cases: '1 critical case', notes: 'British national in ICU Johannesburg · NICD lead lab for cluster · genomic analysis ongoing', status: 'Watch', statusClass: 'status-watch' },
+  { region: '🇳🇱 Netherlands', cases: '3 patients in care', notes: 'Medical evac destination · ship\'s doctor improving · last two evacuation flights landed May 12 · MV Hondius returning to Rotterdam with skeleton crew (5-day voyage)', status: 'Watch', statusClass: 'status-watch' },
+  { region: '🇪🇸 Spain · 🇫🇷 France · 🇨🇭 Switzerland', cases: 'Receiving · ≥2 confirmed', notes: 'Spanish nationals at Gómez Ulla military hospital (Madrid) · French passenger PCR-positive in Paris hospital, condition reported as deteriorating, 22 French contacts identified · Geneva University Hospitals co-confirmed Andes virus', status: 'Watch', statusClass: 'status-watch' },
+  { region: '🇺🇸 United States', cases: '≥1 confirmed · <1,000 historical', notes: '16 Americans at UNMC National Quarantine Unit, Omaha (1 PCR-positive in biocontainment, 15 asymptomatic) · 2 transferred to Emory University Hospital, Atlanta (≥1 symptomatic) · CDC EOC Level 3', status: 'Watch', statusClass: 'status-watch' },
+  { region: '🇪🇺 Europe', cases: '~1,000 cases/year', notes: 'Puumala & Dobrava strains · Scandinavia, Germany, Balkans · Andes reservoir not present in Europe', status: 'Endemic', statusClass: 'status-endemic' },
   { region: '🇨🇳 China / Asia', cases: '~10,000 cases/year', notes: 'HFRS predominant · Hantaan & Seoul strains', status: 'Endemic', statusClass: 'status-endemic' },
 ];
 
@@ -943,6 +944,46 @@ const PRODUCTS = [
 ];
 
 const POSTS = [
+  { cat: 'Breaking News', catClass: 'cat-news', date: 'May 12, 2026', readTime: '8 min read',
+    title: 'Cluster Reaches 11: Final Flights Land in the Netherlands, MV Hondius Sails for Rotterdam',
+    excerpt: 'The MV Hondius hantavirus cluster has risen to 11 cases as the final two evacuation flights landed in the Netherlands and the ship itself slipped out of Tenerife with a 27-person skeleton crew bound for Rotterdam. WHO Director-General Tedros said more cases are still expected.',
+    icon: '🛫',
+    body: [
+      ['p', 'On Tuesday May 12, 2026, the international response to the MV Hondius hantavirus outbreak moved into a new phase. The European Centre for Disease Prevention and Control and the World Health Organization both confirmed that the total cluster now stands at 11 cases — 9 PCR-confirmed as Andes virus and 2 probable — with 3 confirmed deaths. The final two evacuation aircraft carrying the last passengers and crew, including five Australians and one New Zealander, touched down in the Netherlands overnight, completing the international repatriation operation that began on Sunday with the docking at Granadilla port in Tenerife.'],
+      ['h3', 'Where the New Case Came From'],
+      ['p', 'The eleventh case is the second American passenger to test positive in the past 24 hours — the individual now reported by U.S. health authorities to be symptomatic and undergoing evaluation at Emory University Hospital in Atlanta. The Centers for Disease Control and Prevention transferred two American travellers to Emory after their initial assessment, separating them from the larger 16-person cohort that remains under monitoring at the University of Nebraska Medical Center’s National Quarantine Unit in Omaha. One Nebraska resident there is in the biocontainment unit after a mildly positive PCR result on arrival; the remaining 15 are asymptomatic in the quarantine unit.'],
+      ['h3', 'A Quiet, Decisive End to the Shipboard Phase'],
+      ['p', 'In Tenerife, the operational tempo dropped sharply on Tuesday after a frantic 72 hours of repatriation flights to Madrid, Paris, Berlin, Zurich, London, Omaha, Atlanta, and beyond. Spain’s Health Minister Mónica García said the cordoned operation at the industrial port had functioned exactly as designed, with no civilian contact during the entire two-day disembarkation. The MV Hondius itself left port under its own power, bound for Rotterdam on a roughly five-day voyage with a 27-person skeleton crew — 25 crew members and 2 medical professionals from the response team. Oceanwide Expeditions, the ship’s Dutch operator, confirmed that the vessel will be fully disinfected on arrival.'],
+      ['h3', 'WHO: "We Expect More Cases"'],
+      ['p', 'In remarks to reporters Tuesday morning, WHO Director-General Tedros Adhanom Ghebreyesus said that the gap between the index case on the ship and the May 2 notification to WHO means additional cases should be expected over the coming weeks. That is not a softening of the public-health risk assessment, which remains low for everyone outside the ship-based cohort, but a reflection of the long Andes virus incubation window — one to eight weeks from exposure to first symptoms — combined with intensified surveillance of the 122 evacuated passengers and crew now spread across nearly 20 countries.'],
+      ['h3', 'The 42-Day Calendar'],
+      ['p', 'Every disembarked passenger and crew member is now in WHO-recommended 42-day active monitoring with twice-daily symptom checks. France has formally invoked an isolation decree for confirmed and probable cases there; Spain is testing each member of the Madrid cohort again at day 7; the United States is keeping the Nebraska and Atlanta groups inside their respective federal quarantine units while clinical evaluations continue. Lower-priority asymptomatic returnees in the Netherlands, Germany, the United Kingdom, Switzerland, Singapore, Canada, and Australia are under home-based active monitoring coordinated by national public-health authorities.'],
+      ['h3', 'What the Public Should Take From This'],
+      ['p', 'For anyone not in close contact with a confirmed case, today’s update changes nothing about personal risk. Andes virus — even in its rare human-to-human form — requires sustained close contact, not the casual contact of public spaces, transit, or workplaces. Spanish authorities have not closed cruise terminals, restricted air travel, or amended advisories for the Canary Islands. The right posture for the public, public-health officials repeated again Tuesday, is informed calm. The next meaningful data points are the day-7 PCR results from the Madrid cohort the week of May 17 and the trajectory of the Atlanta and Paris symptomatic cases.'],
+      ['em', 'Last updated · May 12, 2026 · Sources: WHO Disease Outbreak News, ECDC technical assessment (12 May 2026), CDC Health Alert Network notice, Africa CDC, Al Jazeera, CNN, Washington Post, NPR, Live Science, TIME, Nature.'],
+    ],
+  },
+  { cat: 'Prevention', catClass: 'cat-prevention', date: 'May 12, 2026', readTime: '6 min read',
+    title: 'N95 vs Dust Mask: Why the Difference Matters for Hantavirus Cleanups',
+    excerpt: 'A standard dust mask will not stop hantavirus particles. Here is the practical, evidence-based difference between an N95 respirator and a dust mask, and how to make sure the protection you are buying actually works during rodent cleanup.',
+    icon: '😷',
+    body: [
+      ['p', 'Every spring and summer, North American emergency departments see a small but predictable trickle of patients who developed hantavirus pulmonary syndrome after cleaning a cabin, garage, or storage shed. In most of those cases, the patient was wearing a mask of some kind — usually a cheap dust mask from a hardware store — and assumed they were protected. They were not. Hantavirus is one of the clearer real-world cases where the type of mask matters enormously, and where the difference between an N95 respirator and a single-strap dust mask can be the difference between a safe cleanup and a hospital admission.'],
+      ['h3', 'What Hantavirus Cleanup Actually Exposes You To'],
+      ['p', 'The mechanism of hantavirus exposure during cleanup is aerosolisation. When dried rodent urine, droppings, or saliva are disturbed by sweeping, vacuuming, or stirring up dust, microscopic virus-laden particles become airborne. These particles can hang in the air for many minutes and are easily inhaled deep into the lung. From there it only takes a small inoculum to seed an infection. The CDC has documented hantavirus pulmonary syndrome cases following exposures as brief as a few minutes in heavily contaminated spaces.'],
+      ['h3', 'Why a Dust Mask Does Not Work'],
+      ['p', 'A loose-fitting single-strap nuisance dust mask is designed to keep coarse particles — sawdust, drywall dust, lint — out of your nose. It does this with a relatively open filter media and, crucially, without forming a seal against the face. Air takes the path of least resistance, which means most of the air you inhale through a dust mask passes around the edges rather than through the filter. Even when the filter media itself is good, the seal failure makes it inadequate for biological aerosols. Surgical masks, while better than dust masks for some droplet-borne hazards, are also not designed for airborne aerosol filtration and similarly lack a seal.'],
+      ['h3', 'What an N95 Actually Does'],
+      ['p', 'An N95 respirator is engineered around two requirements: a filter media that captures at least 95% of 0.3-micron particles, and a fit that forms a seal against the face. Both matter. Dual head straps, an adjustable nose bridge, and a contoured cup design exist so that the air you breathe is forced through the filter, not around it. The CDC and OSHA recommend N95 or higher (P100, half-face elastomeric, or PAPR) for any hantavirus cleanup activity in a confirmed or suspected rodent-infested space.'],
+      ['h3', 'Fit Testing and the User Seal Check'],
+      ['p', 'A respirator is only as good as its fit. Before each use the CDC recommends a quick user seal check: inhale sharply with both hands cupped over the mask. The mask should pull in slightly against your face and you should feel no leak around the edges. Exhale gently with hands cupped over the mask — there should be no air whistling out around the nose bridge. Facial hair under the seal will break the fit; men cleaning rodent-affected spaces should shave the seal area or use a powered air-purifying respirator instead.'],
+      ['h3', 'Pairing the Respirator With the Rest of the Protocol'],
+      ['p', 'Even a perfectly fitted N95 is only one part of the CDC hantavirus cleanup protocol. The protocol begins with ventilation — opening doors and windows for at least 30 minutes before entry, ideally with the cleaner outside the space. Then wet-disinfection: spraying suspected contaminated areas with a 1:10 bleach solution or EPA-registered disinfectant and letting it sit for five minutes before any wiping or disposal. Only then is it safe to begin cleanup, with the cleaner wearing N95, nitrile gloves, eye protection, and ideally disposable coveralls. Waste goes into a double bag — kitchen bag inside contractor bag — and the outside of the inner bag is wiped down with disinfectant before being sealed inside the outer bag.'],
+      ['h3', 'A Note on KN95s and Counterfeits'],
+      ['p', 'The KN95 — the Chinese GB2626 standard — has a similar filtration performance to N95 but is not enforced by NIOSH and the marketplace is notoriously crowded with counterfeits. For hantavirus cleanup, the safer choice is a NIOSH-approved N95 from a reputable supplier, with the NIOSH approval label visible inside the mask. If you only have KN95s on hand, verify the manufacturer is on the CDC’s appendix list of acceptable international respirators, and treat any unverifiable batch as suspect.'],
+      ['em', 'Last updated · May 12, 2026 · Sources: CDC Hantavirus Cleanup and Disinfection Guidance, NIOSH respirator user guide, OSHA respiratory protection standard 29 CFR 1910.134, WHO Hantavirus factsheet.'],
+    ],
+  },
   { cat: 'Breaking News', catClass: 'cat-news', date: 'May 11, 2026', readTime: '8 min read',
     title: 'Cluster Rises to 10: French Passenger Worsens in Paris, US Cohort Lands in Nebraska',
     excerpt: 'Two more passengers from the MV Hondius — a French woman repatriated to Paris and an American man flown to Nebraska — tested positive for hantavirus Monday, lifting the cluster to 10 cases. The WHO has now formally recommended a 42-day active monitoring window for everyone who disembarked.',
@@ -1321,7 +1362,7 @@ const POSTS = [
 const NEWS_SOURCES = [
   { source: 'WHO', tag: 'Authority', tagClass: 'source-tag-authority', favicon: 'https://www.google.com/s2/favicons?domain=who.int&sz=64',
     title: 'Message by the WHO Director-General to the people of Tenerife regarding the hantavirus response',
-    excerpt: 'Director-General Tedros thanks Tenerife residents for their patience and reaffirms the public health risk remains low as the MV Hondius arrives at Granadilla port.',
+    excerpt: 'Director-General Tedros thanks Tenerife residents for their patience and reaffirms the public health risk remains low as the MV Hondius reaches Granadilla port.',
     date: 'May 9, 2026',
     url: 'https://www.who.int/news/item/09-05-2026-message-by-the-who-director-general-to-the-people-of-tenerife-regarding-the-hantavirus-response' },
   { source: 'WHO Press', tag: 'Authority', tagClass: 'source-tag-authority', favicon: 'https://www.google.com/s2/favicons?domain=who.int&sz=64',
@@ -1340,68 +1381,68 @@ const NEWS_SOURCES = [
     date: 'May 7, 2026',
     url: 'https://africacdc.org/news-item/statement-on-multi-country-hantavirus-cluster-associated-with-cruise-ship-travel/' },
   { source: 'ECDC', tag: 'Authority', tagClass: 'source-tag-authority', favicon: 'https://www.google.com/s2/favicons?domain=ecdc.europa.eu&sz=64',
-    title: 'Andes Hantavirus outbreak in cruise ship · surveillance and updates',
-    excerpt: 'ECDC dedicated surveillance hub covering the MV Hondius cluster, technical assessments, and management guidance for EU/EEA Member States.',
-    date: 'May 9, 2026',
+    title: 'Andes hantavirus outbreak in cruise ship · update 12 May 2026',
+    excerpt: 'ECDC reports the cluster now totals 11 cases (9 confirmed, 2 probable) after disembarkation and repatriation completed on 11 May. Risk for the EU/EEA general population assessed as very low.',
+    date: 'May 12, 2026',
     url: 'https://www.ecdc.europa.eu/en/infectious-disease-topics/hantavirus-infection/surveillance-and-updates/andes-hantavirus-outbreak' },
   { source: 'NPR', tag: 'Wire', tagClass: 'source-tag-wire', favicon: 'https://www.google.com/s2/favicons?domain=npr.org&sz=64',
-    title: 'U.S. cruise passengers arrive in the U.S. after one tests positive for hantavirus',
-    excerpt: 'NPR reports the 17 returning Americans landing at Offutt Air Force Base before transfer to the National Quarantine Unit at Nebraska Medical Center for assessment.',
-    date: 'May 10, 2026',
-    url: 'https://www.npr.org/2026/05/10/nx-s1-5817578/hantavirus-cruise-ship-nebraska-us-passengers' },
+    title: 'Health experts say cruise ship hantavirus outbreak isn\'t a risk to public at large',
+    excerpt: 'NPR talks to infectious disease specialists who emphasise that the MV Hondius cluster does not pose a meaningful threat to the general public despite extensive media coverage.',
+    date: 'May 12, 2026',
+    url: 'https://www.npr.org/2026/05/12/nx-s1-5818454/health-experts-say-cruise-ship-hantavirus-outbreak-isnt-a-risk-to-public-at-large' },
   { source: 'STAT News', tag: 'Wire', tagClass: 'source-tag-wire', favicon: 'https://www.google.com/s2/favicons?domain=statnews.com&sz=64',
-    title: 'Spain readies for evacuations as a hantavirus-hit cruise ship heads for the Canary Islands',
-    excerpt: 'STAT News tracks the Spanish evacuation operation and the cordoned-off arrival zone planned at Tenerife\'s Granadilla port for the MV Hondius.',
-    date: 'May 8, 2026',
-    url: 'https://www.statnews.com/2026/05/08/hantavirus-outbreak-cruise-ship-spain-evacuations-canary-islands/' },
+    title: 'Experts wonder ‘Where is the CDC?’ as hantavirus outbreak unfolds',
+    excerpt: 'STAT examines the unusually muted role the CDC has played in the international response while WHO and Spanish authorities lead operational decisions on the ground.',
+    date: 'May 9, 2026',
+    url: 'https://www.statnews.com/2026/05/09/mv-hondius-hantavirus-outbreak-cdc-takes-back-seat-to-who/' },
   { source: 'Al Jazeera', tag: 'News', tagClass: 'source-tag-news', favicon: 'https://www.google.com/s2/favicons?domain=aljazeera.com&sz=64',
-    title: 'Two more cruise ship passengers test positive for hantavirus',
-    excerpt: 'Al Jazeera reports a French passenger and an American passenger have tested positive for hantavirus after disembarkation, with French authorities tracing 22 contact cases.',
-    date: 'May 11, 2026',
-    url: 'https://www.aljazeera.com/news/2026/5/11/two-more-cruise-ship-passengers-test-positive-for-hantavirus' },
+    title: 'Last passengers from hantavirus-hit ship evacuated; American tests positive',
+    excerpt: 'Al Jazeera reports the final two evacuation flights have landed in the Netherlands as a repatriated US passenger tests positive, bringing the total to 11 cases worldwide.',
+    date: 'May 12, 2026',
+    url: 'https://www.aljazeera.com/news/2026/5/12/last-passengers-from-hantavirus-hit-ship-evacuated-american-tests-positive' },
   { source: 'CNN', tag: 'News', tagClass: 'source-tag-news', favicon: 'https://www.google.com/s2/favicons?domain=cnn.com&sz=64',
-    title: 'American passengers from hantavirus-hit cruise ship arrive in Nebraska',
-    excerpt: 'CNN live blog covers the arrival of 17 Americans in Omaha and the latest WHO update putting the cluster at nine reported cases (seven confirmed, two probable).',
-    date: 'May 11, 2026',
-    url: 'https://www.cnn.com/2026/05/11/us/live-news/hantavirus-cruise-outbreak' },
+    title: 'Hantavirus outbreak: They were on the trip of a lifetime · now they\'re quarantined as health officials work to contain the virus',
+    excerpt: 'CNN profiles the passengers and crew now in international quarantine and walks through the operational handover from the ship-based phase to the 42-day monitoring window.',
+    date: 'May 12, 2026',
+    url: 'https://www.cnn.com/2026/05/12/us/hantavirus-cruise-hondius-quarantine-intl-hnk' },
   { source: 'TIME', tag: 'News', tagClass: 'source-tag-news', favicon: 'https://www.google.com/s2/favicons?domain=time.com&sz=64',
-    title: 'First Hantavirus Cruise Ship Passengers Arrive in Home Countries',
-    excerpt: 'TIME chronicles the first wave of MV Hondius repatriations to Spain, France, the Netherlands, and the United States, and the mildly positive American result reported by US health authorities.',
-    date: 'May 10, 2026',
-    url: 'https://time.com/article/2026/05/10/hantavirus-cruise-ship-evacuated-arrive-home/' },
-  { source: 'Washington Post', tag: 'News', tagClass: 'source-tag-news', favicon: 'https://www.google.com/s2/favicons?domain=washingtonpost.com&sz=64',
-    title: '2 passengers, French and American, test positive for hantavirus after cruise ship evacuation',
-    excerpt: 'The Washington Post reports that a French woman\'s condition worsened overnight in Paris and an American man tested mildly positive after the Nebraska-bound charter landed.',
+    title: 'Inside America’s Only Federal Quarantine Unit for Hantavirus Cruise Passengers',
+    excerpt: 'TIME tours the National Quarantine Unit at Nebraska Medical Center in Omaha, the sole US facility built for high-consequence infectious disease cohorts of this kind.',
     date: 'May 11, 2026',
-    url: 'https://www.washingtonpost.com/world/2026/05/11/hantavirus-outbreak-hondius-cruise-ship/51985a96-4d08-11f1-97e7-22c6c29ff0d8_story.html' },
+    url: 'https://time.com/article/2026/05/11/hantavirus-andes-cruise-ship-passengers-quarantine-nebraska/' },
+  { source: 'Washington Post', tag: 'News', tagClass: 'source-tag-news', favicon: 'https://www.google.com/s2/favicons?domain=washingtonpost.com&sz=64',
+    title: 'Nebraska’s National Quarantine Unit houses Americans exposed to hantavirus',
+    excerpt: 'The Washington Post reports from Omaha as more than a dozen Americans return to the United States and are placed under monitoring as the cluster reaches 11 cases.',
+    date: 'May 11, 2026',
+    url: 'https://www.washingtonpost.com/health/2026/05/11/cruise-hantavirus-nebraska-quarantine/' },
   { source: 'BBC News', tag: 'News', tagClass: 'source-tag-news', favicon: 'https://www.google.com/s2/favicons?domain=bbc.com&sz=64',
     title: 'Hantavirus-hit cruise ship leaves Cape Verde after three evacuated',
-    excerpt: 'BBC video report on the ship departing Cape Verde for the Canary Islands following the medical evacuation of three patients.',
+    excerpt: 'BBC video report on the ship departing Cape Verde for the Canary Islands following the medical evacuation of three patients to the Netherlands.',
     date: 'May 7, 2026',
     url: 'https://www.youtube.com/watch?v=TZc9zwAEtso' },
   { source: 'Nature', tag: 'Science', tagClass: 'source-tag-science', favicon: 'https://www.google.com/s2/favicons?domain=nature.com&sz=64',
-    title: 'There is no vaccine for deadly hantavirus · what that means for future outbreaks',
-    excerpt: 'Nature profiles vaccinologist Jay Hooper\'s long-running effort to develop a hantavirus vaccine and examines why the field has remained underfunded for decades.',
-    date: 'May 7, 2026',
-    url: 'https://www.nature.com/articles/d41586-026-01494-9' },
+    title: 'Cruise-ship hantavirus cluster exposes a wider preparedness gap',
+    excerpt: 'Nature examines what the MV Hondius response reveals about global readiness for rare, slow-incubating zoonotic outbreaks beyond well-funded pandemic pathogens.',
+    date: 'May 11, 2026',
+    url: 'https://www.nature.com/articles/d41586-026-01518-4' },
   { source: 'Science (AAAS)', tag: 'Science', tagClass: 'source-tag-science', favicon: 'https://www.google.com/s2/favicons?domain=science.org&sz=64',
     title: 'Cruise ship\'s hantavirus outbreak puts researchers in uncharted territory',
     excerpt: 'Science / AAAS canvasses virologists on the unprecedented setting of a hantavirus cluster aboard a cruise ship and the ongoing genomic investigation by NICD South Africa.',
     date: 'May 9, 2026',
     url: 'https://www.science.org/content/article/cruise-ship-s-hantavirus-outbreak-puts-researchers-uncharted-territory' },
   { source: 'Live Science', tag: 'Science', tagClass: 'source-tag-science', favicon: 'https://www.google.com/s2/favicons?domain=livescience.com&sz=64',
-    title: 'Science news this week · the latest on the cruise ship hantavirus infections',
-    excerpt: 'Live Science\'s weekly science roundup summarises the MV Hondius response, the role of the Andes virus, and the international monitoring operation.',
-    date: 'May 9, 2026',
-    url: 'https://www.livescience.com/health/science-news-this-week-the-latest-on-the-cruise-ship-hantavirus-infections-a-shortcut-to-mars-and-a-fast-charging-quantum-battery' },
+    title: 'Hantavirus LIVE · American passengers from cruise reach specialised facilities in Nebraska as WHO chief says “we expect more cases”',
+    excerpt: 'Live Science\'s rolling May 12 live blog summarises the disembarkation handover, the Nebraska and Atlanta quarantine arrivals, and the latest WHO comments on incubation.',
+    date: 'May 12, 2026',
+    url: 'https://www.livescience.com/health/live/hantivirus-cruise-tuesday-may-12' },
 ];
 
 const SIDEBAR_LINKS = [
-  { num: '01', title: 'Cluster Rises to 10 · French Passenger Worsens · US Cohort in Nebraska', date: 'Breaking · May 11, 2026', postIndex: 0 },
-  { num: '02', title: 'Why 42 Days? The Andes Virus Incubation Window Explained', date: 'Science · May 11, 2026', postIndex: 1 },
-  { num: '03', title: 'MV Hondius Docks at Tenerife · Disembarkation Underway', date: 'Breaking · May 10, 2026', postIndex: 2 },
-  { num: '04', title: 'Inside Madrid Quarantine: What Day-7 PCR Means For Returning Passengers', date: 'Health Tips · May 10, 2026', postIndex: 3 },
-  { num: '05', title: 'Ship Approaches Tenerife · 9th Case Negative', date: 'Breaking · May 9, 2026', postIndex: 4 },
+  { num: '01', title: 'Cluster Reaches 11 · Repatriation Complete · Ship Sails for Rotterdam', date: 'Breaking · May 12, 2026', postIndex: 0 },
+  { num: '02', title: 'N95 vs Dust Mask: Why the Difference Matters for Hantavirus Cleanups', date: 'Prevention · May 12, 2026', postIndex: 1 },
+  { num: '03', title: 'Cluster Rises to 10 · French Passenger Worsens · US Cohort in Nebraska', date: 'Breaking · May 11, 2026', postIndex: 2 },
+  { num: '04', title: 'Why 42 Days? The Andes Virus Incubation Window Explained', date: 'Science · May 11, 2026', postIndex: 3 },
+  { num: '05', title: 'MV Hondius Docks at Tenerife · Disembarkation Underway', date: 'Breaking · May 10, 2026', postIndex: 4 },
 ];
 
 const SYMPTOMS = [
