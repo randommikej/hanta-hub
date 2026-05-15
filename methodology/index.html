@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Methodology &amp; Sources — How Hanta Hub Tracks the 2026 MV Hondius Outbreak | Hanta Hub</title>
+<meta name="description" content="How Hanta Hub sources, verifies, and updates its data on the 2026 MV Hondius hantavirus outbreak: the source hierarchy, the daily refresh cycle, case-definition rules, conflict-of-data resolution, and corrections policy.">
+<meta name="keywords" content="hanta hub methodology, hantavirus data sources, MV Hondius data, hantavirus tracker methodology, hantavirus verification, hantavirus sources, hantavirus update cadence, hantavirus corrections policy">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://hantavirussupplies.com/methodology/">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">%F0%9F%A6%A0</text></svg>'>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Hanta Hub">
+<meta property="og:url" content="https://hantavirussupplies.com/methodology/">
+<meta property="og:title" content="Methodology &amp; Sources — How Hanta Hub Tracks the 2026 MV Hondius Outbreak">
+<meta property="og:description" content="How Hanta Hub sources, verifies, and updates its data on the 2026 MV Hondius hantavirus outbreak.">
+<meta property="og:image" content="https://hantavirussupplies.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Methodology &amp; Sources — How Hanta Hub Tracks the Outbreak">
+<meta name="twitter:description" content="Source hierarchy, refresh cadence, case-definition rules, conflict resolution, corrections policy.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0a1628;--blue:#1a4480;--blue-mid:#2563a8;--blue-light:#3b82c4;--sky:#dbeafe;--sky-light:#eff6ff;--white:#fff;--gray-50:#f8fafc;--gray-100:#f1f5f9;--gray-200:#e2e8f0;--gray-400:#94a3b8;--gray-600:#475569;--gray-800:#1e293b;--red:#dc2626;--font-display:'DM Serif Display',serif;--font-body:'DM Sans',sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--white);color:var(--gray-800);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--blue-mid);text-decoration:none}
+a:hover{text-decoration:underline}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-200);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--font-display);font-size:1.4rem;color:var(--navy);display:flex;align-items:center;gap:10px}
+.pulse-dot{width:10px;height:10px;border-radius:50%;background:var(--red);animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+.live-pill{background:var(--red);color:#fff;padding:3px 10px;border-radius:999px;font-size:.7rem;font-weight:600;letter-spacing:.05em}
+.container{max-width:880px;margin:0 auto;padding:48px 24px 64px}
+h1{font-family:var(--font-display);font-size:2.6rem;line-height:1.15;color:var(--navy);margin-bottom:16px}
+h2{font-family:var(--font-display);font-size:1.7rem;color:var(--navy);margin:36px 0 14px;line-height:1.25}
+h3{font-size:1.15rem;color:var(--navy);margin:24px 0 8px;font-weight:600}
+p{margin-bottom:14px}
+ol,ul{margin:6px 0 14px 22px}
+li{margin-bottom:6px}
+.tag{display:inline-block;background:var(--sky);color:var(--blue);font-size:.78rem;padding:4px 12px;border-radius:999px;font-weight:600;letter-spacing:.04em;margin-bottom:14px}
+.callout{background:var(--gray-50);border-left:3px solid var(--blue-mid);padding:14px 18px;margin:18px 0;font-size:.95rem;border-radius:0 8px 8px 0}
+.tbl{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92rem}
+.tbl th,.tbl td{border:1px solid var(--gray-200);padding:9px 12px;text-align:left;vertical-align:top}
+.tbl th{background:var(--sky-light);color:var(--navy);font-weight:600}
+.crumbs{font-size:.85rem;color:var(--gray-600);margin-bottom:16px}
+.crumbs a{color:var(--blue-mid)}
+.cta{display:inline-block;background:var(--blue);color:#fff;padding:14px 22px;border-radius:10px;text-align:center;font-weight:600;margin:24px 0;font-size:1rem}
+.cta:hover{background:var(--navy);color:#fff;text-decoration:none}
+.related{margin-top:48px;padding-top:32px;border-top:1px solid var(--gray-200)}
+.related h3{font-size:1rem;color:var(--gray-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px}
+.related ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin:0}
+.related a{display:block;padding:10px 14px;background:var(--gray-50);border-radius:8px;color:var(--blue);font-size:.9rem}
+footer{padding:32px 24px;border-top:1px solid var(--gray-200);text-align:center;color:var(--gray-600);font-size:.85rem;margin-top:48px}
+footer a{color:var(--blue-mid)}
+</style>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</head>
+<body>
+<nav>
+<a href="/" class="logo"><span class="pulse-dot"></span> Hanta Hub</a>
+<div style="display:flex;gap:14px;align-items:center"><span class="live-pill">LIVE</span><a href="/" style="font-size:.9rem;color:var(--gray-600)">Tracker →</a></div>
+</nav>
+<div class="container">
+<div class="crumbs"><a href="/">Hanta Hub</a> &rsaquo; Methodology &amp; sources</div>
+<span class="tag">How we work</span>
+<h1>Methodology &amp; sources</h1>
+<p style="font-size:1.1rem;color:var(--gray-600);margin-bottom:24px">How Hanta Hub sources, verifies, and updates its tracker on the 2026 MV Hondius hantavirus outbreak — the source hierarchy, the daily refresh cycle, case-definition rules, conflict-of-data resolution, and corrections policy.</p>
+
+<div class="callout">
+  <strong>Quick summary.</strong> Every figure on this site comes from a primary source — WHO, ECDC, CDC, Africa CDC, NICD, or a national health ministry. We update once per 24 hours via an automated daily refresh, plus ad-hoc updates when a primary source publishes new data outside the cycle.
+</div>
+
+<h2>Source hierarchy</h2>
+<p>When two primary sources disagree on a figure, we resolve in the following order:</p>
+<ol>
+  <li><strong>WHO Disease Outbreak News (DON)</strong>. The most authoritative count for the multi-country MV Hondius cluster. As of writing, DON599 (4 May), DON600 (9 May), and DON601 (13 May 2026) are the canonical reference reports.</li>
+  <li><strong>ECDC Andes hantavirus daily update.</strong> Most up-to-date daily snapshot for the European cohort; usually matches WHO once any new cases are formally classified.</li>
+  <li><strong>CDC Health Alert Network (HAN) advisory + situation summary.</strong> The authoritative source for the US cohort, including the National Quarantine Unit and Emory transfers.</li>
+  <li><strong>Africa CDC statements.</strong> Lead source for Cape Verde, South Africa, and continental coordination.</li>
+  <li><strong>National reference laboratory and health-ministry statements</strong> (NICD South Africa, Spanish CCAES, French DGS, Dutch RIVM, UKHSA, RKI Germany, Geneva HUG laboratory). Primary for individual country case detail.</li>
+  <li><strong>Tier-1 wire reporting</strong> (NPR, AP, Reuters, AFP, BBC, Al Jazeera, STAT, Live Science, CIDRAP). Useful for clinical detail and quotes; never the sole basis for a case-count number.</li>
+</ol>
+
+<h2>What we consider a "case"</h2>
+<table class="tbl">
+<thead><tr><th>Classification</th><th>Our definition (matches WHO DON601)</th></tr></thead>
+<tbody>
+<tr><td><strong>Confirmed</strong></td><td>PCR-confirmed Andes virus by a national reference laboratory or equivalent. Used in our headline confirmed-count.</td></tr>
+<tr><td><strong>Probable</strong></td><td>Compatible clinical syndrome + close-contact epidemiological link + IgM positive or other supportive serology, without a confirmatory PCR.</td></tr>
+<tr><td><strong>Inconclusive</strong></td><td>Initial positive PCR or serology that has not been corroborated on follow-up testing. Held in this category pending repeat testing.</td></tr>
+<tr><td><strong>Suspected (excluded)</strong></td><td>Compatible syndrome alone, no laboratory or epidemiological corroboration. We do not include suspected-only cases in our headline counts.</td></tr>
+</tbody>
+</table>
+<p>Deaths follow the same hierarchy: a death is "confirmed" if the underlying case was PCR-confirmed, and "probable" if the case was probable. We report both in disaggregated form in the open data feed at <a href="/data/cases.json">/data/cases.json</a>.</p>
+
+<h2>Refresh cadence</h2>
+<p>The site refreshes through three mechanisms:</p>
+<ul>
+  <li><strong>Daily automated refresh</strong> — once every 24 hours, a scheduled task pulls the latest figures from the primary sources above, regenerates the case-curve chart, refreshes the global-sources panel, and pushes a commit to the GitHub repository. Vercel redeploys within ~30 seconds of the commit.</li>
+  <li><strong>Ad-hoc updates</strong> — when a WHO DON, ECDC daily update, or CDC HAN advisory is published outside the regular cycle (typically a material case-count change), we patch the site within a few hours.</li>
+  <li><strong>Corrections</strong> — when a primary source revises a previously published figure, we update the live counts within the same cycle, log the correction in the daily commit message, and (if the change is material) flag it in the next blog post.</li>
+</ul>
+
+<h2>Geographic scope</h2>
+<p>The tracker focuses on (a) the 2026 MV Hondius cluster — currently the only active multi-country hantavirus outbreak — and (b) endemic baseline data for the regions where hantavirus circulates: Argentina and Chile (Andes virus), the southwestern United States (Sin Nombre virus), Northern Europe (Puumala/Dobrava), and East Asia (Hantaan/Seoul). We do not duplicate the surveillance work of national systems for endemic cases; we link to those sources instead.</p>
+
+<h2>Editorial principles</h2>
+<ul>
+  <li><strong>Numbers are conservative.</strong> Where a figure is ambiguous, we use the lower-bound primary-source number rather than a wire-reported maximum.</li>
+  <li><strong>Quotes are paraphrased.</strong> We do not reproduce more than ~15 consecutive words from any source without explicit attribution and a backlink.</li>
+  <li><strong>Risk framing follows WHO.</strong> We use the WHO public-health risk assessment ("low") as our headline framing, with the underlying clinical severity of HPS communicated separately rather than blended into the risk language.</li>
+  <li><strong>We do not embargo.</strong> All data on the site is publicly visible immediately and licensed CC BY 4.0.</li>
+</ul>
+
+<h2>Affiliate disclosure</h2>
+<p>Hanta Hub includes Amazon-affiliate links to a small set of recommended preparedness products (N95 respirators, nitrile gloves, EPA-approved disinfectant, pulse oximeters, etc.). These products are selected on the basis of CDC, NIOSH, and WHO guidance for hantavirus cleanup, not on commercial criteria. We earn a small commission on qualifying purchases through these links; this commission does not influence editorial decisions or the case-count figures.</p>
+
+<h2>Corrections policy</h2>
+<p>We correct errors of fact as quickly as we can verify them. If you spot one, email <strong>press@hantavirussupplies.com</strong> with the page URL and the source supporting your correction. Substantive corrections are flagged in the next blog post; minor corrections (typos, link errors) are made silently.</p>
+
+<h2>Independence</h2>
+<p>Hanta Hub is an independent project run by Michael Jacobs. It is not affiliated with any health authority, news outlet, or pharmaceutical company, and no compensation or material benefit is received from any of the sources cited. The site's only revenue is Amazon-affiliate commission on the preparedness products listed in the Hub section.</p>
+
+<a class="cta" href="/">→ Back to the live tracker</a>
+
+<div class="related"><h3>Related</h3><ul>
+<li><a href="/press/">Press kit &rarr;</a></li>
+<li><a href="/embed/">Embed widgets &rarr;</a></li>
+<li><a href="/data/cases.json">Open data feed &rarr;</a></li>
+<li><a href="/glossary/">Hantavirus glossary &rarr;</a></li>
+<li><a href="/maps/passengers/">Passenger origin map &rarr;</a></li>
+<li><a href="/">Live MV Hondius tracker &rarr;</a></li>
+</ul></div>
+</div>
+<footer>
+<p>Hanta Hub &middot; Global hantavirus outbreak tracker &middot; Updated daily.</p>
+<p style="margin-top:8px"><a href="/">Live tracker</a> &middot; <a href="/data/cases.json">Open data</a> &middot; <a href="/embed/">Embed widgets</a> &middot; <a href="/press/">Press kit</a> &middot; <a href="/methodology/">Methodology</a> &middot; <a href="/glossary/">Glossary</a> &middot; <a href="/sitemap.xml">Sitemap</a></p>
+<p style="margin-top:8px;font-size:.78rem;color:var(--gray-400)">For informational purposes only. Not medical advice.</p>
+</footer>
+</body>
+</html>

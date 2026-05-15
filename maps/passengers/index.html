@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MV Hondius Passenger Origin Map — Where the 122 Repatriated Travellers Went | Hanta Hub</title>
+<meta name="description" content="Interactive map of the ~122 MV Hondius hantavirus passengers and crew repatriated to their home countries, with case totals and quarantine status by destination.">
+<meta name="keywords" content="MV Hondius passenger map, hantavirus repatriation map, MV Hondius nationalities, hantavirus quarantine countries, MV Hondius passengers, hantavirus cohort map">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://hantavirussupplies.com/maps/passengers/">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">%F0%9F%A6%A0</text></svg>'>
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Hanta Hub">
+<meta property="og:url" content="https://hantavirussupplies.com/maps/passengers/">
+<meta property="og:title" content="MV Hondius Passenger Origin Map">
+<meta property="og:description" content="Interactive map of the ~122 MV Hondius hantavirus passengers repatriated to their home countries, with case totals and quarantine status.">
+<meta property="og:image" content="https://hantavirussupplies.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MV Hondius Passenger Origin Map">
+<meta name="twitter:description" content="Where the 122 MV Hondius passengers were repatriated — interactive map.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#0a1628;--blue:#1a4480;--blue-mid:#2563a8;--blue-light:#3b82c4;--sky:#dbeafe;--sky-light:#eff6ff;--white:#fff;--gray-50:#f8fafc;--gray-100:#f1f5f9;--gray-200:#e2e8f0;--gray-400:#94a3b8;--gray-600:#475569;--gray-800:#1e293b;--red:#dc2626;--amber:#d97706;--green:#059669;--font-display:'DM Serif Display',serif;--font-body:'DM Sans',sans-serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--white);color:var(--gray-800);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--blue-mid);text-decoration:none}
+a:hover{text-decoration:underline}
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-200);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--font-display);font-size:1.4rem;color:var(--navy);display:flex;align-items:center;gap:10px}
+.pulse-dot{width:10px;height:10px;border-radius:50%;background:var(--red);animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+.live-pill{background:var(--red);color:#fff;padding:3px 10px;border-radius:999px;font-size:.7rem;font-weight:600;letter-spacing:.05em}
+.container{max-width:1100px;margin:0 auto;padding:32px 24px 64px}
+h1{font-family:var(--font-display);font-size:2.4rem;line-height:1.15;color:var(--navy);margin-bottom:14px}
+h2{font-family:var(--font-display);font-size:1.5rem;color:var(--navy);margin:28px 0 12px}
+p{margin-bottom:14px}
+.crumbs{font-size:.85rem;color:var(--gray-600);margin-bottom:16px}
+.crumbs a{color:var(--blue-mid)}
+.tag{display:inline-block;background:var(--sky);color:var(--blue);font-size:.78rem;padding:4px 12px;border-radius:999px;font-weight:600;letter-spacing:.04em;margin-bottom:14px}
+.map-wrap{height:560px;border-radius:14px;overflow:hidden;border:1px solid var(--gray-200);margin:18px 0 24px}
+#map{height:100%;width:100%}
+.legend-row{display:flex;gap:14px;flex-wrap:wrap;margin:8px 0 18px;font-size:.85rem;color:var(--gray-600)}
+.legend-row span{display:inline-flex;align-items:center;gap:6px}
+.legend-dot{width:14px;height:14px;border-radius:50%;display:inline-block}
+.tbl{width:100%;border-collapse:collapse;margin:16px 0;font-size:.92rem}
+.tbl th,.tbl td{border:1px solid var(--gray-200);padding:9px 12px;text-align:left;vertical-align:top}
+.tbl th{background:var(--sky-light);color:var(--navy);font-weight:600}
+.tbl tr:nth-child(even) td{background:var(--gray-50)}
+.summary-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:16px 0}
+.sc{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:12px;padding:16px;text-align:center}
+.sc .v{font-family:var(--font-display);font-size:2rem;color:var(--blue)}
+.sc .l{font-size:.78rem;color:var(--gray-600);letter-spacing:.04em;text-transform:uppercase;margin-top:4px}
+.callout{background:var(--gray-50);border-left:3px solid var(--blue-mid);padding:14px 18px;margin:18px 0;font-size:.95rem}
+footer{padding:32px 24px;border-top:1px solid var(--gray-200);text-align:center;color:var(--gray-600);font-size:.85rem;margin-top:48px}
+footer a{color:var(--blue-mid)}
+.popup-content{font-family:var(--font-body);font-size:.88rem;line-height:1.4;min-width:200px}
+.popup-content h4{font-family:var(--font-display);font-size:1.05rem;color:var(--navy);margin-bottom:4px}
+.popup-content .stat{margin:6px 0;font-size:.82rem;color:var(--gray-600)}
+.popup-content .stat strong{color:var(--gray-800)}
+.badge-active{background:#fee2e2;color:#991b1b;padding:2px 8px;border-radius:6px;font-size:.7rem;font-weight:600}
+.badge-watch{background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:6px;font-size:.7rem;font-weight:600}
+.badge-clear{background:#dcfce7;color:#166534;padding:2px 8px;border-radius:6px;font-size:.7rem;font-weight:600}
+</style>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</head>
+<body>
+<nav>
+<a href="/" class="logo"><span class="pulse-dot"></span> Hanta Hub</a>
+<div style="display:flex;gap:14px;align-items:center"><span class="live-pill">LIVE</span><a href="/" style="font-size:.9rem;color:var(--gray-600)">Tracker →</a></div>
+</nav>
+<div class="container">
+<div class="crumbs"><a href="/">Hanta Hub</a> &rsaquo; Maps &rsaquo; Passenger origin map</div>
+<span class="tag">Interactive map</span>
+<h1>MV Hondius passenger origin map</h1>
+<p style="font-size:1.08rem;color:var(--gray-600);margin-bottom:8px">Where the roughly 122 passengers and crew of the MV Hondius were repatriated to, with confirmed-case counts and current quarantine status. Circle size scales with passenger count; colour reflects current case status. Click a marker for details.</p>
+
+<div class="summary-cards">
+  <div class="sc"><div class="v">~122</div><div class="l">Total repatriated</div></div>
+  <div class="sc"><div class="v">~14</div><div class="l">Receiving countries</div></div>
+  <div class="sc"><div class="v">11</div><div class="l">Cluster cases</div></div>
+  <div class="sc"><div class="v">3</div><div class="l">Confirmed deaths</div></div>
+</div>
+
+<div class="legend-row">
+  <span><span class="legend-dot" style="background:#dc2626"></span>Active case in quarantine</span>
+  <span><span class="legend-dot" style="background:#d97706"></span>Asymptomatic monitoring</span>
+  <span><span class="legend-dot" style="background:#059669"></span>Cleared after retest</span>
+</div>
+
+<div class="map-wrap"><div id="map"></div></div>
+
+<h2>Country-by-country distribution</h2>
+<table class="tbl">
+<thead><tr><th>Destination</th><th>Approx. passengers</th><th>Confirmed/probable cases</th><th>Facility &amp; status</th></tr></thead>
+<tbody>
+<tr><td>🇳🇱 Netherlands</td><td>~30 + ship's skeleton crew (27)</td><td>3 evacuated patients</td><td>Multiple hospital sites · medical evacuation hub · MV Hondius en route to Rotterdam <span class="badge-watch">Watch</span></td></tr>
+<tr><td>🇪🇸 Spain</td><td>~14</td><td>1 confirmed</td><td>Gómez Ulla Central Defence Hospital, Madrid · day-7 PCR retest this weekend <span class="badge-watch">Watch</span></td></tr>
+<tr><td>🇫🇷 France</td><td>~6</td><td>1 confirmed (critical)</td><td>Bichat Hospital, Paris · ECMO life support · 22 contacts identified <span class="badge-active">Active</span></td></tr>
+<tr><td>🇺🇸 United States</td><td>17</td><td>1 confirmed→retested negative · 1 symptomatic under evaluation</td><td>UNMC National Quarantine Unit, Omaha (16) · Emory University Hospital, Atlanta (2) <span class="badge-watch">Watch</span></td></tr>
+<tr><td>🇬🇧 United Kingdom</td><td>~8</td><td>1 confirmed</td><td>British national in NICD Johannesburg · UKHSA managing UK contacts <span class="badge-watch">Watch</span></td></tr>
+<tr><td>🇩🇪 Germany</td><td>~8</td><td>1 confirmed death · others under monitoring</td><td>RKI managing returnees · home-based active monitoring <span class="badge-watch">Watch</span></td></tr>
+<tr><td>🇨🇭 Switzerland</td><td>~3</td><td>1 confirmed (lab co-confirmation)</td><td>Geneva University Hospitals · co-confirmed Andes virus in laboratory <span class="badge-watch">Watch</span></td></tr>
+<tr><td>🇦🇺 Australia</td><td>5</td><td>0</td><td>Home-based active monitoring · final evacuation flight landed Netherlands 12 May <span class="badge-watch">Watch</span></td></tr>
+<tr><td>🇳🇿 New Zealand</td><td>1</td><td>0</td><td>Home-based active monitoring · evacuated via the Netherlands <span class="badge-watch">Watch</span></td></tr>
+<tr><td>🇸🇬 Singapore</td><td>~2</td><td>0</td><td>MOH Singapore monitoring · home-based <span class="badge-watch">Watch</span></td></tr>
+<tr><td>🇨🇦 Canada</td><td>~2</td><td>0</td><td>PHAC active monitoring · home-based <span class="badge-watch">Watch</span></td></tr>
+<tr><td>🇿🇦 South Africa</td><td>0 returnees</td><td>1 in Johannesburg ICU</td><td>British national in NICD-managed ICU · improving <span class="badge-watch">Watch</span></td></tr>
+<tr><td>🇨🇻 Cape Verde</td><td>0 returnees</td><td>0</td><td>Ship was anchored offshore for several days; no local transmission <span class="badge-clear">Clear</span></td></tr>
+<tr><td>Other (BR, IT, BE, IE, etc.)</td><td>~15 combined</td><td>0</td><td>Home-based active monitoring coordinated by national health authorities <span class="badge-watch">Watch</span></td></tr>
+</tbody>
+</table>
+
+<div class="callout">
+  <strong>Methodology:</strong> Counts are sourced from WHO Disease Outbreak News (DON599-601), ECDC daily updates, CDC HAN advisories, and individual receiving-country health-ministry statements. Passenger counts are approximate and reflect publicly reported figures; precise nationality breakdowns are not always disclosed for privacy reasons. Updated daily.
+</div>
+
+<h2>How to use this map</h2>
+<p>Click any marker for the current status of that destination, including the receiving facility and any confirmed-case count. The map is intended for journalists, researchers, and the general public who want geographic context for the cluster. For the full live tracker including the case curve, news sources, and timeline, return to the <a href="/">main tracker</a>.</p>
+</div>
+
+<footer>
+<p>Hanta Hub &middot; Global hantavirus outbreak tracker &middot; Updated daily.</p>
+<p style="margin-top:8px"><a href="/">Live tracker</a> &middot; <a href="/data/cases.json">Open data</a> &middot; <a href="/embed/">Embed widgets</a> &middot; <a href="/press/">Press kit</a> &middot; <a href="/methodology/">Methodology</a> &middot; <a href="/glossary/">Glossary</a> &middot; <a href="/sitemap.xml">Sitemap</a></p>
+<p style="margin-top:8px;font-size:.78rem;color:var(--gray-400)">For informational purposes only. Not medical advice.</p>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const DESTINATIONS = [
+  { name: 'Netherlands', flag: '🇳🇱', lat: 52.4, lng: 4.9, passengers: 30, status: 'watch', cases: '3 evacuated patients', facility: 'Multiple Dutch hospital sites · MV Hondius en route to Rotterdam' },
+  { name: 'Spain (Madrid)', flag: '🇪🇸', lat: 40.42, lng: -3.70, passengers: 14, status: 'watch', cases: '1 confirmed', facility: 'Gómez Ulla Central Defence Hospital · day-7 PCR retest this weekend' },
+  { name: 'France (Paris)', flag: '🇫🇷', lat: 48.85, lng: 2.35, passengers: 6, status: 'active', cases: '1 confirmed · critical on ECMO', facility: 'Bichat-Claude Bernard Hospital · 22 contacts identified' },
+  { name: 'United States (Omaha)', flag: '🇺🇸', lat: 41.25, lng: -95.93, passengers: 16, status: 'watch', cases: '1 initial PCR positive, retested negative', facility: 'UNMC National Quarantine Unit' },
+  { name: 'United States (Atlanta)', flag: '🇺🇸', lat: 33.79, lng: -84.32, passengers: 2, status: 'active', cases: '1+ symptomatic under evaluation', facility: 'Emory University Hospital' },
+  { name: 'United Kingdom', flag: '🇬🇧', lat: 51.50, lng: -0.13, passengers: 8, status: 'watch', cases: '1 British national in Johannesburg ICU', facility: 'UKHSA managing UK contacts · home-based monitoring' },
+  { name: 'Germany', flag: '🇩🇪', lat: 52.52, lng: 13.40, passengers: 8, status: 'watch', cases: '1 confirmed death (shipboard)', facility: 'RKI · home-based active monitoring of returnees' },
+  { name: 'Switzerland (Geneva)', flag: '🇨🇭', lat: 46.20, lng: 6.15, passengers: 3, status: 'watch', cases: '1 confirmed (lab co-confirmation)', facility: 'Geneva University Hospitals' },
+  { name: 'Australia', flag: '🇦🇺', lat: -33.86, lng: 151.21, passengers: 5, status: 'watch', cases: '0 confirmed', facility: 'Home-based active monitoring · final flight 12 May' },
+  { name: 'New Zealand', flag: '🇳🇿', lat: -36.85, lng: 174.76, passengers: 1, status: 'watch', cases: '0 confirmed', facility: 'Home-based active monitoring' },
+  { name: 'Singapore', flag: '🇸🇬', lat: 1.35, lng: 103.82, passengers: 2, status: 'watch', cases: '0 confirmed', facility: 'MOH Singapore monitoring' },
+  { name: 'Canada', flag: '🇨🇦', lat: 45.42, lng: -75.69, passengers: 2, status: 'watch', cases: '0 confirmed', facility: 'PHAC active monitoring · home-based' },
+  { name: 'South Africa (Johannesburg)', flag: '🇿🇦', lat: -26.20, lng: 28.04, passengers: 0, status: 'active', cases: '1 critical in ICU', facility: 'NICD reference lab · ICU patient improving' },
+  { name: 'Cape Verde', flag: '🇨🇻', lat: 14.93, lng: -23.51, passengers: 0, status: 'clear', cases: '0 confirmed', facility: 'Ship anchored offshore · no local transmission' }
+];
+
+const SHIP_PATH = [
+  [-54.81, -68.30], // Ushuaia
+  [-37.10, -12.28], // Tristan da Cunha
+  [-15.97, -5.72],  // Saint Helena
+  [-26.20, 28.04],  // Johannesburg (Dutch woman dies)
+  [14.93, -23.51],  // Praia, Cape Verde
+  [28.12, -16.51]   // Tenerife
+];
+
+const map = L.map('map', { worldCopyJump: true }).setView([20, 0], 2);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> · <a href="https://carto.com/">CARTO</a>',
+  maxZoom: 8
+}).addTo(map);
+
+// Draw ship path (April 1 – May 10)
+L.polyline(SHIP_PATH, { color: '#1a4480', weight: 2, opacity: 0.4, dashArray: '6 8' }).addTo(map)
+  .bindTooltip('MV Hondius route, 1 Apr – 10 May 2026', { sticky: true });
+
+// Markers
+const STATUS_COLOR = { active: '#dc2626', watch: '#d97706', clear: '#059669' };
+const STATUS_LABEL = { active: 'Active case in quarantine', watch: 'Asymptomatic monitoring', clear: 'Cleared / no transmission' };
+
+DESTINATIONS.forEach(d => {
+  const radius = Math.max(8, Math.sqrt(Math.max(d.passengers, 1)) * 4);
+  const c = L.circleMarker([d.lat, d.lng], {
+    radius,
+    color: STATUS_COLOR[d.status],
+    fillColor: STATUS_COLOR[d.status],
+    fillOpacity: 0.55,
+    weight: 2
+  }).addTo(map);
+
+  const html = '<div class="popup-content">' +
+    '<h4>' + d.flag + ' ' + d.name + '</h4>' +
+    '<div class="stat"><strong>Passengers / crew:</strong> ' + d.passengers + '</div>' +
+    '<div class="stat"><strong>Cases:</strong> ' + d.cases + '</div>' +
+    '<div class="stat"><strong>Facility:</strong> ' + d.facility + '</div>' +
+    '<div class="stat" style="margin-top:8px;font-size:.78rem;color:' + STATUS_COLOR[d.status] + ';font-weight:600">● ' + STATUS_LABEL[d.status] + '</div>' +
+    '</div>';
+  c.bindPopup(html);
+});
+</script>
+</body>
+</html>

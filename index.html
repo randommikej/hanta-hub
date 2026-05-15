@@ -10,6 +10,10 @@
 <meta name="author" content="Hanta Hub">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://hantavirussupplies.com/">
+<link rel="alternate" hreflang="en" href="https://hantavirussupplies.com/">
+<link rel="alternate" hreflang="es" href="https://hantavirussupplies.com/es/">
+<link rel="alternate" hreflang="fr" href="https://hantavirussupplies.com/fr/">
+<link rel="alternate" hreflang="x-default" href="https://hantavirussupplies.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Hanta Hub">
 <meta property="og:url" content="https://hantavirussupplies.com/">
@@ -106,6 +110,40 @@
     color: var(--gray-800);
     line-height: 1.6;
   }
+
+  /* ─── CASE CURVE CHART ─── */
+  .case-curve {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 24px 0 32px;
+  }
+  .case-curve-header h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .case-curve-header p {
+    font-size: .88rem;
+    color: var(--gray-600);
+    margin-bottom: 18px;
+  }
+  .case-curve-canvas {
+    height: 360px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 12px;
+    border: 1px solid var(--gray-200);
+  }
+  .case-curve-footnote {
+    margin-top: 12px;
+    font-size: .78rem;
+    color: var(--gray-600);
+  }
+  .case-curve-footnote a { color: var(--blue-mid); text-decoration: underline; }
+  @media (max-width: 640px) { .case-curve-canvas { height: 280px; } }
 
   /* ─── NAV ─── */
   nav {
@@ -884,6 +922,7 @@
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
 <script type="text/babel" data-type="module">
 const { useState, useEffect, useRef } = React;
@@ -936,6 +975,27 @@ const REGIONS = [
 ];
 
 const US_STATES = ['New Mexico', 'Colorado', 'Arizona', 'California', 'Washington', 'Texas', 'Utah', 'Montana'];
+
+// Cumulative cluster totals by date (MV Hondius outbreak).
+// confirmed = PCR-confirmed Andes; probable = probable; inconclusive = inconclusive PCR; deaths = cumulative.
+const CASE_CURVE_DATA = [
+  { date: 'Apr 11', confirmed: 0, probable: 1, inconclusive: 0, deaths: 1 },
+  { date: 'Apr 26', confirmed: 0, probable: 2, inconclusive: 0, deaths: 2 },
+  { date: 'May 2',  confirmed: 1, probable: 2, inconclusive: 0, deaths: 2 },
+  { date: 'May 3',  confirmed: 1, probable: 3, inconclusive: 0, deaths: 3 },
+  { date: 'May 4',  confirmed: 2, probable: 3, inconclusive: 0, deaths: 3 },
+  { date: 'May 6',  confirmed: 5, probable: 2, inconclusive: 0, deaths: 3 },
+  { date: 'May 7',  confirmed: 6, probable: 2, inconclusive: 0, deaths: 3 },
+  { date: 'May 8',  confirmed: 6, probable: 2, inconclusive: 0, deaths: 3 },
+  { date: 'May 9',  confirmed: 6, probable: 2, inconclusive: 0, deaths: 3 },
+  { date: 'May 10', confirmed: 6, probable: 2, inconclusive: 0, deaths: 3 },
+  { date: 'May 11', confirmed: 8, probable: 2, inconclusive: 0, deaths: 3 },
+  { date: 'May 12', confirmed: 9, probable: 2, inconclusive: 0, deaths: 3 },
+  { date: 'May 13', confirmed: 8, probable: 2, inconclusive: 1, deaths: 3 },
+  { date: 'May 14', confirmed: 8, probable: 2, inconclusive: 1, deaths: 3 },
+  { date: 'May 15', confirmed: 8, probable: 2, inconclusive: 1, deaths: 3 },
+];
+
 
 const PRODUCTS = [
   { img: '😷', imgClass: 'p-img-rose', badge: 'Critical', badgeClass: 'badge-critical', name: 'N95 Respirator Masks (20-Pack)', desc: 'NIOSH-certified N95 respirators filter 95% of airborne particles. Essential when cleaning potentially contaminated areas. CDC-recommended for hantavirus prevention.', price: '$34.99', priceUnit: '/pack', asin: 'B097HYFCN5' },
@@ -1822,6 +1882,11 @@ function TrackerSection() {
 
         <WorldMap />
 
+        <h2 className="section-title">Case curve</h2>
+        <p className="section-sub">How the cluster total has evolved day-by-day · Updated daily</p>
+
+        <CaseCurveChart />
+
         <h2 className="section-title">Current Statistics</h2>
         <p className="section-sub">Updated from WHO, CDC & Africa CDC sources · Last refresh: May 2026</p>
 
@@ -1884,6 +1949,99 @@ function TrackerSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+function CaseCurveChart() {
+  const canvasRef = useRef(null);
+  const chartRef = useRef(null);
+  useEffect(() => {
+    if (!canvasRef.current || typeof Chart === 'undefined') return;
+    const labels = CASE_CURVE_DATA.map(d => d.date);
+    const conf = CASE_CURVE_DATA.map(d => d.confirmed);
+    const prob = CASE_CURVE_DATA.map(d => d.probable);
+    const inco = CASE_CURVE_DATA.map(d => d.inconclusive);
+    const deaths = CASE_CURVE_DATA.map(d => d.deaths);
+    if (chartRef.current) chartRef.current.destroy();
+    chartRef.current = new Chart(canvasRef.current, {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [
+          {
+            type: 'line',
+            label: 'PCR-confirmed Andes',
+            data: conf,
+            backgroundColor: 'rgba(37,99,168,0.55)',
+            borderColor: 'rgba(26,68,128,1)',
+            fill: 'origin',
+            tension: 0.25,
+            pointRadius: 2,
+            order: 3
+          },
+          {
+            type: 'line',
+            label: 'Probable',
+            data: prob.map((p, i) => p + conf[i]),
+            backgroundColor: 'rgba(59,130,196,0.35)',
+            borderColor: 'rgba(59,130,196,0.85)',
+            fill: '-1',
+            tension: 0.25,
+            pointRadius: 2,
+            order: 2
+          },
+          {
+            type: 'line',
+            label: 'Inconclusive',
+            data: inco.map((x, i) => x + prob[i] + conf[i]),
+            backgroundColor: 'rgba(148,163,184,0.35)',
+            borderColor: 'rgba(148,163,184,0.85)',
+            fill: '-1',
+            tension: 0.25,
+            pointRadius: 2,
+            order: 1
+          },
+          {
+            type: 'bar',
+            label: 'Cumulative deaths',
+            data: deaths,
+            backgroundColor: 'rgba(220,38,38,0.85)',
+            borderColor: 'rgba(220,38,38,1)',
+            yAxisID: 'y1',
+            barThickness: 8,
+            order: 4
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { position: 'bottom', labels: { font: { family: "'DM Sans', sans-serif", size: 12 }, boxWidth: 14, padding: 14 } },
+          tooltip: { mode: 'index', intersect: false }
+        },
+        scales: {
+          x: { grid: { display: false }, ticks: { font: { family: "'DM Sans', sans-serif" } } },
+          y: { beginAtZero: true, title: { display: true, text: 'Cases (cumulative)' }, ticks: { stepSize: 2 } },
+          y1: { beginAtZero: true, position: 'right', max: 10, title: { display: true, text: 'Deaths' }, grid: { drawOnChartArea: false } }
+        }
+      }
+    });
+    return () => { if (chartRef.current) chartRef.current.destroy(); };
+  }, []);
+
+  return (
+    <div className="case-curve">
+      <div className="case-curve-header">
+        <h3>Case curve — MV Hondius cluster</h3>
+        <p>Cumulative cases by category, with deaths on the right-hand axis. Updated daily from WHO DON reports and ECDC daily updates.</p>
+      </div>
+      <div className="case-curve-canvas">
+        <canvas ref={canvasRef}></canvas>
+      </div>
+      <p className="case-curve-footnote">Source: WHO Disease Outbreak News (DON599/600/601), ECDC Andes hantavirus daily updates. Reclassification on May 13 reflects WHO\'s revised case-definition split into confirmed / probable / inconclusive. <a href="/data/cases.json">JSON</a> · <a href="/data/cases.csv">CSV</a>.</p>
+    </div>
   );
 }
 
@@ -2270,13 +2428,15 @@ function App() {
             </div>
             <div className="topic-hub-card">
               <h3>For developers &amp; journalists</h3>
-              <p>Open data feeds and a free embeddable case-counter widget. CC BY 4.0.</p>
+              <p>Press kit, embeddable widgets, open data, methodology, and a hantavirus glossary. CC BY 4.0.</p>
+              <a href="/press/">Press kit</a>
+              <a href="/methodology/">Methodology</a>
+              <a href="/glossary/">Glossary</a>
+              <a href="/embed/">Embed widgets</a>
               <a href="/data/cases.json">cases.json</a>
-              <a href="/data/timeline.json">timeline.json</a>
-              <a href="/data/cases.csv">cases.csv</a>
               <a href="/feed.xml">RSS feed</a>
               <br/>
-              <a className="more" href="/embed/">Embed the widget →</a>
+              <a className="more" href="/maps/passengers/">Passenger origin map →</a>
             </div>
             <div className="topic-hub-card">
               <h3>By country</h3>
@@ -2296,10 +2456,10 @@ function App() {
               <h3>Tools</h3>
               <p>Free, browser-only tools and embeddable widgets — no signup, no tracking.</p>
               <a href="/tools/risk-quiz/">Personal risk quiz</a>
-              <a href="/embed/">Embed the counter</a>
-              <a href="/data/cases.json">cases.json</a>
-              <a href="/data/timeline.json">timeline.json</a>
-              <a href="/feed.xml">RSS feed</a>
+              <a href="/maps/passengers/">Passenger origin map</a>
+              <a href="/glossary/">Hantavirus glossary</a>
+              <a href="/embed/">Embed widgets</a>
+              <a href="/data/cases.json">Open data</a>
               <br/>
               <a className="more" href="/tools/">All tools →</a>
             </div>
@@ -2317,6 +2477,12 @@ function App() {
       </section>
 
       <footer>
+        <p style={{ marginBottom: '8px' }}>
+          <a href="/press/">Press kit</a> · <a href="/methodology/">Methodology</a> · <a href="/glossary/">Glossary</a> · <a href="/embed/">Embed widgets</a> · <a href="/maps/passengers/">Passenger map</a> · <a href="/tools/risk-quiz/">Risk quiz</a> · <a href="/data/cases.json">Open data</a> · <a href="/sitemap.xml">Sitemap</a>
+        </p>
+        <p style={{ marginBottom: '8px', fontSize: '.78rem', color: 'var(--gray-400)' }}>
+          <a href="/">English</a> · <a href="/es/">Español</a> · <a href="/fr/">Français</a>
+        </p>
         <p>© 2026 Hanta Hub — For informational purposes only. Not medical advice. Data sourced from <a href="https://www.who.int" target="_blank" rel="noopener">WHO</a> · <a href="https://www.cdc.gov" target="_blank" rel="noopener">CDC</a> · <a href="https://africacdc.org" target="_blank" rel="noopener">Africa CDC</a> · <a href="https://hantavirustracker.live" target="_blank" rel="noopener">HantaVirusTracker.live</a></p>
       </footer>
 

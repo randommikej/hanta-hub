@@ -1,27 +1,72 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Hanta Hub Embed Counter</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Hanta Hub · Live MV Hondius hantavirus tracker</title>
+<meta name="robots" content="noindex,follow">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:'DM Sans',sans-serif}
-body{background:transparent;padding:0;color:#0a1628}
-.w{background:linear-gradient(135deg,#0a1628,#1a4480);color:#fff;border-radius:16px;padding:20px 22px;display:flex;align-items:center;gap:18px;text-decoration:none;font-family:'DM Sans',sans-serif;box-shadow:0 8px 24px rgba(10,22,40,.15);max-width:520px}
-.dot{width:14px;height:14px;background:#dc2626;border-radius:50%;animation:p 1.8s ease-in-out infinite;flex-shrink:0}
-@keyframes p{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
-.t{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:#dbeafe;font-weight:600}
-.h{font-family:'DM Serif Display',serif;font-size:1.2rem;line-height:1.1;margin-top:2px}
-.s{display:flex;gap:18px;margin-top:8px}
-.s .n{font-family:'DM Serif Display',serif;font-size:1.6rem;line-height:1}
-.s .l{font-size:.68rem;color:#94a3b8;margin-top:1px}
-.go{margin-left:auto;background:#fff;color:#1a4480;padding:8px 14px;border-radius:999px;font-size:.78rem;font-weight:600;text-decoration:none;white-space:nowrap}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:'DM Sans',system-ui,sans-serif;background:transparent;color:#0a1628;-webkit-font-smoothing:antialiased}
+.w{background:linear-gradient(135deg,#0a1628 0%,#1a4480 60%,#2563a8 100%);color:#fff;border-radius:16px;padding:18px 20px;text-decoration:none;display:flex;flex-direction:column;gap:10px;box-shadow:0 8px 24px rgba(10,22,40,.18);max-width:520px;margin:8px auto;border:1px solid rgba(255,255,255,.06)}
+.w:hover{box-shadow:0 12px 32px rgba(10,22,40,.28);transform:translateY(-1px)}
+.row{display:flex;align-items:center;gap:10px}
+.dot{width:10px;height:10px;background:#ef4444;border-radius:50%;animation:p 1.8s ease-in-out infinite;flex-shrink:0;box-shadow:0 0 0 0 rgba(239,68,68,.4)}
+@keyframes p{0%,100%{opacity:1;transform:scale(1);box-shadow:0 0 0 0 rgba(239,68,68,.5)}50%{opacity:.85;transform:scale(1.15);box-shadow:0 0 0 6px rgba(239,68,68,0)}}
+.tag{font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:#93c5fd;font-weight:600}
+.title{font-family:'DM Serif Display',serif;font-size:1.18rem;line-height:1.15;color:#fff;margin-top:1px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:4px}
+.cell{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:8px 6px;text-align:center}
+.num{font-family:'DM Serif Display',serif;font-size:1.45rem;line-height:1;color:#fff}
+.lbl{font-size:.62rem;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.05em;margin-top:3px;line-height:1.1}
+.meta{display:flex;justify-content:space-between;align-items:center;margin-top:6px;color:rgba(255,255,255,.55);font-size:.7rem}
+.meta a{color:#93c5fd;font-weight:600;text-decoration:none}
+.meta a:hover{color:#fff;text-decoration:underline}
+@media (max-width:380px){.title{font-size:1rem}.num{font-size:1.2rem}.cell{padding:6px 4px}}
 </style></head>
 <body>
-<a class="w" href="https://hantavirussupplies.com/" target="_blank" rel="noopener">
-<div class="dot"></div>
-<div>
-<div class="t">MV Hondius · Live tracker</div>
-<div class="h">2026 hantavirus outbreak</div>
-<div class="s"><div><div class="n">10</div><div class="l">Cases</div></div><div><div class="n">3</div><div class="l">Deaths</div></div><div><div class="n">42d</div><div class="l">WHO quarantine</div></div></div>
-</div>
-<span class="go">Open tracker →</span>
+<a class="w" href="https://hantavirussupplies.com/?ref=embed" target="_blank" rel="noopener">
+  <div class="row">
+    <span class="dot"></span>
+    <div>
+      <div class="tag">MV Hondius · Live tracker</div>
+      <div class="title">2026 hantavirus outbreak</div>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="cell"><div class="num" id="v-cases">11</div><div class="lbl">Cases</div></div>
+    <div class="cell"><div class="num" id="v-deaths">3</div><div class="lbl">Deaths</div></div>
+    <div class="cell"><div class="num" id="v-day">3</div><div class="lbl">Monit. day</div></div>
+    <div class="cell"><div class="num" id="v-since">44</div><div class="lbl">Days</div></div>
+  </div>
+  <div class="meta">
+    <span>Source: WHO DON601 · <span id="v-date">May 15, 2026</span></span>
+    <span><a href="https://hantavirussupplies.com/?ref=embed">Open tracker →</a></span>
+  </div>
 </a>
+<script>
+// Try to refresh from open JSON; falls back gracefully if blocked.
+(async () => {
+  try {
+    const r = await fetch('https://hantavirussupplies.com/data/cases.json',{cache:'no-store'});
+    if (!r.ok) return;
+    const d = await r.json();
+    const tot = d.totals || {};
+    if (tot.cases) document.getElementById('v-cases').textContent = tot.cases;
+    if (tot.deaths) document.getElementById('v-deaths').textContent = tot.deaths;
+    if (d.lastUpdated) {
+      const parts = d.lastUpdated.split('-');
+      const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      document.getElementById('v-date').textContent = months[parseInt(parts[1])-1]+' '+parseInt(parts[2])+', '+parts[0];
+      const start = new Date('2026-04-01');
+      const cur = new Date(d.lastUpdated);
+      document.getElementById('v-since').textContent = Math.round((cur-start)/86400000);
+      const monitorStart = new Date('2026-05-12');
+      const mday = Math.max(0, Math.round((cur-monitorStart)/86400000));
+      if (mday) document.getElementById('v-day').textContent = mday;
+    }
+  } catch(e) {}
+})();
+</script>
 </body></html>

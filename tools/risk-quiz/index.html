@@ -147,6 +147,19 @@ const QUESTIONS = [
 let cur = 0;
 const ans = Array(QUESTIONS.length).fill(null);
 
+// Restore from URL if a shared result is present (?r=01023012 means answers 0,1,0,2,3,0,1,2)
+(function restoreFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const r = params.get('r');
+  if (!r || r.length !== QUESTIONS.length) return;
+  for (let i = 0; i < QUESTIONS.length; i++) {
+    const a = parseInt(r[i], 10);
+    if (!isNaN(a) && a >= 0 && a < QUESTIONS[i].o.length) ans[i] = a;
+  }
+  // if all filled, jump straight to result
+  if (ans.every(a => a !== null)) { setTimeout(() => showResult(true), 0); }
+})();
+
 function render() {
   const q = QUESTIONS[cur];
   document.getElementById('q-text').textContent = "Q" + (cur+1) + " of " + QUESTIONS.length + ": " + q.q;
@@ -172,8 +185,10 @@ function nxt() {
   cur++; render();
 }
 
-function showResult() {
+function showResult(fromShared) {
   const score = QUESTIONS.reduce((s, q, i) => s + q.o[ans[i]].s, 0);
+  const shareCode = ans.map(a => a === null ? 0 : a).join('');
+  const shareUrl = window.location.origin + window.location.pathname + '?r=' + shareCode;
   let level, cls, headline, advice;
   if (score >= 50) {
     level = "URGENT — seek medical care now";
@@ -213,6 +228,8 @@ function showResult() {
     ];
   }
   
+  // Persist answers in the URL so the result is shareable / bookmarkable
+  try { window.history.replaceState(null, '', shareUrl); } catch(e) {}
   document.getElementById('quiz').style.display = 'none';
   const r = document.getElementById('result');
   r.style.display = 'block';
@@ -223,8 +240,13 @@ function showResult() {
     '<h2>' + level + '</h2>' +
     '<p style="font-size:1.05rem;margin-bottom:14px"><strong>' + headline + '</strong></p>' +
     '<ul>' + advice.map(a => '<li>' + a + '</li>').join('') + '</ul>' +
-    '<a href="/" style="display:inline-block;margin-top:16px;background:rgba(0,0,0,.1);color:inherit;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600">→ Live MV Hondius tracker</a>' +
-    '<button onclick="restart()" style="margin-left:8px;background:transparent;color:inherit;border:1.5px solid currentColor;padding:10px 18px;border-radius:8px;font-weight:600;cursor:pointer">Retake quiz</button>' +
+    '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px">' +
+    '<a href="/" style="background:rgba(0,0,0,.1);color:inherit;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600">→ Live MV Hondius tracker</a>' +
+    '<button onclick="shareResult()" style="background:transparent;color:inherit;border:1.5px solid currentColor;padding:10px 18px;border-radius:8px;font-weight:600;cursor:pointer">📤 Share result</button>' +
+    '<button onclick="copyResult()" id="copyBtn" style="background:transparent;color:inherit;border:1.5px solid currentColor;padding:10px 18px;border-radius:8px;font-weight:600;cursor:pointer">🔗 Copy link</button>' +
+    '<button onclick="restart()" style="background:transparent;color:inherit;border:1.5px solid currentColor;padding:10px 18px;border-radius:8px;font-weight:600;cursor:pointer">Retake</button>' +
+    '</div>' +
+    '<input type="text" id="shareUrlField" value="' + shareUrl + '" readonly style="margin-top:14px;width:100%;padding:10px 14px;font-size:.85rem;border:1px solid rgba(0,0,0,.15);border-radius:8px;background:rgba(255,255,255,.5);color:inherit;font-family:monospace">' +
     '</div>' +
     '<p style="margin-top:20px;font-size:.85rem;color:var(--gray-600);font-style:italic">This is an informational risk-assessment tool. It does not replace medical advice. If you are concerned about active symptoms, contact a healthcare provider regardless of the score.</p>';
 }
@@ -232,9 +254,32 @@ function showResult() {
 function restart() {
   cur = 0;
   for (let i = 0; i < ans.length; i++) ans[i] = null;
+  try { window.history.replaceState(null, '', window.location.pathname); } catch(e) {}
   document.getElementById('quiz').style.display = '';
   document.getElementById('result').style.display = 'none';
   render();
+}
+
+async function shareResult() {
+  const url = document.getElementById('shareUrlField').value;
+  const text = 'I just took the Hanta Hub MV Hondius hantavirus risk quiz — see your own personal risk in 60 seconds.';
+  if (navigator.share) {
+    try { await navigator.share({ title: 'Hanta Hub risk quiz', text, url }); return; }
+    catch (e) { /* fall through to copy */ }
+  }
+  copyResult();
+}
+
+async function copyResult() {
+  const url = document.getElementById('shareUrlField').value;
+  try {
+    await navigator.clipboard.writeText(url);
+    const btn = document.getElementById('copyBtn');
+    if (btn) { const orig = btn.textContent; btn.textContent = '✓ Copied!'; setTimeout(() => { btn.textContent = orig; }, 1800); }
+  } catch (e) {
+    const f = document.getElementById('shareUrlField');
+    if (f) { f.select(); document.execCommand('copy'); }
+  }
 }
 
 render();

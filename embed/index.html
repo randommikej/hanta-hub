@@ -81,20 +81,37 @@ footer a{color:var(--blue-mid)}
 <div class="container">
 <div class="crumbs"><a href="/">Hanta Hub</a></div>
 <span class="tag">Embed the Hanta Hub Outbreak Counter on Your Site</span>
-<h1>Embed the Hanta Hub case counter</h1>
-<p style="font-size:1.1rem;color:var(--gray-600);margin-bottom:24px">A free, lightweight iframe widget that shows the current MV Hondius hantavirus cluster — cases, deaths, and the WHO 42-day quarantine recommendation — and links back to the live tracker. No tracking. CC BY 4.0.</p>
+<h1>Embed Hanta Hub on your site</h1>
+<p style="font-size:1.1rem;color:var(--gray-600);margin-bottom:24px">Two free, lightweight iframe widgets — a compact case-counter and a full case-curve chart — that you can drop into any article, blog post, or newsletter. No tracking, no scripts you don't already trust. CC BY 4.0.</p>
 <div class="live-stats">
-<div class="stat"><div class="v">10</div><div class="l">Active Cases</div><div class="s">MV Hondius · 2026</div></div>
+<div class="stat"><div class="v">11</div><div class="l">Active Cases</div><div class="s">MV Hondius · 2026</div></div>
 <div class="stat"><div class="v">3</div><div class="l">Confirmed Deaths</div><div class="s">Andes virus</div></div>
 <div class="stat"><div class="v">36%</div><div class="l">HPS Fatality</div><div class="s">Americas</div></div>
 <div class="stat"><div class="v">42</div><div class="l">Day Quarantine</div><div class="s">WHO recommended</div></div>
 </div>
-<h2>Copy-paste embed code</h2>
-<p>Drop this iframe anywhere on your site or blog:</p>
-<p><pre style="background:var(--gray-50);padding:14px 18px;border-radius:10px;font-size:.85rem;overflow-x:auto;border:1px solid var(--gray-200)"><code>&lt;iframe src="https://hantavirussupplies.com/embed/counter.html" width="100%" height="120" style="border:none;max-width:540px"&gt;&lt;/iframe&gt;</code></pre></p>
-<p>The widget auto-refreshes daily with the live MV Hondius outbreak figures.</p>
-<h2>Live preview</h2>
-<p><iframe src="/embed/counter.html" width="100%" height="120" style="border:none;max-width:540px"></iframe></p>
+
+<h2>Widget 1 — Compact counter (recommended)</h2>
+<p>Fits cleanly inside an article column at 540&nbsp;px and re-flows down to phone width. Pulls fresh totals from <a href="/data/cases.json">cases.json</a> on every load.</p>
+<p><iframe src="/embed/counter.html" width="100%" height="200" style="border:none;max-width:560px;display:block;margin:8px 0"></iframe></p>
+<p style="margin-bottom:8px"><strong>Copy this embed:</strong></p>
+<pre style="background:var(--gray-50);padding:14px 18px;border-radius:10px;font-size:.85rem;overflow-x:auto;border:1px solid var(--gray-200);white-space:pre-wrap"><code>&lt;iframe src=&quot;https://hantavirussupplies.com/embed/counter.html&quot;
+        width=&quot;100%&quot; height=&quot;200&quot;
+        style=&quot;border:none;max-width:560px&quot;
+        loading=&quot;lazy&quot;
+        title=&quot;Hanta Hub · MV Hondius hantavirus tracker&quot;&gt;&lt;/iframe&gt;</code></pre>
+
+<h2>Widget 2 — Case-curve chart</h2>
+<p>The full cumulative case curve (confirmed / probable / inconclusive) with deaths on the right axis. Sits well as a featured graphic at the top of an article. 720&nbsp;px wide on desktop, 320&nbsp;px tall.</p>
+<p><iframe src="/embed/chart.html" width="100%" height="340" style="border:none;max-width:740px;display:block;margin:8px 0"></iframe></p>
+<p style="margin-bottom:8px"><strong>Copy this embed:</strong></p>
+<pre style="background:var(--gray-50);padding:14px 18px;border-radius:10px;font-size:.85rem;overflow-x:auto;border:1px solid var(--gray-200);white-space:pre-wrap"><code>&lt;iframe src=&quot;https://hantavirussupplies.com/embed/chart.html&quot;
+        width=&quot;100%&quot; height=&quot;340&quot;
+        style=&quot;border:none;max-width:740px&quot;
+        loading=&quot;lazy&quot;
+        title=&quot;Hanta Hub · MV Hondius case curve&quot;&gt;&lt;/iframe&gt;</code></pre>
+
+<h2>Press kit</h2>
+<p>If you're writing about the outbreak and want logos, OG images, a boilerplate paragraph, or a quote on background, our <a href="/press/">press kit</a> has everything in one page.</p>
 <h2>Licensing</h2>
 <p>The widget is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. The only requirement is a visible link back to https://hantavirussupplies.com/. The iframe link is already included.</p>
 <p>If you'd like a different size, colour scheme, or a static-image version, the open data feed at <a href="/data/cases.json">/data/cases.json</a> is also CC BY 4.0 — you can build your own.</p>

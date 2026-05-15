@@ -1,14 +1,22 @@
 {
   "outbreak": "MV Hondius 2026 hantavirus cluster",
-  "lastUpdated": "2026-05-11",
+  "lastUpdated": "2026-05-15",
   "source": "https://hantavirussupplies.com",
-  "license": "CC BY 4.0 \u2014 please link back to https://hantavirussupplies.com/",
+  "license": "CC BY 4.0 — please link back to https://hantavirussupplies.com/",
   "totals": {
-    "cases": 10,
+    "cases": 11,
     "pcrConfirmedAndesVirus": 8,
     "probable": 2,
+    "inconclusive": 1,
     "deaths": 3,
+    "deathsConfirmed": 2,
+    "deathsProbable": 1,
     "countriesTracking": 14
+  },
+  "monitoring": {
+    "windowDays": 42,
+    "windowStart": "2026-05-12",
+    "currentDay": 3
   },
   "ship": {
     "name": "MV Hondius",
@@ -25,7 +33,7 @@
     },
     "destination": {
       "port": "Rotterdam, Netherlands",
-      "eta": "2026-05-16 (approx)"
+      "eta": "2026-05-17 (approx)"
     }
   },
   "who": {
@@ -33,7 +41,8 @@
     "quarantineRecommendation": "42 days active monitoring",
     "doNumbers": [
       "DON599",
-      "DON600"
+      "DON600",
+      "DON601"
     ]
   }
 }
