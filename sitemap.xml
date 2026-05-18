@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://hantavirussupplies.com/</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -771,6 +771,12 @@
   <url>
     <loc>https://hantavirussupplies.com/guides/hantavirus-and-asthma/</loc>
     <lastmod>2026-05-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hantavirussupplies.com/guides/hantavirus-exposure-timeline/</loc>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
