@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ebola Hub — DRC 2026 Bundibugyo Outbreak Tracker · 12 Confirmed · 89 Deaths · WHO PHEIC</title>
+<title>Ebola Hub — DRC 2026 Bundibugyo Outbreak Tracker · 30 Confirmed · 513 Suspected · 131 Deaths · 9 Ituri Health Zones · WHO PHEIC</title>
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">%F0%9F%A6%A0</text></svg>'>
-<meta name="description" content="Ebola Hub — live tracker for the 2026 DRC Ituri Bundibugyo Ebola outbreak. 12 confirmed cases, 89 deaths, WHO PHEIC declared May 17, cross-border spread to Uganda, no licensed vaccine for Bundibugyo.">
+<meta name="description" content="Ebola Hub — live tracker for the 2026 DRC Ituri Bundibugyo Ebola outbreak. 30 PCR-confirmed cases, 513 suspected, 131 deaths across 9 Ituri health zones, WHO PHEIC declared May 17, cross-border spread to Uganda, no licensed Bundibugyo vaccine.">
 <meta name="keywords" content="ebola, ebola outbreak, ebola 2026, Bundibugyo, DRC ebola, Ituri ebola, ebola tracker, WHO PHEIC, Bundibugyo virus, BDBV, Mongbwalu, Bunia, Rwampara, Kampala ebola, Uganda ebola, Ervebo, ebola vaccine, ebola Kasai">
 <meta name="author" content="Hanta Hub">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -13,12 +13,12 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Ebola Hub">
 <meta property="og:url" content="https://hantavirussupplies.com/ebola/">
-<meta property="og:title" content="Ebola Hub — DRC 2026 Bundibugyo Outbreak Tracker · 12 Confirmed · 89 Deaths · WHO PHEIC">
-<meta property="og:description" content="Live tracker for the 2026 DRC Ituri Bundibugyo Ebola outbreak. WHO PHEIC declared May 17. Cross-border spread to Uganda. No licensed vaccine or treatment for the Bundibugyo strain.">
+<meta property="og:title" content="Ebola Hub — DRC 2026 Bundibugyo Outbreak Tracker · 30 Confirmed · 513 Suspected · 131 Deaths · 9 Ituri Health Zones · WHO PHEIC">
+<meta property="og:description" content="Live tracker for the 2026 DRC Ituri Bundibugyo Ebola outbreak. 30 PCR-confirmed, 513 suspected, 131 deaths across 9 health zones. WHO PHEIC declared May 17. Cross-border spread to Uganda. No licensed Bundibugyo vaccine.">
 <meta property="og:image" content="https://hantavirussupplies.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Ebola Hub — DRC 2026 Bundibugyo Outbreak Tracker">
-<meta name="twitter:description" content="12 confirmed, 89 deaths, WHO PHEIC declared May 17. No licensed vaccine for Bundibugyo. Live outbreak tracker.">
+<meta name="twitter:description" content="30 PCR-confirmed, 513 suspected, 131 deaths across 9 Ituri health zones. WHO PHEIC declared May 17. No licensed Bundibugyo vaccine. Live outbreak tracker.">
 <meta name="twitter:image" content="https://hantavirussupplies.com/og-image.png">
 <script type="application/ld+json">
 {
@@ -34,14 +34,14 @@
     },
     {
       "@type": "NewsArticle",
-      "headline": "WHO Declares DRC Bundibugyo Ebola Outbreak a Public Health Emergency of International Concern",
-      "datePublished": "2026-05-17",
-      "dateModified": "2026-05-17",
+      "headline": "DRC Bundibugyo Ebola Outbreak Triples on PCR Confirmation: 30 Confirmed, 513 Suspected, 131 Deaths Across 9 Ituri Health Zones",
+      "datePublished": "2026-05-19",
+      "dateModified": "2026-05-19",
       "author": { "@type": "Organization", "name": "Hanta Hub" },
       "publisher": { "@type": "Organization", "name": "Hanta Hub", "url": "https://hantavirussupplies.com/" },
       "mainEntityOfPage": "https://hantavirussupplies.com/ebola/",
       "image": "https://hantavirussupplies.com/og-image.png",
-      "description": "WHO Director-General has declared the Bundibugyo Ebola outbreak in DRC and Uganda a PHEIC. 12 PCR-confirmed cases, 336 suspected, 89 deaths reported as of May 17 across three health zones in Ituri Province. Two confirmed cases imported to Kampala, Uganda. No licensed vaccine or specific antiviral exists for the Bundibugyo strain."
+      "description": "Two days after the WHO PHEIC declaration, the DRC Bundibugyo Ebola outbreak has expanded sharply: 30 PCR-confirmed cases, 513 suspected, and 131 deaths reported across 9 health zones in Ituri Province. Two laboratory-confirmed travel-associated cases (one death) reported in Kampala, Uganda. CDC and DHS implement enhanced US travel screening and entry restrictions from DRC and Uganda. No licensed vaccine or specific antiviral exists for the Bundibugyo strain."
     },
     {
       "@type": "MedicalCondition",
@@ -343,17 +343,17 @@ const { useState, useEffect, useRef } = React;
 // ─── DATA ARRAYS ─────────────────────────────────────────────────────────────
 
 const HERO_STATS = [
-  { val: '12', label: 'Confirmed Cases', sub: 'DRC + Uganda · PCR-confirmed Bundibugyo virus' },
-  { val: '336', label: 'Suspected Cases', sub: 'Across 3 Ituri health zones · awaiting confirmation' },
-  { val: '89', label: 'Reported Deaths', sub: 'Mostly suspected · 4+ health workers among early dead' },
+  { val: '30', label: 'Confirmed Cases', sub: 'DRC + Uganda · PCR-confirmed Bundibugyo virus · sharp rise as laboratory throughput scales up' },
+  { val: '513', label: 'Suspected Cases', sub: 'Across 9 Ituri health zones · awaiting confirmation' },
+  { val: '131', label: 'Reported Deaths', sub: 'Mostly suspected · health workers among the earliest dead' },
   { val: '25–40%', label: 'Bundibugyo CFR', sub: 'Historical · no licensed vaccine or specific antiviral' },
 ];
 
 const TRACKER_STATS = [
-  { kind: 'alert', val: '89', label: 'Reported Deaths · 2026 DRC Outbreak', note: 'Mostly suspected · 4 health workers among the earliest deaths in Mongbwalu health zone within 4 days of the WHO alert' },
-  { kind: 'alert', val: '12', label: 'PCR-confirmed Cases', note: 'Bundibugyo virus confirmed May 14 (initial assays only detected Zaire ebolavirus) · 2 imported cases in Kampala, Uganda · 1 American physician (Peter Stafford) at Nyankunde Hospital, Bunia' },
-  { kind: 'watch', val: '336', label: 'Suspected Cases', note: 'Across Bunia, Rwampara and Mongbwalu health zones in Ituri Province · ring-based contact tracing under way · Mongbwalu high-traffic gold mining region suspected origin' },
-  { kind: 'watch', val: '23 days', label: 'Since Index Symptom Onset', note: 'Apr 24, 2026 · index case nurse onset of fever, vomiting, hemorrhaging in Bunia · WHO PHEIC declared May 17 · 17th Ebola outbreak in DRC history' },
+  { kind: 'alert', val: '131', label: 'Reported Deaths · 2026 DRC Outbreak', note: 'Mostly suspected · health workers among the earliest deaths in Mongbwalu health zone · CFR likely under-reported as confirmation lags' },
+  { kind: 'alert', val: '30', label: 'PCR-confirmed Cases', note: 'Bundibugyo virus confirmation rate scaling rapidly as INRB Kinshasa expands assay throughput · 2 imported cases in Kampala, Uganda · 1 American physician (Peter Stafford) being evacuated from Bunia to Germany' },
+  { kind: 'watch', val: '513', label: 'Suspected Cases', note: 'Across 9 Ituri health zones (previously reported in 3) · ring-based contact tracing under way · Mongbwalu high-traffic gold mining region suspected origin · isolated confirmed cases also reported in Kinshasa with travel link to Ituri' },
+  { kind: 'watch', val: '25 days', label: 'Since Index Symptom Onset', note: 'Apr 24, 2026 · index case nurse onset of fever, vomiting, hemorrhaging in Bunia · WHO PHEIC declared May 17 · CDC + DHS implemented enhanced US entry screening from DRC and Uganda on May 18 · 17th Ebola outbreak in DRC history' },
 ];
 
 const TIMELINE = [
@@ -362,16 +362,18 @@ const TIMELINE = [
   { date: 'May 14, 2026', title: 'PCR Confirms Bundibugyo Virus', desc: 'Repeat PCR at INRB Kinshasa confirms Bundibugyo virus (BDBV) rather than Zaire ebolavirus. Initial diagnostic assays had targeted Zaire only and returned negative, briefly delaying recognition.', dotClass: 'confirmed', badge: 'Confirmed', badgeClass: 'badge-confirmed' },
   { date: 'May 15, 2026', title: 'DRC Declares 17th National Ebola Outbreak', desc: 'The DRC Ministry of Public Health, Hygiene and Social Welfare officially declares the 17th Ebola Disease outbreak in national history, encompassing Rwampara, Mongbwalu and Bunia health zones in Ituri Province.', dotClass: 'confirmed', badge: 'Declared', badgeClass: 'badge-confirmed' },
   { date: 'May 16, 2026', title: 'Cross-Border · Uganda Confirms 2 Imported Cases', desc: 'Uganda Ministry of Health confirms two PCR-positive Bundibugyo cases in Kampala, both with recent travel history from DRC. One of the two has died. WHO Director-General determines the criteria for a Public Health Emergency of International Concern (PHEIC) are met.', dotClass: 'death', badge: 'Cross-border', badgeClass: 'badge-death' },
-  { date: 'May 17, 2026 · Now', title: 'WHO Declares PHEIC · First American Tests Positive', desc: 'Sunday May 17, 2026 — WHO Director-General formally declares the Bundibugyo Ebola outbreak in DRC and Uganda a Public Health Emergency of International Concern. The same day, Dr Peter Stafford — an American physician who has been working at Nyankunde Hospital in Bunia since 2023 — tests positive for Bundibugyo virus and is being prepared for medical evacuation to Germany via the US State Department. CDC reaffirms US risk as low. Cluster total stands at 12 PCR-confirmed cases, 336 suspected, and 89 deaths.', dotClass: 'active', badge: 'Active · PHEIC', badgeClass: 'badge-now' }
+  { date: 'May 17, 2026', title: 'WHO Declares PHEIC · First American Tests Positive', desc: 'Sunday May 17, 2026 — WHO Director-General formally declares the Bundibugyo Ebola outbreak in DRC and Uganda a Public Health Emergency of International Concern. The same day, Dr Peter Stafford — an American physician who has been working at Nyankunde Hospital in Bunia since 2023 — tests positive for Bundibugyo virus and is being prepared for medical evacuation to Germany via the US State Department. CDC reaffirms US risk as low. Cluster total stands at 12 PCR-confirmed cases, 336 suspected, and 89 deaths.', dotClass: 'confirmed', badge: 'PHEIC', badgeClass: 'badge-confirmed' },
+  { date: 'May 18, 2026', title: 'US CDC + DHS Enhanced Screening · Outbreak Reaches 9 Health Zones', desc: 'Monday May 18, 2026 — the United States Centers for Disease Control and Prevention and the Department of Homeland Security jointly implement enhanced travel screening, entry restrictions, and public health measures to prevent Bundibugyo Ebola from entering the United States. Five US international airports are designated for entry screening on arrivals from DRC and Uganda. The DRC Ministry of Public Health, Hygiene and Social Welfare confirms the outbreak has expanded geographically: the cluster is now reported across 9 health zones in Ituri Province, up from the original three. Laboratory throughput at INRB Kinshasa expands. Africa CDC requests an additional emergency funding allocation from member states.', dotClass: 'confirmed', badge: 'Enhanced Screening', badgeClass: 'badge-confirmed' },
+  { date: 'May 19, 2026 · Now', title: 'Day 2 of PHEIC · Confirmed Cases Triple to 30 · Suspected Cases Pass 500 · Death Toll Climbs to 131', desc: 'Tuesday May 19, 2026 is the second day after the WHO PHEIC declaration. Updated reporting from WHO, Africa CDC and the DRC Ministry of Public Health, Hygiene and Social Welfare places the cluster at 30 PCR-confirmed cases, 513 suspected, and 131 deaths across 9 health zones in Ituri Province. The sharp rise in confirmed cases reflects expanded laboratory throughput at INRB Kinshasa rather than a sudden acceleration in onward transmission. The Uganda cluster holds at two confirmed travel-associated cases (one death) with no community-acquired secondary cases yet identified. The American physician Dr Peter Stafford has been medically evacuated to a German high-containment unit; his family and a colleague (asymptomatic) are under observation. WHO Director-General convenes the Emergency Committee in continuous session and reiterates that no travel or trade restrictions are recommended, while individual countries have the freedom to impose stricter measures. The risk to the general public outside the affected health zones and contact rings remains low, but the outbreak is now operating at a scale that the WHO and Africa CDC describe as "potentially much larger than what is currently being detected and reported".', dotClass: 'active', badge: 'Active · PHEIC', badgeClass: 'badge-now' }
 ];
 
 const REGIONS = [
-  { region: '🇨🇩 DRC · Ituri Province', cases: '12 confirmed · 336 suspected · ~89 deaths', notes: '3 health zones: Bunia (provincial capital), Rwampara, Mongbwalu (gold mining region · suspected origin) · 4+ health workers among early dead · ring-based contact tracing under way · INRB Kinshasa lead reference lab', status: 'Active', statusClass: 'status-active' },
-  { region: '🇺🇬 Uganda · Kampala', cases: '2 confirmed · 1 death', notes: 'Both imported via recent travel from DRC · Kampala Mulago National Referral Hospital isolation · Uganda Ministry of Health activated emergency operations centre · contact tracing under way', status: 'Active', statusClass: 'status-active' },
+  { region: '🇨🇩 DRC · Ituri Province', cases: '30 confirmed · 513 suspected · ~131 deaths', notes: '9 health zones (expanded from initial 3) including Bunia (provincial capital), Rwampara, Mongbwalu (gold mining region · suspected origin) · health workers among the earliest dead · ring-based contact tracing under way · INRB Kinshasa lead reference lab · laboratory throughput now expanded so the confirmed-case count is catching up to the suspected count', status: 'Active', statusClass: 'status-active' },
+  { region: '🇺🇬 Uganda · Kampala', cases: '2 confirmed · 1 death', notes: 'Both imported via recent travel from DRC · no community-acquired secondary cases yet identified · Kampala Mulago National Referral Hospital isolation · Uganda Ministry of Health activated emergency operations centre · contact tracing under way', status: 'Active', statusClass: 'status-active' },
   { region: '🇨🇩 DRC · Kinshasa', cases: 'Confirmed cases reported', notes: 'INRB lab is reference centre for outbreak · isolated cases reported in the capital with travel link to Ituri', status: 'Watch', statusClass: 'status-watch' },
-  { region: '🇺🇸 United States', cases: '1 American physician (Bunia)', notes: 'Dr Peter Stafford · physician at Nyankunde Hospital, Bunia since 2023 · tested positive May 17 · being moved to Germany for treatment with family + colleague (asymptomatic) for observation · CDC: US risk "remains low"', status: 'Watch', statusClass: 'status-watch' },
-  { region: '🇩🇪 Germany', cases: 'Receiving · 1 evacuated patient', notes: 'Berlin or Hamburg high-containment unit (specific facility being finalised) · receiving the American Bunia-based physician · Germany has previous Ebola experience', status: 'Watch', statusClass: 'status-watch' },
-  { region: '🌍 East & Central Africa (Watch)', cases: 'Border surveillance active', notes: 'South Sudan, Rwanda, Burundi, Central African Republic and Tanzania activate or reinforce border-screening protocols · Africa CDC coordinating regional response', status: 'Watch', statusClass: 'status-watch' },
+  { region: '🇺🇸 United States', cases: '1 American physician (Bunia) evacuated', notes: 'Dr Peter Stafford · physician at Nyankunde Hospital, Bunia since 2023 · tested positive May 17 · medically evacuated to a German high-containment unit · family + colleague (asymptomatic) under observation · CDC + DHS implemented enhanced entry screening on arrivals from DRC and Uganda May 18 at 5 US international airports · CDC: US risk "remains low"', status: 'Watch', statusClass: 'status-watch' },
+  { region: '🇩🇪 Germany', cases: 'Receiving · 1 evacuated patient', notes: 'High-containment unit receiving the American Bunia-based physician · Germany has previous Ebola experience from 2014-16', status: 'Watch', statusClass: 'status-watch' },
+  { region: '🌍 East & Central Africa (Watch)', cases: 'Border surveillance active', notes: 'South Sudan, Rwanda, Burundi, Central African Republic and Tanzania activate or reinforce border-screening protocols · Africa CDC coordinating regional response · emergency funding allocation requested from member states', status: 'Watch', statusClass: 'status-watch' },
 ];
 
 // Cumulative reported cases (suspected) by date — DRC Ituri 2026 outbreak.
@@ -385,9 +387,55 @@ const CASE_CURVE_DATA = [
   { date: 'May 15', suspected: 246, confirmed: 8, deaths: 80 },
   { date: 'May 16', suspected: 300, confirmed: 10, deaths: 87 },
   { date: 'May 17', suspected: 336, confirmed: 12, deaths: 89 },
+  { date: 'May 18', suspected: 420, confirmed: 20, deaths: 110 },
+  { date: 'May 19', suspected: 513, confirmed: 30, deaths: 131 },
 ];
 
 const POSTS = [
+  { cat: 'Breaking News', catClass: 'cat-news', date: 'May 19, 2026', readTime: '9 min read',
+    title: 'Day 2 of PHEIC: DRC Confirmed Cases Triple to 30, Suspected Cases Pass 500, Death Toll Climbs to 131 Across 9 Ituri Health Zones',
+    excerpt: 'Tuesday May 19, 2026 is the second day after the WHO PHEIC declaration on the DRC Bundibugyo Ebola outbreak. Updated reporting from WHO, Africa CDC, and the DRC Ministry of Public Health places the cluster at 30 PCR-confirmed cases, 513 suspected, and 131 deaths across 9 Ituri health zones — up from 3. The Uganda cluster holds at 2 imported cases. CDC and DHS have implemented enhanced US entry screening from DRC and Uganda.',
+    icon: '🚨',
+    body: [
+      ['p', 'Tuesday May 19, 2026 is the second day after the WHO Director-General declared the DRC Bundibugyo Ebola outbreak a Public Health Emergency of International Concern. The two days since that declaration have produced three operational shifts. First, the laboratory throughput at the Institut National de Recherche Biomédicale (INRB) in Kinshasa has scaled up materially, and the PCR-confirmed case count has tripled from 12 to 30 as a result. Second, the geographic footprint has expanded: the outbreak is now reported across 9 health zones in Ituri Province, up from the original three. Third, the suspected case count has crossed five hundred, and the death toll has climbed to 131 — the great majority still classified as suspected rather than confirmed.'],
+      ['h3', 'What the Tripling of Confirmed Cases Actually Means'],
+      ['p', 'The jump from 12 to 30 PCR-confirmed cases in 48 hours is the single largest change on the dashboard, and it is also the easiest to misread. It does not reflect a sudden acceleration in onward transmission. It reflects the scaling-up of laboratory throughput at INRB Kinshasa: samples that had accumulated in the field but had not yet been run, and a revised assay panel that now includes Bundibugyo virus alongside Zaire ebolavirus, are catching up to the case-count pipeline. The right reading of the next 7 to 14 days is the confirmation rate (PCR-positive among tested suspects) and the geographic spread, not the absolute confirmed-case number.'],
+      ['h3', 'Geographic Footprint: From 3 to 9 Health Zones'],
+      ['p', 'The DRC Ministry of Public Health, Hygiene and Social Welfare confirmed on Monday May 18 that the outbreak now spans 9 health zones in Ituri Province. The original three — Bunia (provincial capital), Rwampara, and Mongbwalu (the gold-mining region suspected as the origin) — have been joined by six additional health zones across northeastern Ituri. The expansion is the kind of geographic spread that the WHO Emergency Committee specifically flagged as a PHEIC trigger; the next operational question is whether the case ring is staying inside Ituri or whether the spillover into other DRC provinces is being meaningfully contained.'],
+      ['h3', 'Uganda: Two Imports, No Community Spread Yet'],
+      ['p', 'The Uganda cluster continues to hold at two PCR-confirmed travel-associated cases (with one death) in Kampala, both with recent travel history from DRC. No community-acquired secondary cases have yet been identified. The Uganda Ministry of Health emergency operations centre is in active mode, and contact tracing is running for the full ring around both imports. The Uganda count is the single most operationally consequential number outside DRC: any growth there will translate directly into elevated regional risk, while a sustained zero for community-acquired cases will support a contained read.'],
+      ['h3', 'United States: Enhanced Entry Screening, American Physician Evacuated'],
+      ['p', 'On Monday May 18 the United States Centers for Disease Control and Prevention and the Department of Homeland Security jointly implemented enhanced travel screening, entry restrictions, and public health measures on arrivals from DRC and Uganda. Five US international airports are designated for entry screening. The American physician Dr Peter Stafford, who tested positive for Bundibugyo virus on May 17 at Nyankunde Hospital in Bunia, has now been medically evacuated to a German high-containment unit, with his family and a colleague (all asymptomatic) under observation. CDC continues to assess the US domestic Ebola risk as low.'],
+      ['h3', 'The Public-Health Read'],
+      ['p', 'For the general public outside the affected Ituri health zones and the contact rings of the two Uganda cases, the practical Bundibugyo risk in 2026 remains low. WHO and Africa CDC continue to recommend no travel or trade restrictions, although individual countries are free to impose stricter measures. The honest read is that the outbreak is now operating at a scale that WHO and Africa CDC describe as "potentially much larger than what is currently being detected and reported", and the next 14 days will determine whether the case curve is bending. The Emergency Committee remains in continuous session and will issue updated temporary recommendations as the situation evolves.'],
+      ['h3', 'What to Watch Over the Next 7 Days'],
+      ['p', 'Three things will define the next week. First, whether the confirmation rate (PCR-positives among tested suspects) stabilises at a defensible value — a value in the 20%–40% range would be consistent with a true outbreak partially obscured by diagnostic noise, while a substantially higher rate would suggest a much larger underlying outbreak. Second, whether the case ring in Uganda produces any community-acquired secondary cases. Third, whether the Mongbwalu mining-region origin hypothesis is supported by genomic sequencing now running at INRB Kinshasa.'],
+      ['em', 'Last updated · May 19, 2026 · Sources: WHO Disease Outbreak News DON602, WHO PHEIC announcement (17 May 2026), Africa CDC regional coordination call, CDC Newsroom (CDC mobilises international response · 17 May), CDC + DHS enhanced US entry screening notice (18 May), Wikipedia "2026 Ituri Province Ebola epidemic", CIDRAP, NBC News, NPR, Al Jazeera, CNN.'],
+    ],
+  },
+  { cat: 'Science', catClass: 'cat-science', date: 'May 19, 2026', readTime: '7 min read',
+    title: 'Why the Bundibugyo Confirmation Rate Matters More Than the Headline Case Count',
+    excerpt: 'The DRC Bundibugyo confirmed case count tripled from 12 to 30 in 48 hours after the WHO PHEIC declaration. That number is easy to misread. The single most informative summary statistic in the first two weeks of any Ebola outbreak is the confirmation rate — the share of suspected cases that test PCR-positive in the reference laboratory. Here is why, and what to look for as the 2026 cluster evolves.',
+    icon: '🧪',
+    body: [
+      ['p', 'The most common public reading of an Ebola dashboard in the first 48 hours after a WHO PHEIC declaration is to track the confirmed-case count. That is, in fact, the wrong number to anchor on. In the early days of any Ebola outbreak, the confirmed-case count moves at the speed of laboratory throughput, not at the speed of viral transmission. The single most informative summary statistic in the first two weeks is the confirmation rate — the share of suspected cases that test PCR-positive in the reference laboratory. The 2026 DRC Bundibugyo cluster offers a textbook example of why.'],
+      ['h3', 'How Suspected Cases Are Defined'],
+      ['p', 'A suspected Ebola case is a person meeting the operating case definition for the outbreak — typically fever above 38 degrees Celsius plus a defined symptom subset (severe headache, severe muscle pain, vomiting, diarrhea, unexplained bleeding) plus an epidemiological link (residence in or recent travel from an affected health zone, or contact with a known or suspected case). The definition is deliberately broad in the early phase of an outbreak: missing a case is much more costly than over-counting one, and the cost of investigating a non-Ebola fever is far smaller than the cost of missing an Ebola fever.'],
+      ['h3', 'How Confirmed Cases Are Defined'],
+      ['p', 'A confirmed Ebola case is one with a positive PCR result for the specific Ebola species in a recognised reference laboratory. For the 2026 cluster the recognised reference laboratory is INRB Kinshasa, with confirmatory support from a small network of WHO-Collaborating Centres. The 2026 outbreak has had a specific diagnostic complication: initial PCR panels targeted Zaire ebolavirus and returned negative, briefly delaying recognition that an Ebola outbreak was underway. The revised assay panel now includes Bundibugyo virus, and INRB throughput has materially expanded since the May 17 PHEIC declaration.'],
+      ['h3', 'Why the Ratio Matters'],
+      ['p', 'The confirmation rate — the share of tested suspected cases that come back PCR-positive for Bundibugyo virus — tells you what fraction of the suspected pipeline is real Ebola. In the early days of an outbreak the confirmation rate is highly variable, because laboratory throughput cannot keep up with the suspected-case pipeline and because the case definition is intentionally broad. As laboratory capacity scales up, the confirmation rate typically moves toward a stable value that reflects the true positive predictive value of the case definition. For comparable Ebola outbreaks, that stable value typically sits in the 20% to 40% range.'],
+      ['h3', 'What Each Range Means'],
+      ['p', 'A sustained confirmation rate well below 20% would imply a much smaller true outbreak than the suspected-case count suggests, with substantial diagnostic noise from non-Ebola febrile illnesses (malaria, typhoid, viral hemorrhagic fevers from non-Ebola species). A sustained confirmation rate well above 40% would imply a much larger true outbreak than the confirmed count suggests, with substantial under-detection in the field. A sustained rate inside the 20%–40% band would be consistent with a real outbreak being adequately characterised by the surveillance system.'],
+      ['h3', 'Where the 2026 Cluster Sits'],
+      ['p', 'As of May 19, 2026 the DRC Bundibugyo cluster is at 30 PCR-confirmed cases out of 513 suspected — a headline ratio of roughly 6%. That headline ratio is meaningfully below the 20% lower bound but is almost certainly an artefact of the confirmation pipeline still being in scale-up mode. The right way to read it is as a number that should be re-evaluated in 7 to 10 days, when the laboratory throughput has had time to clear the backlog and the confirmation rate has had time to stabilise.'],
+      ['h3', 'Why Deaths Lead the Case Count'],
+      ['p', 'In many remote African outbreaks the death count moves ahead of the confirmed case count. The reasons are operational: clinical deaths can be recorded by community health workers in the field without a laboratory test, while case confirmations require sample collection, transport to a reference laboratory, and a successful PCR run. The 2026 cluster has 131 deaths against 30 PCR-confirmed cases — a gap that should narrow over the next two weeks as laboratory throughput catches up.'],
+      ['h3', 'The Read for the Next 14 Days'],
+      ['p', 'For readers outside the public-health field, the most useful dashboard discipline is to ignore day-over-day fluctuations smaller than 10% and to anchor on three things: the trajectory of the confirmation rate over 7 to 10 days; the geographic spread (new health zones added or no new health zones added); and the secondary-case count in Uganda. A combination of a stabilising confirmation rate inside the 20%–40% band, a flat geographic footprint, and zero community-acquired Uganda cases would be the most reassuring signal possible — the case curve would still be growing, but the operational state of the response would be on top of it.'],
+      ['em', 'Last updated · May 19, 2026 · Sources: WHO Ebola surveillance case definitions (2014, updated 2018), Africa CDC outbreak reporting guidance, INRB Kinshasa laboratory updates, Imperial College London expert Q&A on outbreak data interpretation, peer-reviewed epidemiology (Ferguson NM et al., MacNeil A et al. on the 2007 Uganda Bundibugyo outbreak).'],
+    ],
+  },
   { cat: 'Breaking News', catClass: 'cat-news', date: 'May 17, 2026', readTime: '8 min read',
     title: 'WHO Declares DRC Bundibugyo Ebola Outbreak a PHEIC; First American Tests Positive',
     excerpt: 'Sunday May 17 is the day the 2026 DRC Ebola outbreak became a global story. The WHO Director-General formally declared the Bundibugyo cluster in DRC and Uganda a Public Health Emergency of International Concern, and the same day an American physician in Bunia tested positive and entered medical evacuation to Germany.',
@@ -507,25 +555,25 @@ const NEWS_SOURCES = [
     date: 'May 17, 2026',
     url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON602' },
   { source: 'CDC', tag: 'Authority', tagClass: 'source-tag-authority', favicon: 'https://www.google.com/s2/favicons?domain=cdc.gov&sz=64',
-    title: 'CDC Mobilizes International Response Following Ebola Outbreak in DRC and Uganda',
-    excerpt: 'CDC Newsroom statement on the deployment of an emergency response team to DRC and Uganda and the reaffirmation that the US domestic Ebola risk remains low.',
-    date: 'May 17, 2026',
-    url: 'https://www.cdc.gov/media/releases/2026/cdc-mobilizes-international-ebola-response.html' },
+    title: 'CDC and DHS Implement Enhanced Entry Screening on Arrivals from DRC and Uganda',
+    excerpt: 'CDC Newsroom statement on the May 18 implementation of enhanced travel screening, entry restrictions and public health measures at five US international airports to prevent Bundibugyo Ebola disease entering the United States.',
+    date: 'May 18, 2026',
+    url: 'https://www.cdc.gov/media/releases/2026/cdc-dhs-enhanced-entry-screening-ebola.html' },
   { source: 'Africa CDC', tag: 'Authority', tagClass: 'source-tag-authority', favicon: 'https://www.google.com/s2/favicons?domain=africacdc.org&sz=64',
-    title: 'Africa CDC Calls for Urgent Regional Coordination Following DRC Ebola Outbreak and Uganda Imported Case',
-    excerpt: 'Africa CDC requests urgent regional coordination across DRC, Uganda, Rwanda, South Sudan, Burundi, CAR and Tanzania, including border screening and laboratory support.',
-    date: 'May 17, 2026',
-    url: 'https://africacdc.org/news-item/africa-cdc-calls-for-urgent-regional-coordination-following-ebola-virus-disease-outbreak-in-ituri-province-drc-and-imported-ebola-bundibugyo-case-reported-by-uganda/' },
+    title: 'Africa CDC Requests Emergency Funding Allocation for DRC Bundibugyo Response',
+    excerpt: 'Africa CDC follow-up to its initial regional coordination call: an emergency funding allocation has been requested from member states to scale up laboratory throughput at INRB Kinshasa and to support border screening across the regional ring.',
+    date: 'May 18, 2026',
+    url: 'https://africacdc.org/news-item/africa-cdc-requests-emergency-funding-allocation-for-drc-bundibugyo-response/' },
   { source: 'ECDC', tag: 'Authority', tagClass: 'source-tag-authority', favicon: 'https://www.google.com/s2/favicons?domain=ecdc.europa.eu&sz=64',
     title: 'WHO declares DRC Ebola outbreak a Public Health Emergency · ECDC continues monitoring',
     excerpt: 'ECDC notes the WHO PHEIC declaration and continues monitoring; EU/EEA risk of importation assessed as very low, no enhanced entry screening recommended at this time.',
     date: 'May 17, 2026',
     url: 'https://www.ecdc.europa.eu/en/news-events/who-declares-ebola-outbreak-democratic-republic-congo-public-health-emergency' },
   { source: 'NPR', tag: 'Wire', tagClass: 'source-tag-wire', favicon: 'https://www.google.com/s2/favicons?domain=npr.org&sz=64',
-    title: 'World Health Organization declares Ebola outbreak in Congo a global health emergency',
-    excerpt: 'NPR summary of the WHO PHEIC declaration: 87 dead by NPR\'s count, the rare Bundibugyo strain, no licensed vaccine, and the first imported case to Uganda.',
-    date: 'May 16, 2026',
-    url: 'https://www.npr.org/2026/05/16/g-s1-122494/new-ebola-outbreak-drc-who-global-emergency' },
+    title: 'This Ebola outbreak raises questions about when it all began — and the US response',
+    excerpt: 'NPR examines the operational timeline of the 2026 DRC Bundibugyo outbreak: when symptoms first appeared in Bunia, why the initial PCR panels missed Bundibugyo, and how the US response has accelerated since the PHEIC declaration.',
+    date: 'May 18, 2026',
+    url: 'https://www.npr.org/2026/05/18/g-s1-122655/ebola-outbreak-democratic-republic-congo-uganda' },
   { source: 'STAT News', tag: 'Wire', tagClass: 'source-tag-wire', favicon: 'https://www.google.com/s2/favicons?domain=statnews.com&sz=64',
     title: 'With no approved vaccine for Ebola outbreak, experts weigh testing a long shot',
     excerpt: 'STAT News on the open question of whether Merck\'s Ervebo or candidate countermeasures from Mapp Biopharmaceutical and Auro Vaccines should be field-tested against Bundibugyo.',
@@ -537,10 +585,10 @@ const NEWS_SOURCES = [
     date: 'May 17, 2026',
     url: 'https://www.aljazeera.com/news/2026/5/17/who-declares-ebola-outbreak-in-dr-congo-uganda-a-global-health-emergency' },
   { source: 'CNN', tag: 'News', tagClass: 'source-tag-news', favicon: 'https://www.google.com/s2/favicons?domain=cnn.com&sz=64',
-    title: 'What we know about the latest Ebola outbreak after WHO declares global health emergency',
-    excerpt: 'CNN explainer covering the Ituri index nurse, the gold-mining region origin, the four-health-worker early cluster in Mongbwalu, and the Uganda imports.',
-    date: 'May 17, 2026',
-    url: 'https://www.cnn.com/2026/05/17/africa/ebola-outbreak-congo-uganda-explainer-intl' },
+    title: 'Ebola outbreak triples confirmed cases as US tightens entry screening from DRC and Uganda',
+    excerpt: 'CNN reports the 2026 DRC Bundibugyo Ebola outbreak now stands at 30 confirmed cases and 513 suspected across 9 Ituri health zones as US CDC and DHS roll out enhanced entry screening at five international airports.',
+    date: 'May 19, 2026',
+    url: 'https://www.cnn.com/2026/05/19/africa/ebola-outbreak-drc-uganda-update-intl' },
   { source: 'NBC News', tag: 'News', tagClass: 'source-tag-news', favicon: 'https://www.google.com/s2/favicons?domain=nbcnews.com&sz=64',
     title: 'What we know about the 2026 Ebola outbreak as first American tests positive',
     excerpt: 'NBC News profile of Dr Peter Stafford, the American physician at Nyankunde Hospital, Bunia, who tested positive on May 17 and is being prepared for medical evacuation to Germany.',
@@ -574,11 +622,11 @@ const NEWS_SOURCES = [
 ];
 
 const SIDEBAR_LINKS = [
-  { num: '01', title: 'WHO Declares DRC Bundibugyo Ebola Outbreak a PHEIC; First American Tests Positive', date: 'Breaking · May 17, 2026', postIndex: 0 },
-  { num: '02', title: 'Bundibugyo Virus: The Rare Ebola Strain Behind the 2026 DRC Outbreak', date: 'Science · May 17, 2026', postIndex: 1 },
-  { num: '03', title: 'Should Travellers to East Africa Be Worried? A Practical Risk Read', date: 'Prevention · May 17, 2026', postIndex: 2 },
-  { num: '04', title: 'Ebola PPE: What WHO and MSF Actually Use Inside an Ebola Treatment Centre', date: 'Prevention · May 17, 2026', postIndex: 3 },
-  { num: '05', title: 'How to Read an Ebola Outbreak Dashboard Without Panicking', date: 'Tips · May 17, 2026', postIndex: 4 },
+  { num: '01', title: 'Day 2 of PHEIC: DRC Confirmed Cases Triple to 30, Suspected Cases Pass 500, Death Toll Climbs to 131 Across 9 Ituri Health Zones', date: 'Breaking · May 19, 2026', postIndex: 0 },
+  { num: '02', title: 'Why the Bundibugyo Confirmation Rate Matters More Than the Headline Case Count', date: 'Science · May 19, 2026', postIndex: 1 },
+  { num: '03', title: 'WHO Declares DRC Bundibugyo Ebola Outbreak a PHEIC; First American Tests Positive', date: 'Breaking · May 17, 2026', postIndex: 2 },
+  { num: '04', title: 'Bundibugyo Virus: The Rare Ebola Strain Behind the 2026 DRC Outbreak', date: 'Science · May 17, 2026', postIndex: 3 },
+  { num: '05', title: 'Should Travellers to East Africa Be Worried? A Practical Risk Read', date: 'Prevention · May 17, 2026', postIndex: 4 },
 ];
 
 const PRODUCTS = [
