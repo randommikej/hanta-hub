@@ -66,6 +66,10 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --navy: #0a1628;
+    --blue: #1a4480;
+    --blue-mid: #2563a8;
+    --sky: #dbeafe;
+    --sky-light: #eff6ff;
     --crimson: #991b1b;
     --crimson-mid: #b91c1c;
     --crimson-light: #dc2626;
@@ -238,6 +242,67 @@
   .modal .body p { margin-bottom: 14px; color: var(--gray-800); }
   .modal .body h3 { font-family: var(--font-display); font-size: 1.3rem; color: var(--navy); margin: 22px 0 8px; }
   .modal .body em { color: var(--gray-600); font-size: .85rem; }
+
+
+  /* ─── SUPPLY HUB SECTION (ported from / verbatim, products identical) ─── */
+  .hub-body { max-width: 1100px; margin: 0 auto; padding: 48px 40px; }
+  .hub-intro {
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    border: 1px solid #bfdbfe; border-radius: 16px;
+    padding: 32px; margin-bottom: 40px;
+    display: flex; align-items: center; gap: 24px;
+  }
+  .hub-intro-icon { font-size: 3rem; }
+  .hub-intro h2 { font-family: var(--font-display); font-size: 1.5rem; color: var(--navy); }
+  .hub-intro p { color: var(--gray-600); font-size: .9rem; margin-top: 6px; }
+  .hub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .product-card {
+    background: var(--white); border: 1px solid var(--gray-200);
+    border-radius: 16px; overflow: hidden;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .product-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.1); }
+  .product-img {
+    height: 160px; display: flex; align-items: center; justify-content: center;
+    font-size: 4rem;
+  }
+  .p-img-blue { background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
+  .p-img-teal { background: linear-gradient(135deg, #ccfbf1, #a7f3d0); }
+  .p-img-sky { background: linear-gradient(135deg, #e0f2fe, #bae6fd); }
+  .p-img-indigo { background: linear-gradient(135deg, #e0e7ff, #c7d2fe); }
+  .p-img-rose { background: linear-gradient(135deg, #ffe4e6, #fecdd3); }
+  .p-img-purple { background: linear-gradient(135deg, #f3e8ff, #e9d5ff); }
+  .product-info { padding: 20px; }
+  .product-badge {
+    font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+    padding: 3px 10px; border-radius: 10px; display: inline-block; margin-bottom: 10px;
+  }
+  .badge-essential { background: #dbeafe; color: var(--blue); }
+  .badge-recommended { background: #d1fae5; color: var(--green); }
+  .badge-critical { background: #fee2e2; color: var(--red); }
+  .product-name { font-weight: 600; color: var(--gray-800); font-size: .95rem; margin-bottom: 6px; }
+  .product-desc { font-size: .8rem; color: var(--gray-600); line-height: 1.5; margin-bottom: 14px; }
+  .product-footer { display: flex; align-items: center; justify-content: space-between; }
+  .product-price { font-family: var(--font-display); font-size: 1.2rem; color: var(--navy); }
+  .product-price small { font-family: var(--font-body); font-size: .7rem; color: var(--gray-400); font-weight: 400; }
+  .btn-affiliate {
+    display: inline-block;
+    background: var(--blue); color: var(--white); border: none; cursor: pointer;
+    font-family: var(--font-body); font-size: .8rem; font-weight: 600;
+    padding: 8px 18px; border-radius: 8px; transition: background .2s;
+    text-decoration: none;
+  }
+  .btn-affiliate:hover { background: var(--navy); color: var(--white); text-decoration: none; }
+  .affiliate-notice {
+    margin-top: 32px; padding: 16px 20px;
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    font-size: .78rem; color: #78350f;
+  }
+  .hub-section-title { font-family: var(--font-display); font-size: 1.75rem; color: var(--navy); margin-bottom: 6px; max-width: 1100px; margin-left: auto; margin-right: auto; }
+  .hub-section-sub { color: var(--gray-600); font-size: .9rem; margin-bottom: 32px; max-width: 1100px; margin-left: auto; margin-right: auto; }
+  .fade-in { animation: fadeIn .4s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 900px) { .hub-grid { grid-template-columns: 1fr; } }
 
   /* FOOTER */
   footer { background: var(--gray-50); border-top: 1px solid var(--gray-200); padding: 36px 40px 28px; text-align: center; color: var(--gray-600); font-size: .85rem; margin-top: 32px; }
@@ -516,6 +581,26 @@ const SIDEBAR_LINKS = [
   { num: '05', title: 'How to Read an Ebola Outbreak Dashboard Without Panicking', date: 'Tips · May 17, 2026', postIndex: 4 },
 ];
 
+const PRODUCTS = [
+  { img: '😷', imgClass: 'p-img-rose', badge: 'Critical', badgeClass: 'badge-critical', name: 'N95 Respirator Masks (20-Pack)', desc: 'NIOSH-certified N95 respirators filter 95% of airborne particles. Essential when cleaning potentially contaminated areas. CDC-recommended for hantavirus prevention.', price: '$34.99', priceUnit: '/pack', asin: 'B097HYFCN5' },
+  { img: '🧤', imgClass: 'p-img-blue', badge: 'Critical', badgeClass: 'badge-critical', name: 'Nitrile Gloves — Heavy Duty (100ct)', desc: 'Powder-free medical-grade nitrile gloves. Puncture-resistant for handling contaminated materials. Avoid contact with rodent urine, droppings, or nesting materials.', price: '$19.99', priceUnit: '/box', asin: 'B0BR7SGFCJ' },
+  { img: '🧴', imgClass: 'p-img-teal', badge: 'Essential', badgeClass: 'badge-essential', name: 'EPA-Approved Disinfectant Spray', desc: 'Broad-spectrum disinfectant effective against hantavirus. Use before sweeping or vacuuming potentially contaminated areas — never dry sweep, always wet disinfect first.', price: '$12.49', priceUnit: '/bottle', asin: 'B071ZJ8SFJ' },
+  { img: '🩺', imgClass: 'p-img-sky', badge: 'Essential', badgeClass: 'badge-essential', name: 'Full Body Tyvek Coverall Suit', desc: 'Disposable protective coverall for high-risk cleanup situations. Prevents rodent material contact with skin and clothing. Recommended for cabin or attic cleanouts in endemic areas.', price: '$8.99', priceUnit: '/suit', asin: 'B01JOWAOEG' },
+  { img: '🧼', imgClass: 'p-img-indigo', badge: 'Recommended', badgeClass: 'badge-recommended', name: 'Antibacterial Hand Sanitizer (1L)', desc: '70% ethanol formula. WHO-recommended hand hygiene solution. For use when soap and water unavailable. Apply after any potential environmental exposure.', price: '$9.99', priceUnit: '/liter', asin: 'B0BNP5KYVF' },
+  { img: '🏥', imgClass: 'p-img-purple', badge: 'Recommended', badgeClass: 'badge-recommended', name: 'Emergency First Aid Kit — Pro', desc: 'Comprehensive 150-piece kit including wound care, sterile gauze, thermal blankets, and CPR mask. For managing symptoms before professional medical care is accessible.', price: '$49.99', priceUnit: '/kit', asin: 'B0DB794BKQ' },
+  { img: '🥽', imgClass: 'p-img-sky', badge: 'Critical', badgeClass: 'badge-critical', name: 'Anti-Fog Safety Goggles', desc: 'CDC-recommended eye protection during rodent cleanup. Anti-fog lenses prevent vision obstruction. Form a seal around the eyes to block aerosolized particles and chemical splashes.', price: '$9.99', priceUnit: '/pair', asin: 'B07VF3C2CW' },
+  { img: '🔧', imgClass: 'p-img-rose', badge: 'Essential', badgeClass: 'badge-essential', name: 'Xcluder Rodent-Proof Fill Fabric', desc: 'Stainless steel mesh that rodents cannot chew through. Pack tightly into entry points and seal with caulk. The CDC-recommended seal for permanent rodent exclusion.', price: '$14.99', priceUnit: '/pack', asin: 'B006GQQVDW' },
+  { img: '🪤', imgClass: 'p-img-blue', badge: 'Recommended', badgeClass: 'badge-recommended', name: 'Wooden Snap Traps (12-Pack)', desc: 'CDC recommends snap traps over glue traps for rodent control. Glue traps cause stressed rodents to urinate, increasing virus aerosolization risk. Set near walls where mice travel.', price: '$9.99', priceUnit: '/12-pack', asin: 'B0CQ8SQCP3' },
+  { img: '🗑️', imgClass: 'p-img-purple', badge: 'Essential', badgeClass: 'badge-essential', name: 'Heavy-Duty Contractor Bags (42 Gal)', desc: 'Thick contractor-grade bags for the CDC double-bag protocol. Standard kitchen bags can tear during cleanup; contractor bags safely contain contaminated rodent material for disposal.', price: '$24.99', priceUnit: '/26-pack', asin: 'B07NWC11T6' },
+  { img: '🫁', imgClass: 'p-img-teal', badge: 'Critical', badgeClass: 'badge-critical', name: 'Fingertip Pulse Oximeter', desc: 'Monitor blood oxygen saturation (SpO₂). Falling levels are an early warning of HPS pulmonary edema. If SpO₂ drops below 95% with flu-like symptoms after possible exposure, seek emergency care.', price: '$19.99', priceUnit: '/unit', asin: 'B07PQ8WTC4' },
+  { img: '🌡️', imgClass: 'p-img-rose', badge: 'Recommended', badgeClass: 'badge-recommended', name: 'Digital Fever Thermometer', desc: 'Track fever progression — sustained 38–40°C (100–104°F) with deep muscle aches after possible exposure is a red-flag symptom for the hantavirus prodrome. Color-coded fever guidance.', price: '$11.99', priceUnit: '/unit', asin: 'B0DV8F226M' },
+  { img: '🌬️', imgClass: 'p-img-indigo', badge: 'Recommended', badgeClass: 'badge-recommended', name: 'HEPA Air Purifier — Large Room', desc: 'True HEPA filter captures 99.97% of airborne particles down to 0.3 microns. Not a substitute for proper PPE during cleanup, but valuable for ongoing air quality in homes near rodent habitat.', price: '$129.99', priceUnit: '/unit', asin: 'B098C92GSK' },
+  { img: '🥫', imgClass: 'p-img-teal', badge: 'Recommended', badgeClass: 'badge-recommended', name: 'Airtight Food Storage Set (48pc)', desc: 'Hard-sided containers prevent rodents from accessing stored food. Replace flour, rice, and pet-food bags or boxes — mice chew through cardboard easily but cannot breach sealed plastic containers.', price: '$49.99', priceUnit: '/48-piece set', asin: 'B0DLFMDSHB' },
+  { img: '🔦', imgClass: 'p-img-purple', badge: 'Recommended', badgeClass: 'badge-recommended', name: 'LED Rechargeable Headlamp', desc: 'Hands-free illumination for inspecting attics, crawl spaces, and dim cabin interiors before cleanup. Critical for spotting rodent droppings and entry points in low-light areas.', price: '$14.99', priceUnit: '/unit', asin: 'B08D66HCXW' },
+];
+
+const amazonAffiliate = (asin) => `https://www.amazon.com/dp/${asin}?tag=hantahub-20`;
+
 const SYMPTOMS = [
   { icon: '🌡️', text: 'Fever (38–40°C)' },
   { icon: '😖', text: 'Severe headache' },
@@ -536,6 +621,7 @@ function Nav({ active, onChange }) {
       </div>
       <div className="nav-links">
         <button className={active === 'tracker' ? 'active' : ''} onClick={() => onChange('tracker')}>📊 Tracker</button>
+        <button className={active === 'hub' ? 'active' : ''} onClick={() => onChange('hub')}>🛡️ Supply Hub</button>
         <button className={active === 'blog' ? 'active' : ''} onClick={() => onChange('blog')}>📰 Blog</button>
         <button className={active === 'sources' ? 'active' : ''} onClick={() => onChange('sources')}>🌐 Global Sources</button>
         <button className={active === 'faq' ? 'active' : ''} onClick={() => onChange('faq')}>❓ FAQ</button>
@@ -794,6 +880,50 @@ function FAQSection() {
   );
 }
 
+function HubSection() {
+  return (
+    <section>
+      <div className="hero" style={{ padding: '48px 40px 40px' }}>
+        <div className="hero-inner">
+          <div className="hero-badge">🛡️ Preparedness Hub</div>
+          <h1>Supply <em>Hub</em></h1>
+          <p className="hero-sub">Essential protective supplies recommended by health authorities to reduce your risk from hantavirus and airborne pathogens.</p>
+        </div>
+      </div>
+      <div className="hub-body fade-in">
+        <div className="hub-intro">
+          <div className="hub-intro-icon">🏥</div>
+          <div>
+            <h2>Protect Yourself & Your Family</h2>
+            <p>The CDC recommends specific protective equipment when cleaning rodent-infested areas or working in high-risk environments. All products below are sourced from certified medical suppliers.</p>
+          </div>
+        </div>
+        <h2 className="hub-section-title">Recommended Supplies</h2>
+        <p className="hub-section-sub">Curated by health professionals · Updated for 2026 outbreak season</p>
+        <div className="hub-grid">
+          {PRODUCTS.map((p, i) => (
+            <div className="product-card" key={i}>
+              <div className={'product-img ' + p.imgClass}>{p.img}</div>
+              <div className="product-info">
+                <span className={'product-badge ' + p.badgeClass}>{p.badge}</span>
+                <div className="product-name">{p.name}</div>
+                <div className="product-desc">{p.desc}</div>
+                <div className="product-footer">
+                  <div className="product-price">{p.price} <small>{p.priceUnit}</small></div>
+                  <a href={amazonAffiliate(p.asin)} target="_blank" rel="nofollow sponsored noopener" className="btn-affiliate">Shop on Amazon →</a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="affiliate-notice">
+          🔗 <strong>Affiliate Disclosure:</strong> Hanta Hub participates in affiliate programs. When you click "Shop on Amazon" and make a purchase, we may earn a small commission at no extra cost to you. This helps fund our free outbreak monitoring service.
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function App() {
   const [active, setActive] = useState('tracker');
   const [openPostIndex, setOpenPostIndex] = useState(null);
@@ -801,6 +931,7 @@ function App() {
     <>
       <Nav active={active} onChange={setActive} />
       {active === 'tracker' && <><Hero /><TrackerSection /></>}
+      {active === 'hub' && <HubSection />}
       {active === 'blog' && <BlogSection onOpenPost={i => setOpenPostIndex(i)} />}
       {active === 'sources' && <SourcesSection />}
       {active === 'faq' && <FAQSection />}
