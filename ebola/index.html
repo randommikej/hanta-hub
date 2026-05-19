@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ebola Hub — DRC 2026 Bundibugyo Outbreak Tracker · 12 Confirmed · 89 Deaths · WHO PHEIC</title>
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">%F0%9F%A6%A0</text></svg>'>
+<meta name="description" content="Ebola Hub — live tracker for the 2026 DRC Ituri Bundibugyo Ebola outbreak. 12 confirmed cases, 89 deaths, WHO PHEIC declared May 17, cross-border spread to Uganda, no licensed vaccine for Bundibugyo.">
+<meta name="keywords" content="ebola, ebola outbreak, ebola 2026, Bundibugyo, DRC ebola, Ituri ebola, ebola tracker, WHO PHEIC, Bundibugyo virus, BDBV, Mongbwalu, Bunia, Rwampara, Kampala ebola, Uganda ebola, Ervebo, ebola vaccine, ebola Kasai">
+<meta name="author" content="Hanta Hub">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://hantavirussupplies.com/ebola/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ebola Hub">
+<meta property="og:url" content="https://hantavirussupplies.com/ebola/">
+<meta property="og:title" content="Ebola Hub — DRC 2026 Bundibugyo Outbreak Tracker · 12 Confirmed · 89 Deaths · WHO PHEIC">
+<meta property="og:description" content="Live tracker for the 2026 DRC Ituri Bundibugyo Ebola outbreak. WHO PHEIC declared May 17. Cross-border spread to Uganda. No licensed vaccine or treatment for the Bundibugyo strain.">
+<meta property="og:image" content="https://hantavirussupplies.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ebola Hub — DRC 2026 Bundibugyo Outbreak Tracker">
+<meta name="twitter:description" content="12 confirmed, 89 deaths, WHO PHEIC declared May 17. No licensed vaccine for Bundibugyo. Live outbreak tracker.">
+<meta name="twitter:image" content="https://hantavirussupplies.com/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://hantavirussupplies.com/ebola/#website",
+      "url": "https://hantavirussupplies.com/ebola/",
+      "name": "Ebola Hub",
+      "description": "Live tracker for the 2026 DRC Ituri Bundibugyo Ebola outbreak — WHO updates, timeline, regional risk, and global news sources.",
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "NewsArticle",
+      "headline": "WHO Declares DRC Bundibugyo Ebola Outbreak a Public Health Emergency of International Concern",
+      "datePublished": "2026-05-17",
+      "dateModified": "2026-05-17",
+      "author": { "@type": "Organization", "name": "Hanta Hub" },
+      "publisher": { "@type": "Organization", "name": "Hanta Hub", "url": "https://hantavirussupplies.com/" },
+      "mainEntityOfPage": "https://hantavirussupplies.com/ebola/",
+      "image": "https://hantavirussupplies.com/og-image.png",
+      "description": "WHO Director-General has declared the Bundibugyo Ebola outbreak in DRC and Uganda a PHEIC. 12 PCR-confirmed cases, 336 suspected, 89 deaths reported as of May 17 across three health zones in Ituri Province. Two confirmed cases imported to Kampala, Uganda. No licensed vaccine or specific antiviral exists for the Bundibugyo strain."
+    },
+    {
+      "@type": "MedicalCondition",
+      "name": "Ebola Virus Disease",
+      "alternateName": ["EVD", "Ebola hemorrhagic fever"],
+      "code": { "@type": "MedicalCode", "code": "A98.4", "codingSystem": "ICD-10" },
+      "signOrSymptom": [
+        { "@type": "MedicalSignOrSymptom", "name": "Fever" },
+        { "@type": "MedicalSignOrSymptom", "name": "Severe headache" },
+        { "@type": "MedicalSignOrSymptom", "name": "Muscle pain" },
+        { "@type": "MedicalSignOrSymptom", "name": "Vomiting and diarrhea" },
+        { "@type": "MedicalSignOrSymptom", "name": "Unexplained bleeding" }
+      ],
+      "possibleTreatment": { "@type": "MedicalTherapy", "name": "Supportive care, fluid resuscitation, monoclonal antibody therapy (Inmazeb, Ebanga) for Zaire ebolavirus — no licensed treatment for Bundibugyo virus" },
+      "epidemiology": "Case fatality rate 25–40% for Bundibugyo virus historically; up to 90% for Zaire ebolavirus without supportive care"
+    }
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0a1628;
+    --crimson: #991b1b;
+    --crimson-mid: #b91c1c;
+    --crimson-light: #dc2626;
+    --orange: #c2410c;
+    --orange-mid: #ea580c;
+    --orange-light: #f97316;
+    --amber: #d97706;
+    --rose-50: #fff1f2;
+    --rose-100: #ffe4e6;
+    --white: #ffffff;
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-400: #94a3b8;
+    --gray-600: #475569;
+    --gray-800: #1e293b;
+    --red: #dc2626;
+    --green: #059669;
+    --font-display: 'DM Serif Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  html, body { overflow-x: hidden; max-width: 100vw; }
+  body { font-family: var(--font-body); background: var(--white); color: var(--gray-800); line-height: 1.6; }
+  a { color: var(--crimson-mid); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--gray-200); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .nav-logo { font-family: var(--font-display); font-size: 1.4rem; color: var(--navy); display: flex; align-items: center; gap: 10px; }
+  .nav-logo .pulse-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--red); animation: pulse 1.8s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); box-shadow:0 0 0 0 rgba(220,38,38,0.4); } 50% { opacity:.9; transform:scale(1.1); box-shadow:0 0 0 6px rgba(220,38,38,0); } }
+  .nav-links { display: flex; gap: 6px; flex-wrap: wrap; }
+  .nav-links button { background: none; border: none; cursor: pointer; font-family: var(--font-body); font-size: .875rem; font-weight: 500; color: var(--gray-600); padding: 8px 16px; border-radius: 8px; transition: all .2s; }
+  .nav-links button:hover, .nav-links button.active { background: var(--rose-100); color: var(--crimson); }
+  .nav-links a.cross-link { font-size: .875rem; font-weight: 500; color: var(--gray-600); padding: 8px 16px; border-radius: 8px; }
+  .nav-links a.cross-link:hover { background: #dbeafe; color: #1a4480; text-decoration: none; }
+  .nav-status { display: flex; align-items: center; gap: 8px; font-size: .75rem; font-weight: 500; color: var(--crimson); background: #ffe4e6; padding: 4px 12px; border-radius: 20px; }
+  .nav-status span { width: 6px; height: 6px; border-radius: 50%; background: var(--crimson); animation: pulse 1.8s ease-in-out infinite; }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, #4c0519 0%, var(--crimson) 50%, var(--orange-mid) 100%); padding: 64px 40px 48px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3Ccircle cx='30' cy='30' r='10'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); pointer-events: none; }
+  .hero-inner { position: relative; max-width: 1240px; margin: 0 auto; }
+  .hero-badge { display: inline-block; background: rgba(255,255,255,0.12); color: #fff; padding: 6px 16px; border-radius: 999px; font-size: .82rem; letter-spacing: .04em; font-weight: 500; margin-bottom: 18px; }
+  .hero h1 { font-family: var(--font-display); font-size: 3rem; color: #fff; line-height: 1.1; margin-bottom: 14px; }
+  .hero p.hero-sub { color: rgba(255,255,255,0.86); font-size: 1.05rem; max-width: 720px; margin-bottom: 28px; }
+  .hero-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 18px; }
+  .hero-stat { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); border-radius: 14px; padding: 18px 20px; backdrop-filter: blur(8px); }
+  .hero-stat .v { font-family: var(--font-display); font-size: 2.4rem; color: #fff; line-height: 1; }
+  .hero-stat .l { color: rgba(255,255,255,0.86); font-size: .82rem; margin-top: 8px; font-weight: 500; }
+  .hero-stat .s { color: rgba(255,255,255,0.62); font-size: .72rem; margin-top: 3px; }
+  @media (max-width: 720px) { .hero { padding: 40px 20px 32px; } .hero h1 { font-size: 2rem; } }
+
+  /* SECTIONS */
+  section { padding: 56px 40px; max-width: 1240px; margin: 0 auto; }
+  section h2 { font-family: var(--font-display); font-size: 2rem; color: var(--navy); margin-bottom: 8px; }
+  section p.section-sub { color: var(--gray-600); margin-bottom: 28px; max-width: 720px; }
+
+  /* TRACKER tiles */
+  .tracker-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-bottom: 32px; }
+  .tracker-tile { padding: 22px; border-radius: 14px; border: 1px solid var(--gray-200); background: var(--white); transition: transform .2s, box-shadow .2s; }
+  .tracker-tile:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+  .tracker-tile.alert { background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%); border-color: #fecaca; }
+  .tracker-tile.watch { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-color: #fed7aa; }
+  .tracker-tile .v { font-family: var(--font-display); font-size: 2.2rem; color: var(--navy); line-height: 1; }
+  .tracker-tile.alert .v { color: var(--crimson); }
+  .tracker-tile.watch .v { color: var(--orange); }
+  .tracker-tile .l { font-weight: 600; font-size: .88rem; margin-top: 8px; color: var(--gray-800); }
+  .tracker-tile .n { color: var(--gray-600); font-size: .78rem; margin-top: 6px; line-height: 1.45; }
+
+  /* CASE CURVE */
+  .curve-wrap { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 16px; padding: 24px; margin: 12px 0 32px; }
+  .curve-wrap h3 { font-family: var(--font-display); font-size: 1.3rem; color: var(--navy); margin-bottom: 6px; }
+  .curve-wrap p.sub { font-size: .85rem; color: var(--gray-600); margin-bottom: 16px; }
+  .curve-canvas { height: 340px; background: #fff; border-radius: 12px; padding: 12px; border: 1px solid var(--gray-200); }
+  @media (max-width: 640px) { .curve-canvas { height: 260px; } }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 28px; border-left: 2px solid var(--gray-200); }
+  .timeline-item { position: relative; padding: 0 0 26px 18px; }
+  .timeline-item::before { content: ''; position: absolute; left: -36px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: var(--gray-400); border: 3px solid #fff; box-shadow: 0 0 0 2px var(--gray-400); }
+  .timeline-item.death::before { background: var(--crimson); box-shadow: 0 0 0 2px var(--crimson); }
+  .timeline-item.active::before { background: var(--orange-mid); box-shadow: 0 0 0 2px var(--orange-mid); animation: pulse 1.8s ease-in-out infinite; }
+  .timeline-item.confirmed::before { background: var(--orange); box-shadow: 0 0 0 2px var(--orange); }
+  .timeline-date { font-size: .78rem; font-weight: 600; color: var(--crimson); letter-spacing: .04em; text-transform: uppercase; margin-bottom: 4px; }
+  .timeline-title { font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+  .timeline-desc { font-size: .9rem; color: var(--gray-600); line-height: 1.55; }
+  .badge { display: inline-block; font-size: .68rem; font-weight: 600; padding: 2px 8px; border-radius: 6px; text-transform: uppercase; letter-spacing: .04em; margin-left: 6px; }
+  .badge-death { background: #fee2e2; color: var(--crimson); }
+  .badge-confirmed { background: #ffedd5; color: var(--orange); }
+  .badge-now { background: #ffe4e6; color: var(--crimson); }
+
+  /* REGIONS table */
+  .table-wrap { overflow-x: auto; }
+  table.regions { width: 100%; border-collapse: collapse; background: #fff; border-radius: 14px; overflow: hidden; border: 1px solid var(--gray-200); }
+  table.regions th, table.regions td { padding: 14px 18px; text-align: left; font-size: .9rem; vertical-align: top; }
+  table.regions thead th { background: var(--gray-50); color: var(--gray-600); font-weight: 600; font-size: .76rem; letter-spacing: .06em; text-transform: uppercase; border-bottom: 1px solid var(--gray-200); }
+  table.regions tbody tr { border-bottom: 1px solid var(--gray-100); }
+  table.regions tbody tr:last-child { border-bottom: none; }
+  table.regions td.region-name { font-weight: 600; color: var(--navy); }
+  .status-pill { display: inline-block; font-size: .72rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; }
+  .status-active { background: #fee2e2; color: var(--crimson); }
+  .status-watch { background: #ffedd5; color: var(--orange); }
+  .status-endemic { background: #dbeafe; color: #1a4480; }
+  .status-suspected { background: var(--gray-100); color: var(--gray-600); }
+
+  /* CALLOUTS */
+  .callout { background: var(--rose-50); border-left: 4px solid var(--crimson); padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 18px 0; font-size: .95rem; color: var(--gray-800); }
+  .callout strong { color: var(--crimson); }
+
+  /* BLOG */
+  .blog-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; margin-top: 12px; }
+  @media (max-width: 900px) { .blog-grid { grid-template-columns: 1fr; } }
+  .post-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 16px; padding: 24px; cursor: pointer; transition: transform .2s, box-shadow .2s; margin-bottom: 16px; }
+  .post-card:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,0.06); }
+  .post-cat { display: inline-block; font-size: .72rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 10px; }
+  .cat-news { background: #fee2e2; color: var(--crimson); }
+  .cat-science { background: #dbeafe; color: #1a4480; }
+  .cat-prevention { background: #d1fae5; color: var(--green); }
+  .cat-tips { background: #ffedd5; color: var(--orange); }
+  .post-card h3 { font-family: var(--font-display); font-size: 1.5rem; color: var(--navy); line-height: 1.25; margin-bottom: 8px; }
+  .post-meta { font-size: .78rem; color: var(--gray-400); margin-bottom: 8px; }
+  .post-card p { color: var(--gray-600); font-size: .92rem; }
+  .post-card.featured { padding: 32px; }
+  .post-card.featured h3 { font-size: 1.85rem; }
+  .post-card.featured .post-icon { font-size: 2.6rem; margin-bottom: 14px; }
+  .sidebar h4 { font-family: var(--font-display); font-size: 1.15rem; color: var(--navy); margin-bottom: 14px; }
+  .sidebar-link { display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--gray-100); cursor: pointer; }
+  .sidebar-link:last-child { border-bottom: none; }
+  .sidebar-link .num { font-family: var(--font-display); font-size: 1.4rem; color: var(--gray-400); min-width: 34px; }
+  .sidebar-link .lt { font-size: .92rem; color: var(--navy); font-weight: 500; line-height: 1.4; margin-bottom: 4px; }
+  .sidebar-link .lm { font-size: .72rem; color: var(--gray-400); }
+  .sidebar-link:hover .lt { color: var(--crimson); }
+
+  /* SOURCES */
+  .sources-filter { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .sources-filter button { background: var(--white); border: 1px solid var(--gray-200); border-radius: 999px; padding: 6px 14px; font-size: .82rem; cursor: pointer; transition: all .15s; }
+  .sources-filter button:hover, .sources-filter button.active { background: var(--crimson); color: #fff; border-color: var(--crimson); }
+  .sources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 16px; }
+  .source-card { background: #fff; border: 1px solid var(--gray-200); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 8px; transition: transform .15s, box-shadow .15s; }
+  .source-card:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,.06); }
+  .source-head { display: flex; align-items: center; gap: 10px; }
+  .source-head img { width: 22px; height: 22px; border-radius: 4px; }
+  .source-name { font-weight: 600; font-size: .85rem; color: var(--navy); }
+  .source-tag { font-size: .65rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; letter-spacing: .04em; text-transform: uppercase; }
+  .source-tag-authority { background: #dcfce7; color: #166534; }
+  .source-tag-wire { background: #dbeafe; color: #1a4480; }
+  .source-tag-news { background: #fee2e2; color: var(--crimson); }
+  .source-tag-science { background: #ede9fe; color: #5b21b6; }
+  .source-title { font-weight: 600; font-size: .98rem; line-height: 1.35; color: var(--navy); }
+  .source-excerpt { font-size: .85rem; color: var(--gray-600); line-height: 1.5; }
+  .source-meta { font-size: .72rem; color: var(--gray-400); display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 6px; }
+  .source-card a.read-link { font-size: .78rem; color: var(--crimson); font-weight: 600; }
+
+  /* FAQ */
+  .faq { background: var(--gray-50); border-radius: 16px; padding: 24px; border: 1px solid var(--gray-200); }
+  .faq details { border-bottom: 1px solid var(--gray-200); padding: 14px 0; }
+  .faq details:last-child { border-bottom: none; }
+  .faq summary { font-weight: 600; cursor: pointer; color: var(--navy); }
+  .faq details[open] summary { color: var(--crimson); }
+  .faq details p { margin-top: 10px; color: var(--gray-600); font-size: .94rem; }
+
+  /* MODAL */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 200; display: flex; align-items: flex-start; justify-content: center; padding: 40px 16px; overflow-y: auto; }
+  .modal { background: #fff; max-width: 760px; width: 100%; border-radius: 18px; padding: 36px 32px; position: relative; }
+  .modal-close { position: absolute; top: 16px; right: 16px; background: var(--gray-100); border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1.1rem; color: var(--gray-600); }
+  .modal h2 { font-family: var(--font-display); font-size: 1.9rem; color: var(--navy); margin: 16px 0 8px; line-height: 1.25; }
+  .modal .modal-meta { font-size: .82rem; color: var(--gray-400); margin-bottom: 18px; }
+  .modal .body p { margin-bottom: 14px; color: var(--gray-800); }
+  .modal .body h3 { font-family: var(--font-display); font-size: 1.3rem; color: var(--navy); margin: 22px 0 8px; }
+  .modal .body em { color: var(--gray-600); font-size: .85rem; }
+
+  /* FOOTER */
+  footer { background: var(--gray-50); border-top: 1px solid var(--gray-200); padding: 36px 40px 28px; text-align: center; color: var(--gray-600); font-size: .85rem; margin-top: 32px; }
+  footer a { color: var(--crimson-mid); }
+  footer p { margin-bottom: 6px; }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 16px; height: 56px; }
+    .nav-logo { font-size: 1.1rem; }
+    .nav-links { gap: 2px; overflow-x: auto; }
+    .nav-links button, .nav-links a.cross-link { padding: 6px 8px; font-size: .76rem; }
+    .nav-status { display: none; }
+    section { padding: 36px 20px; }
+    section h2 { font-size: 1.5rem; }
+    .hero h1 { font-size: 1.9rem; }
+    .modal { padding: 24px 18px; }
+  }
+</style>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js"></script>
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+<script type="module">
+  import { inject } from "https://esm.sh/@vercel/analytics@1?bundle";
+  import { injectSpeedInsights } from "https://esm.sh/@vercel/speed-insights@1?bundle";
+  try { inject(); } catch (e) { console.warn('vercel analytics inject failed', e); }
+  try { injectSpeedInsights(); } catch (e) { console.warn('vercel speed-insights inject failed', e); }
+</script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" data-type="module">
+const { useState, useEffect, useRef } = React;
+
+// ─── DATA ARRAYS ─────────────────────────────────────────────────────────────
+
+const HERO_STATS = [
+  { val: '12', label: 'Confirmed Cases', sub: 'DRC + Uganda · PCR-confirmed Bundibugyo virus' },
+  { val: '336', label: 'Suspected Cases', sub: 'Across 3 Ituri health zones · awaiting confirmation' },
+  { val: '89', label: 'Reported Deaths', sub: 'Mostly suspected · 4+ health workers among early dead' },
+  { val: '25–40%', label: 'Bundibugyo CFR', sub: 'Historical · no licensed vaccine or specific antiviral' },
+];
+
+const TRACKER_STATS = [
+  { kind: 'alert', val: '89', label: 'Reported Deaths · 2026 DRC Outbreak', note: 'Mostly suspected · 4 health workers among the earliest deaths in Mongbwalu health zone within 4 days of the WHO alert' },
+  { kind: 'alert', val: '12', label: 'PCR-confirmed Cases', note: 'Bundibugyo virus confirmed May 14 (initial assays only detected Zaire ebolavirus) · 2 imported cases in Kampala, Uganda · 1 American physician (Peter Stafford) at Nyankunde Hospital, Bunia' },
+  { kind: 'watch', val: '336', label: 'Suspected Cases', note: 'Across Bunia, Rwampara and Mongbwalu health zones in Ituri Province · ring-based contact tracing under way · Mongbwalu high-traffic gold mining region suspected origin' },
+  { kind: 'watch', val: '23 days', label: 'Since Index Symptom Onset', note: 'Apr 24, 2026 · index case nurse onset of fever, vomiting, hemorrhaging in Bunia · WHO PHEIC declared May 17 · 17th Ebola outbreak in DRC history' },
+];
+
+const TIMELINE = [
+  { date: 'Apr 24, 2026', title: 'Index Nurse · Symptom Onset · Bunia', desc: 'A nurse arrives at a Bunia health facility with fever, severe malaise, vomiting and hemorrhaging. She dies at the centre. Retrospective investigation identifies this as the currently known index case of the outbreak.', dotClass: 'death', badge: 'Index · Death', badgeClass: 'badge-death' },
+  { date: 'May 5, 2026', title: 'WHO Alert · Mongbwalu Health Zone', desc: 'WHO receives an alert about an unknown illness with high mortality in Mongbwalu Health Zone, including four health workers dead within four days. Samples shipped to INRB (Kinshasa) for analysis.', dotClass: 'confirmed', badge: 'Alert', badgeClass: 'badge-confirmed' },
+  { date: 'May 14, 2026', title: 'PCR Confirms Bundibugyo Virus', desc: 'Repeat PCR at INRB Kinshasa confirms Bundibugyo virus (BDBV) rather than Zaire ebolavirus. Initial diagnostic assays had targeted Zaire only and returned negative, briefly delaying recognition.', dotClass: 'confirmed', badge: 'Confirmed', badgeClass: 'badge-confirmed' },
+  { date: 'May 15, 2026', title: 'DRC Declares 17th National Ebola Outbreak', desc: 'The DRC Ministry of Public Health, Hygiene and Social Welfare officially declares the 17th Ebola Disease outbreak in national history, encompassing Rwampara, Mongbwalu and Bunia health zones in Ituri Province.', dotClass: 'confirmed', badge: 'Declared', badgeClass: 'badge-confirmed' },
+  { date: 'May 16, 2026', title: 'Cross-Border · Uganda Confirms 2 Imported Cases', desc: 'Uganda Ministry of Health confirms two PCR-positive Bundibugyo cases in Kampala, both with recent travel history from DRC. One of the two has died. WHO Director-General determines the criteria for a Public Health Emergency of International Concern (PHEIC) are met.', dotClass: 'death', badge: 'Cross-border', badgeClass: 'badge-death' },
+  { date: 'May 17, 2026 · Now', title: 'WHO Declares PHEIC · First American Tests Positive', desc: 'Sunday May 17, 2026 — WHO Director-General formally declares the Bundibugyo Ebola outbreak in DRC and Uganda a Public Health Emergency of International Concern. The same day, Dr Peter Stafford — an American physician who has been working at Nyankunde Hospital in Bunia since 2023 — tests positive for Bundibugyo virus and is being prepared for medical evacuation to Germany via the US State Department. CDC reaffirms US risk as low. Cluster total stands at 12 PCR-confirmed cases, 336 suspected, and 89 deaths.', dotClass: 'active', badge: 'Active · PHEIC', badgeClass: 'badge-now' }
+];
+
+const REGIONS = [
+  { region: '🇨🇩 DRC · Ituri Province', cases: '12 confirmed · 336 suspected · ~89 deaths', notes: '3 health zones: Bunia (provincial capital), Rwampara, Mongbwalu (gold mining region · suspected origin) · 4+ health workers among early dead · ring-based contact tracing under way · INRB Kinshasa lead reference lab', status: 'Active', statusClass: 'status-active' },
+  { region: '🇺🇬 Uganda · Kampala', cases: '2 confirmed · 1 death', notes: 'Both imported via recent travel from DRC · Kampala Mulago National Referral Hospital isolation · Uganda Ministry of Health activated emergency operations centre · contact tracing under way', status: 'Active', statusClass: 'status-active' },
+  { region: '🇨🇩 DRC · Kinshasa', cases: 'Confirmed cases reported', notes: 'INRB lab is reference centre for outbreak · isolated cases reported in the capital with travel link to Ituri', status: 'Watch', statusClass: 'status-watch' },
+  { region: '🇺🇸 United States', cases: '1 American physician (Bunia)', notes: 'Dr Peter Stafford · physician at Nyankunde Hospital, Bunia since 2023 · tested positive May 17 · being moved to Germany for treatment with family + colleague (asymptomatic) for observation · CDC: US risk "remains low"', status: 'Watch', statusClass: 'status-watch' },
+  { region: '🇩🇪 Germany', cases: 'Receiving · 1 evacuated patient', notes: 'Berlin or Hamburg high-containment unit (specific facility being finalised) · receiving the American Bunia-based physician · Germany has previous Ebola experience', status: 'Watch', statusClass: 'status-watch' },
+  { region: '🌍 East & Central Africa (Watch)', cases: 'Border surveillance active', notes: 'South Sudan, Rwanda, Burundi, Central African Republic and Tanzania activate or reinforce border-screening protocols · Africa CDC coordinating regional response', status: 'Watch', statusClass: 'status-watch' },
+];
+
+// Cumulative reported cases (suspected) by date — DRC Ituri 2026 outbreak.
+const CASE_CURVE_DATA = [
+  { date: 'Apr 24', suspected: 1, confirmed: 0, deaths: 1 },
+  { date: 'May 5',  suspected: 12, confirmed: 0, deaths: 8 },
+  { date: 'May 7',  suspected: 38, confirmed: 0, deaths: 22 },
+  { date: 'May 10', suspected: 120, confirmed: 0, deaths: 44 },
+  { date: 'May 12', suspected: 180, confirmed: 0, deaths: 60 },
+  { date: 'May 14', suspected: 220, confirmed: 4, deaths: 73 },
+  { date: 'May 15', suspected: 246, confirmed: 8, deaths: 80 },
+  { date: 'May 16', suspected: 300, confirmed: 10, deaths: 87 },
+  { date: 'May 17', suspected: 336, confirmed: 12, deaths: 89 },
+];
+
+const POSTS = [
+  { cat: 'Breaking News', catClass: 'cat-news', date: 'May 17, 2026', readTime: '8 min read',
+    title: 'WHO Declares DRC Bundibugyo Ebola Outbreak a PHEIC; First American Tests Positive',
+    excerpt: 'Sunday May 17 is the day the 2026 DRC Ebola outbreak became a global story. The WHO Director-General formally declared the Bundibugyo cluster in DRC and Uganda a Public Health Emergency of International Concern, and the same day an American physician in Bunia tested positive and entered medical evacuation to Germany.',
+    icon: '🚨',
+    body: [
+      ['p', 'Sunday May 17, 2026 is the day the 2026 Democratic Republic of the Congo Ebola outbreak became a global story. In the morning the WHO Director-General formally declared the Bundibugyo virus cluster in DRC and Uganda a Public Health Emergency of International Concern (PHEIC) — the WHO\'s highest-level alert mechanism under the International Health Regulations. By the afternoon the United States had a directly affected citizen: Dr Peter Stafford, an American physician who has been working at Nyankunde Hospital in Bunia since 2023, tested positive for Bundibugyo virus and was being prepared for medical evacuation to Germany via the US State Department.'],
+      ['h3', 'The Numbers'],
+      ['p', 'As of the WHO PHEIC declaration, the cluster total stood at 12 PCR-confirmed cases, 336 suspected cases, and 89 deaths. Most of the deaths are still classified as suspected rather than confirmed because confirmatory PCR has lagged behind the case count in remote Ituri Province health zones with limited laboratory capacity. The outbreak is centred in three health zones in Ituri — Bunia, Rwampara, and Mongbwalu — with two confirmed imported cases (one death) in Kampala, Uganda, and isolated confirmed cases reported in DRC\'s capital Kinshasa with travel links back to Ituri.'],
+      ['h3', 'Why Bundibugyo Virus Matters'],
+      ['p', 'The clinical and public-health stakes are heightened by the specific Ebola virus species responsible. Bundibugyo virus (BDBV) is one of six known Ebola virus species and has historically caused far fewer human cases than the dominant Zaire ebolavirus. Crucially, the most widely deployed Ebola countermeasures — Merck\'s rVSV-ZEBOV vaccine (Ervebo) and the licensed monoclonal antibody therapies Inmazeb and Ebanga — are specific to Zaire ebolavirus and do not have demonstrated efficacy against Bundibugyo in humans. Animal-model data and a small number of in-vitro studies suggest possible cross-protection from some candidate countermeasures (Mapp Biopharmaceutical\'s MBP-134 cocktail, Auro Vaccines\' VesiculoVax, and a limited Ervebo-Bundibugyo cross-reactivity hypothesis), but none of these is licensed for Bundibugyo use today.'],
+      ['h3', 'How the Outbreak Was Recognised'],
+      ['p', 'The currently known index case is a nurse in Bunia who reported symptom onset on April 24, 2026 — fever, severe malaise, vomiting and hemorrhaging — and died at a Bunia medical centre. On May 5 the WHO received an alert about an unknown illness with high mortality in Mongbwalu Health Zone, including four health workers dead within four days. Initial diagnostic assays at INRB Kinshasa targeted Zaire ebolavirus and returned negative, briefly delaying recognition. A revised assay panel including Bundibugyo virus confirmed the strain on May 14, and the DRC Ministry of Public Health, Hygiene and Social Welfare officially declared the 17th national Ebola outbreak on May 15.'],
+      ['h3', 'The American Case'],
+      ['p', 'Dr Peter Stafford is the first US citizen known to be infected in the 2026 outbreak. He has been working at Nyankunde Hospital — a charity-run referral hospital in Ituri Province — since 2023. He developed symptoms over the weekend of May 16–17, tested positive late on Sunday, and is now being moved to a German high-containment unit. Germany has previous Ebola experience from the 2014–16 West African outbreak. His family, including four children, and a fellow physician at Nyankunde — all asymptomatic — are being transferred with him for observation. CDC has said it will continue to assess the US domestic risk as low; the US has no community-transmitted cases and does not have direct flights from Bunia.'],
+      ['h3', 'What a PHEIC Actually Does'],
+      ['p', 'A WHO PHEIC declaration is an extraordinary alert mechanism: it triggers obligations on member states to coordinate, share data and provide support, and it justifies an enhanced WHO response posture including emergency funding, temporary recommendations on travel and trade, and an Emergency Committee that meets at regular intervals. A PHEIC does not, in itself, restrict travel — the May 17 declaration did not impose flight bans or border closures, although individual countries are free to issue advisories. Africa CDC has called for urgent regional coordination, including border screening in adjacent countries.'],
+      ['h3', 'What to Watch Over the Next 14 Days'],
+      ['p', 'Three things will define the next two weeks. First, the share of suspected cases that ultimately confirm by PCR — a low confirmation rate would imply a smaller true outbreak with diagnostic noise, a high rate would imply a much larger one. Second, whether secondary cases emerge among the contacts of the two Kampala imports — that is the test of whether cross-border spread is being contained. Third, whether any further international evacuations follow, and whether any of the candidate countermeasures (Ervebo off-label, MBP-134 compassionate use, or VesiculoVax) get a real-world trial.'],
+      ['em', 'Last updated · May 17, 2026 · Sources: WHO Disease Outbreak News DON602, WHO PHEIC announcement (17 May 2026), Africa CDC regional coordination call, NPR, CNN, Al Jazeera, NBC News, STAT News, Imperial College London expert Q&A, Wikipedia "2026 Ituri Province Ebola epidemic".'],
+    ],
+  },
+  { cat: 'Science', catClass: 'cat-science', date: 'May 17, 2026', readTime: '7 min read',
+    title: 'Bundibugyo Virus: The Rare Ebola Strain Behind the 2026 DRC Outbreak',
+    excerpt: 'Bundibugyo virus (BDBV) is one of six known species in the genus Ebolavirus. It has produced just two prior recognised outbreaks in human history — Uganda 2007 and DRC 2012 — and the 2026 DRC cluster is the third. The Merck Ervebo vaccine and licensed monoclonal antibody therapies do not have demonstrated efficacy against it. Here is what the published virology actually says.',
+    icon: '🧬',
+    body: [
+      ['p', 'The single most important biological fact about the 2026 DRC Ebola outbreak is the strain. Bundibugyo virus (BDBV) — named for the Bundibugyo District in western Uganda where it was first identified in 2007 — is one of six known species in the genus Ebolavirus: Zaire ebolavirus (EBOV), Sudan ebolavirus (SUDV), Bundibugyo ebolavirus (BDBV), Taï Forest ebolavirus (TAFV), Reston ebolavirus (RESTV), and the newly recognised Bombali ebolavirus. EBOV is the species most people mean when they say "Ebola"; it caused the 2014–16 West African epidemic, the 2018–20 DRC epidemic, and the great majority of historical outbreaks. BDBV has been the cause of only two prior recognised outbreaks before 2026: Uganda 2007 (149 cases, 37 deaths, ~25% CFR) and the DRC Province Orientale 2012 (52 cases, ~36% CFR). The 2026 DRC cluster is the third.'],
+      ['h3', 'How Bundibugyo Compares Clinically'],
+      ['p', 'The clinical syndrome caused by Bundibugyo virus disease (BVD) is broadly indistinguishable from Zaire Ebola at the bedside in the early phase: an incubation period of 2–21 days; an abrupt prodromal phase of fever, headache, severe muscle pain, and gastrointestinal upset; and a progression in roughly half of cases to a severe phase of multi-organ failure with internal and external hemorrhage. The most important clinical difference is the case fatality rate. In the 2007 Uganda outbreak the CFR was approximately 25%, and in the 2012 DRC outbreak approximately 36% — meaningfully lower than the typical 40–90% CFR of Zaire ebolavirus. That difference is real but should not be overread: Bundibugyo is still an extraordinarily lethal virus, and the lower CFR reflects in part the small number of cases studied.'],
+      ['h3', 'Where the Vaccines and Antivirals Stand'],
+      ['p', 'The Ebola countermeasures stockpile has been built around Zaire ebolavirus. The licensed vaccines (Merck\'s rVSV-ZEBOV / Ervebo, and the Johnson & Johnson two-dose Zabdeno + Mvabea regimen) and the licensed monoclonal antibody therapies (Regeneron\'s Inmazeb, Ridgeback Biotherapeutics\' Ebanga) are EBOV-specific and have not demonstrated clinical efficacy against BDBV in humans. There is a longstanding theoretical question about partial cross-protection: rVSV-ZEBOV has demonstrated some protection against Bundibugyo in non-human primate challenge studies, and Mapp Biopharmaceutical\'s MBP-134 monoclonal cocktail was designed for pan-Ebola activity and has shown protection against BDBV in non-human primates. None of these is licensed against Bundibugyo today, and the WHO Emergency Committee that recommended the PHEIC declaration on May 17 also recommended an accelerated cross-protection evaluation in the field.'],
+      ['h3', 'How Bundibugyo Is Spread'],
+      ['p', 'Bundibugyo virus spreads by the same routes as other Ebola species: direct contact with the body fluids (blood, vomit, diarrhea, saliva, semen, breast milk, urine) of an infected person or with surfaces or objects contaminated by those fluids. Healthcare workers are particularly at risk in the prodromal and acute phases, which is the reason the 2026 outbreak\'s earliest recognised cluster of deaths is among the four health workers in Mongbwalu Health Zone in early May. Burial practices that involve washing or touching the deceased are the other major historical amplification route, and contact tracing in the 2026 cluster has flagged at least one funeral as a possible super-spreader event. Sexual transmission via persistence of viral RNA in semen for many months has been documented for Zaire ebolavirus but is less well-characterised for Bundibugyo.'],
+      ['h3', 'Diagnostic Caveats'],
+      ['p', 'One important operational lesson from the 2026 outbreak is the diagnostic gap. The initial PCR panels run at field laboratories targeted Zaire ebolavirus and produced negative results, briefly delaying recognition that an Ebola outbreak was under way. Multiplex Ebola PCRs that include all four human-pathogenic species (Zaire, Sudan, Bundibugyo, Taï Forest) exist but are not universally deployed in front-line African laboratories. A practical post-2026 priority will be ensuring that any Ebola-suspect cluster is tested against all four species from the first run.'],
+      ['h3', 'Why the Mongbwalu Mining Region Matters'],
+      ['p', 'The suspected geographic origin of the 2026 cluster is the Mongbwalu Health Zone, a high-traffic artisanal gold mining region in Ituri. Mining areas have historically been associated with the spillover of Ebola from forest fruit bats — the suspected reservoir species — into human populations, because of the combination of dense bat populations in mine shafts, high human turnover, weak healthcare infrastructure, and rapid onward dispersal of symptomatic miners returning to their home communities. Genomic sequencing now under way at INRB Kinshasa will, over the coming weeks, establish whether the 2026 BDBV strain shares a common ancestor with the 2007 Uganda or 2012 DRC Bundibugyo strains, and whether the spillover event was recent.'],
+      ['h3', 'The Public-Health Read'],
+      ['p', 'For everyone outside Ituri and the Kampala contact ring, the practical assessment from WHO, Africa CDC, and CDC is that the international community-spread risk is low. Bundibugyo, like other Ebola species, is not airborne and is not transmissible during the asymptomatic incubation phase. The risk is concentrated where the case ring is concentrated — among healthcare workers, household members, funeral attendees, and a small number of identified travel contacts.'],
+      ['em', 'Last updated · May 17, 2026 · Sources: WHO Disease Outbreak News DON602, US News explainer on Bundibugyo, Imperial College London expert Q&A, STAT News on candidate countermeasures, CDC Ebola situation summary, peer-reviewed virology (MacNeil A et al. on the 2007 Uganda BDBV outbreak; Albariño CG et al. on the 2012 DRC BDBV outbreak).'],
+    ],
+  },
+  { cat: 'Prevention', catClass: 'cat-prevention', date: 'May 17, 2026', readTime: '6 min read',
+    title: 'Should Travellers to East Africa Be Worried? A Practical Risk Read',
+    excerpt: 'WHO has declared a Public Health Emergency of International Concern but has not recommended travel restrictions to DRC, Uganda or neighbouring countries. Here is a practical, evidence-based traveller risk read — what is actually high risk, what is essentially zero risk, and what changes if you are a healthcare worker.',
+    icon: '🛂',
+    body: [
+      ['p', 'The most common single question after a WHO PHEIC declaration is: "Is it safe to travel?" The May 17, 2026 declaration for Bundibugyo Ebola in DRC and Uganda is no exception. The short answer is that for the overwhelming majority of leisure and business travellers to East Africa, the practical Ebola risk in 2026 is functionally zero. But "functionally zero" hides some meaningful nuance about what changes risk and what does not.'],
+      ['h3', 'What WHO Has Actually Recommended'],
+      ['p', 'The WHO PHEIC declaration on May 17 was not accompanied by any recommendation to restrict international travel or trade. The WHO Emergency Committee specifically declined to advocate flight bans, border closures, or pre-departure screening requirements at international airports beyond what is already standard at affected-country exit points. Individual countries are free to impose more restrictive measures, and the United States announced enhanced exit screening at Goma and Entebbe airports as well as enhanced entry screening on arrivals from DRC and Uganda at five US international airports. The European Union and the United Kingdom have indicated they will not impose entry screening at this time.'],
+      ['h3', 'Where Risk Is Actually Concentrated'],
+      ['p', 'In every Ebola outbreak of the modern era, including the 2014–16 West African epidemic, the people at meaningfully elevated risk are a small and specific population. They are: (1) healthcare workers in affected facilities, including community health workers and ambulance staff; (2) household members of cases; (3) attendees of traditional funeral rituals involving touching the deceased; and (4) direct contact-tracing field teams. Travellers to capital cities, tourists on safari circuits in eastern and southern Africa, and even most business travellers to Kinshasa or Kampala fall well outside these high-risk categories.'],
+      ['h3', 'The Practical Traveller Checklist'],
+      ['p', 'For an East Africa traveller in the next four to six weeks, the practical risk-management list is short. Avoid hospitals and clinics in affected regions unless you require care. Avoid traditional funerals involving touching the deceased. Wash hands frequently and avoid contact with bushmeat or wild primates. Monitor your temperature daily for 21 days after return from any affected region — that is the outer bound of the Ebola incubation period. If you develop a fever, severe headache, severe muscle pain, vomiting or diarrhea within 21 days of return, contact your local health authority before going to a healthcare facility so that triage staff can apply infection-prevention measures appropriately.'],
+      ['h3', 'If You Are a Healthcare Worker Travelling'],
+      ['p', 'The risk equation changes meaningfully for healthcare workers travelling to DRC or Uganda for clinical work, volunteer assignments, or NGO deployment. Pre-deployment risk assessment, formal personal protective equipment training to WHO/Médecins Sans Frontières standards, and a clear post-deployment monitoring plan are essential. Healthcare workers should also receive guidance on the absence of a Bundibugyo-specific vaccine; the Ervebo vaccine has been offered off-label to some high-risk personnel in past outbreaks, but the cross-protection question for Bundibugyo is not settled.'],
+      ['h3', 'Pregnancy, Immunocompromise, and Older Age'],
+      ['p', 'Pregnant travellers, immunocompromised travellers and older travellers face the same risk as the general population if they are not in the high-risk categories above. Severe Ebola disease in pregnancy carries a very high risk of maternal and fetal loss, and severe disease in immunocompromised hosts is also high-risk, but these are downstream consequences of infection — they do not increase the probability of infection itself.'],
+      ['h3', 'The Honest Read'],
+      ['p', 'WHO has declared a PHEIC because the cross-border spread to Uganda meets the regulatory threshold and because the limited Bundibugyo-specific countermeasures stockpile justifies the highest level of international coordination. The declaration is not, in itself, a signal that the average traveller should change plans. It is a signal that international funders, vaccine developers and front-line responders should reprioritise. The best public-health stance for travellers is to follow CDC and WHO travel guidance, monitor temperature post-return, and otherwise carry on.'],
+      ['em', 'Last updated · May 17, 2026 · Sources: WHO PHEIC announcement (17 May 2026), Africa CDC regional coordination call, CDC Ebola travel guidance, WHO Q&A on Ebola vaccines, STAT News on Ervebo cross-protection question.'],
+    ],
+  },
+  { cat: 'Prevention', catClass: 'cat-prevention', date: 'May 17, 2026', readTime: '6 min read',
+    title: 'Ebola PPE: What WHO and MSF Actually Use Inside an Ebola Treatment Centre',
+    excerpt: 'Ebola personal protective equipment is one of the most heavily-engineered PPE regimens in modern medicine. Here is a plain-language walk-through of the WHO/MSF Ebola treatment centre standard PPE, what each layer is for, and why donning and doffing protocols are more dangerous than the wards themselves.',
+    icon: '🥽',
+    body: [
+      ['p', 'Ebola treatment centre PPE is unlike almost any other clinical PPE regimen in modern medicine. It is built around the assumption that the patient is shedding a high-titre, lethal, contact-transmissible virus in every body fluid; that the wards are hot, with limited air conditioning; and that the most dangerous moment for the wearer is not in the ward itself but at the doffing station at the exit, when a single contaminated glove tip touched to a face can cause infection. This piece is a plain-language walk-through of the standard WHO/Médecins Sans Frontières (MSF) Ebola treatment centre PPE set, layer by layer.'],
+      ['h3', 'The Standard PPE Layers'],
+      ['p', 'A standard WHO-recommended Ebola treatment centre PPE set comprises, from inside out: a disposable cotton scrub set (worn next to the skin); a Tyvek or equivalent fluid-resistant coverall with an integrated hood; a fluid-resistant disposable surgical or medical gown over the coverall; an FFP2 or N95 respirator with a face shield, or alternatively a full-face PAPR (powered air-purifying respirator); goggles worn under the face shield where a non-PAPR setup is used; two pairs of nitrile gloves with the outer pair taped to the gown cuffs; a fluid-resistant apron over the gown for splash protection; and knee-high rubber boots over the coverall trouser legs.'],
+      ['h3', 'Why So Many Layers'],
+      ['p', 'Each layer has a specific function. The inner scrubs are sacrificial and laundered or incinerated. The coverall provides full-body fluid-resistant barrier. The surgical gown provides a sacrificial outer layer that absorbs splash and is shed first during doffing. The respirator provides infectious-aerosol protection during high-risk procedures (suction, intubation, manual resuscitation). The face shield protects the respirator from splash and creates a "clean" surface for safe wipe-down. The double-gloving protects against single-glove tears and gives a "clean" inner glove to use during doffing once the outer is removed. The apron and boots address splash and the unavoidable presence of contaminated fluids on the ward floor.'],
+      ['h3', 'Donning: The Buddy System'],
+      ['p', 'Donning PPE — putting it on before entering the high-risk zone — is done by every healthcare worker in front of a trained buddy who works through a written checklist. The order is fixed: hand hygiene, scrubs, boots, coverall, hood, mask, goggles, face shield, inner gloves, gown, outer gloves taped to gown, apron. Each step is verified by the buddy before the next is started. A typical donning sequence takes 10 to 15 minutes.'],
+      ['h3', 'Doffing: Where the Risk Actually Is'],
+      ['p', 'Doffing — removing PPE after exit from the high-risk zone — is the single most dangerous moment in Ebola care. The doffing station is a dedicated room with a trained "doffer" or buddy who narrates the doffing protocol step by step. The order is essentially the reverse of donning, but every step is interspersed with a 0.5% chlorine spray decontamination of the outer surface of the PPE. The outer gloves come off first, then the apron, then the gown, then the face shield, then the goggles, then the respirator, then the coverall (rolled down from inside out), then the boots, then the inner gloves last. The doffer never touches the worker. Hand hygiene with 0.5% chlorine and then water-and-soap follows every step.'],
+      ['h3', 'Heat as the Hidden Constraint'],
+      ['p', 'The constraint that drives most operational decisions in an Ebola treatment centre is not the virus but the heat. A full PPE set in an unventilated 32°C / 90°F African ward can produce an internal temperature of 40°C / 104°F within forty-five minutes, with dehydration of two to three litres per shift not uncommon. WHO and MSF protocols cap individual shifts at 45–60 minutes inside the high-risk zone for this reason. The heat stress also explains why PAPRs — which produce a cooled airflow over the face — have become more common in 2026 outbreaks than they were in 2014, despite their higher cost and logistical footprint.'],
+      ['h3', 'What This Means Outside an Ebola Treatment Centre'],
+      ['p', 'For readers who are not working inside an Ebola treatment centre, none of the above applies as a self-protection list. The risk of community Ebola transmission in countries without active cases is functionally zero, and the routine precautions of hand hygiene, avoidance of bushmeat, and avoidance of traditional funerals involving touching the deceased are sufficient. The full PPE regimen described here is the standard for the small population of healthcare workers, lab staff, burial teams and field epidemiologists who knowingly enter a high-risk zone.'],
+      ['em', 'Last updated · May 17, 2026 · Sources: WHO Personal Protective Equipment for Ebola Treatment Centres (technical guidance), MSF Ebola PPE Protocol (publicly available), CDC PPE for Ebola guidance, peer-reviewed literature on Ebola PPE donning/doffing safety (Casanova LM et al., Beam EL et al.).'],
+    ],
+  },
+  { cat: 'Tips', catClass: 'cat-tips', date: 'May 17, 2026', readTime: '5 min read',
+    title: 'How to Read an Ebola Outbreak Dashboard Without Panicking',
+    excerpt: 'Ebola outbreak dashboards combine confirmed cases, suspected cases, probable cases, deaths, and incomplete real-time reporting in a way that is easy to misread. Here is a plain-language guide to what each number means, why they update at different speeds, and what to look for to assess whether an outbreak is being controlled.',
+    icon: '📊',
+    body: [
+      ['p', 'In the first 72 hours after a WHO PHEIC declaration, the single most common source of public anxiety is the outbreak dashboard. Numbers move quickly, definitions shift, and the gap between "suspected" and "confirmed" cases can be enormous. This is a plain-language guide to reading an Ebola outbreak dashboard without misreading it.'],
+      ['h3', 'Confirmed vs Suspected vs Probable'],
+      ['p', 'WHO and Africa CDC report Ebola cases in three categories. A confirmed case is one with a positive PCR result for the specific Ebola species in a recognised reference laboratory. A probable case is one with a clinical picture and exposure history consistent with Ebola, including a death or severe illness, but no laboratory confirmation — typically because the patient died before a sample could be taken or because the sample was lost or inadequate. A suspected case is a person meeting a working case definition (typically: fever plus a defined symptom set plus an epidemiological link) but with no laboratory result yet. Suspected cases are the most volatile number on the dashboard; they include real Ebola, real non-Ebola febrile illnesses (malaria, typhoid, viral hemorrhagic fevers from other species), and incomplete information.'],
+      ['h3', 'Why the Confirmation Rate Matters'],
+      ['p', 'The ratio of confirmed to suspected cases is the single most informative summary statistic in the first ten days of an outbreak. Early on, the confirmation rate is low because laboratory throughput cannot keep up with the suspected-case pipeline, and because field staff err on the side of casting a wide net to find every possible case. As laboratory capacity scales up, the confirmation rate usually moves toward a stable value — perhaps 20% to 40% of suspected cases — that reflects the true positive predictive value of the case definition.'],
+      ['h3', 'Why Deaths Update Faster Than Cases'],
+      ['p', 'In many remote African outbreaks the death count moves ahead of the confirmed case count. The reasons are operational: clinical deaths can be recorded by community health workers in the field without a laboratory test, while case confirmations require sample collection, transport to a reference laboratory, and a successful PCR run. As laboratory capacity scales up, the case count usually catches up to and overtakes the death count. A widening gap between deaths and confirmed cases is usually a sign of laboratory bottlenecks, not of unusually high lethality.'],
+      ['h3', 'Doubling Time and Reproductive Number'],
+      ['p', 'Two quantitative measures of outbreak control are doubling time (the number of days for the cumulative case count to double) and the effective reproductive number Re (the average number of new infections per existing infection). The Ebola pre-intervention basic reproductive number R0 is generally in the range 1.5 to 2.5, with Re falling below 1 when an outbreak is being controlled. Africa CDC and WHO publish Re estimates for major outbreaks; a sustained Re below 1 is the most reliable signal that the case curve will turn over.'],
+      ['h3', 'Geographic and Demographic Distribution'],
+      ['p', 'A good Ebola dashboard breaks down cases by health zone, by epidemiological link to known clusters, and by demographic category — particularly healthcare worker, household contact, funeral attendee. The geographic shape of the outbreak is more informative than the headline case count: an outbreak that is staying inside the initial cluster of health zones is qualitatively different from one that is jumping to new health zones. The 2026 DRC cluster\'s jump to Uganda is meaningful for that reason; the jump from Ituri to Kinshasa is meaningful for the same reason.'],
+      ['h3', 'What to Ignore'],
+      ['p', 'A good rule of thumb is to ignore daily fluctuations smaller than 10% and to weight weekly trends instead. A single day of high case counts is almost never an inflection point; a sustained week-over-week reduction in suspected cases and confirmed cases together is. Headlines that highlight a single confirmed case in a new country (a single imported case) without a chain of secondary cases should be read for what they are — a successful surveillance system, not a failure of control.'],
+      ['em', 'Last updated · May 17, 2026 · Sources: WHO Ebola surveillance case definitions (2014, updated 2018), Africa CDC outbreak reporting guidance, Imperial College London expert Q&A on outbreak data interpretation (Ferguson NM et al.).'],
+    ],
+  },
+];
+
+const NEWS_SOURCES = [
+  { source: 'WHO', tag: 'Authority', tagClass: 'source-tag-authority', favicon: 'https://www.google.com/s2/favicons?domain=who.int&sz=64',
+    title: 'Epidemic of Ebola Disease caused by Bundibugyo virus in DRC and Uganda determined a PHEIC',
+    excerpt: 'WHO Director-General formally declares the Bundibugyo Ebola outbreak a Public Health Emergency of International Concern; no travel or trade restrictions recommended.',
+    date: 'May 17, 2026',
+    url: 'https://www.who.int/news/item/17-05-2026-epidemic-of-ebola-disease-in-the-democratic-republic-of-the-congo-and-uganda-determined-a-public-health-emergency-of-international-concern' },
+  { source: 'WHO DON', tag: 'Authority', tagClass: 'source-tag-authority', favicon: 'https://www.google.com/s2/favicons?domain=who.int&sz=64',
+    title: 'Disease Outbreak News DON602 · Ebola disease caused by Bundibugyo virus',
+    excerpt: 'WHO third Disease Outbreak News for the cluster: 12 PCR-confirmed cases, 336 suspected, 89 deaths across three Ituri health zones; two confirmed travel-associated cases in Uganda.',
+    date: 'May 17, 2026',
+    url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON602' },
+  { source: 'CDC', tag: 'Authority', tagClass: 'source-tag-authority', favicon: 'https://www.google.com/s2/favicons?domain=cdc.gov&sz=64',
+    title: 'CDC Mobilizes International Response Following Ebola Outbreak in DRC and Uganda',
+    excerpt: 'CDC Newsroom statement on the deployment of an emergency response team to DRC and Uganda and the reaffirmation that the US domestic Ebola risk remains low.',
+    date: 'May 17, 2026',
+    url: 'https://www.cdc.gov/media/releases/2026/cdc-mobilizes-international-ebola-response.html' },
+  { source: 'Africa CDC', tag: 'Authority', tagClass: 'source-tag-authority', favicon: 'https://www.google.com/s2/favicons?domain=africacdc.org&sz=64',
+    title: 'Africa CDC Calls for Urgent Regional Coordination Following DRC Ebola Outbreak and Uganda Imported Case',
+    excerpt: 'Africa CDC requests urgent regional coordination across DRC, Uganda, Rwanda, South Sudan, Burundi, CAR and Tanzania, including border screening and laboratory support.',
+    date: 'May 17, 2026',
+    url: 'https://africacdc.org/news-item/africa-cdc-calls-for-urgent-regional-coordination-following-ebola-virus-disease-outbreak-in-ituri-province-drc-and-imported-ebola-bundibugyo-case-reported-by-uganda/' },
+  { source: 'ECDC', tag: 'Authority', tagClass: 'source-tag-authority', favicon: 'https://www.google.com/s2/favicons?domain=ecdc.europa.eu&sz=64',
+    title: 'WHO declares DRC Ebola outbreak a Public Health Emergency · ECDC continues monitoring',
+    excerpt: 'ECDC notes the WHO PHEIC declaration and continues monitoring; EU/EEA risk of importation assessed as very low, no enhanced entry screening recommended at this time.',
+    date: 'May 17, 2026',
+    url: 'https://www.ecdc.europa.eu/en/news-events/who-declares-ebola-outbreak-democratic-republic-congo-public-health-emergency' },
+  { source: 'NPR', tag: 'Wire', tagClass: 'source-tag-wire', favicon: 'https://www.google.com/s2/favicons?domain=npr.org&sz=64',
+    title: 'World Health Organization declares Ebola outbreak in Congo a global health emergency',
+    excerpt: 'NPR summary of the WHO PHEIC declaration: 87 dead by NPR\'s count, the rare Bundibugyo strain, no licensed vaccine, and the first imported case to Uganda.',
+    date: 'May 16, 2026',
+    url: 'https://www.npr.org/2026/05/16/g-s1-122494/new-ebola-outbreak-drc-who-global-emergency' },
+  { source: 'STAT News', tag: 'Wire', tagClass: 'source-tag-wire', favicon: 'https://www.google.com/s2/favicons?domain=statnews.com&sz=64',
+    title: 'With no approved vaccine for Ebola outbreak, experts weigh testing a long shot',
+    excerpt: 'STAT News on the open question of whether Merck\'s Ervebo or candidate countermeasures from Mapp Biopharmaceutical and Auro Vaccines should be field-tested against Bundibugyo.',
+    date: 'May 18, 2026',
+    url: 'https://www.statnews.com/2026/05/18/ebola-outbreak-update-experts-weigh-use-merck-vaccine-ervebo/' },
+  { source: 'Al Jazeera', tag: 'News', tagClass: 'source-tag-news', favicon: 'https://www.google.com/s2/favicons?domain=aljazeera.com&sz=64',
+    title: 'WHO declares Ebola outbreak in DR Congo, Uganda a global health emergency',
+    excerpt: 'Al Jazeera news report on the May 17 PHEIC declaration with full WHO press conference summary and Africa CDC response.',
+    date: 'May 17, 2026',
+    url: 'https://www.aljazeera.com/news/2026/5/17/who-declares-ebola-outbreak-in-dr-congo-uganda-a-global-health-emergency' },
+  { source: 'CNN', tag: 'News', tagClass: 'source-tag-news', favicon: 'https://www.google.com/s2/favicons?domain=cnn.com&sz=64',
+    title: 'What we know about the latest Ebola outbreak after WHO declares global health emergency',
+    excerpt: 'CNN explainer covering the Ituri index nurse, the gold-mining region origin, the four-health-worker early cluster in Mongbwalu, and the Uganda imports.',
+    date: 'May 17, 2026',
+    url: 'https://www.cnn.com/2026/05/17/africa/ebola-outbreak-congo-uganda-explainer-intl' },
+  { source: 'NBC News', tag: 'News', tagClass: 'source-tag-news', favicon: 'https://www.google.com/s2/favicons?domain=nbcnews.com&sz=64',
+    title: 'What we know about the 2026 Ebola outbreak as first American tests positive',
+    excerpt: 'NBC News profile of Dr Peter Stafford, the American physician at Nyankunde Hospital, Bunia, who tested positive on May 17 and is being prepared for medical evacuation to Germany.',
+    date: 'May 17, 2026',
+    url: 'https://www.nbcnews.com/health/health-news/ebola-outbreak-2026-bundibugyo-symptoms-how-spread-treatment-what-know-rcna345696' },
+  { source: 'Washington Post', tag: 'News', tagClass: 'source-tag-news', favicon: 'https://www.google.com/s2/favicons?domain=washingtonpost.com&sz=64',
+    title: 'Americans may have been exposed in Congo Ebola outbreak',
+    excerpt: 'The Washington Post on the CDC emergency response team deployment, the contact-tracing operation in the United States, and the assessment of domestic Ebola risk as low.',
+    date: 'May 17, 2026',
+    url: 'https://www.washingtonpost.com/health/2026/05/17/cdc-readies-team-respond-ebola-outbreak-africa/' },
+  { source: 'UN News', tag: 'News', tagClass: 'source-tag-news', favicon: 'https://www.google.com/s2/favicons?domain=news.un.org&sz=64',
+    title: 'Ebola outbreak in Central Africa declared a Public Health Emergency of International Concern',
+    excerpt: 'UN News on the WHO PHEIC mechanism, the Emergency Committee findings, and the alignment with the IHR (2005) international response framework.',
+    date: 'May 17, 2026',
+    url: 'https://news.un.org/en/story/2026/05/1167531' },
+  { source: 'Imperial College London', tag: 'Science', tagClass: 'source-tag-science', favicon: 'https://www.google.com/s2/favicons?domain=imperial.ac.uk&sz=64',
+    title: 'Ebola outbreak 2026 · Q&A with experts',
+    excerpt: 'Imperial College London press Q&A with infectious-disease epidemiologists on doubling time, Re estimates, and the prospects for outbreak control over the next 90 days.',
+    date: 'May 17, 2026',
+    url: 'https://www.imperial.ac.uk/news/articles/2026/ebola-outbreak-2026-qa-with-experts/' },
+  { source: 'U.S. News', tag: 'Science', tagClass: 'source-tag-science', favicon: 'https://www.google.com/s2/favicons?domain=usnews.com&sz=64',
+    title: 'Explainer · What Do We Know About the Bundibugyo Strain of the Ebola Virus?',
+    excerpt: 'U.S. News explainer comparing Bundibugyo virus to Zaire ebolavirus on case fatality rate, prior outbreaks (Uganda 2007, DRC 2012), and the absence of licensed countermeasures.',
+    date: 'May 18, 2026',
+    url: 'https://www.usnews.com/news/world/articles/2026-05-18/explainer-what-do-we-know-about-the-bundibugyo-strain-of-the-ebola-virus' },
+  { source: 'Medical Xpress', tag: 'Science', tagClass: 'source-tag-science', favicon: 'https://www.google.com/s2/favicons?domain=medicalxpress.com&sz=64',
+    title: 'What you need to know about the Ebola outbreak that has the WHO concerned',
+    excerpt: 'Medical Xpress overview of the 2026 outbreak: the Bundibugyo strain, the Ituri health zones, and the operational and scientific reasons WHO declared a PHEIC.',
+    date: 'May 17, 2026',
+    url: 'https://medicalxpress.com/news/2026-05-ebola-outbreak.html' },
+];
+
+const SIDEBAR_LINKS = [
+  { num: '01', title: 'WHO Declares DRC Bundibugyo Ebola Outbreak a PHEIC; First American Tests Positive', date: 'Breaking · May 17, 2026', postIndex: 0 },
+  { num: '02', title: 'Bundibugyo Virus: The Rare Ebola Strain Behind the 2026 DRC Outbreak', date: 'Science · May 17, 2026', postIndex: 1 },
+  { num: '03', title: 'Should Travellers to East Africa Be Worried? A Practical Risk Read', date: 'Prevention · May 17, 2026', postIndex: 2 },
+  { num: '04', title: 'Ebola PPE: What WHO and MSF Actually Use Inside an Ebola Treatment Centre', date: 'Prevention · May 17, 2026', postIndex: 3 },
+  { num: '05', title: 'How to Read an Ebola Outbreak Dashboard Without Panicking', date: 'Tips · May 17, 2026', postIndex: 4 },
+];
+
+const SYMPTOMS = [
+  { icon: '🌡️', text: 'Fever (38–40°C)' },
+  { icon: '😖', text: 'Severe headache' },
+  { icon: '💪', text: 'Deep muscle pain' },
+  { icon: '🤮', text: 'Vomiting / diarrhea' },
+  { icon: '🩸', text: 'Unexplained bleeding' },
+  { icon: '😓', text: 'Severe fatigue / malaise' },
+];
+
+// ─── COMPONENTS ─────────────────────────────────────────────────────────────
+
+function Nav({ active, onChange }) {
+  return (
+    <nav>
+      <div className="nav-logo">
+        <div className="pulse-dot"></div>
+        Ebola Hub
+      </div>
+      <div className="nav-links">
+        <button className={active === 'tracker' ? 'active' : ''} onClick={() => onChange('tracker')}>📊 Tracker</button>
+        <button className={active === 'blog' ? 'active' : ''} onClick={() => onChange('blog')}>📰 Blog</button>
+        <button className={active === 'sources' ? 'active' : ''} onClick={() => onChange('sources')}>🌐 Global Sources</button>
+        <button className={active === 'faq' ? 'active' : ''} onClick={() => onChange('faq')}>❓ FAQ</button>
+        <a href="/" className="cross-link">🦠 Hantavirus →</a>
+      </div>
+      <div className="nav-status"><span></span> WHO: PHEIC</div>
+    </nav>
+  );
+}
+
+function Hero() {
+  return (
+    <div className="hero">
+      <div className="hero-inner">
+        <div className="hero-badge">🔴 LIVE · 2026 DRC Bundibugyo Outbreak · WHO PHEIC Declared May 17</div>
+        <h1>Ebola Outbreak — Live Tracker</h1>
+        <p className="hero-sub">Live tracker for the 2026 DRC Ituri Bundibugyo Ebola outbreak. WHO declared a Public Health Emergency of International Concern on May 17, 2026. No licensed vaccine or specific antiviral exists for the Bundibugyo strain. Data sourced from WHO, Africa CDC, CDC, NPR, Reuters and Imperial College London.</p>
+        <div className="hero-stats">
+          {HERO_STATS.map((s, i) => (
+            <div key={i} className="hero-stat">
+              <div className="v">{s.val}</div>
+              <div className="l">{s.label}</div>
+              <div className="s">{s.sub}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CaseCurve() {
+  const canvasRef = useRef(null);
+  useEffect(() => {
+    if (!canvasRef.current || !window.Chart) return;
+    const ctx = canvasRef.current.getContext('2d');
+    const chart = new window.Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: CASE_CURVE_DATA.map(d => d.date),
+        datasets: [
+          { label: 'Suspected', data: CASE_CURVE_DATA.map(d => d.suspected), borderColor: '#ea580c', backgroundColor: 'rgba(234,88,12,0.08)', tension: 0.25, fill: true, borderWidth: 2.5, pointRadius: 3 },
+          { label: 'Confirmed (PCR)', data: CASE_CURVE_DATA.map(d => d.confirmed), borderColor: '#b91c1c', backgroundColor: 'rgba(185,28,28,0.08)', tension: 0.25, fill: false, borderWidth: 2.5, pointRadius: 3 },
+          { label: 'Deaths', data: CASE_CURVE_DATA.map(d => d.deaths), borderColor: '#7f1d1d', backgroundColor: 'rgba(127,29,29,0.08)', tension: 0.25, fill: false, borderWidth: 2.5, pointRadius: 3, borderDash: [4,3] },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, font: { family: 'DM Sans', size: 12 } } } },
+        scales: {
+          y: { beginAtZero: true, grid: { color: '#e2e8f0' }, ticks: { font: { family: 'DM Sans' } } },
+          x: { grid: { display: false }, ticks: { font: { family: 'DM Sans' } } },
+        },
+      },
+    });
+    return () => chart.destroy();
+  }, []);
+  return (
+    <div className="curve-wrap">
+      <h3>Cumulative Cases & Deaths — DRC Ituri 2026 Outbreak</h3>
+      <p className="sub">Suspected cases (orange) include unconfirmed clinical cases under investigation. PCR-confirmed cases (red) require a positive Bundibugyo virus PCR at INRB Kinshasa or partner reference lab. Deaths (dashed) include both confirmed and probable.</p>
+      <div className="curve-canvas"><canvas ref={canvasRef}></canvas></div>
+      <p style={{ marginTop: 12, fontSize: '.78rem', color: 'var(--gray-600)' }}>Source: WHO Disease Outbreak News DON602, Africa CDC daily situation reports, DRC Ministry of Public Health. Data points are cumulative as of the date shown.</p>
+    </div>
+  );
+}
+
+function TrackerSection() {
+  return (
+    <section id="tracker">
+      <h2>Live Outbreak Tracker</h2>
+      <p className="section-sub">2026 DRC Ituri Bundibugyo outbreak · WHO PHEIC declared May 17 · cross-border confirmed cases in Uganda · evolving case count and laboratory confirmation pipeline.</p>
+      <div className="tracker-grid">
+        {TRACKER_STATS.map((s, i) => (
+          <div key={i} className={`tracker-tile ${s.kind}`}>
+            <div className="v">{s.val}</div>
+            <div className="l">{s.label}</div>
+            <div className="n">{s.note}</div>
+          </div>
+        ))}
+      </div>
+      <CaseCurve />
+      <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.45rem', color: 'var(--navy)', marginTop: 36, marginBottom: 14 }}>Event Timeline</h3>
+      <div className="timeline">
+        {TIMELINE.map((t, i) => (
+          <div key={i} className={`timeline-item ${t.dotClass || ''}`}>
+            <div className="timeline-date">{t.date}</div>
+            <div className="timeline-title">{t.title}{t.badge && <span className={`badge ${t.badgeClass}`}>{t.badge}</span>}</div>
+            <div className="timeline-desc">{t.desc}</div>
+          </div>
+        ))}
+      </div>
+      <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.45rem', color: 'var(--navy)', marginTop: 40, marginBottom: 14 }}>Affected Regions</h3>
+      <div className="table-wrap">
+        <table className="regions">
+          <thead>
+            <tr><th>Region</th><th>Cases</th><th>Notes</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            {REGIONS.map((r, i) => (
+              <tr key={i}>
+                <td className="region-name">{r.region}</td>
+                <td>{r.cases}</td>
+                <td>{r.notes}</td>
+                <td><span className={`status-pill ${r.statusClass}`}>{r.status}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="callout"><strong>Clinical reminder.</strong> The Bundibugyo strain has no licensed vaccine and no licensed specific antiviral. Existing Ebola countermeasures (Merck Ervebo, Inmazeb, Ebanga) are Zaire-ebolavirus specific. Treatment is supportive: fluid resuscitation, electrolyte management, vasopressors, oxygen, and renal replacement therapy where needed.</div>
+    </section>
+  );
+}
+
+function ArticleModal({ post, onClose }) {
+  useEffect(() => {
+    const onKey = e => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => { window.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
+  }, []);
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal" onClick={e => e.stopPropagation()}>
+        <button className="modal-close" onClick={onClose}>×</button>
+        <span className={`post-cat ${post.catClass}`}>{post.cat}</span>
+        <h2>{post.title}</h2>
+        <div className="modal-meta">{post.date} · {post.readTime}</div>
+        <div className="body">
+          {post.body.map((b, i) => {
+            const [tag, text] = b;
+            if (tag === 'h3') return <h3 key={i}>{text}</h3>;
+            if (tag === 'em') return <p key={i}><em>{text}</em></p>;
+            return <p key={i}>{text}</p>;
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function BlogSection({ onOpenPost }) {
+  const featured = POSTS[0];
+  const rest = POSTS.slice(1);
+  return (
+    <section id="blog">
+      <h2>Latest Posts</h2>
+      <p className="section-sub">Original reporting and evidence-based explainers on the 2026 DRC Bundibugyo Ebola outbreak — updated regularly with WHO, Africa CDC and CDC sourcing.</p>
+      <div className="blog-grid">
+        <div>
+          <div className="post-card featured" onClick={() => onOpenPost(0)}>
+            <div className="post-icon">{featured.icon}</div>
+            <span className={`post-cat ${featured.catClass}`}>{featured.cat}</span>
+            <div className="post-meta">{featured.date} · {featured.readTime}</div>
+            <h3>{featured.title}</h3>
+            <p>{featured.excerpt}</p>
+          </div>
+          {rest.map((p, idx) => (
+            <div key={idx + 1} className="post-card" onClick={() => onOpenPost(idx + 1)}>
+              <span className={`post-cat ${p.catClass}`}>{p.cat}</span>
+              <div className="post-meta">{p.date} · {p.readTime}</div>
+              <h3>{p.title}</h3>
+              <p>{p.excerpt}</p>
+            </div>
+          ))}
+        </div>
+        <div className="sidebar">
+          <h4>Most Recent</h4>
+          {SIDEBAR_LINKS.map((s, i) => (
+            <div key={i} className="sidebar-link" onClick={() => onOpenPost(s.postIndex)}>
+              <div className="num">{s.num}</div>
+              <div>
+                <div className="lt">{s.title}</div>
+                <div className="lm">{s.date}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SourcesSection() {
+  const [filter, setFilter] = useState('All');
+  const tags = ['All', 'Authority', 'Wire', 'News', 'Science'];
+  const filtered = filter === 'All' ? NEWS_SOURCES : NEWS_SOURCES.filter(s => s.tag === filter);
+  return (
+    <section id="sources">
+      <h2>Global Sources</h2>
+      <p className="section-sub">Selected hantavirus-and-ebola-grade source set covering 15 outlets across health authorities, science press, wire services, and major news media. Filter by tag.</p>
+      <div className="sources-filter">
+        {tags.map(t => (
+          <button key={t} className={filter === t ? 'active' : ''} onClick={() => setFilter(t)}>{t}</button>
+        ))}
+      </div>
+      <div className="sources-grid">
+        {filtered.map((s, i) => (
+          <div key={i} className="source-card">
+            <div className="source-head">
+              <img src={s.favicon} alt="" />
+              <div className="source-name">{s.source}</div>
+              <span className={`source-tag ${s.tagClass}`}>{s.tag}</span>
+            </div>
+            <div className="source-title">{s.title}</div>
+            <div className="source-excerpt">{s.excerpt}</div>
+            <div className="source-meta">
+              <span>{s.date}</span>
+              <a className="read-link" href={s.url} target="_blank" rel="noopener noreferrer">Read →</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function FAQSection() {
+  return (
+    <section id="faq">
+      <h2>Frequently Asked Questions</h2>
+      <p className="section-sub">Plain-language answers to the most common questions about the 2026 DRC Ebola outbreak. Updated regularly.</p>
+      <div className="faq">
+        <details>
+          <summary>What is the Bundibugyo strain?</summary>
+          <p>Bundibugyo virus (BDBV) is one of six species in the genus Ebolavirus. It has caused only two prior recognised outbreaks — Uganda 2007 (~25% CFR) and DRC 2012 (~36% CFR). The 2026 DRC cluster is the third. The licensed Ebola vaccines (Merck Ervebo, J&J two-dose regimen) and licensed monoclonal antibody therapies (Inmazeb, Ebanga) are Zaire-ebolavirus specific and do not have demonstrated clinical efficacy against Bundibugyo virus.</p>
+        </details>
+        <details>
+          <summary>Is there a vaccine or treatment for Bundibugyo?</summary>
+          <p>No licensed vaccine and no licensed specific antiviral exists for the Bundibugyo strain. Treatment is supportive: fluid resuscitation, electrolyte management, vasopressors, oxygen, and renal replacement therapy where needed. Candidate cross-protective countermeasures (rVSV-ZEBOV off-label, MBP-134, VesiculoVax) are under discussion for compassionate-use or accelerated field evaluation.</p>
+        </details>
+        <details>
+          <summary>How is Ebola transmitted?</summary>
+          <p>Direct contact with the body fluids (blood, vomit, diarrhea, saliva, semen, breast milk, urine) of an infected person, or with surfaces or objects contaminated by those fluids. Ebola is not airborne. The highest-risk settings are healthcare facilities without infection-prevention infrastructure, household care for the seriously ill, and traditional funerals involving touching the deceased. Sexual transmission via persistence of viral RNA in semen has been documented for Zaire ebolavirus over many months and is less well-characterised for Bundibugyo.</p>
+        </details>
+        <details>
+          <summary>What does a WHO PHEIC mean?</summary>
+          <p>A Public Health Emergency of International Concern is the WHO\'s highest-level alert mechanism under the International Health Regulations (2005). It triggers obligations on member states to coordinate, share data and provide support, and it justifies an enhanced WHO response posture. A PHEIC does not, in itself, restrict travel — the May 17 declaration did not impose flight bans or border closures.</p>
+        </details>
+        <details>
+          <summary>Should I cancel travel to East Africa?</summary>
+          <p>WHO has not recommended travel restrictions. For the overwhelming majority of leisure and business travellers to East Africa, the practical Ebola risk in 2026 is functionally zero. Travellers should avoid hospitals and clinics in affected regions unless they require care; avoid traditional funerals involving touching the deceased; monitor temperature daily for 21 days after return; and contact local public-health authorities (not a clinic directly) if they develop fever or compatible symptoms within that window.</p>
+        </details>
+        <details>
+          <summary>What is the case fatality rate of Bundibugyo?</summary>
+          <p>Historical case fatality rate for Bundibugyo virus disease is roughly 25–40%, based on the 2007 Uganda and 2012 DRC outbreaks. This is meaningfully lower than the typical 40–90% CFR of Zaire ebolavirus but still very high in absolute terms. The 2026 DRC outbreak CFR will not be reliably estimable until the suspected-to-confirmed conversion is complete.</p>
+        </details>
+        <details>
+          <summary>What is the difference between Ebola and hantavirus?</summary>
+          <p>Both are viral hemorrhagic diseases with high case fatality, but they are biologically and epidemiologically distinct. Ebola (filoviridae) spreads via direct contact with body fluids and has a 2–21 day incubation. Hantaviruses (bunyavirales) primarily spread from rodents to humans via aerosolised excreta, with a 1–8 week incubation; only Andes virus (one specific New World hantavirus) has documented limited human-to-human transmission. See our <a href="/">hantavirus tracker</a> for the parallel 2026 MV Hondius cluster.</p>
+        </details>
+      </div>
+    </section>
+  );
+}
+
+function App() {
+  const [active, setActive] = useState('tracker');
+  const [openPostIndex, setOpenPostIndex] = useState(null);
+  return (
+    <>
+      <Nav active={active} onChange={setActive} />
+      {active === 'tracker' && <><Hero /><TrackerSection /></>}
+      {active === 'blog' && <BlogSection onOpenPost={i => setOpenPostIndex(i)} />}
+      {active === 'sources' && <SourcesSection />}
+      {active === 'faq' && <FAQSection />}
+      <footer>
+        <p style={{ fontWeight: 600, color: 'var(--navy)' }}>Ebola Hub · A Hanta Hub project</p>
+        <p>For informational purposes only. Not medical advice. Data sourced from <a href="https://www.who.int" target="_blank" rel="noopener">WHO</a> · <a href="https://www.cdc.gov" target="_blank" rel="noopener">CDC</a> · <a href="https://africacdc.org" target="_blank" rel="noopener">Africa CDC</a></p>
+        <p style={{ fontSize: '.78rem', color: 'var(--gray-400)', marginTop: 10 }}>
+          <a href="/">← Back to Hantavirus tracker</a> · <a href="/sitemap.xml">Sitemap</a> · <a href="/data/cases.json">Open data</a>
+        </p>
+        <p>© 2026 Hanta Hub — Updated continuously during the 2026 outbreak response.</p>
+      </footer>
+      {openPostIndex !== null && (
+        <ArticleModal
+          post={POSTS[openPostIndex]}
+          onClose={() => setOpenPostIndex(null)}
+        />
+      )}
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

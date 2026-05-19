@@ -179,6 +179,14 @@
   .nav-links button:hover, .nav-links button.active {
     background: var(--sky); color: var(--blue);
   }
+  .nav-links a.nav-cross-link {
+    font-family: var(--font-body); font-size: .875rem; font-weight: 500;
+    color: var(--gray-600); padding: 8px 16px; border-radius: 8px;
+    text-decoration: none; transition: all .2s; display: inline-flex; align-items: center;
+  }
+  .nav-links a.nav-cross-link:hover {
+    background: #fee2e2; color: #b91c1c; text-decoration: none;
+  }
   .nav-status {
     display: flex; align-items: center; gap: 8px;
     font-size: .75rem; font-weight: 500; color: var(--green);
@@ -1828,6 +1836,7 @@ function Nav({ active, onChange }) {
         <button className={active === 'hub' ? 'active' : ''} onClick={() => onChange('hub')}>🛡️ Supply Hub</button>
         <button className={active === 'blog' ? 'active' : ''} onClick={() => onChange('blog')}>📰 Blog</button>
         <button className={active === 'sources' ? 'active' : ''} onClick={() => onChange('sources')}>🌐 Global Sources</button>
+        <a href="/ebola/" className="nav-cross-link">🚨 Ebola Tracker →</a>
       </div>
       <div className="nav-status"><span></span> WHO: Low Risk</div>
     </nav>
