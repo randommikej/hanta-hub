@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Ebola Hub — 2026 DRC Bundibugyo Outbreak Tracker</title>
+    <link>https://hantavirussupplies.com/ebola/</link>
+    <description>Live tracker for the 2026 DRC Bundibugyo Ebola outbreak. WHO updates, regional risk, vaccine pipeline, US airport screening, full timeline.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 23 May 2026 12:00:00 GMT</lastBuildDate>
+    <atom:link href="https://hantavirussupplies.com/ebola/feed.xml" rel="self" type="application/rss+xml" />
+    <image>
+      <url>https://hantavirussupplies.com/og/ebola.png</url>
+      <title>Ebola Hub</title>
+      <link>https://hantavirussupplies.com/ebola/</link>
+    </image>
+
+    <item>
+      <title>Day 6 of PHEIC: WHO Upgrades DRC Area Risk to Very High, IHR Emergency Committee Issues Temporary Recommendations, Confirmed Cases Climb to 87 (~750 Suspected, 177 Deaths Cumulative)</title>
+      <link>https://hantavirussupplies.com/ebola/</link>
+      <guid isPermaLink="false">ebola-2026-05-23-day6-pheic</guid>
+      <pubDate>Sat, 23 May 2026 08:00:00 GMT</pubDate>
+      <dc:creator>Ebola Hub</dc:creator>
+      <category>Breaking News</category>
+      <description><![CDATA[Saturday May 23, 2026 is Day 6 after the WHO PHEIC declaration. At the 22 May joint Ebola + hantavirus media briefing the WHO upgraded the DRC area risk from "high" to "very high" (global remains low) and the WHO IHR Emergency Committee, meeting for the first time the same day, issued temporary recommendations. DRC confirmed cases now stand at 85 (+2 Uganda imports), suspected ~750, with 177 deaths cumulative. WHO R&D Blueprint prioritised two monoclonal antibodies for trial and obeldesivir for post-exposure prophylaxis evaluation.]]></description>
+    </item>
+
+    <item>
+      <title>Is There Ebola in the United States in 2026? What CDC + DHS Enhanced Airport Screening Actually Does</title>
+      <link>https://hantavirussupplies.com/ebola/airport-screening-us/</link>
+      <guid isPermaLink="true">https://hantavirussupplies.com/ebola/airport-screening-us/</guid>
+      <pubDate>Sat, 23 May 2026 09:00:00 GMT</pubDate>
+      <dc:creator>Ebola Hub</dc:creator>
+      <category>US Travel</category>
+      <description><![CDATA[As of 23 May 2026 there are no community-acquired Ebola cases in the United States. CDC and DHS have implemented enhanced entry screening at 5 international airports — ATL, JFK, EWR, IAD, ORD — for arrivals from DRC and Uganda since 18 May. The American physician Dr Peter Stafford was medically evacuated to a German high-containment unit.]]></description>
+    </item>
+
+    <item>
+      <title>Ebola Symptoms in 2026: The Bundibugyo Prodromal, GI and Hemorrhagic Phases — and When to Seek Same-Day Care</title>
+      <link>https://hantavirussupplies.com/ebola/symptoms/</link>
+      <guid isPermaLink="true">https://hantavirussupplies.com/ebola/symptoms/</guid>
+      <pubDate>Sat, 23 May 2026 09:30:00 GMT</pubDate>
+      <dc:creator>Ebola Hub</dc:creator>
+      <category>Symptoms</category>
+      <description><![CDATA[Bundibugyo virus disease runs through three overlapping clinical phases. Incubation 2 to 21 days; sudden-onset fever, headache and body pain; GI vomiting and diarrhea by days 4–10; hemorrhagic features in 30–50% of severe cases by days 7–14. The operational rule: same-day evaluation for any fever lasting more than 24 hours with epidemiological exposure.]]></description>
+    </item>
+
+    <item>
+      <title>Is There an Ebola Vaccine in 2026? Why Ervebo Is Zaire-Specific and What the WHO Bundibugyo Pipeline Actually Looks Like</title>
+      <link>https://hantavirussupplies.com/ebola/vaccine-treatment/</link>
+      <guid isPermaLink="true">https://hantavirussupplies.com/ebola/vaccine-treatment/</guid>
+      <pubDate>Sat, 23 May 2026 10:00:00 GMT</pubDate>
+      <dc:creator>Ebola Hub</dc:creator>
+      <category>Vaccine &amp; Treatment</category>
+      <description><![CDATA[The Merck Ervebo vaccine is licensed for Zaire ebolavirus, not the Bundibugyo strain at the centre of the 2026 DRC outbreak. The Inmazeb and Ebanga monoclonal antibodies are similarly Zaire-specific. On 22 May 2026 the WHO R&D Blueprint formally prioritised two Bundibugyo-targeted monoclonal antibody candidates for clinical trial and the antiviral obeldesivir for post-exposure prophylaxis evaluation.]]></description>
+    </item>
+
+    <item>
+      <title>Obeldesivir and Two Monoclonal Antibodies: What the WHO R&amp;D Blueprint Pipeline Actually Looks Like for Bundibugyo</title>
+      <link>https://hantavirussupplies.com/ebola/</link>
+      <guid isPermaLink="false">ebola-2026-05-23-rd-blueprint-pipeline</guid>
+      <pubDate>Sat, 23 May 2026 10:30:00 GMT</pubDate>
+      <dc:creator>Ebola Hub</dc:creator>
+      <category>Science</category>
+      <description><![CDATA[At the 22 May media briefing, the WHO Director-General confirmed two operational R&D priorities for the DRC Bundibugyo cluster: two monoclonal antibody candidates prioritised for clinical trial, and the antiviral obeldesivir under evaluation in a clinical trial as post-exposure prophylaxis for high-risk contacts. Here is what each of those pipelines actually looks like.]]></description>
+    </item>
+
+    <item>
+      <title>Bundibugyo Virus in Goma: Why a Single Confirmed Case in a Regional Transit Hub Matters More Than the Count Suggests</title>
+      <link>https://hantavirussupplies.com/ebola/goma/</link>
+      <guid isPermaLink="true">https://hantavirussupplies.com/ebola/goma/</guid>
+      <pubDate>Fri, 22 May 2026 11:00:00 GMT</pubDate>
+      <dc:creator>Ebola Hub</dc:creator>
+      <category>Goma</category>
+      <description><![CDATA[The most operationally consequential geographic development in the 2026 DRC Bundibugyo outbreak is the documented spread into Goma, the North Kivu capital on the Rwandan border. Even a single sustained transmission chain there would meaningfully elevate cross-border risk.]]></description>
+    </item>
+
+    <item>
+      <title>Day 5 of PHEIC: DRC Bundibugyo Cluster Reaches 51 PCR-Confirmed Across 11 Health Zones, Spread Into North Kivu (Butembo, Goma) and South Kivu Import</title>
+      <link>https://hantavirussupplies.com/ebola/</link>
+      <guid isPermaLink="false">ebola-2026-05-22-day5-pheic</guid>
+      <pubDate>Fri, 22 May 2026 08:00:00 GMT</pubDate>
+      <dc:creator>Ebola Hub</dc:creator>
+      <category>Breaking News</category>
+      <description><![CDATA[Friday May 22, 2026 is Day 5 after the WHO PHEIC declaration on the DRC Bundibugyo Ebola outbreak. The cluster total stands at 51 PCR-confirmed cases in DRC plus 2 imported cases in Kampala (one death), approximately 600 suspected cases and 139 deaths reported cumulatively across 11 health zones in Ituri Province and North Kivu Province plus the single South Kivu import from Tshopo Province reported on May 21.]]></description>
+    </item>
+
+  </channel>
+</rss>

@@ -978,6 +978,22 @@
 </head>
 <body>
 <div id="root"></div>
+<noscript>
+  <div style="max-width:760px;margin:24px auto;padding:0 24px;font-family:system-ui;">
+    <h1 style="font-size:1.8rem;color:#0a1628">Hanta Hub — MV Hondius Hantavirus Outbreak Tracker</h1>
+    <p>Live tracker for the 2026 MV Hondius Andes hantavirus cluster. Day 11 of WHO 42-day monitoring. 12 cases, 3 deaths.</p>
+    <h2>Also tracking: 2026 DRC Bundibugyo Ebola outbreak — <a href="/ebola/">live Ebola Hub tracker</a></h2>
+    <ul>
+      <li><a href="/ebola/symptoms/">Ebola Symptoms 2026 — Bundibugyo phases</a></li>
+      <li><a href="/ebola/bundibugyo/">Bundibugyo Virus — what BDBV is</a></li>
+      <li><a href="/ebola/vaccine-treatment/">Ebola Vaccine and Treatment 2026</a></li>
+      <li><a href="/ebola/airport-screening-us/">US Enhanced Airport Screening</a></li>
+      <li><a href="/ebola/timeline-2026/">2026 DRC Outbreak Timeline</a></li>
+      <li><a href="/ebola/goma/">Bundibugyo Virus in Goma</a></li>
+    </ul>
+  </div>
+</noscript>
+
 
 <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -2024,7 +2040,7 @@ function Nav({ active, onChange }) {
         <button className={active === 'hub' ? 'active' : ''} onClick={() => onChange('hub')}>🛡️ Supply Hub</button>
         <button className={active === 'blog' ? 'active' : ''} onClick={() => onChange('blog')}>📰 Blog</button>
         <button className={active === 'sources' ? 'active' : ''} onClick={() => onChange('sources')}>🌐 Global Sources</button>
-        <a href="/ebola/" className="nav-cross-link">🚨 Ebola Tracker →</a>
+        <a href="/ebola/" className="nav-cross-link">🚨 Ebola Tracker · PHEIC →</a>
       </div>
       <div className="nav-status"><span></span> WHO: Low Risk</div>
     </nav>
