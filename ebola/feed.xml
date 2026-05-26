@@ -5,7 +5,7 @@
     <link>https://hantavirussupplies.com/ebola/</link>
     <description>Live tracker for the 2026 DRC Bundibugyo Ebola outbreak. WHO updates, regional risk, vaccine pipeline, US airport screening, full timeline.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 23 May 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 25 May 2026 14:00:00 GMT</lastBuildDate>
     <atom:link href="https://hantavirussupplies.com/ebola/feed.xml" rel="self" type="application/rss+xml" />
     <image>
       <url>https://hantavirussupplies.com/og/ebola.png</url>
@@ -13,6 +13,61 @@
       <link>https://hantavirussupplies.com/ebola/</link>
     </image>
 
+    
+    <item>
+      <title>Day 8 of PHEIC: DRC Confirmed Climbs to 101 (106 Total with 5 Uganda Imports), 904 Suspected, 220 Deaths Cumulative per WHO DG; Africa CDC Names 10 At-Risk Countries; MSF Isolation Units Operational in Ituri</title>
+      <link>https://hantavirussupplies.com/ebola/</link>
+      <guid isPermaLink="false">ebola-2026-05-25-day8-pheic</guid>
+      <pubDate>Mon, 25 May 2026 08:00:00 GMT</pubDate>
+      <dc:creator>Ebola Hub</dc:creator>
+      <category>Breaking News</category>
+      <description><![CDATA[Monday May 25, 2026 is Day 8 after the WHO PHEIC declaration. DRC 101 PCR-confirmed (up from 83), Uganda 5 PCR-confirmed in Kampala (up from 2) for 106 cumulative confirmed; 904 suspected cases; 220 cumulative deaths according to the WHO Director-General. Africa CDC names 10 at-risk countries: Angola, Burundi, CAR, Republic of Congo, Ethiopia, Kenya, Rwanda, South Sudan, Tanzania, Zambia. MSF isolation units operational in Ituri.]]></description>
+    </item>
+    <item>
+      <title>Africa CDC Names 10 At-Risk Countries: What the New Regional Watch List Actually Means for Border Surveillance, Travel and the Next 30 Days</title>
+      <link>https://hantavirussupplies.com/ebola/</link>
+      <guid isPermaLink="false">ebola-2026-05-25-africa-cdc-10-at-risk</guid>
+      <pubDate>Mon, 25 May 2026 09:00:00 GMT</pubDate>
+      <dc:creator>Ebola Hub</dc:creator>
+      <category>News</category>
+      <description><![CDATA[The Africa Centres for Disease Control and Prevention has formally named ten African countries at heightened risk of importation from the 2026 DRC + Uganda Bundibugyo Ebola cluster. The named-country list defines the operational watch envelope for the next 30 days of the regional response.]]></description>
+    </item>
+    <item>
+      <title>Bundibugyo vs Zaire Ebolavirus: Why the 2026 DRC Strain Behaves Differently and What That Means for the Vaccine, Antibody and Antiviral Pipeline</title>
+      <link>https://hantavirussupplies.com/ebola/bundibugyo-vs-zaire/</link>
+      <guid isPermaLink="false">ebola-2026-05-25-bundibugyo-vs-zaire</guid>
+      <pubDate>Mon, 25 May 2026 10:00:00 GMT</pubDate>
+      <dc:creator>Ebola Hub</dc:creator>
+      <category>Science</category>
+      <description><![CDATA[Bundibugyo virus and Zaire ebolavirus differ at the surface glycoprotein, and those structural differences carry direct operational consequences. Ervebo, Inmazeb and Ebanga are not expected to work against the 2026 Bundibugyo strain; the WHO R&D Blueprint has prioritised two Bundibugyo-specific or pan-orthoebolavirus mAbs for clinical trial.]]></description>
+    </item>
+    <item>
+      <title>Uganda Cluster Grows to 5 Confirmed Cases in Kampala: What the Three Weekend Confirmations Mean for the Cross-Border Response and the Next Two Weeks</title>
+      <link>https://hantavirussupplies.com/ebola/</link>
+      <guid isPermaLink="false">ebola-2026-05-25-uganda-5-confirmed</guid>
+      <pubDate>Mon, 25 May 2026 11:00:00 GMT</pubDate>
+      <dc:creator>Ebola Hub</dc:creator>
+      <category>News</category>
+      <description><![CDATA[Three additional PCR-confirmed Bundibugyo cases in Kampala brought the Uganda cluster to 5 confirmed cases with 1 death. All five are travel-associated to DRC. No community-acquired secondary cases identified yet. The next two weeks cover the operationally decisive serial-interval window.]]></description>
+    </item>
+    <item>
+      <title>Ebola Symptoms by Day: The Bundibugyo Prodromal-to-Haemorrhagic Phase Timeline and the One-Sentence Rule That Defines Same-Day Care</title>
+      <link>https://hantavirussupplies.com/ebola/symptoms/</link>
+      <guid isPermaLink="false">ebola-2026-05-25-symptoms-by-day</guid>
+      <pubDate>Mon, 25 May 2026 12:00:00 GMT</pubDate>
+      <dc:creator>Ebola Hub</dc:creator>
+      <category>Tips</category>
+      <description><![CDATA[The day-by-day Bundibugyo Ebola clinical timeline from Day 0 exposure through prodromal, gastrointestinal, and haemorrhagic phases — and the one-sentence rule for same-day medical evaluation in or after travel to affected regions.]]></description>
+    </item>
+    <item>
+      <title>WHO IHR Emergency Committee Temporary Recommendations: What the 22 May Document Actually Asks Countries to Do at Each Risk Level</title>
+      <link>https://hantavirussupplies.com/ebola/pheic-2026/</link>
+      <guid isPermaLink="false">ebola-2026-05-25-ihr-emergency-committee</guid>
+      <pubDate>Mon, 25 May 2026 13:00:00 GMT</pubDate>
+      <dc:creator>Ebola Hub</dc:creator>
+      <category>Science</category>
+      <description><![CDATA[The WHO IHR Emergency Committee, meeting for the first time on 22 May, issued temporary recommendations under the International Health Regulations (2005) covering the 2026 DRC + Uganda Bundibugyo Ebola outbreak. Graded by country risk level. Concrete operational asks at each tier.]]></description>
+    </item>
     <item>
       <title>Day 6 of PHEIC: WHO Upgrades DRC Area Risk to Very High, IHR Emergency Committee Issues Temporary Recommendations, Confirmed Cases Climb to 87 (~750 Suspected, 177 Deaths Cumulative)</title>
       <link>https://hantavirussupplies.com/ebola/</link>
